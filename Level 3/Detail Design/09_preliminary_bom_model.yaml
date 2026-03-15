@@ -1,0 +1,175 @@
+preliminary_bom:
+  items:
+  - item_id: B1
+    module_id: M1
+    name: Base/Frame Assembly
+    quantity: 1
+    key_specs:
+    - spec: Structural frame for riveting tool
+      target: Stiffness to maintain alignment under 500 N load
+    tolerance_notes: Frame flatness ±0.1 mm; critical for head alignment
+    material: Mild steel plate or weldment
+    process: Laser-cut and welded; machined mounting surfaces
+    verification: Frame stiffness test; alignment check
+    traces_to:
+      functions:
+      - F9
+      requirements:
+      - R12
+      - R15
+  - item_id: B2
+    module_id: M2
+    name: Workholding Fixture
+    quantity: 1
+    key_specs:
+    - spec: Fixture to clamp brake shoe + lining
+      target: Accommodates D=250–400 mm, B=80–400 mm, thickness 6–8 mm, total stack
+        <=45 mm
+    tolerance_notes: Datum alignment ±0.05 mm; clamp repeatability
+    material: Steel body with hardened tool steel inserts
+    process: Machining; surface hardening on contact faces
+    verification: Clamp repeatability test; alignment check
+    traces_to:
+      functions:
+      - F1
+      - F3
+      - F8
+      requirements:
+      - R2
+      - R3
+      - R4
+      - R5
+      - R15
+  - item_id: B3
+    module_id: M3
+    name: Rivet Insertion Guide
+    quantity: 1
+    key_specs:
+    - spec: Guide for rivet insertion into pre-drilled holes
+      target: Supports d=3–5 mm rivets; edge distance >=4 mm
+    tolerance_notes: Guide bore tolerance ±0.02 mm; alignment to fixture
+    material: Hardened steel or bronze bushing
+    process: Precision turning; press-fit or bolted to fixture
+    verification: Insertion force test; alignment check
+    traces_to:
+      functions:
+      - F2
+      requirements:
+      - R6
+      - R7
+  - item_id: B4
+    module_id: M4
+    name: Actuation Handle/Lever
+    quantity: 1
+    key_specs:
+    - spec: Ergonomic lever for hand or foot actuation
+      target: Mechanical advantage >=2.5 for hand (F_out >=500 N with F_in <=200 N)
+    tolerance_notes: Lever arm length tolerance ±1 mm; pivot bearing clearance
+    material: Steel tube or bar
+    process: Bending and machining; pivot bearing installation
+    verification: Force amplification test; ergonomic assessment
+    traces_to:
+      functions:
+      - F4
+      requirements:
+      - R11
+      - R17
+  - item_id: B5
+    module_id: M5
+    name: Force Amplifier Linkage
+    quantity: 1
+    key_specs:
+    - spec: Linkage to amplify actuation force
+      target: Achieves required mechanical advantage; stroke ~50–100 mm
+    tolerance_notes: Pivot pin tolerance ±0.01 mm; linkage alignment
+    material: Steel rods/pins; bearings or bushings
+    process: Machining; assembly with pivot hardware
+    verification: Force amplification test; stroke measurement
+    traces_to:
+      functions:
+      - F5
+      requirements:
+      - R8
+      - R17
+  - item_id: B6
+    module_id: M6
+    name: Riveting Head Set (Preform + Closure)
+    quantity: 2
+    key_specs:
+    - spec: Hardened tool steel heads for rivet forming
+      target: Form rivet to ~4 mm closure; compatible with d=3–5 mm rivets
+    tolerance_notes: Head geometry tolerance ±0.02 mm; concentricity ±0.01 mm
+    material: Hardened tool steel (HRC 50–55)
+    process: Precision turning/grinding; heat treatment
+    verification: Head geometry inspection; forming test on sample rivets
+    traces_to:
+      functions:
+      - F7
+      requirements:
+      - R1
+      - R8
+      - R9
+      - R6
+      - R7
+  - item_id: B7
+    module_id: M7
+    name: Stroke/Force Control and Stop
+    quantity: 1
+    key_specs:
+    - spec: Adjustable stop for closure distance
+      target: Adjustable to ~4 mm closure; resolution <=0.1 mm
+    tolerance_notes: Thread pitch tolerance; locknut security
+    material: Steel adjuster screw + locknut; hardened stop tip
+    process: Thread cutting; assembly
+    verification: Adjustment range test; lock integrity test
+    traces_to:
+      functions:
+      - F6
+      requirements:
+      - R9
+      - R15
+  - item_id: B8
+    module_id: M8
+    name: Safety Features (Guards + Labels)
+    quantity: 1
+    key_specs:
+    - spec: Guards and safety labels
+      target: Prevent pinch/crush hazards; clear warnings
+    tolerance_notes: Guard clearance to moving parts >=5 mm
+    material: Steel or plastic guards; adhesive labels
+    process: Bending/shearing for guards; printing for labels
+    verification: Hazard assessment; clearance measurement
+    traces_to:
+      functions:
+      - F10
+      requirements:
+      - R18
+  - item_id: B9
+    module_id: M9
+    name: Verification Aids (Gauges)
+    quantity: 1
+    key_specs:
+    - spec: Simple gauges for closure verification
+      target: Quick visual/physical check of ~4 mm closure
+    tolerance_notes: Gauge reference dimension ±0.1 mm
+    material: Steel or plastic gauge
+    process: Machining or 3D printing
+    verification: Gauge accuracy check
+    traces_to:
+      functions:
+      - F11
+      requirements:
+      - R15
+  assumptions:
+  - Rivet material and hardness assumed typical steel; actual forming force may vary.
+  - Closure tolerance band around 4 mm not specified; assumed ±0.5 mm acceptable.
+  - No explicit requirement for rivet head shape beyond closure; standard DIN 7338
+    head assumed.
+  - Batch size small; manufacturing processes favor machining/welding over casting/forging.
+  open_questions:
+  - Confirm exact rivet material/hardness and required forming force across d=3–5
+    mm.
+  - Confirm acceptable closure tolerance band around 4 mm.
+  - Confirm if any specific rivet head shape (e.g., flushness) is required beyond
+    closure distance.
+  - Confirm batch size and whether any casting is permissible for base/frame.
