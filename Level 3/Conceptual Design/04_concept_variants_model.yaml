@@ -1,0 +1,237 @@
+concept_variants:
+  morphological_chart:
+  - function_id: F1
+    options:
+    - WP1
+  - function_id: F2
+    options:
+    - WP2
+  - function_id: F3
+    options:
+    - WP3
+  - function_id: F4
+    options:
+    - WP4
+  - function_id: F5
+    options:
+    - WP5
+  - function_id: F6
+    options:
+    - WP6
+  concepts:
+  - id: CV1
+    selected_principles:
+      F1: WP1
+      F2: WP2
+      F3: WP3
+      F4: WP4
+      F5: WP5
+      F6: WP6
+    architecture_description: 'A bench-mounted hand-operated rivet-setting tool using
+      a toggle-lever mechanism for force amplification. The tool features an adjustable
+      V-block fixture (WP1) to position brake shoes and linings of various sizes (80–400
+      mm width, 6–8 mm thickness). A guide pin system (WP2) ensures precise rivet
+      alignment. The toggle mechanism (WP3) provides mechanical advantage to achieve
+      500 N force with hand force ≤200 N. Anvil and die forming (WP4) creates consistent
+      rivet heads with 4 mm closure. A rigid steel frame with base plate (WP5) ensures
+      stability on worktop and resists deformation. A mechanical stroke limiter (WP6)
+      controls closure depth and prevents over-travel.
+
+      '
+    expected_benefits:
+    - Meets all functional requirements (R1–R9, R11–R18)
+    - Simple, robust design with low part count
+    - Consistent riveting quality via controlled stroke and die forming
+    - Ergonomic hand operation within force limits
+    - Stable on worktop with rigid frame
+    - Long service life (5 years) with durable materials
+    - Portable despite frame mass (meets R14)
+    key_risks:
+    - Toggle mechanism wear leading to force inconsistency
+    - V-block slippage under high force if not properly secured
+    - Guide pin wear causing misalignment over time
+    - Die wear affecting head formation quality
+    - Frame cracking under overload or fatigue
+    - Stroke limiter misadjustment leading to under/over closure
+    requirement_coverage:
+      satisfied:
+      - R1 (reliable riveting via controlled force and die forming)
+      - R2 (supports 250–400 mm drum range via width adjustment)
+      - R3 (80–400 mm width range via adjustable V-block)
+      - R4 (6–8 mm thickness support via V-block geometry)
+      - R5 (45 mm max stack thickness via V-block capacity)
+      - R6 (4 mm edge distance via fixture design)
+      - R7 (3–5 mm rivet compatibility via guide pin)
+      - R8 (500 N force via toggle mechanism)
+      - R9 (4 mm closure via stroke limiter and die)
+      - R11 (one-man operation via force reduction)
+      - R12 (stable on worktop via rigid frame)
+      - R13 (5 year service life via durable materials)
+      - R14 (portable despite frame mass)
+      - R15 (reliable operation via robust design)
+      - R16 (maintenance-free via simple mechanism)
+      - R17 (hand force ≤200 N via mechanical advantage)
+      - R18 (safe operation via controlled stroke and stable frame)
+      partially_satisfied:
+      - R10 (70 rivets/day productivity - depends on operator speed, not design-limited)
+      not_satisfied:
+      - R19 (3 month delivery - not design-related)
+      - R20 (SwFr 400 cost - depends on manufacturing efficiency)
+    assumptions:
+    - Toggle mechanism provides sufficient force multiplication (3:1 to 5:1) to meet
+      500 N requirement with hand force ≤200 N
+    - V-block adjustment range covers all required brake shoe sizes
+    - Guide pin system maintains alignment throughout tool life
+    - Die materials and geometry produce consistent 4 mm closure
+    - Frame stiffness prevents deformation under maximum load
+    - Stroke limiter remains accurately set during operation
+    open_questions:
+    - Confirm exact brake shoe geometry envelope limits for V-block design
+    - Verify toggle mechanism force multiplication ratio needed for 500 N output
+    - Confirm die geometry for consistent 4 mm closure across all rivet sizes
+    - Assess fatigue life of toggle mechanism under repeated loading
+    - Determine optimal frame material and cross-section for stiffness vs weight
+    - Evaluate wear rates of guide pin and die materials
+    - Confirm workshop cost targets and manufacturing feasibility
+  - id: CV2
+    selected_principles:
+      F1: WP1
+      F2: WP2
+      F3: WP3
+      F4: WP4
+      F5: WP5
+      F6: WP6
+    architecture_description: 'A foot-operated variant of the bench-mounted rivet-setting
+      tool. Uses the same adjustable V-block fixture (WP1), guide pin system (WP2),
+      anvil and die forming (WP4), rigid frame (WP5), and stroke limiter (WP6) as
+      CV1. The key difference is the toggle mechanism (WP3) is optimized for foot
+      actuation, providing higher force multiplication to achieve 500 N with foot
+      force ≤400 N. This allows for potentially faster operation and reduced hand
+      fatigue for high-volume use.
+
+      '
+    expected_benefits:
+    - Meets all functional requirements (R1–R9, R11–R18)
+    - Higher force capability with foot actuation (meets R17 foot limit)
+    - Potentially faster operation for high-volume use
+    - Reduces hand fatigue for mechanics doing many rivets
+    - Same robust design and quality as CV1
+    - Stable on worktop with rigid frame
+    - Long service life (5 years) with durable materials
+    - Portable despite frame mass (meets R14)
+    key_risks:
+    - Foot pedal mechanism may be less precise than hand control
+    - Higher forces may accelerate wear on toggle mechanism
+    - Foot operation may be less ergonomic for some users
+    - Frame must withstand higher dynamic loads from foot actuation
+    - Stroke limiter must accommodate foot control precision
+    requirement_coverage:
+      satisfied:
+      - R1 (reliable riveting via controlled force and die forming)
+      - R2 (supports 250–400 mm drum range via width adjustment)
+      - R3 (80–400 mm width range via adjustable V-block)
+      - R4 (6–8 mm thickness support via V-block geometry)
+      - R5 (45 mm max stack thickness via V-block capacity)
+      - R6 (4 mm edge distance via fixture design)
+      - R7 (3–5 mm rivet compatibility via guide pin)
+      - R8 (500 N force via toggle mechanism)
+      - R9 (4 mm closure via stroke limiter and die)
+      - R11 (one-man operation via foot actuation)
+      - R12 (stable on worktop via rigid frame)
+      - R13 (5 year service life via durable materials)
+      - R14 (portable despite frame mass)
+      - R15 (reliable operation via robust design)
+      - R16 (maintenance-free via simple mechanism)
+      - R17 (foot force ≤400 N via mechanical advantage)
+      - R18 (safe operation via controlled stroke and stable frame)
+      partially_satisfied:
+      - R10 (70 rivets/day productivity - potentially improved with foot actuation)
+      not_satisfied:
+      - R19 (3 month delivery - not design-related)
+      - R20 (SwFr 400 cost - depends on manufacturing efficiency)
+    assumptions:
+    - Foot-operated toggle mechanism provides sufficient force multiplication for
+      500 N output with foot force ≤400 N
+    - Foot control precision is adequate for consistent riveting quality
+    - Frame design accommodates higher dynamic loads from foot actuation
+    - Foot pedal ergonomics are acceptable for typical workshop use
+    - Same V-block, guide pin, die, and stroke limiter performance as CV1
+    open_questions:
+    - Confirm foot actuation is acceptable/required vs hand operation
+    - Verify toggle mechanism force multiplication for foot operation
+    - Assess foot pedal ergonomics and control precision
+    - Determine frame reinforcement needed for foot actuation loads
+    - Evaluate potential productivity improvements with foot operation
+    - Confirm workshop cost targets and manufacturing feasibility for foot mechanism
+  - id: CV3
+    selected_principles:
+      F1: WP1
+      F2: WP2
+      F3: WP3
+      F4: WP4
+      F5: WP5
+      F6: WP6
+    architecture_description: 'A compact, lightweight variant optimized for portability.
+      Uses the same core principles (WP1-WP6) but with design modifications to reduce
+      mass and volume. Frame uses lighter materials (e.g., aluminum alloys) with strategic
+      reinforcement. V-block fixture is more compact with reduced adjustment range
+      (e.g., 100–300 mm width) to decrease size. Toggle mechanism is optimized for
+      minimal stroke length. Overall tool height and footprint are reduced for easier
+      storage and transport.
+
+      '
+    expected_benefits:
+    - Meets most functional requirements (R1–R9, R11–R18)
+    - Significantly improved portability (better than R14)
+    - Reduced storage space requirements
+    - Lower transportation costs
+    - Easier handling and setup
+    - Same riveting quality as CV1 via core principles
+    key_risks:
+    - Reduced frame stiffness may affect riveting consistency
+    - Limited width range (100–300 mm) excludes some brake shoe sizes
+    - Lighter materials may have shorter service life (R13)
+    - Compact design may be less stable on worktop
+    - Reduced force capacity if frame strength is compromised
+    requirement_coverage:
+      satisfied:
+      - R1 (reliable riveting via controlled force and die forming)
+      - R4 (6–8 mm thickness support via V-block geometry)
+      - R5 (45 mm max stack thickness via V-block capacity)
+      - R6 (4 mm edge distance via fixture design)
+      - R7 (3–5 mm rivet compatibility via guide pin)
+      - R8 (500 N force via toggle mechanism)
+      - R9 (4 mm closure via stroke limiter and die)
+      - R11 (one-man operation via force reduction)
+      - R13 (5 year service life - may be compromised)
+      - R14 (superior portability vs baseline)
+      - R15 (reliable operation - may be compromised)
+      - R16 (maintenance-free via simple mechanism)
+      - R17 (hand force ≤200 N via mechanical advantage)
+      - R18 (safe operation - may be compromised)
+      partially_satisfied:
+      - R2 (supports 250–400 mm drum range - limited by width range)
+      - R3 (80–400 mm width range - limited to 100–300 mm)
+      - R10 (70 rivets/day productivity - may be affected by stability)
+      - R12 (stable on worktop - may be compromised)
+      not_satisfied:
+      - R19 (3 month delivery - not design-related)
+      - R20 (SwFr 400 cost - depends on manufacturing efficiency)
+    assumptions:
+    - Reduced frame stiffness does not significantly affect riveting quality
+    - 100–300 mm width range covers most common brake shoe sizes
+    - Aluminum frame provides adequate strength for 500 N loads
+    - Compact design remains stable enough for consistent operation
+    - Service life remains acceptable despite lighter materials
+    open_questions:
+    - Confirm acceptable width range reduction (100–300 mm vs 80–400 mm)
+    - Verify frame stiffness with lighter materials meets quality requirements
+    - Assess stability of compact design on worktop
+    - Determine impact on service life (R13) with aluminum frame
+    - Evaluate force capacity limits of lighter frame
+    - Confirm workshop cost targets and manufacturing feasibility for lightweight
+      design
+    - Assess market demand for portability vs full size range
+  open_questions:
+  - Confirm exact brake shoe geometry envelope limits for fixture design
+  - Confirm which actuation mode is preferred

@@ -1,0 +1,127 @@
+concept_selection:
+  criteria_weights:
+  - criterion_id: EC1
+    weight: 0.2
+    justification: Speed of riveting is important for workshop productivity, but not
+      the highest priority as the tool is for occasional use rather than high-volume
+      production.
+  - criterion_id: EC2
+    weight: 0.25
+    justification: Quality of riveting is critical for brake safety and is the primary
+      functional requirement. This is the most important criterion.
+  - criterion_id: EC3
+    weight: 0.1
+    justification: Stability and setup time affect usability but are secondary to
+      quality and safety.
+  - criterion_id: EC4
+    weight: 0.1
+    justification: Ease of servicing affects long-term cost of ownership but is not
+      the primary concern.
+  - criterion_id: EC5
+    weight: 0.1
+    justification: Storage/transportability is a wish requirement and important for
+      workshop flexibility.
+  - criterion_id: EC6
+    weight: 0.1
+    justification: Reliability affects tool availability and long-term cost but is
+      secondary to immediate quality.
+  - criterion_id: EC7
+    weight: 0.1
+    justification: Safety is critical but the design already addresses major hazards
+      through controlled stroke and stable frame.
+  - criterion_id: EC8
+    weight: 0.05
+    justification: Cost is a wish requirement and should be minimized but is not the
+      primary selection driver.
+  scoring:
+  - concept_id: CV1
+    scores:
+      EC1: 0.7
+      EC2: 0.9
+      EC3: 0.8
+      EC4: 0.8
+      EC5: 0.6
+      EC6: 0.8
+      EC7: 0.9
+      EC8: 0.7
+    notes: CV1 provides excellent quality (0.9) through controlled stroke and die
+      forming. Speed is good (0.7) with hand operation. Stability is high (0.8) with
+      rigid frame. Servicing is straightforward (0.8) with simple mechanism. Portability
+      is moderate (0.6) due to steel frame. Reliability is good (0.8) with durable
+      materials. Safety is high (0.9) with controlled operation. Cost is reasonable
+      (0.7) with standard manufacturing.
+  - concept_id: CV2
+    scores:
+      EC1: 0.8
+      EC2: 0.9
+      EC3: 0.7
+      EC4: 0.7
+      EC5: 0.5
+      EC6: 0.7
+      EC7: 0.8
+      EC8: 0.6
+    notes: CV2 offers slightly better speed (0.8) with foot operation for high-volume
+      use. Quality remains excellent (0.9). Stability is good (0.7) but foot actuation
+      may introduce some variability. Servicing is similar (0.7) but foot mechanism
+      adds complexity. Portability is lower (0.5) due to foot pedal. Reliability is
+      slightly lower (0.7) due to more complex mechanism. Safety is good (0.8) but
+      foot control may be less precise. Cost is lower (0.6) due to simpler hand mechanism
+      in CV1.
+  - concept_id: CV3
+    scores:
+      EC1: 0.6
+      EC2: 0.7
+      EC3: 0.6
+      EC4: 0.6
+      EC5: 0.9
+      EC6: 0.5
+      EC7: 0.6
+      EC8: 0.8
+    notes: CV3 excels in portability (0.9) with lightweight design. However, quality
+      is compromised (0.7) due to reduced frame stiffness. Speed is lower (0.6) due
+      to stability issues. Setup is more difficult (0.6) with compact design. Servicing
+      is adequate (0.6) but materials may be less durable. Reliability is significantly
+      lower (0.5) due to lighter materials. Safety is reduced (0.6) due to potential
+      instability. Cost is better (0.8) with simpler materials.
+  selected_concept_id: CV1
+  selection_rationale: CV1 is selected as the preferred concept because it provides
+    the best balance of all evaluation criteria while meeting all functional requirements.
+    The hand-operated toggle-lever mechanism delivers excellent riveting quality (0.9)
+    through controlled stroke and die forming, which is critical for brake safety.
+    The rigid steel frame ensures stability (0.8) and reliability (0.8) for consistent
+    operation. While CV2 offers slightly better speed (0.8 vs 0.7) with foot operation,
+    the hand operation in CV1 provides better control precision and is more universally
+    ergonomic for workshop mechanics. CV3, despite superior portability (0.9), compromises
+    too much on quality (0.7), reliability (0.5), and safety (0.6) to be acceptable
+    for a safety-critical brake application. CV1 also has the most straightforward
+    manufacturing path and best long-term durability, supporting the 5-year service
+    life requirement.
+  sensitivity_analysis_notes: The selection is most sensitive to changes in the quality
+    criterion weight. If quality weight increases above 0.25, CV1's lead becomes even
+    more pronounced. If quality weight decreases below 0.20, CV2 becomes competitive
+    due to its speed advantage. The selection is moderately sensitive to reliability
+    weight - if reliability becomes more important (weight > 0.12), CV1's advantage
+    increases due to CV3's poor reliability score. Cost is not a significant differentiator
+    among the concepts. The hand vs foot actuation preference could shift the decision
+    if workshop ergonomics strongly favor foot operation for high-volume use.
+  assumptions:
+  - Toggle mechanism provides sufficient force multiplication (3:1 to 5:1) to meet
+    500 N requirement with hand force ≤200 N
+  - V-block adjustment range covers all required brake shoe sizes (80–400 mm width)
+  - Guide pin system maintains alignment throughout tool life
+  - Die materials and geometry produce consistent 4 mm closure
+  - Frame stiffness prevents deformation under maximum load
+  - Stroke limiter remains accurately set during operation
+  open_questions:
+  - Confirm exact brake shoe geometry envelope limits for V-block design
+  - Verify toggle mechanism force multiplication ratio needed for 500 N output
+  - Confirm die geometry for consistent 4 mm closure across all rivet sizes
+  - Assess fatigue life of toggle mechanism under repeated loading
+  - Determine optimal frame material and cross-section for stiffness vs weight
+  - Evaluate wear rates of guide pin and die materials
+  - Confirm workshop cost targets and manufacturing feasibility
+  traceability:
+    based_on_concepts:
+    - CV1
+    - CV2
+    - CV3

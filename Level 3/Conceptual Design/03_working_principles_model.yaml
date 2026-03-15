@@ -1,0 +1,154 @@
+working_principles:
+  principles:
+  - id: WP1
+    function_id: F1
+    principle_name: Adjustable V-block or C-clamp fixture
+    physical_effect_or_mechanism: Mechanical constraint via rigid geometry
+    key_parameters:
+    - Adjustable jaw width (80–400 mm)
+    - V-groove angle for shoe alignment
+    - Clamping force (manual screw or cam lever)
+    advantages:
+    - Simple, robust, low part count
+    - Accommodates wide range of shoe sizes
+    - Quick setup and release
+    disadvantages:
+    - May require manual adjustment between sizes
+    - Potential for misalignment if not secured properly
+    risks:
+    - Slippage under high riveting force
+    - Wear on contact surfaces over time
+    impacted_requirements:
+    - R1 (secure positioning for quality riveting)
+    - R2 (supports 250–400 mm drum range via width adjustment)
+    - R3 (80–400 mm width range)
+    - R4 (6–8 mm thickness support)
+    - R5 (45 mm max stack thickness)
+    - R12 (stable on worktop)
+    - R18 (safe operation, no slippage)
+  - id: WP2
+    function_id: F2
+    principle_name: Guide pin or pilot hole alignment
+    physical_effect_or_mechanism: Kinematic constraint via cylindrical guide
+    key_parameters:
+    - Pin diameter (3–5 mm to match rivet)
+    - Pin material (hardened steel)
+    - Clearance fit for smooth insertion
+    advantages:
+    - Ensures precise rivet alignment
+    - Prevents rivet bending or misplacement
+    - Simple to implement
+    disadvantages:
+    - Requires pre-drilled holes in fixture
+    - Pin may wear over time
+    risks:
+    - Misalignment if pin tolerance is too loose
+    - Pin breakage under high force
+    impacted_requirements:
+    - R1 (proper rivet positioning for joint integrity)
+    - R6 (4 mm edge distance maintained via fixture design)
+    - R7 (3–5 mm rivet compatibility)
+  - id: WP3
+    function_id: F3
+    principle_name: Toggle or lever linkage mechanism
+    physical_effect_or_mechanism: Mechanical advantage via force multiplication
+    key_parameters:
+    - Leverage ratio (e.g., 3:1 to 5:1)
+    - Pivot friction and wear
+    - Stroke amplification
+    advantages:
+    - Reduces operator force (meets R17 limits)
+    - Provides high force output (meets R8)
+    - Simple, robust, low maintenance
+    disadvantages:
+    - Limited stroke length
+    - Potential for backlash or play
+    risks:
+    - Mechanical failure under repeated loading
+    - Inconsistent force if linkage wears
+    impacted_requirements:
+    - R1 (adequate force for rivet forming)
+    - R8 (500 N force capability)
+    - R9 (4 mm closure via stroke control)
+    - R11 (one-man operation via force reduction)
+    - R17 (hand <= 200 N or foot <= 400 N)
+    - R18 (safe, controlled actuation)
+  - id: WP4
+    function_id: F4
+    principle_name: Anvil and die forming
+    physical_effect_or_mechanism: Plastic deformation via localized compression
+    key_parameters:
+    - Anvil/die material (hardened steel)
+    - Die cavity geometry (matching rivet head shape)
+    - Surface finish (to prevent galling)
+    advantages:
+    - Consistent head formation
+    - High quality joint integrity
+    - Durable tooling
+    disadvantages:
+    - Requires precise die manufacturing
+    - Die wear over time
+    risks:
+    - Poor head formation if die misaligned
+    - Material sticking or galling
+    impacted_requirements:
+    - R1 (proper head formation for joint integrity)
+    - R9 (4 mm closure dimension)
+  - id: WP5
+    function_id: F5
+    principle_name: Rigid frame with base plate
+    physical_effect_or_mechanism: Structural stiffness via material and geometry
+    key_parameters:
+    - Frame material (e.g., steel, cast iron)
+    - Cross-sectional geometry (beams, gussets)
+    - Base plate size and mounting holes
+    advantages:
+    - High stiffness resists deformation
+    - Stable mounting on worktop
+    - Long service life (supports R13)
+    disadvantages:
+    - Adds mass (may affect portability)
+    - Higher manufacturing cost
+    risks:
+    - Frame cracking under overload
+    - Base plate warping over time
+    impacted_requirements:
+    - R1 (maintains geometry for consistent riveting)
+    - R12 (stable on worktop)
+    - R13 (5 year service life)
+    - R14 (portability trade-off)
+    - R18 (safe, stable operation)
+  - id: WP6
+    function_id: F6
+    principle_name: Mechanical stop or adjustable stroke limiter
+    physical_effect_or_mechanism: Kinematic constraint via hard stop
+    key_parameters:
+    - Stop position (adjustable for 4 mm closure)
+    - Stop material (hardened, wear-resistant)
+    - Clearance and tolerance
+    advantages:
+    - Ensures consistent stroke length
+    - Prevents over-travel and damage
+    - Simple, reliable
+    disadvantages:
+    - Requires manual adjustment for different rivets
+    - Stop may wear or shift
+    risks:
+    - Incorrect stop setting leads to under/over closure
+    - Stop failure under high force
+    impacted_requirements:
+    - R1 (consistent riveting quality)
+    - R9 (4 mm closure target)
+    - R17 (controlled stroke for safe operation)
+    - R18 (prevents over-travel hazards)
+  assumptions:
+  - The tool is bench-mounted and manually actuated as described in the case context.
+  - Workshop environment is typical indoor with possible contaminants.
+  - Riveting force and stroke values are as stated (500 N, ~4 mm closure).
+  - Brake shoe and lining dimensions are as specified in the requirements.
+  open_questions:
+  - Confirm exact brake shoe geometry envelope limits (some dimensions are hard to
+    read in the scan).
+  - Confirm which actuation mode is preferred (hand vs foot) or whether both are required.
+  - Confirm required riveting force and stroke values beyond the experiment note (500
+    N and 4 mm closure).

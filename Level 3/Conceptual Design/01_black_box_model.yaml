@@ -1,0 +1,75 @@
+black_box:
+  overall_function: Transform brake shoe + lining + rivet into a riveted brake assembly
+    by applying controlled force to form rivet heads, ensuring joint integrity without
+    damage.
+  flows:
+    inputs:
+    - id: IN1
+      type: material
+      name: Brake shoe
+      description: Steel brake shoe component (6–8 mm thick, 80–400 mm wide, for 250–400
+        mm drum)
+    - id: IN2
+      type: material
+      name: Brake lining
+      description: Friction lining to be riveted onto shoe (fits within shoe envelope)
+    - id: IN3
+      type: material
+      name: Rivet
+      description: Steel rivet (shank 3–5 mm diameter) to join lining to shoe
+    - id: IN4
+      type: energy
+      name: Human actuation force
+      description: Manual force applied via hand or foot lever (≤200 N hand or ≤400
+        N foot)
+    - id: IN5
+      type: signal
+      name: Operator control input
+      description: Operator's initiation of riveting stroke
+    outputs:
+    - id: OUT1
+      type: material
+      name: Riveted brake assembly
+      description: Completed brake shoe with lining securely riveted (rivet heads
+        formed, joint intact)
+    - id: OUT2
+      type: energy
+      name: Waste energy (heat, vibration)
+      description: Minor heat and vibration from force application
+    - id: OUT3
+      type: signal
+      name: Completion feedback
+      description: Tactile/audible indication of stroke completion
+  external_interactions:
+  - id: EI1
+    description: Workshop environment (dust, oil, wood worktop) affecting tool stability
+      and operator comfort
+    related_requirements:
+    - R12
+    - R17
+    - R18
+  assumptions:
+  - The tool is bench-mounted and manually actuated as described in the case context.
+  - Workshop environment is typical indoor with possible contaminants.
+  - Riveting force and stroke values are as stated (500 N, ~4 mm closure).
+  open_questions:
+  - Confirm exact brake shoe geometry envelope limits (some dimensions are hard to
+    read in the scan).
+  - Confirm which actuation mode is preferred (hand vs foot) or whether both are required.
+  - Confirm required riveting force and stroke values beyond the experiment note (500
+    N and 4 mm closure).
+  traceability:
+    derived_from_requirements:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    - R6
+    - R7
+    - R8
+    - R9
+    - R11
+    - R12
+    - R17
+    - R18
