@@ -1,0 +1,255 @@
+working_principles:
+  principles:
+  - id: WP1
+    function_id: F1
+    principle_name: Vise-style clamping with adjustable jaws
+    physical_effect_or_mechanism: Mechanical clamping via screw-driven or cam-actuated
+      jaws
+    key_parameters:
+    - Clamping force range
+    - Jaw opening range (80–400 mm)
+    - Material hardness (to avoid shoe damage)
+    advantages:
+    - Simple, robust, workshop-proven
+    - Wide adjustment range covers R2/R3
+    - Low cost, easy maintenance
+    disadvantages:
+    - May require manual adjustment between jobs
+    - Potential for uneven pressure if jaws misaligned
+    risks:
+    - Over-clamping could deform soft Al-alloy shoes
+    - Dust/oil ingress may affect smooth operation
+    impacted_requirements:
+    - R2 (width range)
+    - R3 (width range)
+    - R4 (thickness range)
+    - R5 (stack thickness)
+    - R12 (bench stability)
+  - id: WP2
+    function_id: F2
+    principle_name: Guide pin alignment with pre-drilled holes
+    physical_effect_or_mechanism: Kinematic constraint via locating pins matching
+      rivet holes
+    key_parameters:
+    - Pin diameter tolerance
+    - Pin spacing accuracy
+    - Material hardness (to avoid wear)
+    advantages:
+    - Ensures precise rivet placement (meets R6)
+    - Self-aligning reduces operator error
+    - Compatible with existing pre-drilled shoes
+    disadvantages:
+    - Requires accurate hole drilling in shoes
+    - Pin wear over time may cause misalignment
+    risks:
+    - Pin breakage under repeated use
+    - Contamination causing binding
+    impacted_requirements:
+    - R6 (edge distance)
+    - R7 (rivet diameter)
+    - R15 (quality)
+  - id: WP3
+    function_id: F3
+    principle_name: Fixed datum reference with repeatable positioning
+    physical_effect_or_mechanism: Mechanical referencing via fixed stops or guides
+    key_parameters:
+    - Datum surface accuracy
+    - Stop positioning repeatability
+    - Clearance for different shoe sizes
+    advantages:
+    - Ensures consistent alignment across multiple rivets
+    - Reduces setup time (supports R10)
+    - Improves quality consistency (R15)
+    disadvantages:
+    - Requires careful design for size range
+    - May need adjustment for extreme sizes
+    risks:
+    - Datum wear affecting alignment over time
+    - Operator bypassing reference for speed
+    impacted_requirements:
+    - R2 (size range)
+    - R3 (size range)
+    - R10 (productivity)
+    - R15 (quality)
+  - id: WP4
+    function_id: F4
+    principle_name: Direct hand lever actuation
+    physical_effect_or_mechanism: Human force transmission via rigid lever
+    key_parameters:
+    - Lever length (mechanical advantage)
+    - Handle ergonomics
+    - Force direction and travel
+    advantages:
+    - Simple, intuitive operation (R11)
+    - No power source needed
+    - Easy to maintain
+    disadvantages:
+    - Limited force amplification
+    - May require significant hand strength
+    risks:
+    - Operator fatigue with repeated use
+    - Inconsistent force application
+    impacted_requirements:
+    - R11 (one-man operation)
+    - R17 (force limits)
+  - id: WP5
+    function_id: F5
+    principle_name: Toggle linkage force amplification
+    physical_effect_or_mechanism: Mechanical advantage via toggle mechanism kinematics
+    key_parameters:
+    - Toggle angle range
+    - Link material strength
+    - Stroke vs force characteristics
+    advantages:
+    - High force amplification from modest input (meets R8)
+    - Positive mechanical stop at end of stroke
+    - Well-suited for riveting forces
+    disadvantages:
+    - Complex geometry may increase cost
+    - Potential for jamming if misaligned
+    risks:
+    - Toggle lock failure under overload
+    - Wear at pivot points
+    impacted_requirements:
+    - R8 (force requirement)
+    - R9 (stroke control)
+    - R17 (force limits)
+  - id: WP6
+    function_id: F6
+    principle_name: Spring-loaded stroke limiter
+    physical_effect_or_mechanism: Elastic restraint via compression spring
+    key_parameters:
+    - Spring rate
+    - Preload force
+    - Travel distance (4 mm target)
+    advantages:
+    - Provides consistent stroke control (R9)
+    - Absorbs shock at end of stroke
+    - Simple, reliable mechanism
+    disadvantages:
+    - Spring fatigue over time
+    - May require adjustment for different rivet sizes
+    risks:
+    - Spring failure leading to over-stroke
+    - Inconsistent force due to temperature effects
+    impacted_requirements:
+    - R9 (closure target)
+    - R15 (quality)
+  - id: WP7
+    function_id: F7
+    principle_name: Anvil and forming punch with controlled deformation
+    physical_effect_or_mechanism: Localized plastic deformation via hardened tooling
+    key_parameters:
+    - Tool material hardness (HRC)
+    - Punch/die clearance
+    - Surface finish (to prevent galling)
+    advantages:
+    - Proven method for rivet forming
+    - Controllable head shape and closure
+    - Durable with proper material selection
+    disadvantages:
+    - Tool wear requires periodic replacement
+    - Requires precise alignment
+    risks:
+    - Tool chipping or cracking
+    - Inconsistent forming if alignment drifts
+    impacted_requirements:
+    - R1 (rivet quality)
+    - R8 (force requirement)
+    - R9 (closure target)
+  - id: WP8
+    function_id: F8
+    principle_name: Quick-release clamp mechanism
+    physical_effect_or_mechanism: Rapid disengagement via cam or lever release
+    key_parameters:
+    - Release force
+    - Re-clamping repeatability
+    - Clearance for shoe removal
+    advantages:
+    - Speeds repositioning between rivets (supports R10)
+    - Reduces operator effort
+    - Improves productivity
+    disadvantages:
+    - Additional mechanism complexity
+    - Potential for accidental release
+    risks:
+    - Release mechanism failure causing delays
+    - Inconsistent re-clamping force
+    impacted_requirements:
+    - R10 (productivity)
+    - R11 (one-man operation)
+  - id: WP9
+    function_id: F9
+    principle_name: Weighted base with non-slip feet
+    physical_effect_or_mechanism: Static stability via mass and friction
+    key_parameters:
+    - Base mass
+    - Foot material (rubber, etc.)
+    - Center of gravity
+    advantages:
+    - Simple, no active stabilization needed
+    - Works on various bench surfaces
+    - Low cost
+    disadvantages:
+    - Adds to overall tool weight (impacts R14)
+    - May shift if excessive force applied
+    risks:
+    - Base cracking under impact
+    - Feet losing grip with oil/contaminants
+    impacted_requirements:
+    - R12 (bench stability)
+    - R14 (portability)
+  - id: WP10
+    function_id: F10
+    principle_name: Guarded work area with pinch point elimination
+    physical_effect_or_mechanism: Physical barriers and clearance zones
+    key_parameters:
+    - Guard material and strength
+    - Clearance dimensions
+    - Access for operation
+    advantages:
+    - Prevents common workshop injuries (R18)
+    - Meets safety regulations
+    - Can be integrated with other functions
+    disadvantages:
+    - May restrict access for maintenance
+    - Adds part count and cost
+    risks:
+    - Guards removed by operators for convenience
+    - Inadequate protection for all use cases
+    impacted_requirements:
+    - R18 (safety)
+  - id: WP11
+    function_id: F11
+    principle_name: Visual/tactile feedback via forming completion
+    physical_effect_or_mechanism: Sensory confirmation through mechanical state
+    key_parameters:
+    - Feedback clarity (visual/tactile)
+    - Reliability of indication
+    - Integration with forming mechanism
+    advantages:
+    - No additional sensors needed
+    - Immediate operator feedback
+    - Supports quality verification (R15)
+    disadvantages:
+    - Subjective interpretation possible
+    - May not detect all defect types
+    risks:
+    - Operator missing subtle defects
+    - Feedback mechanism failure
+    impacted_requirements:
+    - R15 (quality verification)
+  assumptions:
+  - The working principles are based on typical workshop tooling practices and the
+    specified requirements.
+  - Some principles (e.g., toggle linkage, guide pins) assume standard manufacturing
+    tolerances are achievable within cost constraints.
+  - Safety guards and feedback mechanisms are assumed to be manually integrated rather
+    than automated due to the hand-operated nature.
+  open_questions:
+  - Are there specific rivet head shape requirements (e.g., flush, domed) beyond the
+    4 mm closure target that would affect the forming principle selection?
+  - Is there a preference for hand vs foot actuation that would influence the force
+    amplification approach?
+  - Are there any environmental durability requirements (e.g., corrosion resistance)
+    that would affect material choices for the principles?

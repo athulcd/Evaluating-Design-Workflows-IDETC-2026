@@ -1,0 +1,172 @@
+requirements_list:
+  requirements:
+  - id: R1
+    statement: The tool must reliably form rivet closure heads on brake linings attached
+      to brake shoes.
+    type: functional
+    priority: MUST
+    metric: Rivet head closure dimension within acceptance criteria
+    target: Meets specified closure dimension tolerance
+    verification: test
+    source: O1
+  - id: R2
+    statement: The tool must enable one-person operation.
+    type: functional
+    priority: MUST
+    metric: Number of operators required
+    target: Single operator
+    verification: inspection
+    source: O2
+  - id: R3
+    statement: The tool must be hand or foot actuated.
+    type: functional
+    priority: MUST
+    metric: Actuation method
+    target: Human-powered (hand or foot)
+    verification: inspection
+    source: O2
+  - id: R4
+    statement: The tool must be portable and suitable for workshop use.
+    type: functional
+    priority: MUST
+    metric: Mass and volume
+    target: Portable dimensions and weight
+    verification: inspection
+    source: O3
+  - id: R5
+    statement: The tool must be robust and require minimal maintenance.
+    type: performance
+    priority: MUST
+    metric: Maintenance frequency and service life
+    target: Low maintenance; meets durability targets
+    verification: analysis
+    source: O3
+  - id: R6
+    statement: The tool must be mountable on a worktop or bench.
+    type: functional
+    priority: MUST
+    metric: Mounting capability
+    target: Compatible with vice, base, or clamp mounting
+    verification: inspection
+    source: system_boundary
+  - id: R7
+    statement: The tool must position and support the workpiece (brake shoe + lining).
+    type: functional
+    priority: MUST
+    metric: Workpiece positioning and support
+    target: Adequate positioning and support mechanism
+    verification: inspection
+    source: system_boundary
+  - id: R8
+    statement: The tool must position and guide rivet insertion.
+    type: functional
+    priority: MUST
+    metric: Rivet positioning and guidance
+    target: Adequate rivet positioning and guidance
+    verification: inspection
+    source: system_boundary
+  - id: R9
+    statement: The tool must apply riveting force with controlled stroke.
+    type: functional
+    priority: MUST
+    metric: Force application and stroke control
+    target: Controlled force and stroke mechanism
+    verification: test
+    source: system_boundary
+  - id: R10
+    statement: The tool must operate safely without pinch or crush hazards.
+    type: safety
+    priority: MUST
+    metric: Safety hazard presence
+    target: No pinch or crush hazards; safe operation
+    verification: inspection
+    source: EC7
+  - id: R11
+    statement: The tool must meet manufacturing cost target.
+    type: cost
+    priority: MUST
+    metric: Manufacturing cost
+    target: Cost <= specified target
+    verification: analysis
+    source: O4
+  - id: R12
+    statement: The tool must meet delivery schedule target.
+    type: schedule
+    priority: MUST
+    metric: Delivery timeline
+    target: Delivery within specified schedule
+    verification: inspection
+    source: O4
+  - id: R13
+    statement: The tool must achieve acceptable riveting cycle time.
+    type: performance
+    priority: WISH
+    metric: Cycle time per rivet
+    target: Higher throughput preferred
+    verification: test
+    source: EC1
+  - id: R14
+    statement: The tool must achieve high riveting quality with low defect rate.
+    type: performance
+    priority: WISH
+    metric: Joint integrity and defect rate
+    target: Meets acceptance criteria with low defects
+    verification: test
+    source: EC2
+  - id: R15
+    statement: The tool must provide stable setup on bench with minimal setup time.
+    type: performance
+    priority: WISH
+    metric: Setup time and stability
+    target: Stable and fast to set up
+    verification: test
+    source: EC3
+  - id: R16
+    statement: The tool must be easy to service with accessible components.
+    type: performance
+    priority: WISH
+    metric: Serviceability (access, replaceability, maintenance frequency)
+    target: Easier servicing preferred
+    verification: inspection
+    source: EC4
+  - id: R17
+    statement: The tool must be easily transportable and storable.
+    type: performance
+    priority: WISH
+    metric: Mass, volume, and portability
+    target: More portable preferred
+    verification: inspection
+    source: EC5
+  - id: R18
+    statement: The tool must have high reliability with long service life.
+    type: performance
+    priority: WISH
+    metric: Service life and failure rate
+    target: Higher reliability preferred
+    verification: analysis
+    source: EC6
+  - id: R19
+    statement: The tool must minimize manufacturing cost and part count.
+    type: cost
+    priority: WISH
+    metric: Manufacturing cost and part count
+    target: Lower cost and part count preferred
+    verification: analysis
+    source: EC8
+  assumptions:
+  - Primary application is internal drum brakes as shown in the document (internal
+    drum brake sketch).
+  - The tool is bench-mounted and manually actuated, consistent with the case description.
+  open_questions:
+  - Confirm exact brake shoe geometry envelope limits (some dimensions are hard to
+    read in the scan).
+  - Confirm which actuation mode is preferred (hand vs foot) or whether both are required.
+  - Confirm required riveting force and stroke values beyond the experiment note (500
+    N and 4 mm closure).
+  traceability:
+    derived_from_objectives:
+    - O1
+    - O2
+    - O3
+    - O4
+    derived_from_constraints: []

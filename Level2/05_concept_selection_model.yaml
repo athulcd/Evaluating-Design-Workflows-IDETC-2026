@@ -1,0 +1,97 @@
+concept_selection:
+  criteria_weights:
+  - criterion_id: EC1
+    weight: 0.25
+    justification: Speed of riveting is critical for workshop productivity; directly
+      impacts throughput and cost per unit.
+  - criterion_id: EC2
+    weight: 0.2
+    justification: Quality of riveting is essential for brake safety; joint integrity
+      is non-negotiable.
+  - criterion_id: EC3
+    weight: 0.1
+    justification: Stability and setup time affect usability; a stable tool is safer
+      and faster to use.
+  - criterion_id: EC4
+    weight: 0.05
+    justification: Ease of servicing is secondary; the tool is expected to be maintenance-free.
+  - criterion_id: EC5
+    weight: 0.05
+    justification: Storage/transportability is a wish; portability is nice but not
+      critical for workshop use.
+  - criterion_id: EC6
+    weight: 0.1
+    justification: Reliability affects long-term cost and availability; 5-year service
+      life is a wish but important.
+  - criterion_id: EC7
+    weight: 0.1
+    justification: Safety is mandatory; no accidents or hazards are acceptable.
+  - criterion_id: EC8
+    weight: 0.15
+    justification: Cost is a wish but constrained; must stay under SwFr 400.
+  scoring:
+  - concept_id: CV1
+    scores:
+      EC1: 0.6
+      EC2: 0.8
+      EC3: 0.7
+      EC4: 0.9
+      EC5: 0.8
+      EC6: 0.7
+      EC7: 0.6
+      EC8: 0.9
+    notes: Simple lever press with fixed stop; fast and cheap but limited adaptability
+      and some safety concerns.
+  - concept_id: CV2
+    scores:
+      EC1: 0.4
+      EC2: 0.9
+      EC3: 0.6
+      EC4: 0.7
+      EC5: 0.7
+      EC6: 0.8
+      EC7: 0.8
+      EC8: 0.6
+    notes: Screw-driven press with adjustable stop; slower but more precise and safer;
+      higher cost.
+  - concept_id: CV3
+    scores:
+      EC1: 0.5
+      EC2: 0.8
+      EC3: 0.7
+      EC4: 0.8
+      EC5: 0.8
+      EC6: 0.7
+      EC7: 0.7
+      EC8: 0.8
+    notes: Lever press with adjustable stop; balances cost and adaptability; moderate
+      performance across criteria.
+  selected_concept_id: CV3
+  selection_rationale: Concept CV3 offers the best balance of cost, adaptability,
+    and performance. It meets all MUST requirements (R1, R8, R11, R12) and satisfies
+    most WISH requirements. The adjustable stop provides better adaptability than
+    CV1 without the higher cost and complexity of CV2. It scores well on cost (EC8)
+    and safety (EC7), and its moderate scores on speed (EC1) and quality (EC2) are
+    acceptable given the trade-offs. CV3 is the most robust choice for a workshop
+    environment where versatility and reliability are valued over maximum speed.
+  sensitivity_analysis_notes: The selection is sensitive to the weight given to cost
+    (EC8) and speed (EC1). If cost were less critical or speed more critical, CV2
+    might be preferred. If cost were the dominant factor, CV1 could be selected. The
+    adjustable stop mechanism in CV3 introduces a small risk of operator error, but
+    this is mitigated by clear markings and a locknut.
+  assumptions:
+  - The adjustable stop in CV3 can be reliably locked and marked for different stack
+    thicknesses.
+  - Workshop users are willing to accept slightly lower speed for better adaptability
+    and lower cost.
+  - The tool will be used primarily in a workshop setting where portability is secondary
+    to stability.
+  open_questions:
+  - Confirm the exact cost breakdown for each concept to validate EC8 scoring.
+  - Validate the expected cycle time for CV3 under typical workshop conditions.
+  - Assess the risk of stop drift in CV3 and potential mitigation strategies.
+  traceability:
+    based_on_concepts:
+    - CV1: Lever press with fixed stop
+    - CV2: Screw-driven press with adjustable stop
+    - CV3: Lever press with adjustable stop

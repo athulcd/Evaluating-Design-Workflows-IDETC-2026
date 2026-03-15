@@ -1,0 +1,163 @@
+concept_variants:
+  morphological_chart:
+  - function_id: F1
+    options:
+    - WP1_1
+  - function_id: F2
+    options: []
+  - function_id: F3
+    options: []
+  - function_id: F4
+    options: []
+  - function_id: F5
+    options:
+    - WP5_1
+    - WP5_2
+  - function_id: F6
+    options:
+    - WP6_1
+    - WP6_2
+  - function_id: F7
+    options:
+    - WP7_1
+  - function_id: F8
+    options: []
+  - function_id: F9
+    options: []
+  - function_id: F10
+    options: []
+  - function_id: F11
+    options: []
+  concepts:
+  - id: CV1
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_1
+      F6: WP6_1
+      F7: WP7_1
+    architecture_description: 'A lever-actuated riveting tool mounted in a bench vice.
+      The workpiece (brake shoe + lining) is clamped in a fixture plate that fits
+      into the vice jaws. A lever arm provides mechanical amplification to generate
+      the required riveting force. A fixed hard stop controls the stroke to achieve
+      the 4 mm closure head. The rivet is inserted manually and positioned under the
+      forming heads. The tool is stable on the bench via vice mounting.
+
+      '
+    expected_benefits:
+    - Simple, robust design with few moving parts
+    - Lever amplification provides adequate force with acceptable hand effort
+    - Hard stop ensures repeatable closure
+    - Uses existing workshop vice (no base needed)
+    - Low manufacturing cost
+    key_risks:
+    - Pinch hazards at lever pivot and linkage
+    - Deflection in lever arm may reduce closure accuracy
+    - Hard stop wear may change closure over time
+    - Requires operator skill to align rivet and workpiece
+    requirement_coverage:
+      satisfied:
+      - R1 (riveting function via WP7_1)
+      - R2, R3, R4, R5 (fixture supports range via WP1_1)
+      - R8 (force via WP5_1 amplification)
+      - R9 (closure via WP6_1 hard stop)
+      - R11 (one-man operation)
+      - R12 (bench stability via vice)
+      - R15 (joint integrity via WP7_1)
+      - R17 (hand force within limits)
+      - R18 (safety via design, though pinch risk noted)
+      partially_satisfied:
+      - R10 (productivity depends on operator speed)
+      not_satisfied:
+      - R13 (5-year service life not explicitly addressed)
+      - R14 (transportability limited by vice dependency)
+      - R16 (maintenance not minimized)
+      - R19 (delivery not addressed)
+      - R20 (cost not quantified)
+    assumptions:
+    - Vice is available in the workshop
+    - Operator can manually align rivet and workpiece
+    - Hard stop wear is acceptable over tool life
+  - id: CV2
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_2
+      F6: WP6_2
+      F7: WP7_1
+    architecture_description: 'A screw-driven press tool with adjustable stroke, mounted
+      on a dedicated base. The workpiece is clamped in a fixture plate. A hand-cranked
+      rack-and-pinion or leadscrew mechanism amplifies force and drives the ram. An
+      adjustable stop (screw/nut) sets the closure distance, allowing adaptation to
+      different shoe thicknesses. The rivet is inserted manually and positioned under
+      the forming heads.
+
+      '
+    expected_benefits:
+    - High force capability with fine control
+    - Adjustable stroke accommodates R2-R5 range
+    - Stable base mounting (no vice needed)
+    - Good repeatability and quality
+    key_risks:
+    - Higher part count and cost
+    - Slower operation (screw drive)
+    - Wear in screw threads over time
+    - Adjustable stop may be misadjusted
+    requirement_coverage:
+      satisfied:
+      - R1, R8, R9, R15 (via WP7_1 and WP6_2)
+      - R2, R3, R4, R5 (adjustable stop via WP6_2)
+      - R11, R12 (stable base mounting)
+      - R17 (hand force within limits)
+      - R18 (safety via enclosed mechanism)
+      partially_satisfied:
+      - R10 (slower than lever)
+      not_satisfied:
+      - R13, R14, R16, R19, R20 (as above)
+    assumptions:
+    - Operator will adjust stop correctly
+    - Screw wear is acceptable
+    - Base is stable on bench
+  - id: CV3
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_1
+      F6: WP6_2
+      F7: WP7_1
+    architecture_description: 'A lever-actuated tool with adjustable stroke. The workpiece
+      is clamped in a vice-mounted fixture. A lever arm provides amplification. An
+      adjustable stop (screw/nut) sets the closure distance, allowing adaptation to
+      different shoe thicknesses. The rivet is inserted manually and positioned under
+      the forming heads.
+
+      '
+    expected_benefits:
+    - Lever amplification for adequate force
+    - Adjustable stroke for range flexibility
+    - Simple, robust design
+    - Low cost
+    key_risks:
+    - Pinch hazards at lever pivot
+    - Deflection may affect closure accuracy
+    - Adjustable stop may be misadjusted
+    requirement_coverage:
+      satisfied:
+      - R1, R8, R9, R15 (via WP7_1 and WP6_2)
+      - R2, R3, R4, R5 (adjustable stop)
+      - R11, R12 (vice mounting)
+      - R17 (hand force)
+      - R18 (safety)
+      partially_satisfied:
+      - R10 (depends on operator)
+      not_satisfied:
+      - R13, R14, R16, R19, R20
+    assumptions:
+    - Operator adjusts stop correctly
+    - Vice is available
+    - Deflection is acceptable
+  open_questions:
+  - Confirm if the case considered pneumatic/hydraulic amplification; not visible
+    in provided concept sketches.
+  - Confirm exact brake shoe geometry envelope limits (some dimensions are hard to
+    read in the scan).
+  - Confirm which actuation mode is preferred (hand vs foot) or whether both are required.
+  - Confirm required riveting force and stroke values beyond the experiment note (500
+    N and 4 mm closure).

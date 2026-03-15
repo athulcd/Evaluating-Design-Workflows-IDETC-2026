@@ -1,0 +1,8 @@
+{
+  "cur_key": "preliminary_bom",
+  "next_key": "verification_plan",
+  "errors": [
+    "YAML parse error: while scanning a block scalar\n  in \"<unicode string>\", line 57, column 28:\n          acceptance_criteria: >= 500 N peak force achieved.\n                               ^\nexpected chomping or indentation indicators, but found '='\n  in \"<unicode string>\", line 57, column 29:\n          acceptance_criteria: >= 500 N peak force achieved.\n                                ^"
+  ],
+  "warnings": []
+}

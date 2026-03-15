@@ -1,0 +1,75 @@
+black_box:
+  overall_function: Transform brake shoe + lining + rivet into a riveted brake assembly
+    by applying controlled force to form rivet heads.
+  flows:
+    inputs:
+    - id: IN1
+      type: material
+      name: Brake shoe
+      description: Steel brake shoe component (6–8 mm thick, 80–400 mm wide, 250–400
+        mm drum diameter compatible)
+    - id: IN2
+      type: material
+      name: Brake lining
+      description: Friction lining to be riveted onto shoe (fits within shoe envelope)
+    - id: IN3
+      type: material
+      name: Rivet
+      description: Steel rivet (shank diameter 3–5 mm) to join lining to shoe
+    - id: IN4
+      type: energy
+      name: Human actuation force
+      description: Manual force applied via hand or foot lever (hand <= 200 N, foot
+        <= 400 N)
+    - id: IN5
+      type: signal
+      name: Operator control input
+      description: Operator's initiation of riveting stroke
+    outputs:
+    - id: OUT1
+      type: material
+      name: Riveted brake assembly
+      description: Completed brake shoe with lining securely riveted (rivet heads
+        formed, joint integrity achieved)
+    - id: OUT2
+      type: energy
+      name: Reaction force
+      description: Counterforce transmitted to tool base/worktop during riveting
+    - id: OUT3
+      type: signal
+      name: Completion feedback
+      description: Tactile/audible indication of rivet head formation completion
+  external_interactions:
+  - id: EI1
+    description: Tool mounted on workshop worktop (wood) via clamp/vice; transmits
+      reaction forces to bench
+    related_requirements:
+    - R12 (Environment: indoor workshop; tool operable on a worktop)
+    - R17 (Ergonomics: hand force <= 200 N OR foot force <= 400 N)
+  assumptions:
+  - The tool is bench-mounted and manually actuated, consistent with the case description.
+  - Riveting force of 500 N and head closure of ~4 mm are achievable within human
+    force limits.
+  - Workshop environment includes typical contaminants (dust, oil) but no extreme
+    conditions.
+  open_questions:
+  - Confirm exact brake shoe geometry envelope limits (some dimensions are hard to
+    read in the scan).
+  - Confirm which actuation mode is preferred (hand vs foot) or whether both are required.
+  - Confirm required riveting force and stroke values beyond the experiment note (500
+    N and 4 mm closure).
+  traceability:
+    derived_from_requirements:
+    - R1 (Riveting function)
+    - R2 (Brake drum diameter range)
+    - R3 (Brake shoe width range)
+    - R4 (Brake shoe thickness range)
+    - R5 (Max total thickness of worn parts)
+    - R6 (Minimum edge distance)
+    - R7 (Rivet shank diameter)
+    - R8 (Riveting force capability)
+    - R9 (Rivet head closure target)
+    - R11 (One-man operation)
+    - R12 (Environment: indoor workshop)
+    - R17 (Ergonomics: force limits)
+    - R18 (Safety: avoid accidents)

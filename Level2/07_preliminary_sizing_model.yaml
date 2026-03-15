@@ -1,0 +1,83 @@
+preliminary_sizing:
+  load_cases:
+  - id: LC1
+    description: Maximum riveting force and stroke control under worst-case brake
+      shoe/lining stack
+    related_requirements:
+    - R8
+    - R9
+    - R17
+    - R18
+  sizing_results:
+  - parameter_id: KDP1
+    governing_case: LC1
+    equation_or_model: 'Mechanical advantage = F_rivet / F_actuation
+
+      F_rivet >= 500 N
+
+      F_actuation <= 200 N (hand) or <= 400 N (foot)'
+    assumed_values:
+    - F_rivet_min = 500 N
+    - F_actuation_max_hand = 200 N
+    - F_actuation_max_foot = 400 N
+    result: Required mechanical advantage >= 2.5 (hand) or >= 1.25 (foot)
+    margin_or_factor_of_safety: Recommend MA >= 3.0 for hand actuation to account
+      for friction and wear
+  - parameter_id: KDP2
+    governing_case: LC1
+    equation_or_model: 'Closure stroke = s_target ± tolerance
+
+      Target s_target = 4 mm'
+    assumed_values:
+    - s_target = 4 mm
+    - tolerance = ±0.5 mm (typical for workshop tool)
+    result: 'Required stroke range: 3.5–4.5 mm'
+    margin_or_factor_of_safety: Include 0.5 mm extra travel to ensure closure under
+      tolerance stack
+  - parameter_id: KDP3
+    governing_case: LC1
+    equation_or_model: 'Throat depth >= max(D/2 + clearance)
+
+      D_max = 400 mm'
+    assumed_values:
+    - D_max = 400 mm
+    - clearance = 20 mm (for shoe/lining insertion)
+    result: Required throat depth >= 220 mm
+    margin_or_factor_of_safety: Recommend 250 mm to accommodate fixture and adjustment
+  - parameter_id: KDP4
+    governing_case: LC1
+    equation_or_model: 'Base stiffness to resist F_rivet without excessive deflection
+
+      Deflection_delta <= 0.1 mm under 500 N'
+    assumed_values:
+    - F_rivet = 500 N
+    - max_deflection = 0.1 mm
+    result: Required base stiffness >= 5000 N/mm
+    margin_or_factor_of_safety: Use steel or cast iron base with ribbing to achieve
+      stiffness
+  - parameter_id: KDP5
+    governing_case: LC1
+    equation_or_model: 'Pinch/crush clearance = 2 x max_part_thickness + safety_margin
+
+      max_part_thickness = 45 mm (R5)'
+    assumed_values:
+    - max_part_thickness = 45 mm
+    - safety_margin = 10 mm
+    result: Required clearance >= 100 mm at pinch points
+    margin_or_factor_of_safety: Design guards to maintain >= 100 mm clearance
+  assumptions:
+  - Riveting force requirement of 500 N is the minimum; actual force may be higher
+    depending on rivet material and geometry
+  - Actuation force limits (200 N hand, 400 N foot) are absolute maxima; design should
+    target lower forces for ergonomics
+  - Closure stroke of ~4 mm is the target; actual required stroke may vary with rivet
+    type and stack thickness
+  - Maximum brake shoe/lining stack thickness of 45 mm defines the worst-case work
+    envelope
+  - Base stiffness requirement ensures rivet head formation accuracy within tolerance
+  - Safety clearance calculations assume worst-case operator hand/foot positioning
+  open_questions:
+  - Confirm exact rivet material and geometry to refine required forming force
+  - Verify if adjustable stop mechanism (KDP2) needs finer resolution than ±0.5 mm
+  - Determine if additional safety features (e.g., two-hand control) are required
+    beyond clearance guards
