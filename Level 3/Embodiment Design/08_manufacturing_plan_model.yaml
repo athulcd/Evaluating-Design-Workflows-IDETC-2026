@@ -1,0 +1,262 @@
+manufacturing_plan:
+  module_plans:
+  - module_id: M1
+    material_candidates:
+    - material: Steel (mild or structural)
+      rationale: Provides necessary strength and stability for fixture; cost-effective
+        and readily available
+      properties:
+        tensile_strength: 400-550 MPa
+        yield_strength: 250-350 MPa
+        density: 7850 kg/m³
+      manufacturing_processes:
+      - process: CNC milling
+        rationale: Precise fixture surfaces for repeatable positioning
+        lead_time: 2-4 days
+        cost_impact: Medium
+      - process: Welding
+        rationale: Joining structural elements; robust for workshop environment
+        lead_time: 1-2 days
+        cost_impact: Low
+      - process: Powder coating
+        rationale: Corrosion resistance and workshop durability
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - dimensional_accuracy: ±0.1 mm for positioning surfaces
+      - surface_finish: Ra 3.2 µm for smooth operation
+      risks:
+      - welding_distortion: May affect fixture accuracy; requires proper fixturing
+      - corrosion: Without coating, may degrade in workshop environment
+    process_candidates:
+    - process: Investment casting
+      rationale: Could reduce part count but higher cost; not justified for workshop
+        tool
+      lead_time: 5-7 days
+      cost_impact: High
+      critical_characteristics:
+      - casting_tolerance: ±0.3 mm
+      - surface_roughness: Ra 12.5 µm (requires machining)
+      risks:
+      - higher_cost: Investment casting exceeds budget target
+      - longer_lead_time: Not suitable for 3-month delivery window
+  - module_id: M2
+    material_candidates:
+    - material: Steel (medium carbon)
+      rationale: High strength for force transmission; good fatigue resistance
+      properties:
+        tensile_strength: 550-700 MPa
+        yield_strength: 400-500 MPa
+        density: 7850 kg/m³
+      manufacturing_processes:
+      - process: CNC turning/milling
+        rationale: Precise lever geometry for consistent mechanical advantage
+        lead_time: 2-3 days
+        cost_impact: Medium
+      - process: Heat treatment
+        rationale: Increases strength and fatigue resistance
+        lead_time: 1-2 days
+        cost_impact: Low
+      - process: Surface hardening
+        rationale: Wear resistance at pivot points
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - lever_ratio_accuracy: ±2% of target ratio
+      - pivot_bearing_clearance: 0.05-0.1 mm
+      risks:
+      - fatigue_failure: Under cyclic loading; mitigated by proper heat treatment
+      - misalignment: Affects force transmission efficiency
+    - material: Aluminum alloy (6061-T6)
+      rationale: Lighter weight for portability; adequate strength for hand actuation
+      properties:
+        tensile_strength: 310 MPa
+        yield_strength: 270 MPa
+        density: 2700 kg/m³
+      manufacturing_processes:
+      - process: CNC machining
+        rationale: Precise geometry; easier to machine than steel
+        lead_time: 2-3 days
+        cost_impact: Medium
+      - process: Anodizing
+        rationale: Corrosion resistance and surface hardness
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - weight_reduction: 30% vs steel option
+      - strength_margin: Verify against 500 N requirement
+      risks:
+      - insufficient_strength: May require larger cross-sections
+      - higher_cost: Aluminum 6061-T6 may exceed budget for large parts
+  - module_id: M3
+    material_candidates:
+    - material: Tool steel (O1 or A2)
+      rationale: High hardness and wear resistance for forming surfaces
+      properties:
+        tensile_strength: 700-1200 MPa (after heat treatment)
+        hardness: 58-62 HRC
+        density: 7850 kg/m³
+      manufacturing_processes:
+      - process: CNC machining
+        rationale: Precise forming head geometry
+        lead_time: 1-2 days
+        cost_impact: Medium
+      - process: Heat treatment
+        rationale: Achieves required hardness for wear resistance
+        lead_time: 1-2 days
+        cost_impact: Low
+      - process: Surface grinding
+        rationale: Final geometry accuracy for consistent closure
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - forming_head_tolerance: ±0.05 mm
+      - surface_finish: Ra 0.8 µm for smooth forming
+      risks:
+      - brittleness: Tool steel may crack under impact; requires proper heat treatment
+      - cost: Tool steel components may exceed budget target
+    - material: Hardened steel (pre-hardened 4140)
+      rationale: Good balance of machinability and hardness
+      properties:
+        tensile_strength: 1000-1100 MPa
+        hardness: 28-32 HRC (as supplied)
+      manufacturing_processes:
+      - process: CNC machining
+        rationale: Easier to machine than hardened tool steel
+        lead_time: 1-2 days
+        cost_impact: Medium
+      - process: Induction hardening
+        rationale: Localized hardening of forming surfaces
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - localized_hardness: 55-60 HRC at forming surfaces
+      - dimensional_stability: Minimal distortion during hardening
+      risks:
+      - uneven_hardening: May create soft spots; requires careful process control
+      - higher_cost: Induction hardening adds process complexity
+    process_candidates:
+    - process: Adjustable stop screw mechanism
+      rationale: Allows adaptation to different stack thicknesses; field adjustable
+      components:
+      - threaded_steel_rod: M8 or M10, class 8.8
+      - locknut: Nylon insert to prevent loosening
+      - scale_marking: Engraved markings for adjustment reference
+      manufacturing_processes:
+      - process: Thread cutting/tapping
+        rationale: Precise threads for consistent adjustment
+        lead_time: 1 day
+        cost_impact: Low
+      - process: Laser engraving
+        rationale: Durable scale markings
+        lead_time: 0.5 days
+        cost_impact: Low
+      critical_characteristics:
+      - thread_pitch_accuracy: ±0.05 mm
+      - locknut_security: Must maintain setting under vibration
+      risks:
+      - loosening: Locknut may back off during use; mitigated by nylon insert
+      - contamination: Workshop debris may interfere with threads; requires sealing
+  - module_id: M4
+    material_candidates:
+    - material: Steel (mild) with polymer coating
+      rationale: Structural strength with safety-focused surface
+      properties:
+        tensile_strength: 250-350 MPa
+        yield_strength: 150-250 MPa
+        density: 7850 kg/m³
+      manufacturing_processes:
+      - process: Bending/forming
+        rationale: Creates guard shapes and safety features
+        lead_time: 1 day
+        cost_impact: Low
+      - process: Powder coating with texture
+        rationale: Non-slip, visible safety surfaces
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - edge_radius: ≥2 mm to prevent cuts
+      - coating_adhesion: Must withstand workshop use
+      risks:
+      - coating_chipping: May expose sharp edges; requires quality coating
+      - deformation: Mild steel may bend under impact; consider reinforcement
+    - material: Engineering plastic (PA6/6 or PC)
+      rationale: Lightweight, non-conductive, integrated safety features
+      properties:
+        tensile_strength: 60-80 MPa (PA6/6), 55-65 MPa (PC)
+        impact_strength: High
+        density: 1100-1200 kg/m³
+      manufacturing_processes:
+      - process: Injection molding
+        rationale: Complex guard shapes with integrated features
+        lead_time: 3-5 days (tooling) + 1 day (parts)
+        cost_impact: High (requires mold)
+      - process: CNC machining (for prototypes)
+        rationale: Prototype development before tooling
+        lead_time: 2-3 days
+        cost_impact: Medium
+      critical_characteristics:
+      - impact_resistance: Must withstand accidental impacts
+      - dimensional_stability: Minimal creep under load
+      risks:
+      - high_initial_cost: Injection mold may exceed budget
+      - lower_strength: May not provide adequate protection in all scenarios
+    process_candidates:
+    - process: Guard integration with base
+      rationale: Eliminates separate guard assembly; reduces part count
+      manufacturing_processes:
+      - process: Bending with integrated tabs
+        rationale: Creates safety barriers from single piece
+        lead_time: 1 day
+        cost_impact: Low
+      - process: Welding reinforcement
+        rationale: Strengthens critical guard areas
+        lead_time: 1 day
+        cost_impact: Low
+      critical_characteristics:
+      - guard_stiffness: Must resist deflection during operation
+      - clearance_maintenance: Must not interfere with normal operation
+      risks:
+      - interference: Guards may obstruct workpiece access; requires careful design
+      - welding_distortion: May affect guard geometry; requires fixturing
+    - process: Verification gauge integration
+      rationale: Built-in measurement for quality control
+      manufacturing_processes:
+      - process: Machined reference surfaces
+        rationale: Provides tactile/ visual verification of closure
+        lead_time: 0.5 days
+        cost_impact: Low
+      - process: Go/no-go gauge features
+        rationale: Quick quality check without separate tools
+        lead_time: 0.5 days
+        cost_impact: Low
+      critical_characteristics:
+      - gauge_tolerance: ±0.1 mm relative to target closure
+      - visibility: Must be easily visible to operator
+      risks:
+      - gauge_wear: Reference surfaces may wear; consider hardened inserts
+      - operator_error: May be misread; requires clear markings
+  assumptions:
+  - The selected concept CV3 (lever press with adjustable stop) is implemented as
+    described
+  - Workshop environment includes typical contaminants; design should accommodate
+    this
+  - Tool is manually actuated (hand or foot as per requirements)
+  - Standard DIN 7338 rivets are used as referenced
+  - Brake shoe/lining assemblies are pre-drilled as per specification
+  - 10-20% margins are applied to account for wear, tolerances, and safety factors
+  - Manufacturing cost target of CHF 400 drives material and process selection
+  - 3-month delivery window requires processes with reasonable lead times
+  - 5-year service life requires durable materials and corrosion-resistant finishes
+  open_questions:
+  - Confirm exact lever ratio needed to achieve 500 N output with ergonomic input
+    forces
+  - Verify if foot actuation is preferred over hand actuation or if both should be
+    supported
+  - Determine if any specific rivet head shape requirements exist beyond closure distance
+  - Confirm if any additional safety features (e.g., emergency stop) are required
+  - Verify if the 45 mm stack thickness includes the brake shoe, lining, and any backing
+    material
+  - Confirm if any specific surface finish requirements exist for the forming heads
+  - Determine if any specific corrosion resistance requirements exist beyond standard
+    workshop conditions

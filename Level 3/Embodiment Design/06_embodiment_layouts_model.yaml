@@ -1,0 +1,195 @@
+embodiment_layouts:
+  layout:
+  - id: EL1
+    module_breakdown:
+    - module_id: M1
+      name: Base and Workpiece Fixture
+      responsibilities:
+      - Provide stable mounting on worktop or in vice
+      - Support and clamp brake shoe + lining assembly
+      - Ensure repeatable positioning for multiple rivets
+      allocated_functions:
+      - F1: Prepare and CLAMP workpiece
+      - F9: ENSURE stability on table
+      - F3: ALIGN work zone
+      key_design_parameters:
+      - KDP1: Fixture adjustability range
+        unit: mm
+        target_or_range: 80–400 mm width, 250–400 mm diameter, 6–8 mm thickness
+        linked_requirements:
+        - R2
+        - R3
+        - R4
+        - R5
+      - KDP2: Mounting interface
+        unit: N/A
+        target_or_range: Compatible with standard workshop vice jaws or flat base
+        linked_requirements:
+        - R12
+    - module_id: M2
+      name: Actuation and Force Amplification
+      responsibilities:
+      - Convert hand/foot input to required riveting force
+      - Provide ergonomic actuation with force limits
+      - Enable smooth stroke control
+      allocated_functions:
+      - F4: ACCEPT actuating force
+      - F5: AMPLIFY force
+      key_design_parameters:
+      - KDP3: Lever ratio / mechanical advantage
+        unit: ratio
+        target_or_range: Achieve >=500 N output with <=200 N hand or <=400 N foot
+          input
+        linked_requirements:
+        - R8
+        - R17
+      - KDP4: Actuation stroke
+        unit: mm
+        target_or_range: Sufficient for rivet closure (~4 mm) plus clearance
+        linked_requirements:
+        - R9
+      risks_and_mitigations:
+      - risk: Pinch/crush hazards at linkage
+        mitigation: Design guards or enclosed linkage; ergonomic handle placement
+    - module_id: M3
+      name: Rivet Forming and Stroke Control
+      responsibilities:
+      - Form rivet closure head to target dimension
+      - Control and limit stroke to achieve ~4 mm closure
+      - Provide means to adjust for different stack thicknesses
+      allocated_functions:
+      - F6: CONTROL stroke and force
+      - F7: FORM rivet head
+      key_design_parameters:
+      - KDP5: Adjustable stop mechanism
+        unit: mm
+        target_or_range: Adjustable range covering 4 mm closure target; lockable
+        linked_requirements:
+        - R9
+        - R6
+        - R7
+      - KDP6: Forming head geometry
+        unit: N/A
+        target_or_range: Compatible with DIN 7338 rivet shank 3–5 mm; supports preform
+          head
+        linked_requirements:
+        - R1
+        - R7
+      risks_and_mitigations:
+      - risk: Stop drift or loosening changes closure
+        mitigation: Robust locknut or detent mechanism; field verification procedure
+    - module_id: M4
+      name: Safety and Verification
+      responsibilities:
+      - Prevent operator injury during use
+      - Provide means to verify rivet closure quality
+      - Ensure stable operation without special accidents
+      allocated_functions:
+      - F10: ENSURE safety
+      - F11: VERIFY closed rivets
+      key_design_parameters:
+      - KDP7: Clearance and guard design
+        unit: mm
+        target_or_range: Adequate clearances to prevent pinch; no exposed pinch points
+        linked_requirements:
+        - R18
+      - KDP8: Verification method
+        unit: N/A
+        target_or_range: Visual or tactile confirmation of closure; optional gauge
+        linked_requirements:
+        - R15
+      risks_and_mitigations:
+      - risk: Misalignment causing damage or injury
+        mitigation: Positive alignment features; clear operational sequence
+    interfaces:
+    - id: IF1
+      between:
+      - M1
+      - M2
+      type: mechanical
+      description: Force transmission from actuation lever to forming mechanism
+      constraints:
+      - Must transmit >=500 N without excessive deflection
+      - Must allow smooth stroke with minimal friction
+      - Must maintain alignment under load
+    - id: IF2
+      between:
+      - M2
+      - M3
+      type: mechanical
+      description: Connection between force amplification and forming head
+      constraints:
+      - Must transfer amplified force to forming head
+      - Must allow stroke control via stop mechanism
+      - Must maintain alignment of forming head to workpiece
+    - id: IF3
+      between:
+      - M1
+      - M3
+      type: mechanical
+      description: Workpiece support interface with forming head
+      constraints:
+      - Must provide stable support during forming
+      - Must allow access for rivet insertion and removal
+      - Must not interfere with forming head movement
+    - id: IF4
+      between:
+      - M4
+      - M1/M2/M3
+      type: safety
+      description: Safety guards and verification features integrated across modules
+      constraints:
+      - Must prevent access to pinch points during operation
+      - Must not interfere with normal operation
+      - Must provide clear visual/tactile feedback of completion
+    key_design_parameters:
+    - id: KDP9
+      name: Overall mass and portability
+      unit: kg
+      target_or_range: Portable by single operator; fits on standard worktop
+      linked_requirements:
+      - R14
+    - id: KDP10
+      name: Manufacturing cost
+      unit: CHF
+      target_or_range: <=400
+      linked_requirements:
+      - R20
+    - id: KDP11
+      name: Service life
+      unit: years
+      target_or_range: ~5 years
+      linked_requirements:
+      - R13
+    risks_and_mitigations:
+    - id: RM1
+      risk: Insufficient force amplification for 500 N requirement
+      mitigation: Verify lever ratio and bearing friction; consider alternative amplification
+        if needed
+    - id: RM2
+      risk: Adjustable stop misadjustment leading to incorrect closure
+      mitigation: Design clear adjustment markings; provide verification procedure
+    - id: RM3
+      risk: Stability issues on worktop causing misalignment
+      mitigation: Design wide base or vice mounting features; add non-slip feet
+    - id: RM4
+      risk: High manufacturing cost exceeding target
+      mitigation: Use standard off-the-shelf components where possible; minimize part
+        count
+  assumptions:
+  - The selected concept CV3 (lever press with adjustable stop) is implemented as
+    described
+  - Workshop environment includes typical contaminants; design should accommodate
+    this
+  - Tool is manually actuated (hand or foot as per requirements)
+  - Standard DIN 7338 rivets are used as referenced
+  - Brake shoe/lining assemblies are pre-drilled as per specification
+  open_questions:
+  - Confirm exact lever ratio needed to achieve 500 N output with ergonomic input
+    forces
+  - Verify if foot actuation is preferred over hand actuation or if both should be
+    supported
+  - Determine if any specific rivet head shape requirements exist beyond closure distance
+  - Confirm if any additional safety features (e.g., emergency stop) are required
+  traceability:
+    selected_concept_id: CV3
