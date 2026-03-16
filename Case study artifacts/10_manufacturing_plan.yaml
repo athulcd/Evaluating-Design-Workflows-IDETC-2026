@@ -1,0 +1,30 @@
+manufacturing_plan:
+  module_plans:
+    - module_id: M1
+      material_candidates: ["Mild steel plate/weldment", "Cast iron base (if volume justifies)"]
+      process_candidates: ["Laser-cut + welded frame", "Machined plate frame", "Casting + machining (higher tooling)"]
+      rationale: "Stiff frame needed for repeatable closure; small-batch implies weldment/plate machining."
+      critical_characteristics: ["Frame stiffness at head alignment", "Flatness of mounting surfaces"]
+      risks: ["Weld distortion", "Insufficient stiffness"]
+    - module_id: M2
+      material_candidates: ["Tool steel inserts + steel fixture body"]
+      process_candidates: ["Machining + hardened inserts", "Surface hardening on contact faces"]
+      rationale: "Wear surfaces at workholding and datums; inserts allow economical replacement."
+      critical_characteristics: ["Datum alignment", "Clamp repeatability", "Hole alignment support"]
+      risks: ["Wear leading to misalignment"]
+    - module_id: M6
+      material_candidates: ["Hardened tool steel (heads)"]
+      process_candidates: ["Precision turning/grinding", "Heat treatment"]
+      rationale: "Rivet head forming requires hard, durable head geometries."
+      critical_characteristics: ["Head geometry", "Concentricity/alignment"]
+      risks: ["Heat-treatment distortion", "Chipping"]
+    - module_id: M7
+      material_candidates: ["Steel adjuster screw + locknut"]
+      process_candidates: ["Threaded fastener machining or off-the-shelf screw + custom tip"]
+      rationale: "Adjustment for closure stroke; simple and robust."
+      critical_characteristics: ["Thread backlash", "Lock integrity"]
+      risks: ["Loosening; drift"]
+  assumptions:
+    - "Small-batch workshop manufacturability is emphasized in the case narrative."
+  open_questions:
+    - "Confirm batch size and whether any casting is permissible."

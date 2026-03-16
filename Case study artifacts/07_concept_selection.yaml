@@ -1,0 +1,72 @@
+concept_selection:
+  criteria_weights:
+    - criterion_id: EC1
+      weight: 0.15
+      justification: "Throughput is important in workshop setting."
+    - criterion_id: EC2
+      weight: 0.20
+      justification: "Riveting quality is safety-critical."
+    - criterion_id: EC3
+      weight: 0.10
+      justification: "Stability/setup affects usability."
+    - criterion_id: EC4
+      weight: 0.10
+      justification: "Serviceability matters for 5-year life target."
+    - criterion_id: EC5
+      weight: 0.10
+      justification: "Portability/storage desired."
+    - criterion_id: EC6
+      weight: 0.15
+      justification: "Reliability is essential for workshop use."
+    - criterion_id: EC7
+      weight: 0.10
+      justification: "Safety must be ensured."
+    - criterion_id: EC8
+      weight: 0.10
+      justification: "Cost target exists, but quality dominates."
+  scoring:
+    - concept_id: CV1
+      scores:
+        EC1: 3
+        EC2: 3
+        EC3: 4
+        EC4: 4
+        EC5: 4
+        EC6: 4
+        EC7: 3
+        EC8: 5
+      notes: "Simple lever press likely low cost and robust; closure control may be less precise without adjustability."
+    - concept_id: CV2
+      scores:
+        EC1: 2
+        EC2: 5
+        EC3: 4
+        EC4: 3
+        EC5: 3
+        EC6: 4
+        EC7: 4
+        EC8: 3
+      notes: "Adjustable screw/rack press provides best closure control but may be slower and higher cost."
+    - concept_id: CV3
+      scores:
+        EC1: 3
+        EC2: 4
+        EC3: 4
+        EC4: 3
+        EC5: 4
+        EC6: 4
+        EC7: 3
+        EC8: 4
+      notes: "Balanced option: lever speed with adjustable stop."
+  selected_concept_id: CV3
+  selection_rationale: >
+    Select CV3 as a compromise between throughput (lever actuation) and closure quality/adaptability
+    (adjustable stop), consistent with workshop needs and variable brake shoe/lining geometries.
+  sensitivity_analysis_notes: >
+    If quality (EC2) weight increases further, CV2 may dominate; if cost (EC8) dominates, CV1 may dominate.
+  assumptions:
+    - ""
+  open_questions:
+    - ""
+  traceability:
+    based_on_concepts: [CV1, CV2, CV3]

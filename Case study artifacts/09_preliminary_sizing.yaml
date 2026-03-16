@@ -1,0 +1,34 @@
+preliminary_sizing:
+  load_cases:
+    - id: LC1
+      description: "Rivet forming at maximum required force"
+      related_requirements: [R8, R9]
+    - id: LC2
+      description: "Operator applying maximum allowable actuation force"
+      related_requirements: [R17]
+    - id: LC3
+      description: "Off-axis loading due to mispositioned workpiece (fixture compliance)"
+      related_requirements: [R15, R18]
+  sizing_results:
+    - parameter_id: KDP1
+      governing_case: LC1
+      equation_or_model: "F_out = MA * F_in; require F_out >= 500 N with F_in <= 200 N (hand) or 400 N (foot)"
+      assumed_values:
+        F_out_required_N: 500
+        F_in_hand_max_N: 200
+        F_in_foot_max_N: 400
+      result: "MA_hand >= 2.5; MA_foot >= 1.25"
+      margin_or_factor_of_safety: "Recommend MA_hand ~3-5 to allow losses and variability"
+    - parameter_id: KDP2
+      governing_case: LC1
+      equation_or_model: "s_total = s_form + s_compliance; set stop such that closure ≈ 4 mm under load"
+      assumed_values:
+        closure_target_mm: 4.0
+        compliance_note: "Unknown; depends on frame stiffness"
+      result: "Provide adjustable stop with resolution <=0.1 mm and lock mechanism"
+      margin_or_factor_of_safety: "Add frame stiffness to minimize compliance-induced error"
+  assumptions:
+    - "F_out_required is taken from the spec experiment note; actual riveting force may differ by rivet size/material."
+  open_questions:
+    - "Confirm rivet material/hardness and required forming force across d=3-5 mm."
+    - "Confirm acceptable closure tolerance band around 4 mm."

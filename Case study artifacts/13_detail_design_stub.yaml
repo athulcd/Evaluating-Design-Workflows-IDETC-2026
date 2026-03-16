@@ -1,0 +1,16 @@
+detail_design:
+  status: "Partially developed in the case via dimensional layouts; full detailing steps may be abbreviated."
+  expected_artifacts_if_completed:
+    - "Assembly drawing and parts drawings with tolerances"
+    - "Final BOM including standard parts"
+    - "Manufacturing routing and cost breakdown"
+    - "Work instructions and inspection plans"
+  placeholders:
+    part_drawings: null
+    final_bom: null
+    routing: null
+    inspection_plan: null
+  assumptions:
+    - ""
+  open_questions:
+    - ""

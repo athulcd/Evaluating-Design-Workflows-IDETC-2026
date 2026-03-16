@@ -1,0 +1,52 @@
+verification_plan:
+  requirement_verification:
+    - requirement_id: R1
+      method: test
+      procedure_summary: "Set rivets on representative brake shoe/lining assemblies; inspect joint integrity."
+      conditions: "Representative sizes across specified ranges; workshop conditions"
+      metric: "Defect rate; joint strength proxy; visual acceptability"
+      acceptance_criteria: "All rivets properly formed; no component damage"
+      linked_components: [B3, B5]
+    - requirement_id: R8
+      method: test
+      procedure_summary: "Measure maximum output force at riveting head under maximum input."
+      conditions: "Worst-case lever position; instrumented load cell"
+      metric: "Output force (N)"
+      acceptance_criteria: ">= 500 N with allowed input force"
+      linked_components: [B2, B3]
+    - requirement_id: R9
+      method: test
+      procedure_summary: "Measure rivet head closure after setting; repeat across multiple rivets."
+      conditions: "Use gauge or caliper; multiple cycles"
+      metric: "Closure distance (mm)"
+      acceptance_criteria: "≈ 4 mm within agreed tolerance band"
+      linked_components: [B3, B4]
+    - requirement_id: R17
+      method: test
+      procedure_summary: "Measure operator input force required to achieve closure under LC1."
+      conditions: "Hand and/or foot mode; instrumented handle/pedal"
+      metric: "Input force (N)"
+      acceptance_criteria: "Hand <= 200 N OR Foot <= 400 N"
+      linked_components: [B2]
+    - requirement_id: R18
+      method: inspection
+      procedure_summary: "Safety audit: check pinch/crush points and required clearances."
+      conditions: "Normal operation with dummy workpiece"
+      metric: "Hazard checklist"
+      acceptance_criteria: "No accessible pinch/crush hazards during operation"
+      linked_components: [B1, B2, B3, B5]
+    - requirement_id: R12
+      method: demonstration
+      procedure_summary: "Mount tool on typical worktop/vice and perform riveting sequence."
+      conditions: "Wood worktop as referenced; typical vice"
+      metric: "Stability and ease of setup"
+      acceptance_criteria: "No slipping; stable operation"
+      linked_components: [B1]
+  coverage_gaps:
+    - "R2-R5 envelope verification needs gauge parts or clear dimensional drawings from the final layout."
+    - "R10 productivity verification needs time study definition (cycle time, setup time, number of rivets)."
+    - "R13 service life needs accelerated wear plan (not defined in case)."
+  assumptions:
+    - "Acceptance bands (e.g., closure tolerance) must be defined from workshop practice or additional documents."
+  open_questions:
+    - "Define the quantitative pass/fail criteria for 'quality of riveting' beyond closure distance."

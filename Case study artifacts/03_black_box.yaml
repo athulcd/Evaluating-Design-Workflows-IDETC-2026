@@ -1,0 +1,48 @@
+black_box:
+  overall_function: "Rivet brake lining to brake shoe"
+  flows:
+    inputs:
+      - id: IN_M1
+        type: material
+        name: "Brake shoe"
+        description: "Internal drum brake shoe (Al-alloy noted in spec)"
+      - id: IN_M2
+        type: material
+        name: "Brake lining"
+        description: "Special friction lining, pre-drilled holes"
+      - id: IN_M3
+        type: material
+        name: "Rivet(s)"
+        description: "Rivets to DIN 7338 (as referenced)"
+      - id: IN_E1
+        type: energy
+        name: "Human mechanical energy"
+        description: "Hand or foot actuation energy"
+      - id: IN_S1
+        type: signal
+        name: "Operator control"
+        description: "Manual sequencing, positioning, and actuation control"
+    outputs:
+      - id: OUT_M1
+        type: material
+        name: "Riveted brake shoe assembly"
+        description: "Brake shoe with lining riveted; rivet heads formed to target closure"
+      - id: OUT_S1
+        type: signal
+        name: "Process confirmation"
+        description: "Implicit verification/feedback that all rivets are closed and correct"
+  external_interactions:
+    - id: EI1
+      description: "Bench/worktop interface (mounting, stability)"
+      related_requirements: [R12]
+    - id: EI2
+      description: "Operator safety/ergonomics interaction"
+      related_requirements: [R11, R17, R18]
+  assumptions:
+    - "Rivet holes are pre-drilled in the shoe/lining per spec; the tool focuses on setting rather than drilling."
+  open_questions:
+    - "Is there an explicit requirement for rivet head shape beyond closure distance (e.g., diameter, flushness)?"
+  traceability:
+    derived_from:
+      - "Black box diagram and text (p. 6)"
+      - "Technical process diagram (p. 8)"
