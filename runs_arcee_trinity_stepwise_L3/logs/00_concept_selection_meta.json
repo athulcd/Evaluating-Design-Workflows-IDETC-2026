@@ -1,6 +1,0 @@
-{
-  "id": "gen-1774135375-yEBqylvyFzjSG6MC8vtZ",
-  "model": "arcee-ai/trinity-large-preview:free",
-  "usage": "ResponseUsage(input_tokens=6266, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=1466, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=7732, cost=0, is_byok=False, cost_details={'upstream_inference_cost': None, 'upstream_inference_input_cost': 0, 'upstream_inference_output_cost': 0})",
-  "attempt": 1
-}
