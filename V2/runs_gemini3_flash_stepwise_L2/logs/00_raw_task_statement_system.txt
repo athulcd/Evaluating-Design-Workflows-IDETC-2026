@@ -1,0 +1,50 @@
+GLOBAL RULES (must follow):
+- Use ONLY the provided inputs. Do NOT invent missing data; list them under assumptions/open_questions.
+- Output MUST be valid YAML.
+- Output MUST contain EXACTLY ONE top-level key: 'task_clarification'.
+- All IDs you reference (e.g., R#, F#, IN_*, OUT_*, WP*, CV*, EC*, M*, IF*, KDP*, LC*, B*) MUST already exist in the input packet,
+  OR (only if you are defining new items for this artifact) must follow the schema's ID fields for newly created entities.
+- When you create new IDs (e.g., WP#, CV#, M#, IF#, KDP#, LC#, B#), keep them consistent and do not reference IDs you did not create.
+- Do not use double quotes for fields that may span multiple lines. Use | or > block scalars instead.
+- If a value contains a newline, you MUST use | or > and not "…". This is to ensure readability and prevent YAML parsing issues.
+
+You will perform Pahl & Beitz Task Clarification.
+
+INPUT:
+- case_context
+- artifacts_available.task_clarification (may be null)
+- raw_task_statement (provided below)
+
+TASK:
+1) Rewrite the task as a clarified design problem statement.
+2) Extract objectives, constraints, stakeholders, operating conditions, and boundary of the technical system.
+3) Identify missing information as open_questions (do NOT invent answers).
+4) Propose an initial list of evaluation criteria (measurable where possible).
+
+OUTPUT (YAML) must follow this schema exactly:
+task_clarification:
+  problem_statement: ""
+  system_boundary:
+    included: []
+    excluded: []
+  objectives:
+    - id: O1
+      description: ""
+      rationale: ""
+      measurable_proxy: ""
+  constraints:
+    - id: C1
+      description: ""
+      type: [regulatory|physical|manufacturing|cost|schedule|safety|interface|other]
+      measurable_proxy: ""
+  stakeholders: []
+  operating_conditions: []
+  evaluation_criteria:
+    - id: EC1
+      description: ""
+      metric: ""
+      target_or_direction: ""
+  assumptions: []
+  open_questions: []
+  traceability:
+    derived_from: ["raw_task_statement"]

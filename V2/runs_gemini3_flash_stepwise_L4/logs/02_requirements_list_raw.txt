@@ -1,0 +1,69 @@
+black_box:
+  overall_function: |
+    Transform separate brake components (shoe and lining), fasteners (rivets), and human mechanical energy into a permanently joined brake shoe assembly through controlled plastic deformation of the rivets.
+  flows:
+    inputs:
+      - id: IN1
+        type: material
+        name: Brake shoe and friction lining
+        description: Pre-drilled components with diameters 250-400 mm and thickness up to 15 mm.
+      - id: IN2
+        type: material
+        name: DIN 7338 copper rivets
+        description: Tubular or semi-tubular copper rivets with 3-5 mm shank diameter.
+      - id: IN3
+        type: energy
+        name: Human actuation force
+        description: Manual input force from the operator (Hand < 200 N or Foot < 400 N).
+      - id: IN4
+        type: signal
+        name: Alignment/Positioning signal
+        description: Visual and tactile information used by the operator to align the rivet with the punch and die.
+    outputs:
+      - id: OUT1
+        type: material
+        name: Assembled brake shoe
+        description: The friction lining permanently attached to the brake shoe via set rivets.
+      - id: OUT2
+        type: energy
+        name: Dissipated energy
+        description: Thermal energy from rivet deformation and acoustic energy (noise) during the riveting stroke.
+      - id: OUT3
+        type: signal
+        name: Completion feedback
+        description: Tactile resistance or visual confirmation indicating the 3-4 mm stroke is complete and the rivet is set.
+  external_interactions:
+    - id: EI1
+      description: Mechanical mounting interface with a wooden worktop to resist the 500 N riveting force.
+      related_requirements:
+        - R1
+        - R14
+    - id: EI2
+      description: Ergonomic interaction with a single operator during a 70-rivet daily workload.
+      related_requirements:
+        - R7
+        - R10
+        - R12
+    - id: EI3
+      description: Exposure to workshop environment (dust, lubricants, and varying temperatures).
+      related_requirements:
+        - R10
+  assumptions:
+    - The tool is purely mechanical and does not require external power sources (pneumatic, hydraulic, or electric).
+    - The brake shoes and linings are provided to the tool already cleaned and pre-drilled.
+    - The operator has sufficient physical capability to provide the required actuation force repeatedly.
+  open_questions:
+    - Is there a specific preference for hand-operated versus foot-operated actuation?
+    - What are the specific dimensions or bolt patterns required for the wooden worktop mounting?
+    - Are there specific noise level limits for the workshop environment?
+  traceability:
+    derived_from_requirements:
+      - R1
+      - R2
+      - R3
+      - R5
+      - R6
+      - R7
+      - R10
+      - R12
+      - R14

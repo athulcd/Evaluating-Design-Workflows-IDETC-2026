@@ -1,0 +1,197 @@
+working_principles:
+  principles:
+    - id: WP1
+      function_id: F1
+      principle_name: Adjustable Radius Support (Prism/V-block)
+      physical_effect_or_mechanism: |
+        Two adjustable support points or a V-shaped block that centers the curved brake shoe relative to the riveting axis. 
+        Sliding mechanisms allow the supports to move inward or outward to accommodate different diameters.
+      key_parameters:
+        - Support span (distance between contact points)
+        - Adjustment range (250-400 mm diameter)
+        - Lateral guide width (up to 400 mm)
+      advantages:
+        - Highly versatile for various shoe sizes
+        - Simple mechanical adjustment
+      disadvantages:
+        - Requires manual setup for each shoe size
+        - Potential for misalignment if not locked properly
+      risks:
+        - Slippage of the shoe during high-force application if friction is low
+      impacted_requirements:
+        - R2
+        - R3
+        - R4
+
+    - id: WP2
+      function_id: F1
+      principle_name: Interchangeable Radius Bolsters
+      physical_effect_or_mechanism: |
+        A set of fixed-radius support blocks (bolsters) that match specific brake shoe curvatures. 
+        The operator swaps the bolster based on the shoe being serviced.
+      key_parameters:
+        - Bolster radius
+        - Mounting interface (quick-change)
+      advantages:
+        - Very stable and precise support
+        - No adjustment errors once the correct part is selected
+      disadvantages:
+        - Requires storage for multiple bolsters
+        - Higher manufacturing cost for the set
+      risks:
+        - Operator using the wrong bolster size, leading to shoe deformation
+      impacted_requirements:
+        - R2
+        - R20
+
+    - id: WP3
+      function_id: F2
+      principle_name: Spring-Loaded Centering Sleeve
+      physical_effect_or_mechanism: |
+        A hollow sleeve surrounding the riveting punch. The sleeve is spring-biased to extend forward, 
+        holding the rivet and lining in alignment with the shoe hole before the punch makes contact.
+      key_parameters:
+        - Spring constant
+        - Sleeve inner diameter (3-5 mm)
+      advantages:
+        - Hands-free holding of the rivet during the stroke
+        - Improves safety by keeping fingers away from the pinch point
+      disadvantages:
+        - Adds complexity to the punch assembly
+        - Potential for the sleeve to jam with workshop dust
+      risks:
+        - Spring fatigue over the 5-year service life
+      impacted_requirements:
+        - R7
+        - R18
+
+    - id: WP4
+      function_id: F3
+      principle_name: Toggle Lever (Knee-Joint) Mechanism
+      physical_effect_or_mechanism: |
+        A linkage system where two bars move toward a straight-line (dead center) position. 
+        The mechanical advantage approaches infinity as the links align, providing maximum force at the end of the stroke.
+      key_parameters:
+        - Link lengths
+        - Input lever arm length
+        - Transmission angle
+      advantages:
+        - Ideal force profile for riveting (highest force at the end of deformation)
+        - High amplification with compact size
+      disadvantages:
+        - Force drops off rapidly if the rivet is not positioned at the correct stroke height
+      risks:
+        - High internal stresses on pins and joints
+      impacted_requirements:
+        - R8
+        - R17
+
+    - id: WP5
+      function_id: F3
+      principle_name: Eccentric Cam Actuation
+      physical_effect_or_mechanism: |
+        A rotating cam with an offset profile that pushes a follower (the punch). 
+        The cam profile can be designed to provide a specific force-displacement curve.
+      key_parameters:
+        - Cam eccentricity
+        - Cam profile geometry
+        - Handle length
+      advantages:
+        - Very robust and simple (few moving parts)
+        - Easy to achieve a smooth stroke
+      disadvantages:
+        - High friction at the cam-follower interface
+        - Limited stroke length compared to levers
+      risks:
+        - Wear on the cam surface reducing the final riveting force
+      impacted_requirements:
+        - R8
+        - R17
+        - R13
+
+    - id: WP6
+      function_id: F4
+      principle_name: Axial Compression (Steady Press)
+      physical_effect_or_mechanism: |
+        The rivet head is formed by purely axial pressure between a shaped punch and a stationary anvil. 
+        The material flows plastically to fill the hole and form the closure head.
+      key_parameters:
+        - Punch tip geometry (cup or flat)
+        - Final stroke depth
+      advantages:
+        - Quiet operation
+        - Consistent head shape
+      disadvantages:
+        - Requires very high peak forces (>= 500 N)
+      risks:
+        - Over-pressing can crack the brittle brake lining
+      impacted_requirements:
+        - R1
+        - R9
+
+    - id: WP7
+      function_id: F5
+      principle_name: Adjustable Mechanical Hard Stop
+      physical_effect_or_mechanism: |
+        A physical bolt or collar that limits the travel of the lever or punch. 
+        The operator feels a sudden increase in resistance when the target depth is reached.
+      key_parameters:
+        - Stop position (adjustable for 4 mm closure)
+      advantages:
+        - Highly reliable tactile feedback
+        - Prevents over-riveting
+      disadvantages:
+        - Must be adjusted if rivet sizes or material thicknesses change
+      risks:
+        - Stop loosening over time due to repeated impacts
+      impacted_requirements:
+        - R9
+        - R11
+
+    - id: WP8
+      function_id: F6
+      principle_name: Vice-Clamping Shank
+      physical_effect_or_mechanism: |
+        The tool base features a square or rectangular protrusion (shank) designed to be 
+        clamped into a standard workshop bench vice.
+      key_parameters:
+        - Shank dimensions
+        - Material strength of the base
+      advantages:
+        - Extremely portable and easy to store
+        - Uses existing workshop equipment for stability
+      disadvantages:
+        - Requires the workshop to have a vice
+      risks:
+        - Tool may tilt if the vice is not tightened sufficiently
+      impacted_requirements:
+        - R12
+        - R14
+
+    - id: WP9
+      function_id: F6
+      principle_name: Bolted Base Plate with C-Clamp Option
+      physical_effect_or_mechanism: |
+        A wide flat base with pre-drilled holes for permanent mounting to a wooden bench, 
+        or shaped to allow temporary attachment using standard C-clamps.
+      key_parameters:
+        - Base plate footprint
+        - Bolt hole pattern
+      advantages:
+        - Maximum stability for high-volume work
+      disadvantages:
+        - Less portable if bolted down
+        - Takes up permanent bench space
+      risks:
+        - Damage to the wooden worktop if not mounted correctly
+      impacted_requirements:
+        - R12
+        - R14
+
+  assumptions:
+    - The "manual energy" can be either hand or foot, but the principles focus on hand-lever mechanisms as they are more common for bench-top tools.
+    - The rivets are made of a ductile material (e.g., aluminum or soft steel) suitable for cold forming at the specified forces.
+
+  open_questions:
+    - Does the 400 mm width requirement (R3) imply the tool needs a very deep throat (C-frame) to reach the center of the shoe?
+    - Is the 500 N force (R8) the input force or the required output forming force? (Assumed output based on context).

@@ -1,0 +1,8 @@
+{
+  "cur_key": "concept_selection",
+  "next_key": "embodiment_layouts",
+  "errors": [
+    "Hallucinated/unknown IDs referenced in 'embodiment_layouts': ['KDP1', 'KDP2', 'KDP3', 'KDP4', 'KDP5', 'KDP6', 'KDP7', 'KDP8']. These IDs are not present in input packet and were not created in the produced artifact."
+  ],
+  "warnings": []
+}

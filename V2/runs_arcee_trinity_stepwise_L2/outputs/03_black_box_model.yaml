@@ -1,0 +1,85 @@
+black_box:
+  overall_function: Transform brake shoe + lining + rivet into a riveted brake assembly
+    by applying controlled force to form rivet heads.
+  flows:
+    inputs:
+    - id: IN1
+      type: material
+      name: Brake shoe
+      description: Steel brake shoe, 6-8 mm thick, 80-400 mm wide, for internal drum
+        brakes (D=250-400 mm).
+    - id: IN2
+      type: material
+      name: Brake lining
+      description: Friction lining to be riveted onto brake shoe.
+    - id: IN3
+      type: material
+      name: Rivet
+      description: Steel rivet, 3-5 mm shank diameter, to join lining to shoe.
+    - id: IN4
+      type: energy
+      name: Manual actuation force
+      description: Hand or foot force applied by operator (≤200 N hand or ≤400 N foot).
+    - id: IN5
+      type: signal
+      name: Operator control
+      description: Initiation of riveting stroke by operator.
+    outputs:
+    - id: OUT1
+      type: material
+      name: Riveted brake assembly
+      description: Brake shoe with lining securely riveted via formed rivet heads.
+    - id: OUT2
+      type: energy
+      name: Reaction force
+      description: Counterforce transmitted to tool base/worktop during riveting.
+    - id: OUT3
+      type: signal
+      name: Completion feedback
+      description: Tactile or audible indication of completed rivet stroke.
+  external_interactions:
+  - id: EI1
+    description: Tool mounted on workshop worktop (wood) via clamp/vice; transmits
+      reaction forces to bench.
+    related_requirements:
+    - R12
+    - R17
+  - id: EI2
+    description: Operator applies manual force; tool must be stable and safe to use
+      without special accidents.
+    related_requirements:
+    - R11
+    - R17
+    - R18
+  - id: EI3
+    description: Workshop environment (dust, oil) may affect tool operation and maintenance.
+    related_requirements:
+    - R16
+  assumptions:
+  - Tool is bench-mounted and manually actuated as per design specification.
+  - Primary application is internal drum brakes with dimensions as specified.
+  - Workshop environment is typical indoor conditions with possible contaminants.
+  open_questions:
+  - None identified from available data.
+  traceability:
+    derived_from_requirements:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    - R6
+    - R7
+    - R8
+    - R9
+    - R10
+    - R11
+    - R12
+    - R13
+    - R14
+    - R15
+    - R16
+    - R17
+    - R18
+    - R19
+    - R20

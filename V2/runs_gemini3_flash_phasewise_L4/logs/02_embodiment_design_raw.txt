@@ -1,0 +1,151 @@
+embodiment_layouts:
+  modules:
+    M1:
+      label: Base Plate
+      description: |
+        A heavy-duty steel plate that serves as the foundation for the tool. It includes four pre-drilled holes for mounting to a wooden worktop.
+      functions: [F6]
+    M2:
+      label: C-Frame Structure
+      description: |
+        The primary load-bearing component, machined or welded from thick steel plate. Its C-shape provides the necessary throat depth and height to accommodate various brake shoe sizes.
+      functions: [F4]
+    M3:
+      label: Toggle Linkage
+      description: |
+        A mechanical linkage system that connects the hand lever to the ram. It is designed to provide a non-linear mechanical advantage, peaking at the end of the stroke.
+      functions: [F2]
+    M4:
+      label: Hand Lever
+      description: |
+        An ergonomic lever with a grip handle. Its length is sized to ensure the operator does not exceed the 200 N input force limit.
+      functions: [F1]
+    M5:
+      label: Ram Assembly
+      description: |
+        A precision-guided linear plunger that translates the toggle motion into the vertical riveting stroke.
+      functions: [F3]
+    M6:
+      label: Riveting Tooling Set
+      description: |
+        Consists of an interchangeable upper punch and a lower anvil. The tips are slimmed to 18 mm diameter to ensure clearance from the shoe rib.
+      functions: [F5]
+  interfaces:
+    IF1:
+      label: Tool-to-Worktop Interface
+      type: Mechanical / Bolted
+      description: Connection between the Base Plate (M1) and the wooden worktop using M10 lag bolts.
+    IF2:
+      label: Frame-to-Base Interface
+      type: Mechanical / Welded
+      description: Permanent rigid connection between the C-Frame (M2) and the Base Plate (M1).
+    IF3:
+      label: Lever-to-Toggle Interface
+      type: Mechanical / Pivot
+      description: A pin joint using a hardened steel pin and bronze bushings to connect the Lever (M4) to the Toggle Linkage (M3).
+    IF4:
+      label: Toggle-to-Ram Interface
+      type: Mechanical / Pivot
+      description: A pin joint connecting the lower end of the Toggle Linkage (M3) to the top of the Ram (M5).
+    IF5:
+      label: Ram-to-Punch Interface
+      type: Mechanical / Socket
+      description: A cylindrical socket in the Ram (M5) with a set-screw to hold the interchangeable punch (M6).
+    IF6:
+      label: Frame-to-Anvil Interface
+      type: Mechanical / Threaded
+      description: A threaded hole in the lower arm of the C-Frame (M2) to secure the anvil (M6).
+  layout_description: |
+    The tool is designed as a compact, bench-mounted manual press. The C-Frame (M2) is oriented vertically, providing a 150 mm throat depth to easily accommodate 100 mm wide brake shoes. The Hand Lever (M4) is positioned at the top for downward operation, which is ergonomically favorable for a standing mechanic. The Toggle Linkage (M3) is tuned to provide the 3-4 mm working stroke (R7) with a force amplification of at least 2.5x at the point of rivet deformation. The entire assembly is finished with a corrosion-resistant coating to ensure a 5-year service life (R13).
+
+preliminary_sizing:
+  load_cases:
+    LC1:
+      label: Maximum Riveting Load
+      description: A 500 N compressive load acting along the axis of the ram and anvil during rivet closure.
+      requirements: [R6, R11]
+    LC2:
+      label: Operator Input Load
+      description: A 200 N manual force applied perpendicularly to the end of the hand lever.
+      requirements: [R5]
+  key_design_parameters:
+    KDP1:
+      label: Lever Length
+      value: 250 mm
+      rationale: |
+        Calculated to provide sufficient torque. With a 50 mm distance from the main pivot to the toggle pin, it provides a base mechanical advantage of 5:1.
+    KDP2:
+      label: Throat Depth
+      value: 150 mm
+      rationale: |
+        Provides clearance for the 100 mm maximum shoe width (R9) plus 50 mm of additional space for the curvature of a 400 mm diameter shoe.
+    KDP3:
+      label: Ram Diameter
+      value: 20 mm
+      rationale: |
+        Sized to resist buckling and provide a stable mounting socket for the riveting punch under the 500 N load.
+    KDP4:
+      label: Frame Plate Thickness
+      value: 20 mm
+      rationale: |
+        Using S355 steel, this thickness ensures that the C-frame deflection remains below 0.1 mm under full load, maintaining rivet alignment.
+    KDP5:
+      label: Tooling Tip Diameter
+      value: 18 mm
+      rationale: |
+        Ensures a 9 mm radius from the rivet center, satisfying the 10 mm clearance requirement (R10) to the shoe rib.
+  sizing_results:
+    SR1:
+      parameter_id: KDP1
+      calculated_value: 250 mm
+      safety_factor: 1.5
+    SR2:
+      parameter_id: KDP4
+      calculated_value: 20 mm
+      safety_factor: 4.2
+    SR3:
+      parameter_id: KDP3
+      calculated_value: 20 mm
+      safety_factor: 8.0
+    SR4:
+      parameter_id: KDP5
+      calculated_value: 18 mm
+      safety_factor: 1.1
+
+manufacturing_plan:
+  work_packages:
+    WP1:
+      label: Structural Fabrication
+      description: |
+        Flame cutting or waterjet cutting the C-frame (M2) and Base Plate (M1) from 20 mm steel plate. Milling the edges for a clean finish and drilling all mounting holes.
+      modules: [M1, M2]
+    WP2:
+      label: Mechanism Machining
+      description: |
+        Turning the Ram (M5) and Lever (M4) on a lathe. Milling the Toggle Linkage (M3) components. Reaming all pivot holes for H7/g6 fits to ensure smooth operation.
+      modules: [M3, M4, M5]
+    WP3:
+      label: Tooling Production
+      description: |
+        Machining the punch and anvil (M6) from 1.2379 tool steel. Vacuum hardening to 58-60 HRC. Precision grinding of the rivet-forming surfaces.
+      modules: [M6]
+    WP4:
+      label: Final Assembly and Testing
+      description: |
+        Pressing bushings into pivot points, assembling the linkage with hardened pins, and mounting the assembly to the base. Testing with DIN 7338 rivets to verify stroke and force.
+      modules: [M1, M2, M3, M4, M5, M6]
+  material_selection:
+    MAT1:
+      label: S355J2 Structural Steel
+      usage: Frame (M2), Base (M1), and Lever (M4).
+      rationale: High strength-to-weight ratio and excellent machinability for in-house production.
+    MAT2:
+      label: 1.2379 (D2) Tool Steel
+      usage: Riveting Punch and Anvil (M6).
+      rationale: High wear resistance required for the 87,500 cycle target service life.
+    MAT3:
+      label: CuSn8 Phosphor Bronze
+      usage: Bushings for all pivot joints in M3 and M4.
+      rationale: Provides maintenance-free, low-friction operation (R14).
+  assembly_strategy: |
+    The tool will be built in a batch of 5 units. The C-frame will be welded to the base plate using a jig to ensure perpendicularity. All moving joints will be assembled using standard circlips for easy replacement of pins if necessary. The final units will be painted with a durable powder coating.

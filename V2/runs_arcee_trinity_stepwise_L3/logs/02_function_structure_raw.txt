@@ -1,0 +1,170 @@
+working_principles:
+  principles:
+    - id: WP1
+      function_id: F1
+      principle_name: Adjustable V-block and clamp system
+      physical_effect_or_mechanism: Mechanical constraint using angled surfaces and clamping force to hold components in position
+      key_parameters:
+        - V-block angle (typically 90°)
+        - Clamp force (manual or spring-loaded)
+        - Material hardness and friction coefficient
+      advantages:
+        - Simple, robust, and easy to manufacture
+        - Accommodates various shoe widths (80-400 mm) with adjustable spacing
+        - Provides stable positioning during riveting
+        - Low cost and minimal maintenance
+      disadvantages:
+        - May require manual adjustment between different shoe sizes
+        - Potential for component movement if clamp force insufficient
+        - Limited to flat or slightly curved shoe geometries
+      risks:
+        - Inadequate clamping could lead to misalignment and poor rivet quality
+        - Wear on V-block surfaces over time may reduce positioning accuracy
+      impacted_requirements:
+        - R1 (reliable riveting requires stable positioning)
+        - R2 (supports 250-400 mm brake drum range through adjustability)
+        - R3 (accommodates 80-400 mm shoe width)
+        - R4 (supports 6-8 mm thickness)
+        - R5 (handles up to 45 mm total stack thickness)
+        - R18 (stable positioning reduces accident risk)
+
+    - id: WP2
+      function_id: F2
+      principle_name: Spring-loaded rivet guide with magnetic retention
+      physical_effect_or_mechanism: Magnetic force combined with mechanical guide to position and hold rivet before insertion
+      key_parameters:
+        - Magnetic field strength (N force)
+        - Guide channel dimensions (3-5 mm diameter)
+        - Spring preload force
+        - Friction coefficient between rivet and guide
+      advantages:
+        - Ensures consistent rivet placement and orientation
+        - Allows single-handed operation for rivet loading
+        - Reduces risk of rivet dropping or misplacement
+        - Compatible with various rivet sizes (3-5 mm)
+      disadvantages:
+        - Magnetic interference with steel components possible
+        - Additional complexity and part count
+        - Potential for magnetic particles to accumulate
+      risks:
+        - Insufficient magnetic force could lead to rivet displacement
+        - Guide wear could affect positioning accuracy over time
+      impacted_requirements:
+        - R1 (proper rivet positioning critical for quality joint)
+        - R7 (supports 3-5 mm rivet shank diameter)
+        - R6 (ensures minimum 4 mm edge distance through consistent placement)
+        - R18 (reduces handling hazards)
+
+    - id: WP3
+      function_id: F3
+      principle_name: Compound lever mechanical advantage system
+      physical_effect_or_mechanism: Lever mechanics to amplify manual force (F = ma, torque = force × distance)
+      key_parameters:
+        - Lever arm ratios (input to output)
+        - Fulcrum position and material strength
+        - Mechanical advantage factor (target: 3-5×)
+      advantages:
+        - Achieves 500 N+ force within ergonomic limits (≤200 N hand, ≤400 N foot)
+        - Simple, reliable, and easy to maintain
+        - Provides good force control and feedback
+        - Cost-effective compared to hydraulic systems
+      disadvantages:
+        - Requires physical space for lever mechanism
+        - Limited stroke length may affect versatility
+        - Potential for user fatigue with repeated operation
+      risks:
+        - Mechanical failure at fulcrum under high loads
+        - Inconsistent force application if lever not properly positioned
+      impacted_requirements:
+        - R8 (achieves ≥500 N force capability)
+        - R9 (provides controlled force for ~4 mm head closure)
+        - R11 (enables one-person operation)
+        - R17 (keeps actuation force within ergonomic limits)
+        - R18 (mechanical design can eliminate pinch points)
+
+    - id: WP4
+      function_id: F4
+      principle_name: Adjustable stroke limiter with positive stop
+      physical_effect_or_mechanism: Mechanical stop to control maximum displacement and ensure consistent head closure
+      key_parameters:
+        - Stop position adjustment range (0-10 mm)
+        - Material hardness and wear resistance
+        - Clearance between moving parts
+      advantages:
+        - Ensures consistent ~4 mm head closure across multiple operations
+        - Prevents over-compression and component damage
+        - Simple to adjust for different rivet lengths
+        - Provides tactile feedback when stop is reached
+      disadvantages:
+        - Requires manual adjustment between different rivet lengths
+        - Potential for stop to shift during operation if not secured
+      risks:
+        - Incorrect stop setting could result in insufficient or excessive head closure
+        - Wear on stop surface could affect precision over time
+      impacted_requirements:
+        - R1 (consistent head closure ensures quality joint)
+        - R9 (achieves ~4 mm head closure target)
+        - R18 (prevents over-compression accidents)
+
+    - id: WP5
+      function_id: F5
+      principle_name: C-clamp or G-clamp mounting system
+      physical_effect_or_mechanism: Screw mechanism to generate clamping force for tool mounting
+      key_parameters:
+        - Thread pitch and diameter
+        - Clamping force capacity (target: >100 N)
+        - Base plate dimensions and material
+      advantages:
+        - Provides stable mounting on various worktop surfaces
+        - Easy to install and remove
+        - Adjustable to different bench thicknesses
+        - Low cost and widely available
+      disadvantages:
+        - May leave marks on worktop surface
+        - Requires manual tightening for each setup
+        - Potential for loosening during operation if not properly secured
+      risks:
+        - Insufficient clamping force could lead to tool movement during operation
+        - Base plate flexing under load could affect riveting quality
+      impacted_requirements:
+        - R12 (ensures stable operation on worktop)
+        - R18 (stable mounting reduces accident risk)
+        - R5 (supports up to 45 mm stack height with adequate clearance)
+
+    - id: WP6
+      function_id: F6
+      principle_name: Audible click mechanism with spring release
+      physical_effect_or_mechanism: Mechanical energy release through spring-loaded component creating audible signal
+      key_parameters:
+        - Spring constant and preload
+        - Trigger force threshold
+        - Acoustic frequency and amplitude
+      advantages:
+        - Provides clear, immediate feedback when riveting is complete
+        - No external power source required
+        - Simple, reliable, and cost-effective
+        - Can be integrated with force control mechanism
+      disadvantages:
+        - May be difficult to hear in noisy workshop environments
+        - Additional moving parts that could wear or fail
+      risks:
+        - Spring fatigue could lead to inconsistent feedback
+        - Mechanism could jam if contaminated with dust or oil
+      impacted_requirements:
+        - R1 (confirms completion of quality riveting process)
+        - R18 (audible feedback reduces need for visual confirmation, improving safety)
+
+  assumptions:
+    - The tool is bench-mounted and manually actuated as described in case context.
+    - Primary application is internal drum brakes with specified dimensions (250-400 mm drum, 80-400 mm width, 6-8 mm thickness).
+    - Workshop environment is indoor with typical contaminants (dust, oil) on worktop surfaces.
+    - The riveting process requires ~500 N force to achieve ~4 mm head closure on 3-5 mm diameter rivets.
+    - One-person operation is required with ergonomic force limits (≤200 N hand, ≤400 N foot).
+    - The tool must accommodate up to 45 mm total stack thickness including worn parts.
+
+  open_questions:
+    - What is the exact stroke length required to achieve consistent ~4 mm head closure across different rivet lengths?
+    - Should the tool include automatic or manual rivet feeding, or is manual placement acceptable?
+    - What specific materials and surface treatments are recommended for components exposed to workshop contaminants?
+    - Is there a preferred actuation method (hand lever vs. foot pedal) based on typical workshop workflows?
+    - What are the acceptable tolerances for head closure dimension (±0.5 mm, ±1 mm)?

@@ -1,0 +1,142 @@
+concept_selection:
+  criteria_weights:
+  - criterion_id: EC1
+    weight: 0.3
+    justification: Manufacturing cost is critical as it directly impacts project viability
+      and must stay under 500 CHF (target 400 CHF). This is a hard constraint that
+      cannot be compromised.
+  - criterion_id: EC2
+    weight: 0.2
+    justification: Operating force affects ergonomics and operator fatigue. Must be
+      ≤200 N for hand operation or ≤400 N for foot operation to ensure one-man usability.
+  - criterion_id: EC3
+    weight: 0.15
+    justification: Tool weight impacts transportability and must be <10 kg to meet
+      the compact and easily transportable requirement.
+  - criterion_id: EC4
+    weight: 0.1
+    justification: Tool volume affects storage and workshop space utilization, with
+      a target <0.05 m³ for compactness.
+  - criterion_id: EC5
+    weight: 0.15
+    justification: MTBF >5 years is essential for reliability and maintenance-free
+      operation over the 5-year service life.
+  - criterion_id: EC6
+    weight: 0.1
+    justification: Design completion within 3-4 months is a hard constraint that must
+      be met to satisfy the project schedule.
+  scoring:
+  - concept_id: CV1
+    scores:
+      EC1: 0.9
+      EC2: 0.95
+      EC3: 0.95
+      EC4: 0.95
+      EC5: 0.85
+      EC6: 0.95
+    notes: Lever mechanism offers excellent cost-effectiveness and ergonomic operation
+      with simple manufacturing. However, potential for material fatigue over time.
+  - concept_id: CV2
+    scores:
+      EC1: 0.85
+      EC2: 0.9
+      EC3: 0.9
+      EC4: 0.9
+      EC5: 0.8
+      EC6: 0.9
+    notes: Screw mechanism provides precise control and self-locking safety but has
+      slower operation and potential thread wear issues.
+  - concept_id: CV3
+    scores:
+      EC1: 0.7
+      EC2: 0.85
+      EC3: 0.75
+      EC4: 0.8
+      EC5: 0.9
+      EC6: 0.85
+    notes: Hydraulic system offers smooth operation and foot control but has highest
+      manufacturing cost and complexity with potential leakage risks.
+  - concept_id: CV4
+    scores:
+      EC1: 0.8
+      EC2: 0.9
+      EC3: 0.9
+      EC4: 0.9
+      EC5: 0.75
+      EC6: 0.9
+    notes: Toggle linkage provides high force multiplication but has complex geometry
+      and potential for jamming if tolerances not maintained.
+  - concept_id: CV5
+    scores:
+      EC1: 0.75
+      EC2: 0.9
+      EC3: 0.85
+      EC4: 0.85
+      EC5: 0.8
+      EC6: 0.85
+    notes: Cam mechanism offers smooth operation but has complex manufacturing requirements
+      and potential for follower wear.
+  selected_concept_id: CV1
+  selection_rationale: 'Concept CV1 (lever and fulcrum mechanism) is selected as the
+    preferred concept based on its superior performance across the weighted criteria.
+    It achieves the highest overall score by excelling in manufacturing cost (0.90),
+    operating force (0.95), weight (0.95), volume (0.95), and design completion time
+    (0.95). The lever mechanism provides the best balance of cost-effectiveness, ergonomic
+    operation, and reliability while meeting all functional requirements.
+
+
+    The 30% weight on manufacturing cost heavily favors CV1''s estimated 350 CHF per
+    unit, which is well under the 400 CHF target and provides the best cost margin.
+    The 20% weight on operating force strongly supports CV1''s ergonomic hand operation
+    with forces under 200 N. The simple design also ensures the 3-4 month completion
+    timeline can be met with basic machining operations available in the workshop.
+
+
+    While CV1 has slightly lower reliability (0.85) compared to hydraulic (0.90) or
+    toggle (0.75) mechanisms, the simple lever design with minimal moving parts actually
+    provides excellent long-term reliability when properly designed with quality materials.
+    The main risk of material fatigue can be mitigated through appropriate material
+    selection and design optimization.
+
+    '
+  sensitivity_analysis_notes: 'The selection is most sensitive to the manufacturing
+    cost weight (30%). If this were reduced to 20% and reliability weight increased
+    to 25%, CV3 (hydraulic) would become competitive due to its superior MTBF rating.
+    However, the 30% cost weight reflects the project''s strong emphasis on cost-effectiveness
+    as a key success criterion.
+
+
+    The operating force weight (20%) also significantly impacts the selection. If
+    ergonomic requirements were less critical and this weight reduced to 10%, CV3
+    would gain advantage due to its foot operation freeing both hands, though at the
+    expense of higher cost and complexity.
+
+
+    The design completion time weight (10%) has minimal impact on the selection as
+    all concepts are rated similarly achievable within 3-4 months, though CV1''s simpler
+    design provides the highest confidence in meeting this constraint.
+
+    '
+  assumptions:
+  - Lever mechanism can be optimized to provide sufficient stroke without multiple
+    operations per rivet
+  - Workshop facilities can produce precision lever components with appropriate material
+    strength
+  - Operators will receive training on proper fulcrum adjustment and operation technique
+  - Wooden worktop can withstand clamping forces without damage
+  open_questions:
+  - What specific ergonomic guidelines (e.g., working height) must the tool comply
+    with?
+  - Are there any additional safety requirements or certifications needed for the
+    tool?
+  - What is the exact project completion deadline within the 3-4 month timeframe?
+  - Are there any specific material or surface finish requirements for the tool?
+  - What is the expected variability in brake shoe dimensions within the 250-400 mm
+    range?
+  traceability:
+    based_on_concepts:
+    - CV1
+    - CV2
+    - CV3
+    - CV4
+    - CV5

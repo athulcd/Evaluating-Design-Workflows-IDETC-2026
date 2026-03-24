@@ -1,0 +1,145 @@
+preliminary_sizing:
+  load_cases:
+    - id: LC1
+      description: Maximum riveting force during closure head forming
+      related_requirements:
+        - R8
+        - R9
+        - R15
+    - id: LC2
+      description: Ergonomic actuation force limits
+      related_requirements:
+        - R11
+        - R17
+        - R18
+    - id: LC3
+      description: Static load on base fixture during clamping
+      related_requirements:
+        - R2
+        - R3
+        - R4
+        - R5
+        - R12
+    - id: LC4
+      description: Fatigue from repeated riveting cycles
+      related_requirements:
+        - R13
+        - R15
+  sizing_results:
+    - parameter_id: KDP1
+      governing_case: LC3
+      equation_or_model: |-
+        Fixture adjustability range = max_width - min_width
+        = 400 mm - 80 mm = 320 mm
+      assumed_values:
+        min_width: 80 mm
+        max_width: 400 mm
+      result: 320 mm
+      margin_or_factor_of_safety: 1.5
+    - parameter_id: KDP2
+      governing_case: LC3
+      equation_or_model: |-
+        Clamping force = 2 * max_rivet_force
+        = 2 * 500 N = 1000 N
+      assumed_values:
+        max_rivet_force: 500 N
+      result: 1000 N
+      margin_or_factor_of_safety: 2.0
+    - parameter_id: KDP3
+      governing_case: LC2
+      equation_or_model: |-
+        Lever ratio = max_rivet_force / max_operator_force
+        = 500 N / 200 N = 2.5:1
+      assumed_values:
+        max_rivet_force: 500 N
+        max_operator_force: 200 N
+      result: 2.5:1
+      margin_or_factor_of_safety: 1.2
+    - parameter_id: KDP4
+      governing_case: LC2
+      equation_or_model: |-
+        Actuation force limit = min(max_hand_force, max_foot_force)
+        = min(200 N, 400 N) = 200 N
+      assumed_values:
+        max_hand_force: 200 N
+        max_foot_force: 400 N
+      result: 200 N
+      margin_or_factor_of_safety: 1.0
+    - parameter_id: KDP5
+      governing_case: LC1
+      equation_or_model: |-
+        Closure head dimension = target_closure + tolerance
+        = 4 mm + 0.5 mm = 4.5 mm
+      assumed_values:
+        target_closure: 4 mm
+        tolerance: 0.5 mm
+      result: 4.5 mm
+      margin_or_factor_of_safety: 1.1
+    - parameter_id: KDP6
+      governing_case: LC1
+      equation_or_model: |-
+        Adjustable stop range = max_closure - min_closure
+        = 6 mm - 2 mm = 4 mm
+      assumed_values:
+        max_closure: 6 mm
+        min_closure: 2 mm
+      result: 4 mm
+      margin_or_factor_of_safety: 1.3
+    - parameter_id: KDP7
+      governing_case: LC2
+      equation_or_model: |-
+        Guard coverage = 100% of moving parts
+      assumed_values:
+        moving_parts: lever, linkage, forming head
+      result: 100%
+      margin_or_factor_of_safety: N/A
+    - parameter_id: KDP8
+      governing_case: LC2
+      equation_or_model: |-
+        Ergonomic clearance = 2 * max_hand_width
+        = 2 * 25 mm = 50 mm
+      assumed_values:
+        max_hand_width: 25 mm
+      result: 50 mm
+      margin_or_factor_of_safety: 1.5
+    - parameter_id: KDP9
+      governing_case: LC3
+      equation_or_model: |-
+        Base footprint = 1.5 * max_workpiece_area
+        = 1.5 * (400 mm * 8 mm) = 4800 mm²
+      assumed_values:
+        max_workpiece_width: 400 mm
+        max_workpiece_thickness: 8 mm
+      result: 4800 mm² (approx. 300x200 mm)
+      margin_or_factor_of_safety: 1.5
+    - parameter_id: KDP10
+      governing_case: LC3
+      equation_or_model: |-
+        Tool mass = base_mass + mechanism_mass + safety_mass
+        = 2 kg + 1.5 kg + 1 kg = 4.5 kg
+      assumed_values:
+        base_mass: 2 kg
+        mechanism_mass: 1.5 kg
+        safety_mass: 1 kg
+      result: 4.5 kg
+      margin_or_factor_of_safety: 0.9
+    - parameter_id: KDP11
+      governing_case: LC1
+      equation_or_model: |-
+        Material selection = steel for high-stress components
+        = yield_strength >= 250 MPa
+      assumed_values:
+        yield_strength: 250 MPa
+      result: Steel (yield strength >= 250 MPa)
+      margin_or_factor_of_safety: 1.5
+  assumptions:
+    - Workshop environment includes typical contaminants (dust, oil) that may affect operation
+    - Tool will be used primarily on wood worktops as specified
+    - Rivet holes are pre-drilled in brake shoe and lining per specifications
+    - Operator will be trained in proper setup and adjustment procedures
+    - Maximum riveting force of 500 N is sufficient for all specified rivet sizes (3-5 mm diameter)
+  open_questions:
+    - What specific safety standards apply to workshop riveting tools in the target market?
+    - Are there any specific requirements for rivet head shape beyond closure distance (e.g., diameter, flushness)?
+    - What is the expected maintenance interval and procedure for the tool?
+    - Are there any specific environmental requirements (e.g., corrosion resistance) for workshop conditions?

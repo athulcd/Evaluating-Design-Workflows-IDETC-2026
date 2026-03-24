@@ -1,0 +1,89 @@
+preliminary_sizing:
+  load_cases:
+    - id: LC1
+      description: |
+        Peak Riveting Load: The condition where the tool applies the maximum required force (500 N) to the copper rivet at the end of the 4 mm stroke. This governs the structural integrity of the toggle linkage, pivot pins, and the C-frame.
+      related_requirements:
+        - R1
+        - R2
+        - R6
+    - id: LC2
+      description: |
+        Maximum Operator Input: The condition where the operator applies the maximum allowable hand force (200 N) to the lever. This governs the bending strength of the lever arm and the ergonomic interface.
+      related_requirements:
+        - R7
+        - R12
+    - id: LC3
+      description: |
+        Cyclic Loading (Fatigue): Repeated operation over the 5-year service life (approx. 87,500 cycles). This governs the wear allowance for pivot bushings and the fatigue limit of the toggle links.
+      related_requirements:
+        - R10
+    - id: LC4
+      description: |
+        Mounting Reaction: The reaction forces transmitted through the base plate to the wooden worktop during peak riveting. This governs the base plate thickness and bolt spacing.
+      related_requirements:
+        - R14
+  sizing_results:
+    - parameter_id: KDP1
+      governing_case: LC1
+      equation_or_model: |
+        MA_total = F_rivet / F_input = (L_lever / L_pivot_arm) * (1 / tan(theta))
+        where theta is the angle of the toggle links relative to the vertical axis at the point of closure.
+      assumed_values:
+        F_rivet: 500 N
+        F_input: 100 N (Targeting 50% of limit for ergonomics)
+        theta: 5 degrees (near toggle lock)
+      result: "Total Mechanical Advantage required: 5:1"
+      margin_or_factor_of_safety: "2.0 (relative to R7 limit of 200 N)"
+    - parameter_id: KDP5
+      governing_case: LC2
+      equation_or_model: |
+        sigma_max = (M * y) / I = (F_input * L_lever * c) / I
+        where I is the area moment of inertia of the lever cross-section.
+      assumed_values:
+        F_input: 200 N
+        L_lever: 550 mm
+        Material: Steel S235 (Yield = 235 MPa)
+      result: "Minimum Lever Section Modulus (W) = 1.17 cm^3"
+      margin_or_factor_of_safety: "2.5 (Safety factor against yielding)"
+    - parameter_id: B1
+      governing_case: LC1
+      equation_or_model: |
+        tau = F_rivet / (2 * A_pin)
+        d_pin = sqrt((2 * F_rivet) / (pi * tau_allow))
+      assumed_values:
+        F_rivet: 500 N
+        tau_allow: 60 MPa (for mild steel pins in double shear)
+      result: "Minimum Pivot Pin Diameter: 8 mm"
+      margin_or_factor_of_safety: "4.0 (High factor to account for wear/LC3)"
+    - parameter_id: B2
+      governing_case: LC1
+      equation_or_model: |
+        delta = (F_rivet * H^3) / (3 * E * I_frame)
+        Simplified as a cantilever beam deflection for the C-frame throat.
+      assumed_values:
+        F_rivet: 500 N
+        H (Throat Depth): 150 mm
+        E: 210 GPa
+        Allowable delta: 0.1 mm (to maintain R2 stroke accuracy)
+      result: "Minimum Frame Moment of Inertia: 2.68 cm^4"
+      margin_or_factor_of_safety: "1.5"
+    - parameter_id: B3
+      governing_case: LC1
+      equation_or_model: |
+        sigma_comp = F_rivet / A_punch
+      assumed_values:
+        F_rivet: 500 N
+        d_punch: 10 mm (standard shank for 3-5mm rivets)
+      result: "Compressive Stress: 6.37 MPa"
+      margin_or_factor_of_safety: ">10 (Governed by buckling or hardness KDP3 rather than pure compression)"
+  assumptions:
+    - The toggle linkage is designed to be near its "dead center" (lock) position at the 4 mm stroke completion to maximize force.
+    - Pivot pins are in double shear within the linkage assembly.
+    - The C-frame is constructed from standard steel plate or C-channel available in the workshop.
+    - Friction losses in the pivots are estimated at 10% of the input energy.
+    - The 500 N force is a static peak; dynamic effects from manual actuation are negligible.
+  open_questions:
+    - What is the specific yield strength of the DIN 7338 copper rivets? (Required to confirm if 500 N is sufficient for the 5 mm diameter variant).
+    - Does the workshop have a preference for pin materials (e.g., silver steel vs. standard mild steel)?
+    - Is the wooden worktop hardwood or softwood? (Affects LC4 bolt pull-out calculations).

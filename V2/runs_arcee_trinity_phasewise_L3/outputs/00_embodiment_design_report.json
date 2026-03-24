@@ -1,0 +1,15 @@
+{
+  "phase_key": "embodiment_design",
+  "expected_top_level_keys": [
+    "embodiment_layouts",
+    "preliminary_sizing",
+    "manufacturing_plan"
+  ],
+  "errors": [],
+  "warnings": [
+    "embodiment_layouts does not define any interface IDs; cross-check coverage is limited."
+  ],
+  "cross_artifact_checks": [
+    "Validated module, interface, key design parameter, and load case references across embodiment outputs."
+  ]
+}

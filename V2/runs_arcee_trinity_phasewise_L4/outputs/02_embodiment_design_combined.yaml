@@ -1,0 +1,615 @@
+embodiment_layouts:
+- id: EL_RivetTool
+  description: Manual lever with toggle mechanism rivet setting tool
+  concept: CV1
+  modules:
+  - id: M_Base
+    description: Main base structure
+    type: structural
+    connections:
+    - interface: IF_BaseMount
+      connected_to: M_Worktop
+      type: mounting
+    dimensions:
+      length: 300 mm
+      width: 200 mm
+      height: 50 mm
+    material: Steel
+    manufacturing: Casting or welding
+  - id: M_Lever
+    description: Manual operating lever
+    type: mechanical
+    connections:
+    - interface: IF_LeverPivot
+      connected_to: M_Base
+      type: pivot
+    - interface: IF_LeverForce
+      connected_to: M_Toggle
+      type: force_transfer
+    dimensions:
+      length: 400 mm
+      width: 50 mm
+      thickness: 10 mm
+    material: Steel
+    manufacturing: Machining
+  - id: M_Toggle
+    description: Toggle mechanism for force amplification
+    type: mechanical
+    connections:
+    - interface: IF_TogglePivot1
+      connected_to: M_Base
+      type: pivot
+    - interface: IF_TogglePivot2
+      connected_to: M_Plunger
+      type: pivot
+    - interface: IF_ToggleForce
+      connected_to: M_Lever
+      type: force_transfer
+    dimensions:
+      length: 150 mm
+      width: 50 mm
+      thickness: 10 mm
+    material: Steel
+    manufacturing: Machining
+  - id: M_Plunger
+    description: Riveting plunger
+    type: mechanical
+    connections:
+    - interface: IF_PlungerPivot
+      connected_to: M_Toggle
+      type: pivot
+    - interface: IF_PlungerForce
+      connected_to: M_BrakeShoe
+      type: force_application
+    dimensions:
+      length: 100 mm
+      diameter: 20 mm
+    material: Hardened steel
+    manufacturing: Machining
+  - id: M_BrakeShoeClamp
+    description: Brake shoe positioning and clamping mechanism
+    type: mechanical
+    connections:
+    - interface: IF_ClampMount
+      connected_to: M_Base
+      type: mounting
+    - interface: IF_ClampGrip
+      connected_to: M_BrakeShoe
+      type: gripping
+    dimensions:
+      length: 150 mm
+      width: 100 mm
+      height: 80 mm
+    material: Steel
+    manufacturing: Machining and welding
+  - id: M_RivetGuide
+    description: Rivet positioning guide
+    type: mechanical
+    connections:
+    - interface: IF_GuideMount
+      connected_to: M_BrakeShoeClamp
+      type: mounting
+    - interface: IF_GuidePosition
+      connected_to: M_Rivet
+      type: positioning
+    dimensions:
+      length: 50 mm
+      width: 50 mm
+      height: 30 mm
+    material: Steel
+    manufacturing: Machining
+  - id: M_Worktop
+    description: Wooden worktop mounting surface
+    type: structural
+    connections:
+    - interface: IF_WorktopMount
+      connected_to: M_Base
+      type: mounting
+    dimensions:
+      length: 400 mm
+      width: 300 mm
+      thickness: 30 mm
+    material: Hardwood
+    manufacturing: Cutting and finishing
+  interfaces:
+  - id: IF_BaseMount
+    description: Base mounting interface
+    type: mechanical
+    connections:
+    - M_Base
+    - M_Worktop
+  - id: IF_LeverPivot
+    description: Lever pivot interface
+    type: mechanical
+    connections:
+    - M_Lever
+    - M_Base
+  - id: IF_LeverForce
+    description: Force transfer from lever to toggle
+    type: mechanical
+    connections:
+    - M_Lever
+    - M_Toggle
+  - id: IF_TogglePivot1
+    description: First toggle pivot
+    type: mechanical
+    connections:
+    - M_Toggle
+    - M_Base
+  - id: IF_TogglePivot2
+    description: Second toggle pivot
+    type: mechanical
+    connections:
+    - M_Toggle
+    - M_Plunger
+  - id: IF_ToggleForce
+    description: Force transfer from toggle to plunger
+    type: mechanical
+    connections:
+    - M_Toggle
+    - M_Plunger
+  - id: IF_PlungerPivot
+    description: Plunger pivot interface
+    type: mechanical
+    connections:
+    - M_Plunger
+    - M_Toggle
+  - id: IF_PlungerForce
+    description: Force application to brake shoe
+    type: mechanical
+    connections:
+    - M_Plunger
+    - M_BrakeShoe
+  - id: IF_ClampMount
+    description: Clamp mounting interface
+    type: mechanical
+    connections:
+    - M_BrakeShoeClamp
+    - M_Base
+  - id: IF_ClampGrip
+    description: Brake shoe gripping interface
+    type: mechanical
+    connections:
+    - M_BrakeShoeClamp
+    - M_BrakeShoe
+  - id: IF_GuideMount
+    description: Guide mounting interface
+    type: mechanical
+    connections:
+    - M_RivetGuide
+    - M_BrakeShoeClamp
+  - id: IF_GuidePosition
+    description: Rivet positioning interface
+    type: mechanical
+    connections:
+    - M_RivetGuide
+    - M_Rivet
+  - id: IF_WorktopMount
+    description: Worktop mounting interface
+    type: mechanical
+    connections:
+    - M_Worktop
+    - M_Base
+  external_interfaces:
+  - id: EI_Operator
+    description: Operator interface
+    type: human_interaction
+    connections:
+    - M_Lever
+  - id: EI_BrakeShoe
+    description: Brake shoe interface
+    type: mechanical
+    connections:
+    - M_BrakeShoeClamp
+  - id: EI_Rivet
+    description: Rivet interface
+    type: mechanical
+    connections:
+    - M_RivetGuide
+preliminary_sizing:
+- id: PS_RivetTool
+  description: Preliminary sizing analysis for rivet setting tool
+  requirements:
+  - R1
+  - R2
+  - R3
+  - R4
+  - R5
+  - R6
+  - R7
+  - R8
+  - R9
+  - R10
+  - R11
+  - R12
+  - R13
+  - R14
+  - R15
+  - R16
+  - R17
+  - R18
+  - R19
+  - R20
+  calculations:
+  - id: C_ForceAmplification
+    description: Required force amplification calculation
+    formula: FA = F_required / F_operator
+    inputs:
+      F_required: 500 N
+      F_operator: 200 N
+    result: FA = 2.5
+    units: dimensionless
+  - id: C_LeverLength
+    description: Lever length calculation for required force amplification
+    formula: L_effort = FA * L_load
+    inputs:
+      FA: 2.5
+      L_load: 160 mm
+    result: L_effort = 400 mm
+    units: mm
+  - id: C_ToggleAngle
+    description: Toggle mechanism angle for maximum force
+    formula: sin(θ) = L_load / L_effort
+    inputs:
+      L_load: 160 mm
+      L_effort: 400 mm
+    result: θ = 23.6 degrees
+    units: degrees
+  - id: C_PlungerForce
+    description: Plunger force calculation
+    formula: F_plunger = F_required / (sin(θ) * FA)
+    inputs:
+      F_required: 500 N
+      θ: 23.6 degrees
+      FA: 2.5
+    result: F_plunger = 500 N
+    units: N
+  - id: C_BaseDimensions
+    description: Base dimensions for stability
+    formula: L_base = 1.5 * L_effort
+    inputs:
+      L_effort: 400 mm
+    result: L_base = 600 mm
+    units: mm
+  - id: C_ClampForce
+    description: Required clamp force for brake shoe
+    formula: F_clamp = 2 * F_plunger
+    inputs:
+      F_plunger: 500 N
+    result: F_clamp = 1000 N
+    units: N
+  - id: C_WeightEstimate
+    description: Estimated tool weight
+    formula: W_tool = V_steel * ρ_steel + V_wood * ρ_wood
+    inputs:
+      V_steel: 0.003 m³
+      ρ_steel: 7850 kg/m³
+      V_wood: 0.0012 m³
+      ρ_wood: 700 kg/m³
+    result: W_tool = 26.5 kg
+    units: kg
+  results:
+  - id: R_ForceAmplification
+    description: Force amplification achieved
+    value: 2.5
+    units: dimensionless
+    status: meets_requirements
+    rationale: Exceeds minimum requirement of 2.5 for 200 N operator force
+  - id: R_LeverLength
+    description: Lever length
+    value: 400 mm
+    units: mm
+    status: meets_requirements
+    rationale: Provides adequate mechanical advantage within ergonomic limits
+  - id: R_ToggleAngle
+    description: Toggle mechanism angle
+    value: 23.6 degrees
+    units: degrees
+    status: meets_requirements
+    rationale: Optimal angle for force amplification and stroke length
+  - id: R_PlungerForce
+    description: Plunger force
+    value: 500 N
+    units: N
+    status: meets_requirements
+    rationale: Meets required riveting force
+  - id: R_BaseDimensions
+    description: Base dimensions
+    value: 600 x 200 x 50 mm
+    units: mm
+    status: meets_requirements
+    rationale: Provides adequate stability for operation
+  - id: R_ClampForce
+    description: Clamp force
+    value: 1000 N
+    units: N
+    status: meets_requirements
+    rationale: Sufficient to securely hold brake shoes during operation
+  - id: R_WeightEstimate
+    description: Estimated tool weight
+    value: 26.5 kg
+    units: kg
+    status: meets_requirements
+    rationale: Within acceptable limits for portability and stability
+  load_cases:
+  - id: LC_Operation
+    description: Normal operation load case
+    loads:
+    - force: 500 N
+      direction: downward
+      location: plunger tip
+    - force: 200 N
+      direction: downward
+      location: lever end
+    - force: 1000 N
+      direction: clamping
+      location: brake shoe clamp
+  - id: LC_Transport
+    description: Transport load case
+    loads:
+    - force: 26.5 kg * 9.81 m/s²
+      direction: downward
+      location: base center
+  - id: LC_Impact
+    description: Impact load case
+    loads:
+    - force: 1500 N
+      direction: downward
+      location: plunger tip
+      duration: 0.1 s
+  key_design_parameters:
+  - id: KDP_ForceAmplification
+    description: Force amplification ratio
+    value: 2.5
+    units: dimensionless
+    tolerance: ±0.2
+    safety_factor: 1.5
+  - id: KDP_LeverLength
+    description: Operating lever length
+    value: 400 mm
+    units: mm
+    tolerance: ±10 mm
+    safety_factor: 1.2
+  - id: KDP_ToggleAngle
+    description: Toggle mechanism angle
+    value: 23.6 degrees
+    units: degrees
+    tolerance: ±2 degrees
+    safety_factor: 1.3
+  - id: KDP_PlungerForce
+    description: Plunger force
+    value: 500 N
+    units: N
+    tolerance: ±50 N
+    safety_factor: 1.5
+  - id: KDP_BaseDimensions
+    description: Base dimensions
+    value: 600 x 200 x 50 mm
+    units: mm
+    tolerance: ±20 mm
+    safety_factor: 1.2
+  - id: KDP_ClampForce
+    description: Clamp force
+    value: 1000 N
+    units: N
+    tolerance: ±200 N
+    safety_factor: 1.5
+  - id: KDP_WeightEstimate
+    description: Estimated tool weight
+    value: 26.5 kg
+    units: kg
+    tolerance: ±2 kg
+    safety_factor: 1.1
+manufacturing_plan:
+- id: MP_RivetTool
+  description: Manufacturing plan for rivet setting tool
+  modules:
+  - id: M_Base
+    manufacturing_steps:
+    - id: MS_Base_Casting
+      description: Steel base casting
+      process: Sand casting
+      material: Steel
+      cost: 50 CHF
+      time: 2 hours
+      equipment: Foundry furnace, sand molds
+      quality_control:
+      - visual inspection
+      - dimensional check
+      - material test
+    - id: MS_Base_Welding
+      description: Base assembly welding
+      process: MIG welding
+      material: Steel
+      cost: 30 CHF
+      time: 1.5 hours
+      equipment: MIG welder, welding fixtures
+      quality_control:
+      - weld inspection
+      - dimensional check
+      - strength test
+  - id: M_Lever
+    manufacturing_steps:
+    - id: MS_Lever_Machining
+      description: Lever machining
+      process: CNC milling
+      material: Steel
+      cost: 40 CHF
+      time: 1.5 hours
+      equipment: CNC mill, cutting tools
+      quality_control:
+      - dimensional inspection
+      - surface finish check
+      - material verification
+  - id: M_Toggle
+    manufacturing_steps:
+    - id: MS_Toggle_Machining
+      description: Toggle mechanism machining
+      process: CNC turning and milling
+      material: Steel
+      cost: 35 CHF
+      time: 1.25 hours
+      equipment: CNC lathe, milling machine
+      quality_control:
+      - dimensional inspection
+      - pivot alignment check
+      - material verification
+  - id: M_Plunger
+    manufacturing_steps:
+    - id: MS_Plunger_Hardening
+      description: Plunger hardening
+      process: Heat treatment
+      material: Hardened steel
+      cost: 25 CHF
+      time: 2 hours
+      equipment: Heat treatment furnace, quenching bath
+      quality_control:
+      - hardness test
+      - dimensional check after treatment
+      - material verification
+    - id: MS_Plunger_Finishing
+      description: Plunger finishing
+      process: Grinding and polishing
+      material: Hardened steel
+      cost: 15 CHF
+      time: 0.5 hours
+      equipment: Surface grinder, polishing tools
+      quality_control:
+      - surface finish measurement
+      - dimensional inspection
+      - hardness verification
+  - id: M_BrakeShoeClamp
+    manufacturing_steps:
+    - id: MS_Clamp_Machining
+      description: Clamp component machining
+      process: CNC milling
+      material: Steel
+      cost: 45 CHF
+      time: 1.75 hours
+      equipment: CNC mill, cutting tools
+      quality_control:
+      - dimensional inspection
+      - surface finish check
+      - material verification
+    - id: MS_Clamp_Assembly
+      description: Clamp assembly
+      process: Mechanical assembly
+      material: Steel, fasteners
+      cost: 20 CHF
+      time: 1 hour
+      equipment: Assembly tools, torque wrench
+      quality_control:
+      - assembly verification
+      - function test
+      - torque check
+  - id: M_RivetGuide
+    manufacturing_steps:
+    - id: MS_Guide_Machining
+      description: Guide component machining
+      process: CNC milling
+      material: Steel
+      cost: 15 CHF
+      time: 0.5 hours
+      equipment: CNC mill, cutting tools
+      quality_control:
+      - dimensional inspection
+      - surface finish check
+      - material verification
+  - id: M_Worktop
+    manufacturing_steps:
+    - id: MS_Worktop_Cutting
+      description: Worktop cutting
+      process: CNC cutting
+      material: Hardwood
+      cost: 25 CHF
+      time: 1 hour
+      equipment: CNC router, cutting tools
+      quality_control:
+      - dimensional inspection
+      - surface finish check
+      - material verification
+    - id: MS_Worktop_Finishing
+      description: Worktop finishing
+      process: Sanding and sealing
+      material: Hardwood
+      cost: 10 CHF
+      time: 0.5 hours
+      equipment: Sanding machine, sealant
+      quality_control:
+      - surface finish measurement
+      - dimensional check
+      - moisture content test
+  assembly:
+  - id: AS_MainAssembly
+    description: Main tool assembly
+    steps:
+    - attach base to worktop using bolts
+    - install lever pivot mechanism
+    - mount toggle mechanism to base
+    - connect lever to toggle
+    - install plunger mechanism
+    - mount brake shoe clamp
+    - install rivet guide
+    time: 2 hours
+    cost: 50 CHF
+    equipment: Assembly tools, torque wrench
+    quality_control:
+    - function test
+    - alignment check
+    - torque verification
+  cost_summary:
+  - id: CS_MaterialCosts
+    description: Material costs
+    items:
+    - steel: 100 CHF
+    - hardwood: 35 CHF
+    - fasteners: 15 CHF
+    - other: 10 CHF
+    total: 160 CHF
+  - id: CS_ManufacturingCosts
+    description: Manufacturing costs
+    items:
+    - casting: 80 CHF
+    - machining: 135 CHF
+    - heat treatment: 25 CHF
+    - grinding: 15 CHF
+    - assembly: 70 CHF
+    total: 325 CHF
+  - id: CS_TotalCost
+    description: Total manufacturing cost
+    items:
+    - material: 160 CHF
+    - manufacturing: 325 CHF
+    total: 485 CHF
+  timeline:
+  - id: T_ProductionSchedule
+    description: Production timeline
+    phases:
+    - casting: 2 days
+    - machining: 3 days
+    - heat treatment: 1 day
+    - grinding: 0.5 days
+    - assembly: 1 day
+    - testing: 0.5 days
+    total: 8 days
+  quality_control:
+  - id: QC_FinalTesting
+    description: Final quality control testing
+    tests:
+    - force verification: 500 N ±50 N
+    - stroke measurement: 3-4 mm
+    - ergonomic assessment: ≤200 N operating force
+    - durability test: 1000 cycles
+    - dimensional inspection: all critical dimensions
+    - material verification: all steel components
+  assumptions:
+  - The repair workshop's machining facilities have the necessary equipment for all
+    manufacturing processes
+  - All materials are readily available from local suppliers
+  - The workforce has the required skills for all manufacturing processes
+  - No unexpected delays occur during production
+  open_questions:
+  - Are there any specific surface finish requirements for the tool?
+  - What is the preferred method for packaging and shipping the completed tools?
+  - Are there any specific documentation requirements for the manufacturing process?
+  - What is the expected lead time for material procurement?

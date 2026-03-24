@@ -1,0 +1,376 @@
+```yaml
+black_box:
+  id: BB1
+  description: Hand-operated rivet-setting tool for brake linings
+  inputs:
+    - IN1: Brake shoe + lining assembly
+    - IN2: Rivet
+    - IN3: Human actuation input (hand/foot)
+    - IN4: Worktop support
+  outputs:
+    - OUT1: Riveted brake shoe assembly
+    - OUT2: Formed rivet heads (closure)
+    - OUT3: Waste/displacement material
+  flows:
+    - flow_id: F1
+      description: Brake shoe + lining assembly
+      direction: input
+      source: IN1
+      target: BB1
+    - flow_id: F2
+      description: Rivet
+      direction: input
+      source: IN2
+      target: BB1
+    - flow_id: F3
+      description: Human actuation input
+      direction: input
+      source: IN3
+      target: BB1
+    - flow_id: F4
+      description: Worktop support
+      direction: input
+      source: IN4
+      target: BB1
+    - flow_id: F5
+      description: Riveted brake shoe assembly
+      direction: output
+      source: BB1
+      target: OUT1
+    - flow_id: F6
+      description: Formed rivet heads (closure)
+      direction: output
+      source: BB1
+      target: OUT2
+    - flow_id: F7
+      description: Waste/displacement material
+      direction: output
+      source: BB1
+      target: OUT3
+  functions:
+    - function_id: BF1
+      description: Position brake shoe + lining assembly
+      input_flows:
+        - F1
+      output_flows:
+        - F1
+      control_flows: []
+    - function_id: BF2
+      description: Position rivet
+      input_flows:
+        - F2
+      output_flows:
+        - F2
+      control_flows: []
+    - function_id: BF3
+      description: Apply riveting force
+      input_flows:
+        - F3
+      output_flows:
+        - F5
+      control_flows: []
+    - function_id: BF4
+      description: Form rivet heads (closure)
+      input_flows:
+        - F2
+        - F5
+      output_flows:
+        - F6
+        - F7
+      control_flows: []
+    - function_id: BF5
+      description: Support workpiece/tool
+      input_flows:
+        - F4
+      output_flows:
+        - F5
+      control_flows: []
+    - function_id: BF6
+      description: Guide rivet insertion
+      input_flows:
+        - F2
+      output_flows:
+        - F2
+      control_flows: []
+
+function_structure:
+  id: FS1
+  description: Functional decomposition of hand-operated rivet-setting tool
+  functions:
+    - function_id: F1
+      description: Position brake shoe + lining assembly
+      type: mechanical
+      input_flows:
+        - F1
+      output_flows:
+        - F1
+      control_flows: []
+    - function_id: F2
+      description: Position rivet
+      type: mechanical
+      input_flows:
+        - F2
+      output_flows:
+        - F2
+      control_flows: []
+    - function_id: F3
+      description: Apply riveting force
+      type: mechanical
+      input_flows:
+        - F3
+      output_flows:
+        - F5
+      control_flows: []
+    - function_id: F4
+      description: Form rivet heads (closure)
+      type: mechanical
+      input_flows:
+        - F2
+        - F5
+      output_flows:
+        - F6
+        - F7
+      control_flows: []
+    - function_id: F5
+      description: Support workpiece/tool
+      type: structural
+      input_flows:
+        - F4
+      output_flows:
+        - F5
+      control_flows: []
+    - function_id: F6
+      description: Guide rivet insertion
+      type: mechanical
+      input_flows:
+        - F2
+      output_flows:
+        - F2
+      control_flows: []
+  flow_links:
+    - flow_id: F1
+      description: Brake shoe + lining assembly
+      direction: input
+      source: F1
+      target: F1
+    - flow_id: F2
+      description: Rivet
+      direction: input
+      source: F2
+      target: F2
+    - flow_id: F3
+      description: Human actuation input
+      direction: input
+      source: F3
+      target: F3
+    - flow_id: F4
+      description: Worktop support
+      direction: input
+      source: F4
+      target: F5
+    - flow_id: F5
+      description: Riveted brake shoe assembly
+      direction: output
+      source: F3, F5
+      target: F5
+    - flow_id: F6
+      description: Formed rivet heads (closure)
+      direction: output
+      source: F4
+      target: F6
+    - flow_id: F7
+      description: Waste/displacement material
+      direction: output
+      source: F4
+      target: F7
+
+working_principles:
+  - wp_id: WP1
+    function_id: F1
+    description: Mechanical positioning via adjustable fixture
+    principle: Physical constraint and alignment
+    category: mechanical
+  - wp_id: WP2
+    function_id: F2
+    description: Mechanical positioning via rivet guide
+    principle: Physical constraint and alignment
+    category: mechanical
+  - wp_id: WP3
+    function_id: F3
+    description: Mechanical force transmission via lever/cam
+    principle: Mechanical advantage
+    category: mechanical
+  - wp_id: WP4
+    function_id: F4
+    description: Plastic deformation via forming tool
+    principle: Material deformation
+    category: mechanical
+  - wp_id: WP5
+    function_id: F5
+    description: Rigid support via base/frame
+    principle: Structural support
+    category: structural
+  - wp_id: WP6
+    function_id: F6
+    description: Mechanical guidance via channel/guide
+    principle: Physical constraint
+    category: mechanical
+
+concept_variants:
+  - cv_id: CV1
+    description: Lever-actuated bench-mounted tool
+    working_principles:
+      - WP1
+      - WP2
+      - WP3
+      - WP4
+      - WP5
+      - WP6
+    key_features:
+      - Lever mechanism for force amplification
+      - Adjustable fixture for shoe positioning
+      - Rivet guide for alignment
+      - Rigid base for stability
+      - Forming tool for head closure
+    advantages:
+      - Simple mechanical design
+      - Good force amplification
+      - Stable operation
+    disadvantages:
+      - Requires bench mounting
+      - Limited portability
+  - cv_id: CV2
+    description: Cam-actuated portable tool
+    working_principles:
+      - WP1
+      - WP2
+      - WP3
+      - WP4
+      - WP5
+      - WP6
+    key_features:
+      - Cam mechanism for force application
+      - Compact adjustable fixture
+      - Integrated rivet guide
+      - Self-supporting base
+      - Forming tool for head closure
+    advantages:
+      - More portable than bench-mounted
+      - Smooth force application
+      - Compact design
+    disadvantages:
+      - More complex mechanism
+      - Potentially lower force amplification
+  - cv_id: CV3
+    description: Foot-operated hydraulic tool
+    working_principles:
+      - WP1
+      - WP2
+      - WP3
+      - WP4
+      - WP5
+      - WP6
+    key_features:
+      - Hydraulic force amplification
+      - Adjustable fixture for shoe positioning
+      - Rivet guide for alignment
+      - Rigid base for stability
+      - Forming tool for head closure
+    advantages:
+      - High force capability
+      - Consistent force application
+      - Suitable for high-volume work
+    disadvantages:
+      - More complex and costly
+      - Requires hydraulic components
+      - Less portable
+
+concept_selection:
+  - cv_id: CV1
+    evaluation:
+      - criterion_id: EC1
+        score: 3
+        rationale: Moderate speed, suitable for workshop use
+      - criterion_id: EC2
+        score: 4
+        rationale: Good quality with proper adjustment
+      - criterion_id: EC3
+        score: 4
+        rationale: Stable on bench, quick setup
+      - criterion_id: EC4
+        score: 4
+        rationale: Simple design, easy maintenance
+      - criterion_id: EC5
+        score: 2
+        rationale: Requires bench mounting, less portable
+      - criterion_id: EC6
+        score: 4
+        rationale: Simple mechanism, reliable
+      - criterion_id: EC7
+        score: 4
+        rationale: Safe operation with proper design
+      - criterion_id: EC8
+        score: 4
+        rationale: Low cost, simple manufacturing
+    overall_score: 3.4
+    selection: Recommended
+    rationale: Best balance of cost, reliability, and workshop suitability
+  - cv_id: CV2
+    evaluation:
+      - criterion_id: EC1
+        score: 3
+        rationale: Moderate speed, portable design
+      - criterion_id: EC2
+        score: 3
+        rationale: Good quality with proper adjustment
+      - criterion_id: EC3
+        score: 3
+        rationale: Self-supporting but less stable
+      - criterion_id: EC4
+        score: 3
+        rationale: More complex than CV1
+      - criterion_id: EC5
+        score: 4
+        rationale: Portable design
+      - criterion_id: EC6
+        score: 3
+        rationale: More complex mechanism
+      - criterion_id: EC7
+        score: 3
+        rationale: Safe but more components
+      - criterion_id: EC8
+        score: 3
+        rationale: Moderate cost
+    overall_score: 3.1
+    selection: Alternative
+    rationale: Good portability but higher complexity
+  - cv_id: CV3
+    evaluation:
+      - criterion_id: EC1
+        score: 4
+        rationale: High speed, suitable for volume work
+      - criterion_id: EC2
+        score: 4
+        rationale: Consistent quality
+      - criterion_id: EC3
+        score: 3
+        rationale: Requires setup but stable
+      - criterion_id: EC4
+        score: 2
+        rationale: Complex hydraulic system
+      - criterion_id: EC5
+        score: 2
+        rationale: Less portable due to hydraulics
+      - criterion_id: EC6
+        score: 3
+        rationale: Reliable but more components
+      - criterion_id: EC7
+        score: 3
+        rationale: Safe but more potential failure points
+      - criterion_id: EC8
+        score: 2
+        rationale: Higher cost due to hydraulics
+    overall_score: 2.9
+    selection: Not recommended
+    rationale: Over-engineered for workshop use, higher cost
+```

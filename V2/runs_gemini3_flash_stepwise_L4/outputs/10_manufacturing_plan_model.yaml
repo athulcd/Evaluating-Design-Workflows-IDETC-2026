@@ -1,0 +1,101 @@
+manufacturing_plan:
+  module_plans:
+  - module_id: M1
+    material_candidates:
+    - S235JR Structural Steel (Lever and Links)
+    - 1.2210 (115CrV3) Silver Steel or O1 Tool Steel (Pivot Pins)
+    process_candidates:
+    - Sawing and Drilling (Lever arm)
+    - Milling (Linkage ends and pivot slots)
+    - Turning (Pivot pins)
+    - Manual Assembly (Press-fit or circlip retention for pins)
+    rationale: 'S235 steel provides the necessary modulus of elasticity and yield
+      strength (235 MPa) to handle the 200 N operator input (LC2) and 500 N riveting
+      load (LC1) while keeping material costs low to meet R9. Hardened silver steel
+      for pins is required to mitigate wear over the 87,500-cycle service life (LC3,
+      R10).
+
+      '
+    critical_characteristics:
+    - Pivot center-to-center distance (Tolerance critical for R2 stroke accuracy)
+    - Pin surface finish (Wear resistance for R10)
+    risks:
+    - High bending moments on the lever (LC2) could lead to permanent deformation
+      if undersized.
+    - Pivot pin shear failure if material quality is inconsistent.
+  - module_id: M2
+    material_candidates:
+    - 1.2510 (O1) or 1.2379 (D2) Tool Steel
+    process_candidates:
+    - Turning (Punch and Die profiles)
+    - Drilling (Recessed die pocket WP4)
+    - Heat Treatment (Hardening and Tempering to 54-58 HRC)
+    - Surface Grinding (Optional, for precision height adjustment)
+    rationale: 'Tool steel is essential for the forming tools (F5) to maintain geometry
+      under the 500 N load (R1) and ensure a 5-year service life (R10). The hardness
+      range (KDP3) prevents mushrooming of the punch and die faces during repeated
+      contact with copper rivets (R5).
+
+      '
+    critical_characteristics:
+    - Hardness (54-58 HRC)
+    - Concentricity between punch and die
+    - Die pocket depth (Rivet alignment WP4)
+    risks:
+    - Brittle failure of the punch if over-hardened (Safety critical).
+    - Inconsistent rivet head formation if the die pocket is not matched to DIN 7338
+      (R5).
+  - module_id: M3
+    material_candidates:
+    - S235JR Structural Steel
+    - C45 Medium Carbon Steel (for the rail)
+    process_candidates:
+    - Milling (T-slot or sliding rail interface IF4)
+    - Drilling and Tapping (Locking mechanism)
+    - Surface Finishing (To ensure smooth sliding)
+    rationale: 'Steel construction ensures the support can withstand the 500 N vertical
+      load without deflection (R1). Milling the sliding interface is necessary to
+      provide the 75 mm travel range required to accommodate the 250-400 mm diameter
+      range (R3, KDP2).
+
+      '
+    critical_characteristics:
+    - Perpendicularity of the support surface to the punch axis
+    - Locking force of the adjustment screw (RM2)
+    risks:
+    - Sliding support shifting during operation (RM2), leading to misaligned rivets.
+    - Surface corrosion in a workshop environment (EI3) affecting adjustability.
+  - module_id: M4
+    material_candidates:
+    - S235JR Steel Plate (12-15 mm thickness)
+    - Standard C-Channel or Square Hollow Section
+    process_candidates:
+    - Welding (C-frame construction)
+    - Drilling (Base plate mounting holes)
+    - Painting/Coating (Corrosion protection)
+    rationale: 'A thick steel base plate (KDP4) is required to distribute the reaction
+      forces (LC4) to the wooden worktop (R14). A welded construction is the most
+      cost-effective way to achieve the required frame stiffness (B2) within the 400
+      CHF budget (R9).
+
+      '
+    critical_characteristics:
+    - Frame stiffness (Minimum Moment of Inertia 2.68 cm^4)
+    - Base plate flatness
+    risks:
+    - Weld distortion during fabrication could misalign the actuation (M1) and tooling
+      (M2) modules.
+    - Insufficient base plate thickness leading to wood compression/instability (LC4).
+  assumptions:
+  - The in-house machining facility has a hardening furnace capable of reaching 800-1000°C
+    for tool steel.
+  - Standard S235 steel stock is readily available and included in the 400 CHF cost
+    target.
+  - Welding equipment and qualified personnel are available in-house.
+  open_questions:
+  - What is the specific yield strength of the DIN 7338 copper rivets to confirm the
+    500 N force is sufficient for the 5 mm variant?
+  - Is there a specific bolt pattern required for the base plate to match existing
+    workshop benches?
+  - Does the workshop prefer a specific corrosion protection (e.g., powder coating
+    vs. simple industrial paint)?

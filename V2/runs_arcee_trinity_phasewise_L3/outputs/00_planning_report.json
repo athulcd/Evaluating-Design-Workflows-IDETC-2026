@@ -1,0 +1,10 @@
+{
+  "phase_key": "planning",
+  "expected_top_level_keys": [
+    "task_clarification",
+    "requirements_list"
+  ],
+  "errors": [],
+  "warnings": [],
+  "cross_artifact_checks": []
+}

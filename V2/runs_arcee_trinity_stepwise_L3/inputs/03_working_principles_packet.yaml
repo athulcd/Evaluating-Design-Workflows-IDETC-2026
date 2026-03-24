@@ -1,0 +1,652 @@
+case_context:
+  product_system: ''
+  stakeholders: []
+  operating_environment: ''
+  constraints_known: []
+  success_criteria_known: []
+artifacts_available:
+  task_clarification:
+    task_clarification:
+      problem_statement: 'Design a hand-operated rivet-setting tool for riveting brake
+        linings onto brake shoes for internal drum brakes. The tool shall enable workshop
+        riveting with adequate quality and productivity, using typical workshop resources,
+        without damage to components and with safe operation.
+
+        '
+      system_boundary:
+        included:
+        - Tooling to position brake shoe + lining and set rivets (forming/closure
+          heads)
+        - Mechanism to apply riveting force and control stroke/force
+        - Means to position and support the workpiece(s) in the tool
+        - Means to position rivet and/or guide rivet insertion
+        - Means to mount/support tool on worktop (e.g., vice, base, clamp)
+        - Human-powered actuation (hand/foot)
+        excluded:
+        - Manufacture of brake shoes, linings, and rivets
+        - Automated production-line machinery
+        - Brake system testing beyond rivet joint quality
+      stakeholders:
+      - Workshop mechanic / car mechanic (single operator)
+      - Workshop owner (cost, throughput)
+      - End user indirectly (brake safety)
+      operating_conditions:
+      - Workshop environment; typical contaminants (dust, oil) likely
+      - Tool used on a worktop/bench (document notes wood worktop)
+      objectives:
+      - id: O1
+        description: Reliable riveting of brake lining to brake shoe (quality joint)
+        rationale: Primary technical function; safety-critical for brakes
+        measurable_proxy: Rivet head closure and joint integrity within acceptance
+          criteria
+      - id: O2
+        description: One-person operation with acceptable ergonomic effort
+        rationale: Stated one-man operation; hand/foot force limits
+        measurable_proxy: Actuation force within stated maxima
+      - id: O3
+        description: 'Workshop-suitable: portable, robust, low maintenance'
+        rationale: Service life, transport, reliability targets
+        measurable_proxy: Durability/service life targets; minimal maintenance
+      - id: O4
+        description: Meet cost and delivery targets for a workshop tool
+        rationale: Manufacturing cost and planning requirements stated
+        measurable_proxy: Manufacturing cost <= target; delivery schedule
+      evaluation_criteria:
+      - id: EC1
+        description: Speed of riveting
+        metric: Cycle time per rivet / rivets per day
+        target_or_direction: Higher throughput preferred
+      - id: EC2
+        description: Quality of riveting
+        metric: Head closure dimension; joint integrity
+        target_or_direction: Meets acceptance with low defects
+      - id: EC3
+        description: Stability and time of operation
+        metric: Setup time; stability on bench
+        target_or_direction: Stable and fast to set up
+      - id: EC4
+        description: Ease of servicing
+        metric: Access, replaceability, maintenance frequency
+        target_or_direction: Easier preferred
+      - id: EC5
+        description: Storage/transportability
+        metric: Mass/volume; portability
+        target_or_direction: More portable preferred
+      - id: EC6
+        description: Reliability
+        metric: Service life; failure rate
+        target_or_direction: Higher preferred
+      - id: EC7
+        description: Safety
+        metric: Pinch/crush hazards; safe operation
+        target_or_direction: No hazards; compliant operation
+      - id: EC8
+        description: Expenditure/cost
+        metric: Manufacturing cost; part count; assembly effort
+        target_or_direction: Lower preferred
+      assumptions:
+      - Primary application is internal drum brakes as shown in the document (internal
+        drum brake sketch).
+      - The tool is bench-mounted and manually actuated, consistent with the case
+        description.
+      open_questions:
+      - ''
+      traceability:
+        derived_from:
+        - Case introduction and problem assignment (pp. 1-3)
+        - Design specification sheets (pp. 4-5)
+        - Concept evaluation criteria table (p. 14)
+  requirements_list:
+    requirements_list:
+      requirements:
+      - id: R1
+        statement: Rivet brake lining onto brake shoe for internal drum brakes (workshop
+          operation).
+        type: functional
+        priority: MUST
+        metric: Successful rivet set without damage
+        target: All specified brake shoe/lining sizes
+        verification: demonstration
+        source: Design specification (pp. 4-5)
+      - id: R2
+        statement: Brake drum internal diameter range shall be 250-400 mm (application
+          context).
+        type: interface
+        priority: MUST
+        metric: Supported brake shoe sizes
+        target: D = 250-400 mm
+        verification: inspection
+        source: Design specification sheet 1/2 (p. 4)
+      - id: R3
+        statement: Brake shoe width range shall be 80-400 mm.
+        type: interface
+        priority: MUST
+        metric: Supported width
+        target: B = 80-400 mm
+        verification: inspection
+        source: Design specification sheet 1/2 (p. 4)
+      - id: R4
+        statement: Brake shoe thickness range shall be 6-8 mm.
+        type: interface
+        priority: MUST
+        metric: Supported shoe thickness
+        target: 6-8 mm
+        verification: inspection
+        source: Design specification sheet 1/2 (p. 4)
+      - id: R5
+        statement: Maximum total thickness of worn parts shall be <= 45 mm (as stated).
+        type: interface
+        priority: MUST
+        metric: Stack thickness capacity
+        target: <= 45 mm
+        verification: inspection
+        source: Data list (p. 3; scan partially legible)
+      - id: R6
+        statement: Minimum distance from rivet to edge shall be >= 4 mm.
+        type: manufacturing
+        priority: MUST
+        metric: Edge distance
+        target: '>= 4 mm'
+        verification: inspection
+        source: Data list (p. 3; legible)
+      - id: R7
+        statement: Rivet shank diameter shall be 3-5 mm.
+        type: interface
+        priority: MUST
+        metric: Rivet compatibility
+        target: d = 3-5 mm
+        verification: inspection
+        source: Data list (p. 3; legible)
+      - id: R8
+        statement: Riveting force capability shall be at least 500 N (experiment reference).
+        type: performance
+        priority: MUST
+        metric: Max forming force
+        target: '>= 500 N'
+        verification: test
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R9
+        statement: Rivet head closure target shall be about 4 mm.
+        type: performance
+        priority: MUST
+        metric: Head closure dimension
+        target: ~ 4 mm
+        verification: test
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R10
+        statement: 'Productivity: capability up to 70 rivets/day.'
+        type: performance
+        priority: WISH
+        metric: Rivets/day
+        target: Up to 70 per day
+        verification: demonstration
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R11
+        statement: One-man operation (car mechanic) shall be possible.
+        type: ergonomics
+        priority: MUST
+        metric: Single operator usability
+        target: 'Yes'
+        verification: demonstration
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R12
+        statement: 'Environment: indoor workshop; tool operable on a worktop (wood).'
+        type: environment
+        priority: MUST
+        metric: Bench operation compatibility
+        target: Stable on worktop
+        verification: demonstration
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R13
+        statement: Service life shall be about 5 years.
+        type: reliability
+        priority: WISH
+        metric: Service life
+        target: 5 years
+        verification: analysis
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R14
+        statement: Good transportability (portable).
+        type: ergonomics
+        priority: WISH
+        metric: Mass/volume; portability
+        target: Portable
+        verification: demonstration
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R15
+        statement: Reliable operation.
+        type: reliability
+        priority: MUST
+        metric: Failure-free riveting under nominal use
+        target: No critical failures during verification
+        verification: test
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R16
+        statement: Maintenance-free as far as possible.
+        type: reliability
+        priority: WISH
+        metric: Maintenance interval
+        target: Minimized
+        verification: analysis
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R17
+        statement: 'Ergonomics: hand force <= 200 N OR foot force <= 400 N.'
+        type: ergonomics
+        priority: MUST
+        metric: Actuation force
+        target: Hand <= 200 N; Foot <= 400 N
+        verification: test
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R18
+        statement: 'Safety: avoid accidents; no special accidents in operation.'
+        type: safety
+        priority: MUST
+        metric: Hazard assessment
+        target: No pinch/crush hazards in intended use
+        verification: inspection
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R19
+        statement: 'Delivery planning: delivery deadline about 3 months (4 max).'
+        type: schedule
+        priority: WISH
+        metric: Lead time
+        target: 3 months (<= 4 months)
+        verification: analysis
+        source: Design specification sheet 2/2 (p. 5)
+      - id: R20
+        statement: Manufacturing cost shall be <= SwFr 400 (max).
+        type: cost
+        priority: WISH
+        metric: Manufacturing cost
+        target: <= SwFr 400
+        verification: analysis
+        source: Design specification sheet 2/2 (p. 5)
+      assumptions:
+      - ''
+      open_questions:
+      - ''
+      traceability:
+        derived_from:
+        - task_clarification
+        - Design specification sheets (pp. 4-5)
+  black_box:
+    black_box:
+      overall_function: Transform brake shoe, lining, and rivet into a riveted brake
+        assembly with proper head closure and joint integrity.
+      flows:
+        inputs:
+        - id: IN1
+          type: material
+          name: Brake shoe
+          description: Steel brake shoe component, 6-8 mm thick, 80-400 mm wide, for
+            internal drum brakes (D=250-400 mm).
+        - id: IN2
+          type: material
+          name: Brake lining
+          description: Friction lining material to be riveted onto brake shoe.
+        - id: IN3
+          type: material
+          name: Rivet
+          description: Steel rivet, 3-5 mm shank diameter, to fasten lining to shoe.
+        - id: IN4
+          type: energy
+          name: Manual actuation force
+          description: Human-applied force via hand or foot (≤200 N hand, ≤400 N foot)
+            to drive riveting mechanism.
+        - id: IN5
+          type: signal
+          name: Operator control
+          description: User input to initiate and control riveting stroke.
+        outputs:
+        - id: OUT1
+          type: material
+          name: Riveted brake assembly
+          description: Completed brake shoe with lining securely riveted, rivet head
+            closure ~4 mm, ready for installation.
+        - id: OUT2
+          type: signal
+          name: Completion indication
+          description: Feedback to operator that riveting process is complete.
+      external_interactions:
+      - id: EI1
+        description: Workshop environment with typical contaminants (dust, oil) on
+          worktop; tool must remain stable and functional.
+        related_requirements:
+        - R12
+        - R17
+        - R18
+      assumptions:
+      - Tool is bench-mounted and manually actuated as described in case context.
+      - Primary application is internal drum brakes with specified dimensions.
+      - Workshop environment is indoor with typical contaminants.
+      open_questions:
+      - Specific mechanism for rivet insertion and head formation not defined.
+      - Whether tool includes automatic or manual rivet feeding.
+      - Exact stroke length and force profile required for consistent riveting.
+      traceability:
+        derived_from_requirements:
+        - R1 (functional requirement for riveting)
+        - R2-R7 (interface requirements for component dimensions)
+        - R8-R9 (performance requirements for force and head closure)
+        - R11 (ergonomic requirement for one-person operation)
+        - R12 (environmental requirement for workshop use)
+        - R17 (ergonomic force limits)
+        - R18 (safety requirement)
+  function_structure:
+    function_structure:
+      subfunctions:
+      - id: F1
+        verb_noun: Position brake shoe and lining
+        description: Securely hold brake shoe and lining in correct alignment for
+          riveting.
+        input_flows:
+        - IN1
+        - IN2
+        output_flows:
+        - WP1
+        allocated_requirements:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        - R6
+      - id: F2
+        verb_noun: Position and insert rivet
+        description: Place rivet in correct location and orientation relative to lining
+          and shoe.
+        input_flows:
+        - IN3
+        - WP1
+        output_flows:
+        - WP2
+        allocated_requirements:
+        - R1
+        - R7
+        - R6
+      - id: F3
+        verb_noun: Apply riveting force
+        description: Generate and transmit manual force to deform rivet and form closure
+          head.
+        input_flows:
+        - IN4
+        - WP2
+        output_flows:
+        - WP3
+        allocated_requirements:
+        - R8
+        - R9
+        - R11
+        - R17
+      - id: F4
+        verb_noun: Control riveting stroke
+        description: Guide and limit force application to achieve proper head closure
+          without damage.
+        input_flows:
+        - IN5
+        - WP3
+        output_flows:
+        - WP4
+        allocated_requirements:
+        - R1
+        - R9
+        - R18
+      - id: F5
+        verb_noun: Mount and stabilize tool
+        description: Secure tool to worktop to provide stable platform during operation.
+        input_flows:
+        - EI1
+        output_flows:
+        - WP5
+        allocated_requirements:
+        - R12
+        - R18
+      - id: F6
+        verb_noun: Provide completion feedback
+        description: Signal to operator that riveting process is complete.
+        input_flows:
+        - WP4
+        output_flows:
+        - OUT2
+        allocated_requirements:
+        - R1
+        - R18
+      - id: F7
+        verb_noun: Release completed assembly
+        description: Remove riveted brake assembly from tool for use or further processing.
+        input_flows:
+        - WP4
+        output_flows:
+        - OUT1
+        allocated_requirements:
+        - R1
+      hierarchy:
+      - parent: F0
+        children:
+        - F1
+        - F2
+        - F3
+        - F4
+        - F5
+        - F6
+        - F7
+      connections:
+      - from_function: F1
+        to_function: F2
+        flow_id: WP1
+      - from_function: F2
+        to_function: F3
+        flow_id: WP2
+      - from_function: F3
+        to_function: F4
+        flow_id: WP3
+      - from_function: F4
+        to_function: F6
+        flow_id: WP4
+      - from_function: F4
+        to_function: F7
+        flow_id: WP4
+      - from_function: F5
+        to_function: F1
+        flow_id: WP5
+      - from_function: F5
+        to_function: F3
+        flow_id: WP5
+      - from_function: F5
+        to_function: F4
+        flow_id: WP5
+      completeness_checks:
+        flow_conservation_notes: All material and energy flows from black box are
+          accounted for in subfunctions. Workpiece flows (WP1-WP4) track progression
+          from positioning through completion.
+        missing_functions_suspected: []
+      assumptions:
+      - Tool is bench-mounted and manually actuated as described in case context.
+      - Primary application is internal drum brakes with specified dimensions.
+      - Workshop environment is indoor with typical contaminants.
+      open_questions:
+      - Specific mechanism for rivet insertion and head formation not defined.
+      - Whether tool includes automatic or manual rivet feeding.
+      - Exact stroke length and force profile required for consistent riveting.
+      traceability:
+        derived_from_black_box: true
+  working_principles:
+    working_principles:
+      principles:
+      - id: WP1
+        function_id: F1
+        principle_name: Adjustable V-block and clamp system
+        physical_effect_or_mechanism: Mechanical constraint using angled surfaces
+          and clamping force to hold components in position
+        key_parameters:
+        - V-block angle (typically 90°)
+        - Clamp force (manual or spring-loaded)
+        - Material hardness and friction coefficient
+        advantages:
+        - Simple, robust, and easy to manufacture
+        - Accommodates various shoe widths (80-400 mm) with adjustable spacing
+        - Provides stable positioning during riveting
+        - Low cost and minimal maintenance
+        disadvantages:
+        - May require manual adjustment between different shoe sizes
+        - Potential for component movement if clamp force insufficient
+        - Limited to flat or slightly curved shoe geometries
+        risks:
+        - Inadequate clamping could lead to misalignment and poor rivet quality
+        - Wear on V-block surfaces over time may reduce positioning accuracy
+        impacted_requirements:
+        - R1 (reliable riveting requires stable positioning)
+        - R2 (supports 250-400 mm brake drum range through adjustability)
+        - R3 (accommodates 80-400 mm shoe width)
+        - R4 (supports 6-8 mm thickness)
+        - R5 (handles up to 45 mm total stack thickness)
+        - R18 (stable positioning reduces accident risk)
+      - id: WP2
+        function_id: F2
+        principle_name: Spring-loaded rivet guide with magnetic retention
+        physical_effect_or_mechanism: Magnetic force combined with mechanical guide
+          to position and hold rivet before insertion
+        key_parameters:
+        - Magnetic field strength (N force)
+        - Guide channel dimensions (3-5 mm diameter)
+        - Spring preload force
+        - Friction coefficient between rivet and guide
+        advantages:
+        - Ensures consistent rivet placement and orientation
+        - Allows single-handed operation for rivet loading
+        - Reduces risk of rivet dropping or misplacement
+        - Compatible with various rivet sizes (3-5 mm)
+        disadvantages:
+        - Magnetic interference with steel components possible
+        - Additional complexity and part count
+        - Potential for magnetic particles to accumulate
+        risks:
+        - Insufficient magnetic force could lead to rivet displacement
+        - Guide wear could affect positioning accuracy over time
+        impacted_requirements:
+        - R1 (proper rivet positioning critical for quality joint)
+        - R7 (supports 3-5 mm rivet shank diameter)
+        - R6 (ensures minimum 4 mm edge distance through consistent placement)
+        - R18 (reduces handling hazards)
+      - id: WP3
+        function_id: F3
+        principle_name: Compound lever mechanical advantage system
+        physical_effect_or_mechanism: Lever mechanics to amplify manual force (F =
+          ma, torque = force × distance)
+        key_parameters:
+        - Lever arm ratios (input to output)
+        - Fulcrum position and material strength
+        - Mechanical advantage factor (target: 3-5×)
+        advantages:
+        - Achieves 500 N+ force within ergonomic limits (≤200 N hand, ≤400 N foot)
+        - Simple, reliable, and easy to maintain
+        - Provides good force control and feedback
+        - Cost-effective compared to hydraulic systems
+        disadvantages:
+        - Requires physical space for lever mechanism
+        - Limited stroke length may affect versatility
+        - Potential for user fatigue with repeated operation
+        risks:
+        - Mechanical failure at fulcrum under high loads
+        - Inconsistent force application if lever not properly positioned
+        impacted_requirements:
+        - R8 (achieves ≥500 N force capability)
+        - R9 (provides controlled force for ~4 mm head closure)
+        - R11 (enables one-person operation)
+        - R17 (keeps actuation force within ergonomic limits)
+        - R18 (mechanical design can eliminate pinch points)
+      - id: WP4
+        function_id: F4
+        principle_name: Adjustable stroke limiter with positive stop
+        physical_effect_or_mechanism: Mechanical stop to control maximum displacement
+          and ensure consistent head closure
+        key_parameters:
+        - Stop position adjustment range (0-10 mm)
+        - Material hardness and wear resistance
+        - Clearance between moving parts
+        advantages:
+        - Ensures consistent ~4 mm head closure across multiple operations
+        - Prevents over-compression and component damage
+        - Simple to adjust for different rivet lengths
+        - Provides tactile feedback when stop is reached
+        disadvantages:
+        - Requires manual adjustment between different rivet lengths
+        - Potential for stop to shift during operation if not secured
+        risks:
+        - Incorrect stop setting could result in insufficient or excessive head closure
+        - Wear on stop surface could affect precision over time
+        impacted_requirements:
+        - R1 (consistent head closure ensures quality joint)
+        - R9 (achieves ~4 mm head closure target)
+        - R18 (prevents over-compression accidents)
+      - id: WP5
+        function_id: F5
+        principle_name: C-clamp or G-clamp mounting system
+        physical_effect_or_mechanism: Screw mechanism to generate clamping force for
+          tool mounting
+        key_parameters:
+        - Thread pitch and diameter
+        - Clamping force capacity (target: '>100 N)'
+        - Base plate dimensions and material
+        advantages:
+        - Provides stable mounting on various worktop surfaces
+        - Easy to install and remove
+        - Adjustable to different bench thicknesses
+        - Low cost and widely available
+        disadvantages:
+        - May leave marks on worktop surface
+        - Requires manual tightening for each setup
+        - Potential for loosening during operation if not properly secured
+        risks:
+        - Insufficient clamping force could lead to tool movement during operation
+        - Base plate flexing under load could affect riveting quality
+        impacted_requirements:
+        - R12 (ensures stable operation on worktop)
+        - R18 (stable mounting reduces accident risk)
+        - R5 (supports up to 45 mm stack height with adequate clearance)
+      - id: WP6
+        function_id: F6
+        principle_name: Audible click mechanism with spring release
+        physical_effect_or_mechanism: Mechanical energy release through spring-loaded
+          component creating audible signal
+        key_parameters:
+        - Spring constant and preload
+        - Trigger force threshold
+        - Acoustic frequency and amplitude
+        advantages:
+        - Provides clear, immediate feedback when riveting is complete
+        - No external power source required
+        - Simple, reliable, and cost-effective
+        - Can be integrated with force control mechanism
+        disadvantages:
+        - May be difficult to hear in noisy workshop environments
+        - Additional moving parts that could wear or fail
+        risks:
+        - Spring fatigue could lead to inconsistent feedback
+        - Mechanism could jam if contaminated with dust or oil
+        impacted_requirements:
+        - R1 (confirms completion of quality riveting process)
+        - R18 (audible feedback reduces need for visual confirmation, improving safety)
+      assumptions:
+      - The tool is bench-mounted and manually actuated as described in case context.
+      - Primary application is internal drum brakes with specified dimensions (250-400
+        mm drum, 80-400 mm width, 6-8 mm thickness).
+      - Workshop environment is indoor with typical contaminants (dust, oil) on worktop
+        surfaces.
+      - The riveting process requires ~500 N force to achieve ~4 mm head closure on
+        3-5 mm diameter rivets.
+      - One-person operation is required with ergonomic force limits (≤200 N hand,
+        ≤400 N foot).
+      - The tool must accommodate up to 45 mm total stack thickness including worn
+        parts.
+      open_questions:
+      - What is the exact stroke length required to achieve consistent ~4 mm head
+        closure across different rivet lengths?
+      - Should the tool include automatic or manual rivet feeding, or is manual placement
+        acceptable?
+      - What specific materials and surface treatments are recommended for components
+        exposed to workshop contaminants?
+      - Is there a preferred actuation method (hand lever vs. foot pedal) based on
+        typical workshop workflows?
+      - What are the acceptable tolerances for head closure dimension (±0.5 mm, ±1
+        mm)?

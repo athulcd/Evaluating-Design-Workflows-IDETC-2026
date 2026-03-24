@@ -1,0 +1,8 @@
+{
+  "cur_key": "function_structure",
+  "next_key": "working_principles",
+  "errors": [
+    "Hallucinated/unknown IDs referenced in 'working_principles': ['M10', 'M12']. These IDs are not present in input packet and were not created in the produced artifact."
+  ],
+  "warnings": []
+}

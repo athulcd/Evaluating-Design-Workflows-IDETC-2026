@@ -1,0 +1,93 @@
+concept_selection:
+  criteria_weights:
+    - criterion_id: EC1
+      weight: 0.15
+      justification: Speed of riveting is important for workshop productivity but not the highest priority given the 70 rivets/day target is achievable with most concepts.
+    - criterion_id: EC2
+      weight: 0.20
+      justification: Quality of riveting is critical for brake safety and joint integrity, making it the highest weighted criterion.
+    - criterion_id: EC3
+      weight: 0.10
+      justification: Stability and setup time are important for workshop efficiency but secondary to quality and cost considerations.
+    - criterion_id: EC4
+      weight: 0.10
+      justification: Ease of servicing affects long-term workshop costs and tool availability.
+    - criterion_id: EC5
+      weight: 0.10
+      justification: Storage/transportability is important for workshop flexibility but not critical given the bench-mounted nature.
+    - criterion_id: EC6
+      weight: 0.10
+      justification: Reliability affects tool availability and long-term costs, making it moderately important.
+    - criterion_id: EC7
+      weight: 0.10
+      justification: Safety is important for operator protection and accident prevention.
+    - criterion_id: EC8
+      weight: 0.15
+      justification: Cost is important for workshop investment decisions but secondary to quality and safety requirements.
+  scoring:
+    - concept_id: CV1
+      scores:
+        EC1: 0.7
+        EC2: 0.8
+        EC3: 0.8
+        EC4: 0.9
+        EC5: 0.8
+        EC6: 0.8
+        EC7: 0.8
+        EC8: 0.9
+      notes: "CV1 scores well across most criteria due to its proven mechanical design, low cost, and ease of maintenance. The adjustable V-block system provides good quality while keeping costs low. However, it may be slightly slower than hydraulic alternatives and requires more operator skill for consistent results."
+    - concept_id: CV2
+      scores:
+        EC1: 0.6
+        EC2: 0.9
+        EC3: 0.7
+        EC4: 0.6
+        EC5: 0.7
+        EC6: 0.7
+        EC7: 0.8
+        EC8: 0.5
+      notes: "CV2 excels in quality due to hydraulic force control but scores lower on cost and ease of servicing due to system complexity. The foot pedal operation reduces hand fatigue but may be slower than mechanical alternatives. Hydraulic systems require more maintenance and have higher failure risks."
+    - concept_id: CV3
+      scores:
+        EC1: 0.8
+        EC2: 0.8
+        EC3: 0.6
+        EC4: 0.7
+        EC5: 0.6
+        EC6: 0.7
+        EC6: 0.7
+        EC7: 0.8
+        EC8: 0.4
+      notes: "CV3 offers good productivity through automatic feeding but scores lowest on cost due to multiple interchangeable parts. The modular design improves quality for specific shoe sizes but increases complexity and weight. Maintenance requires managing multiple components and inventory."
+    - concept_id: CV4
+      scores:
+        EC1: 0.6
+        EC2: 0.9
+        EC3: 0.6
+        EC4: 0.5
+        EC5: 0.6
+        EC6: 0.6
+        EC7: 0.8
+        EC8: 0.3
+      notes: "CV4 provides the highest quality through optimal positioning and hydraulic control but scores lowest on cost and ease of servicing. The combination of hydraulic system and multiple cradles creates the most complex and expensive solution. This concept may be over-engineered for the stated requirements."
+  selected_concept_id: CV1
+  selection_rationale: "CV1 is selected as the preferred concept because it provides the best balance of all evaluation criteria while meeting all requirements within the specified constraints. The concept achieves adequate quality (0.8) through proven mechanical principles, maintains excellent cost performance (0.9) within the SwFr 400 target, and offers superior ease of servicing (0.9) due to its simple mechanical design. While CV2 and CV4 provide slightly better quality scores, their significantly higher costs and maintenance requirements make them less suitable for typical workshop environments. CV3's automatic feeding improves productivity but at the expense of much higher cost and complexity that may not be justified for the stated 70 rivets/day target. CV1's proven reliability, low maintenance needs, and cost-effectiveness make it the most practical solution for workshop use, with the added benefit of no external power requirements for enhanced portability."
+  sensitivity_analysis_notes: "The selection is most sensitive to the cost criterion weight. If cost weight increases above 0.20, CV1's advantage becomes even more pronounced. If cost weight decreases below 0.10, CV2 becomes competitive despite its higher cost. The quality criterion weight also significantly impacts the decision - if quality weight increases above 0.25, CV2 or CV4 may become preferable despite cost penalties. The selection is relatively insensitive to changes in the other criteria weights (±0.05) as CV1 maintains consistent mid-range performance across these factors."
+  assumptions:
+    - Workshop environment is indoor with typical contaminants (dust, oil) on worktop surfaces.
+    - Operator can hear audible click in typical workshop noise levels.
+    - Worktop surface can withstand C-clamp pressure without damage or slippage.
+    - No specific requirements for automatic rivet feeding or advanced positioning systems.
+    - Manufacturing cost must remain within SwFr 400 target.
+  open_questions:
+    - What specific materials and surface treatments are recommended for components exposed to workshop contaminants?
+    - What are the acceptable tolerances for head closure dimension (±0.5 mm, ±1 mm)?
+    - Should the tool include automatic or manual rivet feeding, or is manual placement acceptable?
+    - What is the exact stroke length required to achieve consistent ~4 mm head closure across different rivet lengths?
+    - Is there a preferred actuation method (hand lever vs. foot pedal) based on typical workshop workflows?
+  traceability:
+    based_on_concepts:
+      - CV1
+      - CV2
+      - CV3
+      - CV4

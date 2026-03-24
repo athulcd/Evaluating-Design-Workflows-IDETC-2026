@@ -1,0 +1,112 @@
+concept_selection:
+  criteria_weights:
+  - criterion_id: EC1
+    weight: 0.2
+    justification: Speed of riveting is important for workshop productivity, but not
+      the highest priority given the stated target of 70 rivets/day is modest.
+  - criterion_id: EC2
+    weight: 0.2
+    justification: Quality of riveting is critical for brake safety; joint integrity
+      is a must-have.
+  - criterion_id: EC3
+    weight: 0.1
+    justification: Stability and setup time are secondary to core function; the tool
+      will be used on a bench so stability is expected.
+  - criterion_id: EC4
+    weight: 0.1
+    justification: Ease of servicing is a wish-level requirement; the tool should
+      be robust and low-maintenance.
+  - criterion_id: EC5
+    weight: 0.05
+    justification: Storage/transportability is a wish-level requirement; the tool
+      is for workshop use, not field use.
+  - criterion_id: EC6
+    weight: 0.1
+    justification: Reliability is important for a workshop tool; 5-year service life
+      is a wish-level target.
+  - criterion_id: EC7
+    weight: 0.15
+    justification: Safety is a must-have requirement; no special accidents in operation
+      is critical.
+  - criterion_id: EC8
+    weight: 0.1
+    justification: Cost is a wish-level requirement; target is SwFr 400, but not the
+      highest priority.
+  scoring:
+  - concept_id: CV1
+    scores:
+      EC1: 0.6
+      EC2: 0.8
+      EC3: 0.7
+      EC4: 0.9
+      EC5: 0.8
+      EC6: 0.8
+      EC7: 0.6
+      EC8: 0.9
+    notes: Lever press with fixed stop offers simplicity and low cost. Good for quality
+      and servicing, but limited adaptability and potential safety pinch hazards.
+  - concept_id: CV2
+    scores:
+      EC1: 0.4
+      EC2: 0.9
+      EC3: 0.6
+      EC4: 0.7
+      EC5: 0.7
+      EC6: 0.7
+      EC7: 0.8
+      EC8: 0.6
+    notes: Screw-driven press with adjustable stop provides best quality and safety,
+      but slower and more expensive. Good adaptability to different sizes.
+  - concept_id: CV3
+    scores:
+      EC1: 0.5
+      EC2: 0.8
+      EC3: 0.7
+      EC4: 0.8
+      EC5: 0.8
+      EC6: 0.8
+      EC7: 0.7
+      EC8: 0.8
+    notes: Lever press with adjustable stop balances cost and adaptability. Moderate
+      performance across criteria, but adjustment drift is a concern.
+  selected_concept_id: CV3
+  selection_rationale: 'Concept CV3 (lever press with adjustable stop) is selected
+    as the preferred concept. It offers the best balance across the weighted criteria:
+
+    - Quality (EC2): 0.8 - Good quality with standard two-head riveting
+
+    - Safety (EC7): 0.7 - Better than fixed stop due to adjustable clearance
+
+    - Cost (EC8): 0.8 - Lower cost than screw-driven press
+
+    - Adaptability (EC3): 0.7 - Adjustable stop handles variable stack thickness
+
+    - Speed (EC1): 0.5 - Moderate speed, acceptable for 70 rivets/day target
+
+    The concept meets all must-have requirements (R1, R8, R9, R11, R12, R15, R17,
+    R18) and satisfies most wish-level requirements. The main trade-off is the potential
+    for adjustment drift, which can be mitigated with a robust lock mechanism.
+
+    '
+  sensitivity_analysis_notes: 'The selection is sensitive to the weighting of cost
+    (EC8) and safety (EC7). If cost were weighted higher, CV1 might be preferred.
+    If safety were weighted higher, CV2 might be preferred. The adjustable stop in
+    CV3 provides a good compromise between these competing requirements.
+
+    '
+  assumptions:
+  - The adjustable stop can be designed with a reliable lock mechanism to prevent
+    drift
+  - The lever mechanism can be designed to minimize pinch hazards
+  - The tool will be used primarily for the specified brake shoe sizes (250-400 mm
+    diameter, 80-400 mm width)
+  open_questions:
+  - What is the optimal adjustment range for the stop to handle the 6-8 mm shoe thickness
+    and 45 mm total stack thickness?
+  - What lock mechanism provides the best balance of reliability and ease of use?
+  - How can pinch hazards be minimized in the lever linkage design?
+  traceability:
+    based_on_concepts:
+    - CV1: Lever press with fixed hard stop
+    - CV2: Screw/rack-driven press with adjustable stroke stop
+    - CV3: Lever press with adjustable stop

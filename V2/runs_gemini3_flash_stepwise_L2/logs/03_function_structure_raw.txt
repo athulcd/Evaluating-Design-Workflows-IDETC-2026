@@ -1,0 +1,124 @@
+function_structure:
+  subfunctions:
+    - id: F1
+      verb_noun: Position workpiece
+      description: |
+        Supports and aligns the brake shoe and brake lining assembly relative to the riveting axis. 
+        Must accommodate the specified diameter (250-400mm) and width (80-400mm) ranges.
+      input_flows:
+        - IN_M1
+        - IN_M2
+      output_flows:
+        - FLOW_M_POS_WP
+      allocated_requirements:
+        - R2
+        - R3
+        - R4
+        - R5
+    - id: F2
+      verb_noun: Position rivet
+      description: |
+        Guides the rivet into the pre-drilled holes of the lining and shoe and holds it in place for forming.
+      input_flows:
+        - IN_M3
+      output_flows:
+        - FLOW_M_POS_R
+      allocated_requirements:
+        - R6
+        - R7
+    - id: F3
+      verb_noun: Amplify force
+      description: |
+        Converts human mechanical energy (hand or foot) into the required riveting force (>= 500 N) 
+        using a mechanical advantage mechanism (e.g., lever, toggle, or screw).
+      input_flows:
+        - IN_E1
+        - IN_S1
+      output_flows:
+        - FLOW_E_AMP
+      allocated_requirements:
+        - R8
+        - R11
+        - R17
+        - R18
+    - id: F4
+      verb_noun: Form head
+      description: |
+        Applies the amplified force to the rivet shank to create the closure head, 
+        joining the lining to the shoe.
+      input_flows:
+        - FLOW_M_POS_WP
+        - FLOW_M_POS_R
+        - FLOW_E_AMP
+      output_flows:
+        - OUT_M1
+      allocated_requirements:
+        - R1
+        - R9
+        - R15
+    - id: F5
+      verb_noun: Control stroke
+      description: |
+        Limits or regulates the travel of the forming tool to ensure the target head closure 
+        (approx. 4mm) is achieved without damaging the components.
+      input_flows:
+        - IN_S1
+      output_flows:
+        - OUT_S1
+      allocated_requirements:
+        - R9
+        - R18
+    - id: F6
+      verb_noun: Support tool
+      description: |
+        Provides a stable base and mounting interface to the workshop bench, 
+        reacting the forces generated during the riveting process.
+      input_flows: []
+      output_flows:
+        - FLOW_M_STABILITY
+      allocated_requirements:
+        - R12
+        - R14
+        - R20
+  hierarchy:
+    - parent: F0
+      children:
+        - F1
+        - F2
+        - F3
+        - F4
+        - F5
+        - F6
+  connections:
+    - from_function: F1
+      to_function: F4
+      flow_id: FLOW_M_POS_WP
+    - from_function: F2
+      to_function: F4
+      flow_id: FLOW_M_POS_R
+    - from_function: F3
+      to_function: F4
+      flow_id: FLOW_E_AMP
+    - from_function: F6
+      to_function: F1
+      flow_id: FLOW_M_STABILITY
+    - from_function: F6
+      to_function: F3
+      flow_id: FLOW_M_STABILITY
+    - from_function: F6
+      to_function: F4
+      flow_id: FLOW_M_STABILITY
+  completeness_checks:
+    flow_conservation_notes: |
+      All material inputs (shoe, lining, rivets) are accounted for and result in the final assembly. 
+      Energy is amplified and consumed in the forming process. 
+      The support function (F6) provides the necessary reaction forces for the mechanical functions.
+    missing_functions_suspected: []
+  assumptions:
+    - The operator provides the logic for sequencing (IN_S1) and the physical energy (IN_E1).
+    - The tool frame (F6) is rigid enough to maintain alignment under the 500N load.
+    - Rivet holes are pre-existing; the tool does not perform drilling.
+  open_questions:
+    - Does the tool require an integrated depth stop or is the stroke control (F5) purely manual based on operator feel?
+  traceability:
+    derived_from_black_box: true

@@ -1,0 +1,137 @@
+concept_variants:
+  morphological_chart:
+  - function_id: F1
+    options:
+    - WP1_1
+  - function_id: F2
+    options: []
+  - function_id: F3
+    options: []
+  - function_id: F4
+    options: []
+  - function_id: F5
+    options:
+    - WP5_1
+    - WP5_2
+  - function_id: F6
+    options:
+    - WP6_1
+    - WP6_2
+  - function_id: F7
+    options:
+    - WP7_1
+  - function_id: F8
+    options: []
+  - function_id: F9
+    options: []
+  - function_id: F10
+    options: []
+  - function_id: F11
+    options: []
+  concepts:
+  - id: CV1
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_1
+      F6: WP6_1
+      F7: WP7_1
+    architecture_description: 'A bench-mounted riveting tool using a vice-mounted
+      fixture (F1) to hold the brake shoe and lining. Hand force is applied via a
+      lever (F5) to amplify to the required riveting force. A fixed hard stop (F6)
+      controls the stroke to achieve the 4 mm closure target. Riveting is performed
+      using a preform + closure head forming method (F7) with standard DIN 7338 rivets.
+
+      '
+    expected_benefits:
+    - Simple, robust mechanism with few moving parts
+    - Lever amplification provides adequate force within hand force limits
+    - Fixed stop ensures repeatable closure without adjustment
+    - Vice mounting provides stable workholding
+    key_risks:
+    - Pinch hazards at lever pivot and linkage
+    - Deflection under load may reduce closure accuracy
+    - Fixed stop limits adaptability to different thicknesses
+    - Vice availability required
+    requirement_coverage:
+      satisfied:
+      - R1 (riveting function via WP7_1)
+      - R8 (500 N force via WP5_1)
+      - R9 (4 mm closure via WP6_1)
+      - R11 (one-man operation via WP5_1)
+      - R12 (bench mounting via WP1_1)
+      - R15 (reliability via simple mechanism)
+      - R17 (hand force <= 200 N via WP5_1)
+      - R18 (safety via stable fixture)
+      partially_satisfied:
+      - R2, R3, R4, R5 (thickness range limited by fixed stop)
+      - R10 (productivity may be slower due to lever stroke)
+      not_satisfied:
+      - R6, R7 (no specific rivet positioning principle)
+      - R13, R14, R16, R19, R20 (not addressed by current principles)
+    assumptions:
+    - Vice is available in the workshop
+    - Operator can achieve required hand force within limits
+    - Fixed stop setting is appropriate for target applications
+    open_questions:
+    - How is rivet positioning handled in this concept?
+    - Is there a mechanism to verify closure quality (F11)?
+  - id: CV2
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_2
+      F6: WP6_2
+      F7: WP7_1
+    architecture_description: 'A bench-mounted riveting tool using a vice-mounted
+      fixture (F1) to hold the brake shoe and lining. Hand force is applied via a
+      rack-and-pinion mechanism (F5) to amplify to the required riveting force. An
+      adjustable stop (F6) via screw/nut allows adaptation to different thicknesses
+      and closure targets. Riveting is performed using a preform + closure head forming
+      method (F7) with standard DIN 7338 rivets.
+
+      '
+    expected_benefits:
+    - Adjustable stop allows adaptation to different brake shoe thicknesses
+    - Rack-and-pinion provides high force with fine control
+    - Vice mounting provides stable workholding
+    - Adjustable closure target improves versatility
+    key_risks:
+    - Higher part count and cost (screw, rack, pinion)
+    - Wear in screw threads over service life
+    - Operator error in stop adjustment
+    - Slower operation due to screw mechanism
+    requirement_coverage:
+      satisfied:
+      - R1 (riveting function via WP7_1)
+      - R8 (500 N force via WP5_2)
+      - R9 (4 mm closure via WP6_2)
+      - R11 (one-man operation via WP5_2)
+      - R12 (bench mounting via WP1_1)
+      - R15 (reliability via robust mechanism)
+      - R17 (hand force <= 200 N via WP5_2)
+      - R18 (safety via stable fixture)
+      partially_satisfied:
+      - R2, R3, R4, R5 (thickness range supported by adjustable stop)
+      - R10 (productivity may be slower due to screw mechanism)
+      not_satisfied:
+      - R6, R7 (no specific rivet positioning principle)
+      - R13, R14, R16, R19, R20 (not addressed by current principles)
+    assumptions:
+    - Vice is available in the workshop
+    - Operator can achieve required hand force within limits
+    - Adjustable stop is properly set for each application
+    open_questions:
+    - How is rivet positioning handled in this concept?
+    - Is there a mechanism to verify closure quality (F11)?
+    - What is the expected service life of the screw mechanism?
+  open_questions:
+  - How are functions F2 (INSERT and POSITION rivet), F3 (ALIGN work zone), F8 (ENABLE
+    repositioning for next rivet), F9 (ENSURE stability on table), F10 (ENSURE safety),
+    and F11 (VERIFY closed rivets) implemented in these concepts?
+  - Are there additional working principles for rivet positioning and alignment that
+    should be considered?
+  - What are the specific implementation details for the vice-mounted fixture (F1)
+    and how does it accommodate different brake shoe sizes?
+  - How is the adjustable stop (F6) implemented in CV2 and what is its adjustment
+    range?
+  - What are the specific safety features implemented to prevent pinch/crush hazards
+    (F10)?

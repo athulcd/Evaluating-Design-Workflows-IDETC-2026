@@ -1,0 +1,83 @@
+black_box:
+  overall_function: Transform copper rivets (DIN 7338, 3-5 mm) and brake shoe assemblies
+    into securely riveted brake linings by applying a riveting force of ~500 N over
+    a 3-4 mm stroke.
+  flows:
+    inputs:
+    - id: IN1
+      type: material
+      name: Copper rivets
+      description: Annealed copper rivets (DIN 7338) with 3-5 mm shank diameter to
+        be set into brake shoes.
+    - id: IN2
+      type: material
+      name: Brake shoe assembly
+      description: Brake shoes (250-400 mm inside diameter, max 2 kg, 100 mm width)
+        with pre-drilled holes and linings (max 15 mm total thickness).
+    - id: IN3
+      type: energy
+      name: Human input
+      description: Hand or foot force applied by the operator to actuate the tool.
+    outputs:
+    - id: OUT1
+      type: material
+      name: Riveted brake shoe assembly
+      description: Brake shoes with linings securely riveted using copper rivets,
+        ready for installation.
+    - id: OUT2
+      type: energy
+      name: Waste energy
+      description: Heat and vibration generated during the riveting process.
+  external_interactions:
+  - id: EI1
+    description: Interaction with the operator for ergonomic one-man operation, including
+      force application and tool handling.
+    related_requirements:
+    - R7
+    - R8
+    - R12
+  - id: EI2
+    description: Mounting on a wooden worktop for stable operation and storage.
+    related_requirements:
+    - R11
+  - id: EI3
+    description: Daily use in a car repair workshop environment with a workload of
+      ~70 rivets.
+    related_requirements:
+    - R17
+  assumptions:
+  - The workshop’s machining facilities are capable of producing the tool as per the
+    design.
+  - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed state.
+  - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+  - The tool will be used exclusively for riveting brake linings onto internal expanding
+    drum brake shoes.
+  open_questions:
+  - What specific ergonomic guidelines (e.g., working height) must the tool comply
+    with?
+  - Are there any additional safety requirements or certifications needed for the
+    tool?
+  - What is the exact project completion deadline within the 3-4 month timeframe?
+  - Are there any specific material or surface finish requirements for the tool?
+  - What is the expected variability in brake shoe dimensions within the 250-400 mm
+    range?
+  traceability:
+    derived_from_requirements:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    - R6
+    - R7
+    - R8
+    - R9
+    - R10
+    - R11
+    - R12
+    - R13
+    - R14
+    - R15
+    - R16
+    - R17
+    - R18

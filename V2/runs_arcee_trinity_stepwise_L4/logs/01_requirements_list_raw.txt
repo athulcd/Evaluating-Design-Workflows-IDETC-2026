@@ -1,0 +1,170 @@
+requirements_list:
+  requirements:
+    - id: R1
+      statement: The tool must generate a riveting force of approximately 500 N.
+      type: performance
+      priority: MUST
+      metric: Newtons (N)
+      target: 500
+      verification: test
+      source: C4
+    - id: R2
+      statement: The tool must provide a working stroke of 3-4 mm.
+      type: performance
+      priority: MUST
+      metric: Millimeters (mm)
+      target: 3-4
+      verification: test
+      source: C4
+    - id: R3
+      statement: The tool must accommodate brake shoes with an inside diameter of 250-400 mm.
+      type: interface
+      priority: MUST
+      metric: Millimeters (mm)
+      target: 250-400
+      verification: inspection
+      source: C3
+    - id: R4
+      statement: The tool must handle brake shoes up to 2 kg in weight and 100 mm in width.
+      type: interface
+      priority: MUST
+      metric: Kilograms (kg) and millimeters (mm)
+      target: 2 kg, 100 mm
+      verification: inspection
+      source: task_clarification
+    - id: R5
+      statement: The tool must provide a 10 mm clearance from the rivet center to the brake shoe rib.
+      type: interface
+      priority: MUST
+      metric: Millimeters (mm)
+      target: 10
+      verification: inspection
+      source: C5
+    - id: R6
+      statement: The tool must accommodate linings with a total thickness of up to 15 mm.
+      type: interface
+      priority: MUST
+      metric: Millimeters (mm)
+      target: 15
+      verification: inspection
+      source: task_clarification
+    - id: R7
+      statement: The tool must be hand or foot-operated.
+      type: interface
+      priority: MUST
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: task_clarification
+    - id: R8
+      statement: The tool must be ergonomic for one-man operation.
+      type: ergonomics
+      priority: MUST
+      metric: Operating force and working height
+      target: ≤ 200 N (hand) or ≤ 400 N (foot), ergonomic working height
+      verification: test
+      source: O3
+    - id: R9
+      statement: The tool must be reliable and maintenance-free for 5 years.
+      type: reliability
+      priority: MUST
+      metric: Mean time between failures (MTBF)
+      target: > 5 years
+      verification: analysis
+      source: C6
+    - id: R10
+      statement: The tool must be compact and easily transportable.
+      type: performance
+      priority: MUST
+      metric: Weight and volume
+      target: < 10 kg, < 0.05 m³
+      verification: inspection
+      source: O2
+    - id: R11
+      statement: The tool must be suitable for mounting on a wooden worktop.
+      type: interface
+      priority: MUST
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: task_clarification
+    - id: R12
+      statement: The tool must be designed for one-man operation.
+      type: ergonomics
+      priority: MUST
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: task_clarification
+    - id: R13
+      statement: The tool must be manufactured at a cost of under 500 CHF per unit (target 400 CHF).
+      type: cost
+      priority: MUST
+      metric: Swiss Francs (CHF)
+      target: ≤ 500 (target 400)
+      verification: analysis
+      source: C1
+    - id: R14
+      statement: The design must be completed within 3-4 months.
+      type: schedule
+      priority: MUST
+      metric: Months
+      target: ≤ 4 (target 3)
+      verification: inspection
+      source: C2
+    - id: R15
+      statement: The tool must be capable of setting 3-5 mm copper rivets (DIN 7338).
+      type: interface
+      priority: MUST
+      metric: Millimeters (mm)
+      target: 3-5
+      verification: inspection
+      source: task_clarification
+    - id: R16
+      statement: The tool must handle 10-16 rivets per brake shoe.
+      type: performance
+      priority: MUST
+      metric: Number of rivets
+      target: 10-16
+      verification: inspection
+      source: task_clarification
+    - id: R17
+      statement: The tool must be suitable for daily workloads of approximately 70 rivets.
+      type: performance
+      priority: MUST
+      metric: Number of rivets per day
+      target: 70
+      verification: analysis
+      source: task_clarification
+    - id: R18
+      statement: The tool must be designed for a 5-year service life.
+      type: reliability
+      priority: MUST
+      metric: Years
+      target: 5
+      verification: analysis
+      source: task_clarification
+  assumptions:
+    - The workshop’s machining facilities are capable of producing the tool as per the design.
+    - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed state.
+    - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+    - The tool will be used exclusively for riveting brake linings onto internal expanding drum brake shoes.
+  open_questions:
+    - What specific ergonomic guidelines (e.g., working height) must the tool comply with?
+    - Are there any additional safety requirements or certifications needed for the tool?
+    - What is the exact project completion deadline within the 3-4 month timeframe?
+    - Are there any specific material or surface finish requirements for the tool?
+    - What is the expected variability in brake shoe dimensions within the 250-400 mm range?
+  traceability:
+    derived_from_objectives:
+      - O1
+      - O2
+      - O3
+      - O4
+    derived_from_constraints:
+      - C1
+      - C2
+      - C3
+      - C4
+      - C5
+      - C6

@@ -1,0 +1,8 @@
+{
+  "cur_key": "black_box",
+  "next_key": "function_structure",
+  "errors": [
+    "Hallucinated/unknown IDs referenced in 'function_structure': ['F0']. These IDs are not present in input packet and were not created in the produced artifact."
+  ],
+  "warnings": []
+}

@@ -1,0 +1,189 @@
+task_clarification:
+  objectives:
+  - OBJ_1: 'Design a simple, reliable rivet setting tool for attaching linings to
+      internal expanding drum brake shoes.
+
+      '
+  - OBJ_2: 'Enable in-house production of 5 units using the workshop''s well-equipped
+      machining facilities.
+
+      '
+  - OBJ_3: 'Ensure the tool is optimized for a one-man operation by a car mechanic
+      in a workshop environment.
+
+      '
+  constraints:
+  - C_1: 'Manufacturing cost per unit must be under 500 CHF, with a specific target
+      maximum of 400 CHF.
+
+      '
+  - C_2: 'Design delivery timeframe is 3 months, with a maximum allowable limit of
+      4 months.
+
+      '
+  - C_3: 'Operating force must not exceed 200 N for hand-operated tools or 400 N for
+      foot-operated tools.
+
+      '
+  - C_4: 'The tool must generate a riveting force of approximately 500 N and a working
+      stroke of 3 to 4 mm.
+
+      '
+  - C_5: 'The tool must accommodate brake shoes with inside diameters from 250 to
+      400 mm and widths up to 100 mm.
+
+      '
+  - C_6: 'The tool must handle a total workpiece thickness (shoe + lining) of up to
+      15 mm and maintain a 10 mm rib clearance.
+
+      '
+  - C_7: 'The tool must be compatible with DIN 7338 annealed copper rivets with shank
+      diameters of 3 to 5 mm.
+
+      '
+  evaluation_criteria:
+  - EC_1: 'Manufacturing cost efficiency (closeness to the 400 CHF target).
+
+      '
+  - EC_2: 'Ergonomic quality, including operating force and compliance with standard
+      working height guidelines.
+
+      '
+  - EC_3: 'Compactness and ease of transport/storage.
+
+      '
+  - EC_4: 'Reliability and maintenance-free operation over a 5-year service life.
+
+      '
+  assumptions:
+  - A_1: 'The workshop''s machining facilities include standard equipment such as
+      lathes, milling machines, and drills.
+
+      '
+  - A_2: 'The wooden worktop mentioned is of standard height and provides a stable
+      mounting surface.
+
+      '
+  - A_3: 'Raw materials for the tool construction (e.g., steel stock) are readily
+      available for in-house manufacturing.
+
+      '
+  open_questions:
+  - Q_1: 'Are there specific dimensions or weight limits defined for "easy transport"
+      and "compact storage"?
+
+      '
+  - Q_2: 'Is there a preference between a hand-operated or foot-operated mechanism
+      for this specific workshop?
+
+      '
+  - Q_3: 'What is the specific thickness and material of the wooden worktop to determine
+      mounting hardware?
+
+      '
+requirements_list:
+- id: R_1
+  description: 'The tool must generate a riveting force of approximately 500 N.
+
+    '
+  type: Functional
+  trace: C_4
+- id: R_2
+  description: 'The tool must provide a working stroke of 3 to 4 mm for rivet closure.
+
+    '
+  type: Functional
+  trace: C_4
+- id: R_3
+  description: 'The tool must accommodate internal drum brake shoes with an inside
+    diameter ranging from 250 to 400 mm.
+
+    '
+  type: Functional
+  trace: C_5
+- id: R_4
+  description: 'The tool must handle brake shoes with a maximum width of 100 mm.
+
+    '
+  type: Functional
+  trace: C_5
+- id: R_5
+  description: 'The tool must accommodate a maximum total thickness (shoe and lining)
+    of 15 mm.
+
+    '
+  type: Functional
+  trace: C_6
+- id: R_6
+  description: 'The tool must provide a minimum clearance of 10 mm from the center
+    of the rivet to the rib of the brake shoe.
+
+    '
+  type: Functional
+  trace: C_6
+- id: R_7
+  description: 'The tool must be compatible with DIN 7338 annealed copper rivets (shank
+    diameter 3-5 mm).
+
+    '
+  type: Functional
+  trace: C_7
+- id: R_8
+  description: 'The operating force must not exceed 200 N for hand operation or 400
+    N for foot operation.
+
+    '
+  type: Ergonomic
+  trace: C_3
+- id: R_9
+  description: 'The tool working height must comply with standard ergonomic guidelines
+    when used on a worktop.
+
+    '
+  type: Ergonomic
+  trace: EC_2
+- id: R_10
+  description: 'Manufacturing cost per unit must be less than 500 CHF (Target: 400
+    CHF).
+
+    '
+  type: Economic
+  trace: C_1
+- id: R_11
+  description: 'The design must be delivered within a maximum of 4 months (Target:
+    3 months).
+
+    '
+  type: Timeline
+  trace: C_2
+- id: R_12
+  description: 'The tool must have a service life of five years and be maintenance-free.
+
+    '
+  type: Lifecycle
+  trace: EC_4
+- id: R_13
+  description: 'The tool must be compact for storage and easy to transport.
+
+    '
+  type: Physical
+  trace: EC_3
+- id: R_14
+  description: 'The tool must be mountable on a wooden worktop for one-man operation.
+
+    '
+  type: Interface
+  trace: OBJ_3
+- id: R_15
+  description: 'The tool must support a workload of approximately 70 rivets per day.
+
+    '
+  type: Performance
+  trace: OBJ_1
+- id: R_16
+  description: 'The tool must support the weight of the workpiece (up to 2 kg shoe
+    and 200 g lining).
+
+    '
+  type: Functional
+  trace: C_5

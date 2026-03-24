@@ -1,0 +1,207 @@
+preliminary_bom:
+  items:
+  - item_id: B1
+    module_id: M1
+    name: Main Frame Weldment
+    quantity: 1
+    key_specs:
+    - spec: Structural Stiffness
+      target: Minimal deflection under 500 N load
+    - spec: Mounting Interface
+      target: Compatible with standard workshop vice or bench bolts
+    tolerance_notes: Flatness of mounting surfaces +/- 0.1 mm
+    material: Mild steel plate
+    process: Laser-cut + welded
+    verification: Inspection and load test
+    traces_to:
+      functions:
+      - F9
+      requirements:
+      - R8
+      - R12
+  - item_id: B2
+    module_id: M2
+    name: Brake Shoe Support Plate
+    quantity: 1
+    key_specs:
+    - spec: Support Diameter Range
+      target: 250 - 400 mm
+    - spec: Support Width Range
+      target: 80 - 400 mm
+    tolerance_notes: Profile tolerance +/- 0.5 mm
+    material: Steel plate
+    process: Machining
+    verification: Inspection with sample brake shoes
+    traces_to:
+      functions:
+      - F1
+      - F3
+      requirements:
+      - R2
+      - R3
+      - R4
+  - item_id: B3
+    module_id: M3
+    name: Rivet Guide Bushing
+    quantity: 1
+    key_specs:
+    - spec: Internal Diameter
+      target: 3 - 5 mm (interchangeable or stepped)
+    tolerance_notes: H7 fit for rivet shank
+    material: Hardened steel
+    process: Precision turning
+    verification: Gauge check
+    traces_to:
+      functions:
+      - F2
+      requirements:
+      - R7
+  - item_id: B4
+    module_id: M4
+    name: Actuation Lever Arm
+    quantity: 1
+    key_specs:
+    - spec: Length for Mechanical Advantage
+      target: Sufficient for MA >= 2.5
+    - spec: Input Force Limit
+      target: <= 200 N (Hand)
+    tolerance_notes: Length +/- 2 mm
+    material: Steel bar/tube
+    process: Machining + Welding
+    verification: Force measurement test
+    traces_to:
+      functions:
+      - F4
+      requirements:
+      - R11
+      - R17
+  - item_id: B5
+    module_id: M5
+    name: Linkage Pivot Pins
+    quantity: 3
+    key_specs:
+    - spec: Shear Strength
+      target: Safety factor > 2.0 at 500 N output
+    tolerance_notes: g6 fit for smooth rotation
+    material: Hardened tool steel
+    process: Machining + Heat treatment
+    verification: Material certification + Inspection
+    traces_to:
+      functions:
+      - F5
+      requirements:
+      - R8
+      - R15
+  - item_id: B6
+    module_id: M6
+    name: Rivet Preform Head (Lower)
+    quantity: 1
+    key_specs:
+    - spec: Head Geometry
+      target: Matches DIN 7338 rivet head
+    tolerance_notes: Profile tolerance +/- 0.05 mm
+    material: Hardened tool steel
+    process: Precision turning + Grinding + Heat treatment
+    verification: Visual inspection + Rivet fit test
+    traces_to:
+      functions:
+      - F7
+      requirements:
+      - R1
+      - R7
+  - item_id: B7
+    module_id: M6
+    name: Rivet Closure Head (Upper)
+    quantity: 1
+    key_specs:
+    - spec: Forming Geometry
+      target: Optimized for ~4 mm closure
+    tolerance_notes: Profile tolerance +/- 0.05 mm
+    material: Hardened tool steel
+    process: Precision turning + Grinding + Heat treatment
+    verification: Riveting trial + Closure measurement
+    traces_to:
+      functions:
+      - F7
+      requirements:
+      - R1
+      - R9
+  - item_id: B8
+    module_id: M7
+    name: Adjustable Stroke Stop Screw
+    quantity: 1
+    key_specs:
+    - spec: Adjustment Resolution
+      target: <= 0.1 mm per partial turn
+    - spec: Total Travel
+      target: Sufficient for 6-45 mm stack thickness
+    tolerance_notes: Standard metric fine thread
+    material: Steel
+    process: Machining
+    verification: Functional test of adjustment range
+    traces_to:
+      functions:
+      - F6
+      requirements:
+      - R5
+      - R9
+  - item_id: B9
+    module_id: M7
+    name: Stop Locknut
+    quantity: 1
+    key_specs:
+    - spec: Locking Integrity
+      target: Prevent drift during 70 cycles/day
+    tolerance_notes: Standard
+    material: Steel
+    process: Standard part
+    verification: Vibration/use test
+    traces_to:
+      functions:
+      - F6
+      requirements:
+      - R10
+      - R15
+  - item_id: B10
+    module_id: M8
+    name: Safety Pinch Guard
+    quantity: 1
+    key_specs:
+    - spec: Coverage
+      target: Enclose linkage pivot points
+    tolerance_notes: General +/- 1 mm
+    material: Sheet metal or Polycarbonate
+    process: Forming
+    verification: Safety inspection (R18)
+    traces_to:
+      functions:
+      - F10
+      requirements:
+      - R18
+  - item_id: B11
+    module_id: M9
+    name: Closure Verification Gauge
+    quantity: 1
+    key_specs:
+    - spec: Go/No-Go Dimension
+      target: 4.0 mm nominal
+    tolerance_notes: +/- 0.02 mm
+    material: Steel
+    process: Machining/Etching
+    verification: Calibration
+    traces_to:
+      functions:
+      - F11
+      requirements:
+      - R9
+      - R15
+  assumptions:
+  - The tool uses a lever-based mechanical advantage system (CV3).
+  - Rivet heads are formed using standard DIN 7338 geometries.
+  - Frame stiffness is sufficient to ignore significant elastic deformation during
+    closure.
+  open_questions:
+  - What is the exact tolerance band allowed for the 4 mm rivet head closure?
+  - Are the rivet guide bushings (B3) required to be interchangeable for different
+    shank diameters (3-5 mm)?
+  - Is a foot-actuation pedal required as an alternative to the hand lever (B4)?

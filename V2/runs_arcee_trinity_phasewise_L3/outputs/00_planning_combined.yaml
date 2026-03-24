@@ -1,0 +1,234 @@
+task_clarification:
+  objectives:
+  - Develop a simple rivet setting tool for a large car repair workshop
+  - Produce 5 initial units with potential for future sales
+  - Design for in-house production using the repair workshop's machining facilities
+  success_criteria:
+  - Manufacturing cost per unit must be under 500 CHF, with a target maximum of 400
+    CHF
+  - Delivery timeframe: '3 months (maximum allowable: 4 months)'
+  - Tool must handle internal drum brakes with inside diameter 250-400 mm
+  - Tool must generate riveting force of approximately 500 N
+  - Tool must achieve working stroke of 3-4 mm for proper rivet closure
+  - Tool must accommodate minimum clearance of 10 mm from rivet center to brake shoe
+    rib
+  - Tool must handle copper rivets (DIN 7338) with shank diameter 3-5 mm
+  - Tool must be reliable, maintenance-free, easy to transport, and compact for storage
+  - Tool must have 5-year service life
+  - Tool must comply with ergonomic guidelines (200 N max for hand-operated, 400 N
+    max for foot-operated)
+  constraints:
+  - Manufacturing cost per unit: '< 500 CHF (target: 400 CHF)'
+  - Delivery timeframe: '3 months (max: 4 months)'
+  - One-man operation by car mechanic
+  - Mounted/used on wooden worktop
+  - Workload: ~70 rivets per day
+  - Brake shoes: aluminum alloy, max 2 kg, max 100 mm width, pre-drilled holes
+  - Brake linings: special friction material, max 200 g, pre-pressed and drilled
+  - Assembled shoe + lining max thickness: 15 mm
+  - Each shoe requires 10-16 rivets
+  - Copper rivets (DIN 7338), annealed, shank diameter 3-5 mm
+  - Riveting force: ~500 N
+  - Working stroke: ~3-4 mm
+  - Minimum clearance: 10 mm from rivet center to brake shoe rib
+  assumptions:
+  - The repair workshop's machining facilities have the necessary equipment and expertise
+    for in-house production
+  - The designer from the consulting agency has access to all required technical specifications
+    and dimensions
+  - The tool will be used exclusively for riveting linings onto conventional internal
+    expanding drum brake shoes
+  - The 70 rivets per day workload is a consistent average, not a peak demand
+  open_questions:
+  - What specific ergonomic guidelines must be followed for the working height?
+  - Are there any specific safety requirements or certifications needed for the tool?
+  - What is the exact definition of "compact enough for good storage" in terms of
+    dimensions?
+  - Are there any specific preferences for hand-operated vs. foot-operated tool?
+  - What is the expected variability in the 70 rivets per day workload?
+requirements_list:
+- id: R1
+  type: functional
+  description: The tool must be capable of setting copper rivets (DIN 7338) with shank
+    diameter 3-5 mm
+  rationale: Technical requirement for the riveting process
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with various copper rivet sizes within the specified range
+- id: R2
+  type: functional
+  description: The tool must generate a riveting force of approximately 500 N
+  rationale: Required to successfully execute the technical process of riveting
+  origin: raw_task_statement
+  dependencies: []
+  verification: Force measurement during riveting operation
+- id: R3
+  type: functional
+  description: The tool must achieve a working stroke of approximately 3-4 mm
+  rationale: Necessary for proper closure of the rivet
+  origin: raw_task_statement
+  dependencies: []
+  verification: Measurement of tool's working stroke during operation
+- id: R4
+  type: functional
+  description: The tool must accommodate internal drum brakes with inside diameter
+    ranging from 250 to 400 mm
+  rationale: To handle the specified range of brake sizes
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with brake drums of various sizes within the specified range
+- id: R5
+  type: functional
+  description: The tool must provide a minimum clearance of 10 mm from the center
+    of the rivet to the rib of the brake shoe
+  rationale: Technical requirement for proper rivet placement
+  origin: raw_task_statement
+  dependencies: []
+  verification: Measurement of clearance during rivet placement
+- id: R6
+  type: functional
+  description: The tool must be operable by a single car mechanic
+  rationale: One-man operation requirement
+  origin: raw_task_statement
+  dependencies: []
+  verification: Usability testing by target user group
+- id: R7
+  type: functional
+  description: The tool must be mountable or usable on a wooden worktop
+  rationale: Specified operating environment
+  origin: raw_task_statement
+  dependencies: []
+  verification: Stability and functionality test on wooden worktop
+- id: R8
+  type: functional
+  description: The tool must handle brake shoes made of aluminum alloy, weighing up
+    to 2 kg, with a maximum width of 100 mm
+  rationale: To accommodate the specified brake shoe characteristics
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with brake shoes of various sizes and weights within the specified
+    range
+- id: R9
+  type: functional
+  description: The tool must handle brake linings made of special friction material,
+    weighing up to 200 g
+  rationale: To accommodate the specified lining characteristics
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with brake linings of various weights within the specified range
+- id: R10
+  type: functional
+  description: The tool must accommodate assembled brake shoe and lining parts with
+    a maximum total thickness of 15 mm
+  rationale: To handle the specified maximum thickness
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with assembled shoe and lining combinations of various thicknesses
+- id: R11
+  type: functional
+  description: The tool must be capable of setting 10-16 rivets per brake shoe
+  rationale: To handle the specified number of rivets per shoe
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with various numbers of rivets per shoe within the specified
+    range
+- id: R12
+  type: non-functional
+  description: The tool must have a service life of five years
+  rationale: Expected durability requirement
+  origin: raw_task_statement
+  dependencies: []
+  verification: Accelerated life testing and durability assessment
+- id: R13
+  type: non-functional
+  description: The tool must be reliable and maintenance-free
+  rationale: Operational requirement for ease of use
+  origin: raw_task_statement
+  dependencies: []
+  verification: Reliability testing and maintenance assessment
+- id: R14
+  type: non-functional
+  description: The tool must be easy to transport
+  rationale: For mobility within the workshop
+  origin: raw_task_statement
+  dependencies: []
+  verification: Weight and portability assessment
+- id: R15
+  type: non-functional
+  description: The tool must be compact enough for good storage
+  rationale: Space efficiency requirement
+  origin: raw_task_statement
+  dependencies: []
+  verification: Dimensional analysis and storage assessment
+- id: R16
+  type: non-functional
+  description: The tool must comply with standard ergonomic guidelines for working
+    height
+  rationale: Ergonomic requirement for user comfort and safety
+  origin: raw_task_statement
+  dependencies: []
+  verification: Ergonomic assessment and user feedback
+- id: R17
+  type: non-functional
+  description: The required operating force must not exceed 200 N for a hand-operated
+    tool or 400 N for a foot-operated tool
+  rationale: Ergonomic requirement to prevent user fatigue and injury
+  origin: raw_task_statement
+  dependencies: []
+  verification: Force measurement during operation
+- id: R18
+  type: non-functional
+  description: The manufacturing cost per unit must be under 500 CHF, with a target
+    maximum of 400 CHF
+  rationale: Cost constraint for project viability
+  origin: raw_task_statement
+  dependencies: []
+  verification: Cost analysis of materials and manufacturing processes
+- id: R19
+  type: non-functional
+  description: The delivery timeframe for the design must be 3 months, with a maximum
+    allowable of 4 months
+  rationale: Project timeline requirement
+  origin: raw_task_statement
+  dependencies: []
+  verification: Project schedule tracking and milestone achievement
+- id: R20
+  type: constraint
+  description: The tool must be designed for in-house production using the repair
+    workshop's machining facilities
+  rationale: Production method requirement
+  origin: raw_task_statement
+  dependencies: []
+  verification: Design review for manufacturability with available equipment
+- id: R21
+  type: constraint
+  description: The tool must be designed to handle a workload of approximately 70
+    rivets per day
+  rationale: Operational requirement based on expected usage
+  origin: raw_task_statement
+  dependencies: []
+  verification: Performance testing under simulated daily workload
+- id: R22
+  type: constraint
+  description: The tool must be designed to accommodate brake shoes with pre-drilled
+    holes
+  rationale: To align with the supplied brake shoe preparation
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with pre-drilled brake shoes
+- id: R23
+  type: constraint
+  description: The tool must be designed to work with brake linings that come pre-pressed
+    and drilled
+  rationale: To align with the supplied lining preparation
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with pre-pressed and drilled brake linings
+- id: R24
+  type: constraint
+  description: The tool must be designed to work with copper rivets provided in an
+    annealed state
+  rationale: To align with the supplied rivet preparation
+  origin: raw_task_statement
+  dependencies: []
+  verification: Test with annealed copper rivets

@@ -1,0 +1,83 @@
+concept_selection:
+  criteria_weights:
+    - criterion_id: EC1
+      weight: 0.10
+      justification: Speed of riveting is a productivity wish (R10), but secondary to joint quality and safety.
+    - criterion_id: EC2
+      weight: 0.20
+      justification: Quality of riveting is safety-critical for brake systems (O1, R1, R9).
+    - criterion_id: EC3
+      weight: 0.15
+      justification: Stability on the bench and setup time directly impact the mechanic's efficiency and joint consistency (R12).
+    - criterion_id: EC4
+      weight: 0.05
+      justification: Ease of servicing is a wish (R16) but less critical than initial performance and cost.
+    - criterion_id: EC5
+      weight: 0.10
+      justification: Portability is a stated wish (R14) for workshop tools that may be moved between benches.
+    - criterion_id: EC6
+      weight: 0.10
+      justification: Reliability and a 5-year service life are important for workshop ROI (R13, R15).
+    - criterion_id: EC7
+      weight: 0.15
+      justification: Safety (avoiding pinch/crush hazards) is a MUST requirement (R18).
+    - criterion_id: EC8
+      weight: 0.15
+      justification: The SwFr 400 cost limit (R20) is a significant constraint for a simple workshop tool.
+  scoring:
+    - concept_id: CV1
+      scores:
+        EC1: 4.0
+        EC2: 3.0
+        EC3: 3.0
+        EC4: 4.0
+        EC5: 5.0
+        EC6: 4.0
+        EC7: 4.0
+        EC8: 4.0
+      notes: |
+        CV1 scores high on portability and cost due to the simple vice-clamping shank and toggle lever. 
+        The V-block (WP1) is highly versatile for different sizes but may offer slightly less 
+        precision than custom bolsters. The toggle lever is very efficient for riveting.
+    - concept_id: CV2
+      scores:
+        EC1: 3.0
+        EC2: 5.0
+        EC3: 4.0
+        EC4: 3.0
+        EC5: 1.0
+        EC6: 5.0
+        EC7: 4.0
+        EC8: 2.0
+      notes: |
+        CV2 excels in joint quality and reliability due to the radius bolsters and robust cam. 
+        However, it fails the portability wish (R14) due to the bolted base and is likely 
+        to exceed the cost limit (R20) because of the need for multiple interchangeable bolsters.
+  selected_concept_id: CV1
+  selection_rationale: |
+    CV1 (Universal Workshop Lever) is selected as the preferred concept. While CV2 offers 
+    superior joint quality through matched bolsters, CV1 better balances the overall 
+    requirements of a workshop environment. Specifically, CV1 satisfies the portability 
+    wish (R14) via the vice-clamping shank (WP8) and is significantly more likely to 
+    stay within the SwFr 400 cost constraint (R20). The toggle lever (WP4) provides 
+    an ideal force profile for riveting, and the adjustable V-block (WP1) ensures 
+    the tool can handle the full range of specified brake shoe diameters without 
+    requiring the manufacture and storage of additional parts.
+  sensitivity_analysis_notes: |
+    The selection is sensitive to the weighting of 'Quality' vs 'Cost/Portability'. 
+    If the requirement for joint precision is increased (e.g., for high-performance 
+    racing brakes), CV2 would become the stronger candidate. However, for standard 
+    internal drum brakes in a general workshop, the versatility and lower cost of 
+    CV1 are decisive. If the workshop does not have a vice, CV1's stability score 
+    would drop significantly, potentially shifting the preference to a bolted base.
+  assumptions:
+    - A standard workshop vice is available for CV1.
+    - The toggle lever mechanism in CV1 can be manufactured using standard steel profiles to keep costs low.
+    - The 500 N force requirement refers to the output force at the rivet, which both mechanisms can achieve.
+  open_questions:
+    - Does the 400 mm shoe width (R3) require a frame depth that makes CV1 too heavy for easy portability?
+    - Can the V-block (WP1) provide sufficient lateral stability for the widest shoes (400 mm)?
+  traceability:
+    based_on_concepts:
+      - CV1
+      - CV2

@@ -1,0 +1,141 @@
+black_box:
+  inputs:
+    - id: IN_E1
+      description: Human energy (hand or foot force)
+      type: energy
+    - id: IN_M1
+      description: Rivet (3-5 mm diameter)
+      type: material
+    - id: IN_M2
+      description: Brake shoe and lining assembly
+      type: material
+    - id: IN_S1
+      description: Positioning and actuation control (operator intent)
+      type: signal
+  outputs:
+    - id: OUT_M1
+      description: Riveted brake assembly (quality joint)
+      type: material
+    - id: OUT_E1
+      description: Dissipated energy (friction and heat)
+      type: energy
+    - id: OUT_S1
+      description: Visual and tactile feedback of joint completion
+      type: signal
+  description: |
+    The tool transforms human input energy and raw materials (rivets, brake components) into a 
+    securely riveted brake assembly through a manual mechanical process, providing feedback 
+    to the operator while dissipating excess energy.
+
+function_structure:
+  - id: F1
+    description: Mount and stabilize tool on workshop bench
+    inputs: [IN_S1]
+    outputs: [OUT_S1]
+    requirements: [R12]
+  - id: F2
+    description: Support and position brake shoe and lining
+    inputs: [IN_M2]
+    outputs: [OUT_S1]
+    requirements: [R2, R3, R4, R5]
+  - id: F3
+    description: Guide and hold rivet in position
+    inputs: [IN_M1]
+    outputs: [OUT_S1]
+    requirements: [R6, R7]
+  - id: F4
+    description: Transform human input into riveting force
+    inputs: [IN_E1, IN_S1]
+    outputs: [OUT_E1]
+    requirements: [R8, R17]
+  - id: F5
+    description: Form rivet head to create joint
+    inputs: [IN_M1, IN_M2]
+    outputs: [OUT_M1, OUT_S1]
+    requirements: [R1, R9]
+
+working_principles:
+  WP_F1_1:
+    description: Base plate designed for clamping in a standard workshop vice
+    function_id: F1
+  WP_F1_2:
+    description: Fixed base plate with holes for bolting directly to the workbench
+    function_id: F1
+  WP_F2_1:
+    description: Height-adjustable anvil with screw thread to accommodate different shoe geometries
+    function_id: F2
+  WP_F2_2:
+    description: Fixed V-shaped support block for self-centering of the brake shoe
+    function_id: F2
+  WP_F3_1:
+    description: Manual insertion into a pre-aligned guide sleeve
+    function_id: F3
+  WP_F4_1:
+    description: Simple long-arm hand lever for linear mechanical advantage
+    function_id: F4
+  WP_F4_2:
+    description: Toggle lever mechanism for high force amplification at the end of the stroke
+    function_id: F4
+  WP_F4_3:
+    description: Foot pedal with cable or rod linkage to free both hands
+    function_id: F4
+  WP_F5_1:
+    description: Interchangeable solid punch and die set for different rivet sizes
+    function_id: F5
+
+concept_variants:
+  CV1:
+    name: Simple Hand-Lever Tool
+    description: |
+      A portable tool clamped in a vice, using a simple lever and fixed anvil. 
+      Focuses on low cost and simplicity.
+    working_principles: [WP_F1_1, WP_F2_2, WP_F3_1, WP_F4_1, WP_F5_1]
+  CV2:
+    name: High-Force Bench-Mounted Toggle Press
+    description: |
+      A robust, bolted tool using a toggle lever to ensure high riveting force 
+      with minimal hand effort. Features an adjustable anvil for versatility.
+    working_principles: [WP_F1_2, WP_F2_1, WP_F3_1, WP_F4_2, WP_F5_1]
+  CV3:
+    name: Foot-Operated Workshop Station
+    description: |
+      A stationary tool operated by foot pedal, allowing the mechanic to use 
+      both hands to position the large brake shoes.
+    working_principles: [WP_F1_2, WP_F2_1, WP_F3_1, WP_F4_3, WP_F5_1]
+
+concept_selection:
+  comparison_matrix:
+    CV1:
+      EC1: 3
+      EC2: 3
+      EC3: 2
+      EC4: 5
+      EC5: 5
+      EC6: 4
+      EC7: 3
+      EC8: 5
+    CV2:
+      EC1: 4
+      EC2: 5
+      EC3: 5
+      EC4: 4
+      EC5: 3
+      EC6: 5
+      EC7: 4
+      EC8: 4
+    CV3:
+      EC1: 5
+      EC2: 4
+      EC3: 4
+      EC4: 3
+      EC5: 2
+      EC6: 4
+      EC7: 3
+      EC8: 3
+  selected_concept_id: CV2
+  rationale: |
+    CV2 (Toggle Press) is selected because it best balances the high force requirement (R8) 
+    with ergonomic hand force limits (R17) through the toggle mechanism. It provides 
+    superior stability and joint quality (EC2, EC3) compared to the simple lever, 
+    while remaining within the cost and workshop suitability targets. CV3 offers 
+    higher productivity but is less portable and more complex to manufacture.

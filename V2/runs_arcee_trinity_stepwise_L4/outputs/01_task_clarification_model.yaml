@@ -1,0 +1,122 @@
+task_clarification:
+  problem_statement: 'Design a simple, cost-effective rivet setting tool for a car
+    repair workshop to rivet linings onto internal expanding drum brake shoes. The
+    tool must be hand or foot-operated, ergonomic, and capable of setting 3-5 mm copper
+    rivets (DIN 7338) with a riveting force of ~500 N and a working stroke of 3-4
+    mm. It should handle brake shoes (250-400 mm diameter, max 2 kg, 100 mm width)
+    and linings (max 15 mm total thickness) with 10-16 rivets per shoe, ensuring a
+    10 mm clearance from the rib. The tool must be reliable, maintenance-free, compact,
+    easy to transport, and suitable for one-man operation on a wooden worktop, with
+    a 5-year service life. Manufacturing cost must be under 500 CHF (target 400 CHF),
+    and design delivery must be within 3-4 months.
+
+    '
+  system_boundary:
+    included:
+    - Rivet setting tool mechanism
+    - Hand/foot-operated actuation system
+    - Mounting interface for wooden worktop
+    - Tool storage and transport features
+    excluded:
+    - Brake shoes and linings (workpieces)
+    - Copper rivets (supplied as per DIN 7338)
+    - Machining and assembly processes (handled in-house)
+  objectives:
+  - id: O1
+    description: Develop a reliable and maintenance-free rivet setting tool
+    rationale: Ensures long-term usability and reduces downtime in the workshop
+    measurable_proxy: Mean time between failures (MTBF) > 5 years
+  - id: O2
+    description: Design a compact and easily transportable tool
+    rationale: Facilitates storage and mobility within the workshop
+    measurable_proxy: Tool weight < 10 kg and volume < 0.05 m³
+  - id: O3
+    description: Ensure ergonomic operation for one-man use
+    rationale: Reduces operator fatigue and improves productivity
+    measurable_proxy: Operating force ≤ 200 N (hand) or ≤ 400 N (foot), working height
+      compliant with ergonomic standards
+  - id: O4
+    description: Achieve cost-effective manufacturing
+    rationale: Meets budget constraints and ensures profitability
+    measurable_proxy: Manufacturing cost per unit ≤ 500 CHF (target 400 CHF)
+  constraints:
+  - id: C1
+    description: Manufacturing cost per unit must be under 500 CHF (target 400 CHF)
+    type: cost
+    measurable_proxy: Bill of materials (BOM) cost < 500 CHF
+  - id: C2
+    description: Design delivery within 3-4 months
+    type: schedule
+    measurable_proxy: Project completion by [specific date]
+  - id: C3
+    description: Tool must handle brake shoes with 250-400 mm inside diameter
+    type: interface
+    measurable_proxy: Adjustable or fixed tooling for 250-400 mm range
+  - id: C4
+    description: Tool must generate ~500 N riveting force with 3-4 mm working stroke
+    type: physical
+    measurable_proxy: Actuation system capable of 500 N force and 3-4 mm stroke
+  - id: C5
+    description: Tool must accommodate 10 mm clearance from rivet center to brake
+      shoe rib
+    type: interface
+    measurable_proxy: Tool geometry allows 10 mm clearance
+  - id: C6
+    description: Tool must be reliable and maintenance-free for 5 years
+    type: reliability
+    measurable_proxy: MTBF > 5 years, no scheduled maintenance required
+  stakeholders:
+  - Car repair workshop (end-user)
+  - Consulting agency designer (responsible for layout)
+  - In-house manufacturing team (production using workshop facilities)
+  - Future users (potential buyers of additional units)
+  operating_conditions:
+  - Workshop environment (well-equipped machining facilities)
+  - One-man operation by car mechanic
+  - Daily workload of ~70 rivets
+  - Mounting on wooden worktop
+  - Storage in workshop (compact and transportable)
+  evaluation_criteria:
+  - id: EC1
+    description: Manufacturing cost per unit
+    metric: CHF
+    target_or_direction: ≤ 500 (target 400)
+  - id: EC2
+    description: Operating force (hand/foot)
+    metric: Newtons (N)
+    target_or_direction: ≤ 200 (hand) or ≤ 400 (foot)
+  - id: EC3
+    description: Tool weight
+    metric: Kilograms (kg)
+    target_or_direction: < 10
+  - id: EC4
+    description: Tool volume
+    metric: Cubic meters (m³)
+    target_or_direction: < 0.05
+  - id: EC5
+    description: Mean time between failures (MTBF)
+    metric: Years
+    target_or_direction: '> 5'
+  - id: EC6
+    description: Design completion time
+    metric: Months
+    target_or_direction: ≤ 4 (target 3)
+  assumptions:
+  - The workshop’s machining facilities are capable of producing the tool as per the
+    design.
+  - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed state.
+  - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+  - The tool will be used exclusively for riveting brake linings onto internal expanding
+    drum brake shoes.
+  open_questions:
+  - What specific ergonomic guidelines (e.g., working height) must the tool comply
+    with?
+  - Are there any additional safety requirements or certifications needed for the
+    tool?
+  - What is the exact project completion deadline within the 3-4 month timeframe?
+  - Are there any specific material or surface finish requirements for the tool?
+  - What is the expected variability in brake shoe dimensions within the 250-400 mm
+    range?
+  traceability:
+    derived_from:
+    - raw_task_statement

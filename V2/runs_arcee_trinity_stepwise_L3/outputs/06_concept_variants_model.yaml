@@ -1,0 +1,387 @@
+concept_variants:
+  morphological_chart:
+  - function_id: F1
+    options:
+    - WP1
+    - WP7
+  - function_id: F2
+    options:
+    - WP2
+    - WP8
+  - function_id: F3
+    options:
+    - WP3
+    - WP9
+  - function_id: F4
+    options:
+    - WP4
+    - WP10
+  - function_id: F5
+    options:
+    - WP5
+    - WP11
+  - function_id: F6
+    options:
+    - WP6
+    - WP12
+  concepts:
+  - id: CV1
+    selected_principles:
+      F1: WP1
+      F2: WP2
+      F3: WP3
+      F4: WP4
+      F5: WP5
+      F6: WP6
+    architecture_description: 'This concept combines a traditional mechanical riveting
+      approach with proven workshop tool principles. The adjustable V-block and clamp
+      system (WP1) securely positions brake shoes and linings of various sizes (80-400
+      mm width, 6-8 mm thickness). The spring-loaded rivet guide with magnetic retention
+      (WP2) ensures consistent rivet placement and orientation before the riveting
+      operation. A compound lever mechanical advantage system (WP3) amplifies manual
+      force to achieve the required 500 N+ for proper head closure while keeping actuation
+      forces within ergonomic limits (≤200 N hand force). The adjustable stroke limiter
+      with positive stop (WP4) controls the riveting stroke to achieve consistent
+      ~4 mm head closure and prevent over-compression. C-clamp mounting (WP5) provides
+      stable tool positioning on the worktop, and an audible click mechanism (WP6)
+      gives clear feedback when the riveting process is complete.
+
+
+      The architecture follows a linear workflow: operator mounts tool via C-clamp,
+      positions shoe and lining in V-block, places rivet in guide, actuates lever
+      to form head, receives audible feedback, and releases completed assembly. All
+      components are mechanically linked through the base plate, with force transmission
+      from lever through the riveting head to the workpiece.
+
+      '
+    expected_benefits:
+    - Proven mechanical principles ensure reliability and ease of maintenance
+    - Adjustable components accommodate full range of brake shoe sizes and worn part
+      thicknesses
+    - Ergonomic lever design keeps forces within specified limits
+    - Audible feedback eliminates need for visual confirmation, improving safety
+    - Simple construction keeps manufacturing cost within SwFr 400 target
+    - No external power source required, enhancing workshop portability
+    key_risks:
+    - V-block wear could affect positioning accuracy over time, potentially compromising
+      joint quality
+    - Magnetic guide may interfere with steel components or accumulate metallic particles
+    - Lever mechanism fulcrum stress under repeated high loads could lead to fatigue
+      failure
+    - Stroke limiter adjustment errors could result in insufficient or excessive head
+      closure
+    - C-clamp mounting may leave marks on worktop or require frequent re-tightening
+    - Audible click may be difficult to hear in noisy workshop environments
+    requirement_coverage:
+      satisfied:
+      - R1 (reliable riveting through stable positioning and controlled force application)
+      - R2 (adjustable V-block accommodates 250-400 mm brake drum range)
+      - R3 (supports 80-400 mm shoe width through adjustability)
+      - R4 (handles 6-8 mm shoe thickness)
+      - R5 (supports up to 45 mm total stack thickness)
+      - R6 (consistent rivet placement ensures minimum 4 mm edge distance)
+      - R7 (magnetic guide compatible with 3-5 mm rivet shank diameter)
+      - R8 (compound lever achieves ≥500 N force capability)
+      - R9 (stroke limiter ensures ~4 mm head closure)
+      - R10 (mechanical efficiency supports up to 70 rivets/day productivity)
+      - R11 (one-person operation enabled by ergonomic lever design)
+      - R12 (C-clamp mounting provides stable worktop operation)
+      - R13 (mechanical design supports 5-year service life)
+      - R14 (portable, no external power required)
+      - R15 (mechanical reliability ensures consistent operation)
+      - R16 (minimal moving parts, low maintenance)
+      - R17 (ergonomic force limits maintained)
+      - R18 (stable mounting and audible feedback enhance safety)
+      - R19 (simple mechanical design enables 3-month delivery)
+      - R20 (cost-effective mechanical construction within budget)
+      partially_satisfied:
+      - R5 (45 mm stack height supported but may require additional clearance adjustment)
+      not_satisfied: []
+    assumptions:
+    - Workshop environment is indoor with typical contaminants (dust, oil) on worktop
+      surfaces.
+    - Operator can hear audible click in typical workshop noise levels.
+    - Worktop surface can withstand C-clamp pressure without damage or slippage.
+    - No specific requirements for automatic rivet feeding or advanced positioning
+      systems.
+    open_questions:
+    - What specific materials and surface treatments are recommended for components
+      exposed to workshop contaminants?
+    - What are the acceptable tolerances for head closure dimension (±0.5 mm, ±1 mm)?
+    - Should the tool include automatic or manual rivet feeding, or is manual placement
+      acceptable?
+    - What is the exact stroke length required to achieve consistent ~4 mm head closure
+      across different rivet lengths?
+    - Is there a preferred actuation method (hand lever vs. foot pedal) based on typical
+      workshop workflows?
+  - id: CV2
+    selected_principles:
+      F1: WP1
+      F2: WP2
+      F3: WP9
+      F4: WP10
+      F5: WP11
+      F6: WP12
+    architecture_description: 'This concept employs a hydraulic actuation system for
+      improved force control and reduced operator effort. The adjustable V-block and
+      clamp system (WP1) provides stable positioning for brake shoes and linings across
+      the full size range. The spring-loaded rivet guide with magnetic retention (WP2)
+      ensures consistent rivet placement. Instead of mechanical levers, a compact
+      hydraulic cylinder (WP9) generates the required 500 N+ force through fluid pressure,
+      actuated by a foot pedal for ergonomic operation within the 400 N limit. An
+      adjustable hydraulic pressure relief valve (WP10) controls the maximum force
+      and ensures consistent ~4 mm head closure without over-compression. The tool
+      mounts using a bolt-through base plate system (WP11) for maximum stability on
+      the worktop, and a visual pressure gauge (WP12) provides completion feedback
+      when target pressure is reached.
+
+
+      The workflow involves mounting the tool via bolts to the worktop, positioning
+      components in the V-block, placing the rivet, actuating the foot pedal to generate
+      hydraulic pressure, monitoring the pressure gauge for completion, and releasing
+      the assembly. The hydraulic system provides smooth, controlled force application
+      with minimal operator effort.
+
+      '
+    expected_benefits:
+    - Hydraulic force control provides superior consistency in head closure across
+      different operators
+    - Foot pedal actuation keeps hand forces well below 200 N limit, reducing operator
+      fatigue
+    - Visual pressure gauge provides clear, unambiguous completion feedback
+    - Bolt mounting offers maximum stability compared to clamping systems
+    - Smooth hydraulic operation reduces risk of component damage from impact forces
+    - Consistent force application improves joint quality and reduces defects
+    key_risks:
+    - Hydraulic system complexity increases manufacturing cost and potential maintenance
+      needs
+    - Hydraulic fluid leaks could contaminate workshop environment and damage components
+    - Pressure gauge readability in poor lighting conditions could affect operation
+    - Bolt mounting requires drilling worktop or finding existing mounting points
+    - Hydraulic cylinder seal wear could lead to force loss over time
+    - Foot pedal operation may be less intuitive for some operators compared to hand
+      levers
+    requirement_coverage:
+      satisfied:
+      - R1 (hydraulic control ensures reliable riveting with consistent quality)
+      - R2 (adjustable V-block accommodates 250-400 mm brake drum range)
+      - R3 (supports 80-400 mm shoe width)
+      - R4 (handles 6-8 mm shoe thickness)
+      - R5 (supports up to 45 mm stack height)
+      - R6 (consistent rivet placement ensures edge distance)
+      - R7 (magnetic guide compatible with 3-5 mm rivets)
+      - R8 (hydraulic system achieves ≥500 N force capability)
+      - R9 (pressure relief valve ensures ~4 mm head closure)
+      - R10 (efficient hydraulic operation supports productivity targets)
+      - R11 (one-person operation with foot pedal actuation)
+      - R12 (bolt mounting provides stable worktop operation)
+      - R13 (hydraulic components can be sealed for 5-year life)
+      - R14 (compact design maintains portability despite added components)
+      - R15 (hydraulic reliability ensures consistent operation)
+      - R16 (sealed hydraulic system minimizes maintenance)
+      - R17 (foot force ≤400 N, hand force minimal)
+      - R18 (stable mounting and visual feedback enhance safety)
+      - R19 (modern manufacturing techniques enable 3-month delivery)
+      - R20 (higher cost but may be justified by improved performance)
+      partially_satisfied:
+      - R20 (manufacturing cost likely exceeds SwFr 400 due to hydraulic components)
+      not_satisfied: []
+    assumptions:
+    - Workshop has adequate space for bolt mounting and foot pedal operation.
+    - Operators are comfortable with foot pedal operation and pressure gauge reading.
+    - Hydraulic fluid compatibility with workshop contaminants is acceptable.
+    - No specific requirements prohibit hydraulic systems or bolt mounting.
+    open_questions:
+    - What is the acceptable manufacturing cost ceiling if hydraulic system exceeds
+      SwFr 400?
+    - What specific hydraulic fluid is recommended for workshop contaminant exposure?
+    - What are the pressure settings required to achieve consistent ~4 mm head closure?
+    - How should the tool be sealed to prevent hydraulic fluid contamination?
+    - What is the expected seal life under continuous workshop use?
+  - id: CV3
+    selected_principles:
+      F1: WP7
+      F2: WP8
+      F3: WP3
+      F4: WP4
+      F5: WP5
+      F6: WP6
+    architecture_description: 'This concept features a modular, quick-change system
+      designed for high-volume workshop operations. Instead of a single adjustable
+      V-block, it uses interchangeable shoe cradles (WP7) that precisely fit specific
+      brake shoe sizes and geometries, ensuring optimal positioning for each application.
+      Rivet placement uses a gravity-fed magazine system with mechanical alignment
+      (WP8) that automatically feeds rivets into position, eliminating manual handling.
+      Force application uses the same compound lever mechanical advantage system (WP3)
+      as CV1 for proven reliability. Stroke control uses the adjustable stop (WP4),
+      mounting uses C-clamp (WP5), and completion feedback uses audible click (WP6).
+
+
+      The workflow involves selecting and installing the appropriate cradle for the
+      brake shoe size, loading the rivet magazine, positioning the shoe and lining,
+      actuating the lever to form the head, receiving audible feedback, and releasing
+      the assembly. The modular design allows rapid changeovers between different
+      brake shoe sizes while maintaining consistent quality.
+
+      '
+    expected_benefits:
+    - Interchangeable cradles provide optimal positioning for each brake shoe size,
+      improving joint quality
+    - Automatic rivet feeding increases productivity and reduces operator handling
+      time
+    - Modular design allows workshop to service multiple brake types efficiently
+    - Lever actuation keeps forces within ergonomic limits while maintaining proven
+      reliability
+    - C-clamp mounting provides flexibility to move between workbenches
+    - Audible feedback maintains safety benefits of CV1
+    key_risks:
+    - Multiple interchangeable parts increase manufacturing cost and inventory complexity
+    - Cradle wear or misalignment could compromise positioning accuracy
+    - Magazine system complexity could lead to jamming or feeding failures
+    - Additional parts increase weight and reduce portability compared to CV1
+    - C-clamp mounting may be insufficient for high-repetition use
+    - Audible click may be difficult to hear during rapid operation
+    requirement_coverage:
+      satisfied:
+      - R1 (modular cradles ensure reliable riveting through optimal positioning)
+      - R2 (specific cradles available for 250-400 mm brake drum range)
+      - R3 (dedicated cradles for 80-400 mm shoe widths)
+      - R4 (cradles designed for 6-8 mm shoe thickness)
+      - R5 (supports up to 45 mm stack height with appropriate cradles)
+      - R6 (mechanical alignment ensures minimum 4 mm edge distance)
+      - R7 (magazine compatible with 3-5 mm rivet shank diameter)
+      - R8 (lever system achieves ≥500 N force capability)
+      - R9 (stroke limiter ensures ~4 mm head closure)
+      - R10 (automatic feeding significantly improves productivity beyond 70/day)
+      - R11 (one-person operation maintained)
+      - R12 (C-clamp mounting provides stable operation)
+      - R13 (modular design allows component replacement to extend service life)
+      - R14 (portable despite added weight from multiple components)
+      - R15 (modular reliability ensures consistent operation)
+      - R16 (individual components can be replaced as needed)
+      - R17 (ergonomic lever forces maintained)
+      - R18 (stable mounting and audible feedback enhance safety)
+      - R19 (modular design may extend delivery time slightly)
+      - R20 (higher cost due to multiple parts, may exceed SwFr 400)
+      partially_satisfied:
+      - R5 (45 mm stack height supported but requires specific cradle design)
+      - R20 (manufacturing cost likely exceeds SwFr 400 due to multiple components)
+      not_satisfied: []
+    assumptions:
+    - Workshop can justify investment in multiple cradles for different brake shoe
+      sizes.
+    - Operators can manage inventory and changeover between different cradles efficiently.
+    - Worktop can support weight of complete modular system with C-clamp mounting.
+    - No specific requirements prohibit modular or automatic feeding systems.
+    open_questions:
+    - What is the acceptable manufacturing cost ceiling for modular system?
+    - How many different cradles are needed to cover the full 80-400 mm width range?
+    - What is the expected magazine capacity and reloading time?
+    - How should cradles be labeled and organized for efficient workshop use?
+    - What is the expected wear life for interchangeable cradles under continuous
+      use?
+  - id: CV4
+    selected_principles:
+      F1: WP7
+      F2: WP2
+      F3: WP9
+      F4: WP10
+      F5: WP11
+      F6: WP12
+    architecture_description: 'This concept combines the precision of interchangeable
+      cradles with hydraulic force control for optimal quality and reduced operator
+      effort. Interchangeable shoe cradles (WP7) provide perfect fit and positioning
+      for each brake shoe size and geometry. The spring-loaded rivet guide with magnetic
+      retention (WP2) ensures consistent rivet placement. A compact hydraulic cylinder
+      (WP9) generates the required force, actuated by a foot pedal to keep hand forces
+      minimal. An adjustable hydraulic pressure relief valve (WP10) controls force
+      application and ensures consistent ~4 mm head closure. The tool mounts using
+      a bolt-through base plate system (WP11) for maximum stability, and a visual
+      pressure gauge (WP12) provides completion feedback.
+
+
+      The workflow involves selecting and installing the appropriate cradle, positioning
+      the shoe and lining, placing the rivet in the guide, actuating the foot pedal
+      to generate hydraulic pressure, monitoring the pressure gauge for completion,
+      and releasing the assembly. This combination provides the best of both worlds:
+      precise positioning through modular cradles and consistent force control through
+      hydraulics.
+
+      '
+    expected_benefits:
+    - Interchangeable cradles ensure optimal positioning for each brake shoe size,
+      maximizing joint quality
+    - Hydraulic force control provides superior consistency and reduces operator skill
+      requirements
+    - Foot pedal operation keeps hand forces well below 200 N limit, minimizing fatigue
+    - Visual pressure gauge provides clear, unambiguous completion feedback
+    - Bolt mounting offers maximum stability for high-quality riveting
+    - Combination of precision positioning and controlled force represents best quality
+      approach
+    key_risks:
+    - Highest manufacturing cost due to combination of hydraulic system and multiple
+      cradles
+    - Hydraulic system complexity increases maintenance requirements and potential
+      failure points
+    - Multiple interchangeable parts increase inventory and management complexity
+    - Bolt mounting requires permanent worktop modifications
+    - Hydraulic fluid leaks could damage cradle materials or precision components
+    - Foot pedal operation may be slower than hand lever for some operators
+    requirement_coverage:
+      satisfied:
+      - R1 (optimal positioning and hydraulic control ensure highest quality riveting)
+      - R2 (specific cradles available for 250-400 mm brake drum range)
+      - R3 (dedicated cradles for 80-400 mm shoe widths)
+      - R4 (cradles designed for 6-8 mm shoe thickness)
+      - R5 (supports up to 45 mm stack height with appropriate cradles)
+      - R6 (mechanical alignment ensures minimum 4 mm edge distance)
+      - R7 (magnetic guide compatible with 3-5 mm rivets)
+      - R8 (hydraulic system achieves ≥500 N force capability)
+      - R9 (pressure relief valve ensures ~4 mm head closure)
+      - R10 (hydraulic efficiency supports productivity, though potentially slower
+        than CV3)
+      - R11 (one-person operation with foot pedal actuation)
+      - R12 (bolt mounting provides stable worktop operation)
+      - R13 (sealed hydraulic system and replaceable cradles support 5-year life)
+      - R14 (compact design maintains portability despite added components)
+      - R15 (hydraulic and modular reliability ensures consistent operation)
+      - R16 (sealed system and replaceable parts minimize maintenance)
+      - R17 (foot force ≤400 N, hand force minimal)
+      - R18 (stable mounting and visual feedback enhance safety)
+      - R19 (complex design may extend delivery time)
+      - R20 (highest cost due to combined technologies, likely exceeds SwFr 400)
+      partially_satisfied:
+      - R10 (productivity may be lower than CV1 or CV3 due to hydraulic operation
+        speed)
+      - R20 (manufacturing cost significantly exceeds SwFr 400 target)
+      not_satisfied: []
+    assumptions:
+    - Workshop prioritizes quality over cost and can justify premium investment.
+    - Operators are comfortable with foot pedal operation and pressure gauge reading.
+    - Worktop can be permanently modified for bolt mounting.
+    - No specific requirements prohibit combination of hydraulic and modular systems.
+    open_questions:
+    - What is the acceptable manufacturing cost ceiling for premium quality system?
+    - How many different cradles are needed to cover the full size range?
+    - What specific hydraulic fluid is recommended for workshop contaminant exposure?
+    - How should the tool be sealed to prevent hydraulic fluid contamination of precision
+      components?
+    - What is the expected seal life under continuous workshop use?
+    - How does the productivity of this system compare to purely mechanical alternatives?
+  open_questions:
+  - What is the exact stroke length required to achieve consistent ~4 mm head closure
+    across different rivet lengths?
+  - Should the tool include automatic or manual rivet feeding, or is manual placement
+    acceptable?
+  - What specific materials and surface treatments are recommended for components
+    exposed to workshop contaminants?
+  - Is there a preferred actuation method (hand lever vs. foot pedal) based on typical
+    workshop workflows?
+  - What are the acceptable tolerances for head closure dimension (±0.5 mm, ±1 mm)?
+  - What is the acceptable manufacturing cost ceiling if hydraulic or modular systems
+    exceed SwFr 400?
+  - How should the tool be sealed to prevent hydraulic fluid contamination in workshop
+    environments?
+  - What is the expected seal life under continuous workshop use?
+  - How does the productivity of hydraulic systems compare to purely mechanical alternatives?
+  - What specific hydraulic fluid is recommended for workshop contaminant exposure?

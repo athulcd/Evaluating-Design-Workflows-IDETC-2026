@@ -1,0 +1,529 @@
+case_context:
+  product_system: ''
+  stakeholders: []
+  operating_environment: ''
+  constraints_known: []
+  success_criteria_known: []
+artifacts_available:
+  task_clarification:
+    objectives:
+    - OBJ1: Design a simple rivet setting tool for internal expanding drum brake shoes.
+    - OBJ2: Produce 5 units using the workshop's in-house machining facilities.
+    - OBJ3: 'Maintain manufacturing costs below 500 CHF per unit, with a target of
+        400 CHF.
+
+        '
+    - OBJ4: Complete the design layout within a 3 to 4-month timeframe.
+    constraints:
+    - CON1: 'Operating force must not exceed 200 N for hand operation or 400 N for
+        foot operation.
+
+        '
+    - CON2: The tool must generate a riveting force of approximately 500 N.
+    - CON3: The tool must provide a working stroke of 3 to 4 mm for proper rivet closure.
+    - CON4: 'The tool must accommodate drum brake shoes with an inside diameter of
+        250 mm to 400 mm.
+
+        '
+    - CON5: 'The tool must handle workpieces with a maximum width of 100 mm and a
+        total thickness of 15 mm.
+
+        '
+    - CON6: 'A minimum clearance of 10 mm from the rivet center to the shoe rib must
+        be maintained.
+
+        '
+    - CON7: 'The tool must be compatible with DIN 7338 copper rivets (shank diameter
+        3 to 5 mm).
+
+        '
+    - CON8: The tool must be mountable on a wooden worktop.
+    evaluation_criteria:
+    - EC1: Service life of at least five years.
+    - EC2: Maintenance-free and reliable operation.
+    - EC3: Ease of transport and compact storage.
+    - EC4: Compliance with standard ergonomic working height guidelines.
+    - EC5: Suitability for one-man operation by a car mechanic.
+    assumptions:
+    - AS1: The workshop's machining facilities include standard equipment like lathes,
+        milling machines, and drills.
+    - AS2: The "simple" nature of the tool implies a mechanical linkage or basic manual
+        mechanism rather than complex automation.
+    - AS3: Materials for the tool construction are readily available within the workshop's
+        standard supply chain.
+    open_questions:
+    - OQ1: Are there specific mounting hole patterns or dimensions required for the
+        wooden worktop?
+    - OQ2: Is there a preference between hand-operated and foot-operated mechanisms?
+    - OQ3: Are there specific storage dimensions or weight limits for "easy transport"?
+  requirements_list:
+  - id: R1
+    description: 'The tool shall be designed to rivet friction linings onto aluminum
+      alloy drum brake shoes.
+
+      '
+    traceability:
+    - OBJ1
+  - id: R2
+    description: 'The design shall be optimized for in-house production using existing
+      machining facilities.
+
+      '
+    traceability:
+    - OBJ2
+    - AS1
+  - id: R3
+    description: 'The manufacturing cost per unit shall be less than 500 CHF, with
+      a target of 400 CHF.
+
+      '
+    traceability:
+    - OBJ3
+  - id: R4
+    description: 'The design layout shall be finalized within a maximum of 4 months.
+
+      '
+    traceability:
+    - OBJ4
+  - id: R5
+    description: 'The input force required from the operator shall be <= 200 N (hand)
+      or <= 400 N (foot).
+
+      '
+    traceability:
+    - CON1
+    - EC5
+  - id: R6
+    description: 'The mechanism shall amplify the input force to provide a 500 N riveting
+      force at the workpiece.
+
+      '
+    traceability:
+    - CON2
+  - id: R7
+    description: 'The tool shall provide a controlled working stroke of 3 to 4 mm.
+
+      '
+    traceability:
+    - CON3
+  - id: R8
+    description: 'The tool geometry shall accommodate brake shoe diameters ranging
+      from 250 mm to 400 mm.
+
+      '
+    traceability:
+    - CON4
+  - id: R9
+    description: 'The tool shall support a maximum shoe width of 100 mm and a combined
+      thickness of 15 mm.
+
+      '
+    traceability:
+    - CON5
+  - id: R10
+    description: 'The riveting head design shall allow for a 10 mm clearance from
+      the rivet center to the shoe rib.
+
+      '
+    traceability:
+    - CON6
+  - id: R11
+    description: 'The tool shall be compatible with annealed copper rivets per DIN
+      7338 (3-5 mm shank).
+
+      '
+    traceability:
+    - CON7
+  - id: R12
+    description: 'The tool base shall include features for mounting onto a wooden
+      worktop.
+
+      '
+    traceability:
+    - CON8
+  - id: R13
+    description: 'The tool shall be constructed to withstand a workload of 70 rivets
+      per day for 5 years.
+
+      '
+    traceability:
+    - EC1
+  - id: R14
+    description: 'The tool shall require no scheduled maintenance during its service
+      life.
+
+      '
+    traceability:
+    - EC2
+  - id: R15
+    description: 'The tool dimensions and weight shall allow for easy transport and
+      compact storage.
+
+      '
+    traceability:
+    - EC3
+  - id: R16
+    description: 'The tool''s operating interface shall be positioned at a standard
+      ergonomic working height.
+
+      '
+    traceability:
+    - EC4
+  black_box:
+    input_streams:
+      energy:
+      - ID: IN_E1
+        label: Human physical effort (Hand or Foot)
+        description: Manual input force to drive the mechanism.
+      material:
+      - ID: IN_M1
+        label: Copper Rivets (DIN 7338)
+        description: Unset rivets with 3-5 mm shank diameter.
+      - ID: IN_M2
+        label: Brake Shoe and Lining
+        description: Components to be joined (250-400 mm diameter).
+      signal:
+      - ID: IN_S1
+        label: Positioning Signal
+        description: Visual alignment of the rivet and shoe by the operator.
+    output_streams:
+      energy:
+      - ID: OUT_E1
+        label: Dissipated Energy
+        description: Heat and friction losses during the riveting process.
+      material:
+      - ID: OUT_M1
+        label: Riveted Brake Assembly
+        description: Brake shoe with friction lining securely attached.
+      signal:
+      - ID: OUT_S1
+        label: Process Completion Signal
+        description: Visual confirmation that the rivet is fully set.
+    assumptions:
+    - AS_BB1: The operator provides consistent input force within the specified limits
+        (200N hand / 400N foot).
+    open_questions:
+    - OQ_BB1: Is a specific return mechanism (e.g., spring) required to reset the
+        tool?
+  function_structure:
+    functions:
+    - ID: F1
+      label: Receive human input force
+      input_ids:
+      - IN_E1
+      output_ids:
+      - E_INT1
+      description: Capture the physical force from the operator's hand or foot.
+    - ID: F2
+      label: Amplify force
+      input_ids:
+      - E_INT1
+      output_ids:
+      - E_INT2
+      description: Increase the input force to the required 500 N riveting force.
+    - ID: F3
+      label: Convert motion to linear stroke
+      input_ids:
+      - E_INT2
+      output_ids:
+      - E_INT3
+      description: Transform the amplified energy into a 3-4 mm linear displacement.
+    - ID: F4
+      label: Support and position workpiece
+      input_ids:
+      - IN_M2
+      - IN_S1
+      output_ids:
+      - M_INT1
+      description: Hold the brake shoe and lining in the correct orientation for riveting.
+    - ID: F5
+      label: Deform rivet
+      input_ids:
+      - E_INT3
+      - IN_M1
+      - M_INT1
+      output_ids:
+      - OUT_M1
+      - OUT_S1
+      - OUT_E1
+      description: Apply the linear force to the rivet to create the closure.
+    - ID: F6
+      label: Secure tool to worktop
+      input_ids: []
+      output_ids: []
+      description: Provide stability by mounting the tool to a wooden worktop.
+  working_principles:
+    principles: []
+  concept_variants:
+    concepts:
+    - id: CV1
+      label: Hand-Operated Toggle Press
+      description: A bench-mounted tool using a hand lever and toggle linkage for
+        high precision.
+    - id: CV2
+      label: Foot-Operated Lever Press
+      description: A floor-standing or bench-edge tool that frees both hands for workpiece
+        positioning.
+  concept_selection:
+    selected_concept_id: CV1
+    selection_rationale: 'CV1 (Hand-Operated Toggle Press) is selected because the
+      toggle linkage (WP2.1) naturally provides the highest force at the end of the
+      stroke, which is ideal for rivet setting. It is more compact than a foot-operated
+      system, fitting the "easy transport" and "compact storage" criteria (EC3). Hand
+      operation allows for better tactile feedback and precision when aligning the
+      10mm clearance (R10).
+
+      '
+    evaluation_matrix:
+      criteria:
+      - ID: EC1
+        weight: 0.2
+        label: Service Life / Reliability
+      - ID: EC3
+        weight: 0.2
+        label: Compactness / Portability
+      - ID: EC5
+        weight: 0.3
+        label: Ease of Operation
+      - ID: R3
+        weight: 0.3
+        label: Manufacturing Cost
+      scores:
+        CV1:
+          EC1: 5
+          EC3: 5
+          EC5: 4
+          R3: 4
+        CV2:
+          EC1: 4
+          EC3: 2
+          EC5: 5
+          R3: 3
+      score_scale: 1-5 (1=Poor, 5=Excellent)
+  embodiment_layouts:
+    modules:
+      M1:
+        label: Base Plate
+        description: 'A heavy-duty steel plate that serves as the foundation for the
+          tool. It includes four pre-drilled holes for mounting to a wooden worktop.
+
+          '
+        functions:
+        - F6
+      M2:
+        label: C-Frame Structure
+        description: 'The primary load-bearing component, machined or welded from
+          thick steel plate. Its C-shape provides the necessary throat depth and height
+          to accommodate various brake shoe sizes.
+
+          '
+        functions:
+        - F4
+      M3:
+        label: Toggle Linkage
+        description: 'A mechanical linkage system that connects the hand lever to
+          the ram. It is designed to provide a non-linear mechanical advantage, peaking
+          at the end of the stroke.
+
+          '
+        functions:
+        - F2
+      M4:
+        label: Hand Lever
+        description: 'An ergonomic lever with a grip handle. Its length is sized to
+          ensure the operator does not exceed the 200 N input force limit.
+
+          '
+        functions:
+        - F1
+      M5:
+        label: Ram Assembly
+        description: 'A precision-guided linear plunger that translates the toggle
+          motion into the vertical riveting stroke.
+
+          '
+        functions:
+        - F3
+      M6:
+        label: Riveting Tooling Set
+        description: 'Consists of an interchangeable upper punch and a lower anvil.
+          The tips are slimmed to 18 mm diameter to ensure clearance from the shoe
+          rib.
+
+          '
+        functions:
+        - F5
+    interfaces:
+      IF1:
+        label: Tool-to-Worktop Interface
+        type: Mechanical / Bolted
+        description: Connection between the Base Plate (M1) and the wooden worktop
+          using M10 lag bolts.
+      IF2:
+        label: Frame-to-Base Interface
+        type: Mechanical / Welded
+        description: Permanent rigid connection between the C-Frame (M2) and the Base
+          Plate (M1).
+      IF3:
+        label: Lever-to-Toggle Interface
+        type: Mechanical / Pivot
+        description: A pin joint using a hardened steel pin and bronze bushings to
+          connect the Lever (M4) to the Toggle Linkage (M3).
+      IF4:
+        label: Toggle-to-Ram Interface
+        type: Mechanical / Pivot
+        description: A pin joint connecting the lower end of the Toggle Linkage (M3)
+          to the top of the Ram (M5).
+      IF5:
+        label: Ram-to-Punch Interface
+        type: Mechanical / Socket
+        description: A cylindrical socket in the Ram (M5) with a set-screw to hold
+          the interchangeable punch (M6).
+      IF6:
+        label: Frame-to-Anvil Interface
+        type: Mechanical / Threaded
+        description: A threaded hole in the lower arm of the C-Frame (M2) to secure
+          the anvil (M6).
+    layout_description: 'The tool is designed as a compact, bench-mounted manual press.
+      The C-Frame (M2) is oriented vertically, providing a 150 mm throat depth to
+      easily accommodate 100 mm wide brake shoes. The Hand Lever (M4) is positioned
+      at the top for downward operation, which is ergonomically favorable for a standing
+      mechanic. The Toggle Linkage (M3) is tuned to provide the 3-4 mm working stroke
+      (R7) with a force amplification of at least 2.5x at the point of rivet deformation.
+      The entire assembly is finished with a corrosion-resistant coating to ensure
+      a 5-year service life (R13).
+
+      '
+  preliminary_sizing:
+    load_cases:
+      LC1:
+        label: Maximum Riveting Load
+        description: A 500 N compressive load acting along the axis of the ram and
+          anvil during rivet closure.
+        requirements:
+        - R6
+        - R11
+      LC2:
+        label: Operator Input Load
+        description: A 200 N manual force applied perpendicularly to the end of the
+          hand lever.
+        requirements:
+        - R5
+    key_design_parameters:
+      KDP1:
+        label: Lever Length
+        value: 250 mm
+        rationale: 'Calculated to provide sufficient torque. With a 50 mm distance
+          from the main pivot to the toggle pin, it provides a base mechanical advantage
+          of 5:1.
+
+          '
+      KDP2:
+        label: Throat Depth
+        value: 150 mm
+        rationale: 'Provides clearance for the 100 mm maximum shoe width (R9) plus
+          50 mm of additional space for the curvature of a 400 mm diameter shoe.
+
+          '
+      KDP3:
+        label: Ram Diameter
+        value: 20 mm
+        rationale: 'Sized to resist buckling and provide a stable mounting socket
+          for the riveting punch under the 500 N load.
+
+          '
+      KDP4:
+        label: Frame Plate Thickness
+        value: 20 mm
+        rationale: 'Using S355 steel, this thickness ensures that the C-frame deflection
+          remains below 0.1 mm under full load, maintaining rivet alignment.
+
+          '
+      KDP5:
+        label: Tooling Tip Diameter
+        value: 18 mm
+        rationale: 'Ensures a 9 mm radius from the rivet center, satisfying the 10
+          mm clearance requirement (R10) to the shoe rib.
+
+          '
+    sizing_results:
+      SR1:
+        parameter_id: KDP1
+        calculated_value: 250 mm
+        safety_factor: 1.5
+      SR2:
+        parameter_id: KDP4
+        calculated_value: 20 mm
+        safety_factor: 4.2
+      SR3:
+        parameter_id: KDP3
+        calculated_value: 20 mm
+        safety_factor: 8.0
+      SR4:
+        parameter_id: KDP5
+        calculated_value: 18 mm
+        safety_factor: 1.1
+  manufacturing_plan:
+    work_packages:
+      WP1:
+        label: Structural Fabrication
+        description: 'Flame cutting or waterjet cutting the C-frame (M2) and Base
+          Plate (M1) from 20 mm steel plate. Milling the edges for a clean finish
+          and drilling all mounting holes.
+
+          '
+        modules:
+        - M1
+        - M2
+      WP2:
+        label: Mechanism Machining
+        description: 'Turning the Ram (M5) and Lever (M4) on a lathe. Milling the
+          Toggle Linkage (M3) components. Reaming all pivot holes for H7/g6 fits to
+          ensure smooth operation.
+
+          '
+        modules:
+        - M3
+        - M4
+        - M5
+      WP3:
+        label: Tooling Production
+        description: 'Machining the punch and anvil (M6) from 1.2379 tool steel. Vacuum
+          hardening to 58-60 HRC. Precision grinding of the rivet-forming surfaces.
+
+          '
+        modules:
+        - M6
+      WP4:
+        label: Final Assembly and Testing
+        description: 'Pressing bushings into pivot points, assembling the linkage
+          with hardened pins, and mounting the assembly to the base. Testing with
+          DIN 7338 rivets to verify stroke and force.
+
+          '
+        modules:
+        - M1
+        - M2
+        - M3
+        - M4
+        - M5
+        - M6
+    material_selection:
+      MAT1:
+        label: S355J2 Structural Steel
+        usage: Frame (M2), Base (M1), and Lever (M4).
+        rationale: High strength-to-weight ratio and excellent machinability for in-house
+          production.
+      MAT2:
+        label: 1.2379 (D2) Tool Steel
+        usage: Riveting Punch and Anvil (M6).
+        rationale: High wear resistance required for the 87,500 cycle target service
+          life.
+      MAT3:
+        label: CuSn8 Phosphor Bronze
+        usage: Bushings for all pivot joints in M3 and M4.
+        rationale: Provides maintenance-free, low-friction operation (R14).
+    assembly_strategy: The tool will be built in a batch of 5 units. The C-frame will
+      be welded to the base plate using a jig to ensure perpendicularity. All moving
+      joints will be assembled using standard circlips for easy replacement of pins
+      if necessary. The final units will be painted with a durable powder coating.

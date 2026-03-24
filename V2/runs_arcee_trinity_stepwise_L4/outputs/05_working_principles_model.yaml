@@ -1,0 +1,181 @@
+working_principles:
+  principles:
+  - id: WP1
+    function_id: F3
+    principle_name: Lever and Fulcrum Mechanism
+    physical_effect_or_mechanism: Mechanical advantage through lever arms to amplify
+      human input force
+    key_parameters:
+    - Lever arm ratio
+    - Fulcrum position
+    - Material strength of lever components
+    advantages:
+    - Simple and cost-effective design
+    - High force amplification possible
+    - Easy to manufacture with basic machining
+    disadvantages:
+    - Limited stroke length may require multiple operations
+    - Potential for operator fatigue with repeated use
+    risks:
+    - Material fatigue in lever components over time
+    - Inconsistent force application if not properly designed
+    impacted_requirements:
+    - R1 (500 N force)
+    - R2 (3-4 mm stroke)
+    - R8 (ergonomic operation)
+    - R13 (cost-effective manufacturing)
+  - id: WP2
+    function_id: F3
+    principle_name: Toggle Linkage Mechanism
+    physical_effect_or_mechanism: Kinematic inversion to achieve high force at end
+      of stroke
+    key_parameters:
+    - Linkage geometry
+    - Pivot joint tolerances
+    - Material yield strength
+    advantages:
+    - High force multiplication at end of stroke
+    - Compact design suitable for workshop space
+    - Smooth force application
+    disadvantages:
+    - Complex geometry may increase manufacturing cost
+    - Potential for jamming if tolerances not maintained
+    risks:
+    - Wear at pivot points affecting long-term reliability
+    - Sudden force application may damage rivets or brake shoes
+    impacted_requirements:
+    - R1 (500 N force)
+    - R2 (3-4 mm stroke)
+    - R9 (5-year reliability)
+    - R13 (manufacturing cost)
+  - id: WP3
+    function_id: F3
+    principle_name: Screw and Nut Mechanism
+    physical_effect_or_mechanism: Threaded motion conversion to generate linear force
+    key_parameters:
+    - Thread pitch
+    - Lead screw diameter
+    - Nut material and lubrication
+    advantages:
+    - Precise control of force and stroke
+    - Self-locking capability when not in use
+    - Relatively simple to manufacture
+    disadvantages:
+    - Slower operation compared to lever mechanisms
+    - Potential for thread wear over time
+    risks:
+    - Thread stripping under high loads
+    - Backlash affecting force consistency
+    impacted_requirements:
+    - R1 (500 N force)
+    - R2 (3-4 mm stroke)
+    - R9 (maintenance-free operation)
+    - R13 (manufacturing cost)
+  - id: WP4
+    function_id: F3
+    principle_name: Hydraulic Amplification
+    physical_effect_or_mechanism: Pascal's principle to multiply force through fluid
+      pressure
+    key_parameters:
+    - Piston diameters (input/output)
+    - Hydraulic fluid viscosity
+    - Seal integrity
+    advantages:
+    - High force multiplication with smooth application
+    - Consistent force delivery
+    - Potential for foot operation
+    disadvantages:
+    - Higher manufacturing complexity and cost
+    - Potential for fluid leakage
+    - Requires sealed system maintenance
+    risks:
+    - Seal failure leading to loss of pressure
+    - Fluid contamination affecting performance
+    impacted_requirements:
+    - R1 (500 N force)
+    - R7 (hand or foot operation)
+    - R8 (ergonomic operation)
+    - R13 (manufacturing cost)
+  - id: WP5
+    function_id: F3
+    principle_name: Cam and Follower Mechanism
+    physical_effect_or_mechanism: Eccentric motion conversion to generate linear force
+    key_parameters:
+    - Cam profile geometry
+    - Follower material and surface finish
+    - Bearing friction
+    advantages:
+    - Smooth force application throughout stroke
+    - Compact design
+    - Potential for variable force profiles
+    disadvantages:
+    - Complex cam profile manufacturing
+    - Potential for follower wear
+    risks:
+    - Cam wear affecting force consistency
+    - Misalignment causing binding
+    impacted_requirements:
+    - R1 (500 N force)
+    - R2 (3-4 mm stroke)
+    - R9 (5-year reliability)
+    - R13 (manufacturing cost)
+  - id: WP6
+    function_id: F4
+    principle_name: Clamping Base with Adjustable Feet
+    physical_effect_or_mechanism: Mechanical clamping to secure tool to worktop
+    key_parameters:
+    - Clamping force
+    - Foot adjustability range
+    - Base material stiffness
+    advantages:
+    - Stable mounting on wooden worktop
+    - Compensates for uneven surfaces
+    - Easy to install and remove
+    disadvantages:
+    - Potential for worktop damage if over-tightened
+    - Additional weight from base structure
+    risks:
+    - Insufficient clamping leading to tool movement
+    - Base deformation under load
+    impacted_requirements:
+    - R11 (mounting on wooden worktop)
+    - R12 (one-man operation)
+    - R10 (compact and transportable)
+  - id: WP7
+    function_id: F5
+    principle_name: Modular Design with Quick-Release Components
+    physical_effect_or_mechanism: Interchangeable parts for transport and storage
+    key_parameters:
+    - Connection mechanism (pins, latches)
+    - Component weight distribution
+    - Storage volume optimization
+    advantages:
+    - Reduces overall transport volume
+    - Allows for component replacement
+    - Facilitates workshop organization
+    disadvantages:
+    - Additional connection mechanisms add complexity
+    - Potential for lost components
+    risks:
+    - Connection failure during operation
+    - Increased assembly time
+    impacted_requirements:
+    - R10 (compact and transportable)
+    - R13 (manufacturing cost)
+    - R14 (design completion within 3-4 months)
+  assumptions:
+  - The workshop’s machining facilities are capable of producing the tool as per the
+    design.
+  - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed state.
+  - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+  - The tool will be used exclusively for riveting brake linings onto internal expanding
+    drum brake shoes.
+  open_questions:
+  - What specific ergonomic guidelines (e.g., working height) must the tool comply
+    with?
+  - Are there any additional safety requirements or certifications needed for the
+    tool?
+  - What is the exact project completion deadline within the 3-4 month timeframe?
+  - Are there any specific material or surface finish requirements for the tool?
+  - What is the expected variability in brake shoe dimensions within the 250-400 mm
+    range?

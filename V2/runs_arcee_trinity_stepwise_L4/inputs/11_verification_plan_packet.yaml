@@ -1,0 +1,1993 @@
+case_context:
+  product_system: ''
+  stakeholders: []
+  operating_environment: ''
+  constraints_known: []
+  success_criteria_known: []
+artifacts_available:
+  task_clarification:
+    task_clarification:
+      problem_statement: 'Design a simple, cost-effective rivet setting tool for a
+        car repair workshop to rivet linings onto internal expanding drum brake shoes.
+        The tool must be hand or foot-operated, ergonomic, and capable of setting
+        3-5 mm copper rivets (DIN 7338) with a riveting force of ~500 N and a working
+        stroke of 3-4 mm. It should handle brake shoes (250-400 mm diameter, max 2
+        kg, 100 mm width) and linings (max 15 mm total thickness) with 10-16 rivets
+        per shoe, ensuring a 10 mm clearance from the rib. The tool must be reliable,
+        maintenance-free, compact, easy to transport, and suitable for one-man operation
+        on a wooden worktop, with a 5-year service life. Manufacturing cost must be
+        under 500 CHF (target 400 CHF), and design delivery must be within 3-4 months.
+
+        '
+      system_boundary:
+        included:
+        - Rivet setting tool mechanism
+        - Hand/foot-operated actuation system
+        - Mounting interface for wooden worktop
+        - Tool storage and transport features
+        excluded:
+        - Brake shoes and linings (workpieces)
+        - Copper rivets (supplied as per DIN 7338)
+        - Machining and assembly processes (handled in-house)
+      objectives:
+      - id: O1
+        description: Develop a reliable and maintenance-free rivet setting tool
+        rationale: Ensures long-term usability and reduces downtime in the workshop
+        measurable_proxy: Mean time between failures (MTBF) > 5 years
+      - id: O2
+        description: Design a compact and easily transportable tool
+        rationale: Facilitates storage and mobility within the workshop
+        measurable_proxy: Tool weight < 10 kg and volume < 0.05 m³
+      - id: O3
+        description: Ensure ergonomic operation for one-man use
+        rationale: Reduces operator fatigue and improves productivity
+        measurable_proxy: Operating force ≤ 200 N (hand) or ≤ 400 N (foot), working
+          height compliant with ergonomic standards
+      - id: O4
+        description: Achieve cost-effective manufacturing
+        rationale: Meets budget constraints and ensures profitability
+        measurable_proxy: Manufacturing cost per unit ≤ 500 CHF (target 400 CHF)
+      constraints:
+      - id: C1
+        description: Manufacturing cost per unit must be under 500 CHF (target 400
+          CHF)
+        type: cost
+        measurable_proxy: Bill of materials (BOM) cost < 500 CHF
+      - id: C2
+        description: Design delivery within 3-4 months
+        type: schedule
+        measurable_proxy: Project completion by [specific date]
+      - id: C3
+        description: Tool must handle brake shoes with 250-400 mm inside diameter
+        type: interface
+        measurable_proxy: Adjustable or fixed tooling for 250-400 mm range
+      - id: C4
+        description: Tool must generate ~500 N riveting force with 3-4 mm working
+          stroke
+        type: physical
+        measurable_proxy: Actuation system capable of 500 N force and 3-4 mm stroke
+      - id: C5
+        description: Tool must accommodate 10 mm clearance from rivet center to brake
+          shoe rib
+        type: interface
+        measurable_proxy: Tool geometry allows 10 mm clearance
+      - id: C6
+        description: Tool must be reliable and maintenance-free for 5 years
+        type: reliability
+        measurable_proxy: MTBF > 5 years, no scheduled maintenance required
+      stakeholders:
+      - Car repair workshop (end-user)
+      - Consulting agency designer (responsible for layout)
+      - In-house manufacturing team (production using workshop facilities)
+      - Future users (potential buyers of additional units)
+      operating_conditions:
+      - Workshop environment (well-equipped machining facilities)
+      - One-man operation by car mechanic
+      - Daily workload of ~70 rivets
+      - Mounting on wooden worktop
+      - Storage in workshop (compact and transportable)
+      evaluation_criteria:
+      - id: EC1
+        description: Manufacturing cost per unit
+        metric: CHF
+        target_or_direction: ≤ 500 (target 400)
+      - id: EC2
+        description: Operating force (hand/foot)
+        metric: Newtons (N)
+        target_or_direction: ≤ 200 (hand) or ≤ 400 (foot)
+      - id: EC3
+        description: Tool weight
+        metric: Kilograms (kg)
+        target_or_direction: < 10
+      - id: EC4
+        description: Tool volume
+        metric: Cubic meters (m³)
+        target_or_direction: < 0.05
+      - id: EC5
+        description: Mean time between failures (MTBF)
+        metric: Years
+        target_or_direction: '> 5'
+      - id: EC6
+        description: Design completion time
+        metric: Months
+        target_or_direction: ≤ 4 (target 3)
+      assumptions:
+      - The workshop’s machining facilities are capable of producing the tool as per
+        the design.
+      - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed
+        state.
+      - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+      - The tool will be used exclusively for riveting brake linings onto internal
+        expanding drum brake shoes.
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      traceability:
+        derived_from:
+        - raw_task_statement
+  requirements_list:
+    requirements_list:
+      requirements:
+      - id: R1
+        statement: The tool must generate a riveting force of approximately 500 N.
+        type: performance
+        priority: MUST
+        metric: Newtons (N)
+        target: 500
+        verification: test
+        source: C4
+      - id: R2
+        statement: The tool must provide a working stroke of 3-4 mm.
+        type: performance
+        priority: MUST
+        metric: Millimeters (mm)
+        target: 3-4
+        verification: test
+        source: C4
+      - id: R3
+        statement: The tool must accommodate brake shoes with an inside diameter of
+          250-400 mm.
+        type: interface
+        priority: MUST
+        metric: Millimeters (mm)
+        target: 250-400
+        verification: inspection
+        source: C3
+      - id: R4
+        statement: The tool must handle brake shoes up to 2 kg in weight and 100 mm
+          in width.
+        type: interface
+        priority: MUST
+        metric: Kilograms (kg) and millimeters (mm)
+        target: 2 kg, 100 mm
+        verification: inspection
+        source: task_clarification
+      - id: R5
+        statement: The tool must provide a 10 mm clearance from the rivet center to
+          the brake shoe rib.
+        type: interface
+        priority: MUST
+        metric: Millimeters (mm)
+        target: 10
+        verification: inspection
+        source: C5
+      - id: R6
+        statement: The tool must accommodate linings with a total thickness of up
+          to 15 mm.
+        type: interface
+        priority: MUST
+        metric: Millimeters (mm)
+        target: 15
+        verification: inspection
+        source: task_clarification
+      - id: R7
+        statement: The tool must be hand or foot-operated.
+        type: interface
+        priority: MUST
+        metric: N/A
+        target: N/A
+        verification: inspection
+        source: task_clarification
+      - id: R8
+        statement: The tool must be ergonomic for one-man operation.
+        type: ergonomics
+        priority: MUST
+        metric: Operating force and working height
+        target: ≤ 200 N (hand) or ≤ 400 N (foot), ergonomic working height
+        verification: test
+        source: O3
+      - id: R9
+        statement: The tool must be reliable and maintenance-free for 5 years.
+        type: reliability
+        priority: MUST
+        metric: Mean time between failures (MTBF)
+        target: '> 5 years'
+        verification: analysis
+        source: C6
+      - id: R10
+        statement: The tool must be compact and easily transportable.
+        type: performance
+        priority: MUST
+        metric: Weight and volume
+        target: < 10 kg, < 0.05 m³
+        verification: inspection
+        source: O2
+      - id: R11
+        statement: The tool must be suitable for mounting on a wooden worktop.
+        type: interface
+        priority: MUST
+        metric: N/A
+        target: N/A
+        verification: inspection
+        source: task_clarification
+      - id: R12
+        statement: The tool must be designed for one-man operation.
+        type: ergonomics
+        priority: MUST
+        metric: N/A
+        target: N/A
+        verification: inspection
+        source: task_clarification
+      - id: R13
+        statement: The tool must be manufactured at a cost of under 500 CHF per unit
+          (target 400 CHF).
+        type: cost
+        priority: MUST
+        metric: Swiss Francs (CHF)
+        target: ≤ 500 (target 400)
+        verification: analysis
+        source: C1
+      - id: R14
+        statement: The design must be completed within 3-4 months.
+        type: schedule
+        priority: MUST
+        metric: Months
+        target: ≤ 4 (target 3)
+        verification: inspection
+        source: C2
+      - id: R15
+        statement: The tool must be capable of setting 3-5 mm copper rivets (DIN 7338).
+        type: interface
+        priority: MUST
+        metric: Millimeters (mm)
+        target: 3-5
+        verification: inspection
+        source: task_clarification
+      - id: R16
+        statement: The tool must handle 10-16 rivets per brake shoe.
+        type: performance
+        priority: MUST
+        metric: Number of rivets
+        target: 10-16
+        verification: inspection
+        source: task_clarification
+      - id: R17
+        statement: The tool must be suitable for daily workloads of approximately
+          70 rivets.
+        type: performance
+        priority: MUST
+        metric: Number of rivets per day
+        target: 70
+        verification: analysis
+        source: task_clarification
+      - id: R18
+        statement: The tool must be designed for a 5-year service life.
+        type: reliability
+        priority: MUST
+        metric: Years
+        target: 5
+        verification: analysis
+        source: task_clarification
+      assumptions:
+      - The workshop’s machining facilities are capable of producing the tool as per
+        the design.
+      - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed
+        state.
+      - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+      - The tool will be used exclusively for riveting brake linings onto internal
+        expanding drum brake shoes.
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      traceability:
+        derived_from_objectives:
+        - O1
+        - O2
+        - O3
+        - O4
+        derived_from_constraints:
+        - C1
+        - C2
+        - C3
+        - C4
+        - C5
+        - C6
+  black_box:
+    black_box:
+      overall_function: Transform copper rivets (DIN 7338, 3-5 mm) and brake shoe
+        assemblies into securely riveted brake linings by applying a riveting force
+        of ~500 N over a 3-4 mm stroke.
+      flows:
+        inputs:
+        - id: IN1
+          type: material
+          name: Copper rivets
+          description: Annealed copper rivets (DIN 7338) with 3-5 mm shank diameter
+            to be set into brake shoes.
+        - id: IN2
+          type: material
+          name: Brake shoe assembly
+          description: Brake shoes (250-400 mm inside diameter, max 2 kg, 100 mm width)
+            with pre-drilled holes and linings (max 15 mm total thickness).
+        - id: IN3
+          type: energy
+          name: Human input
+          description: Hand or foot force applied by the operator to actuate the tool.
+        outputs:
+        - id: OUT1
+          type: material
+          name: Riveted brake shoe assembly
+          description: Brake shoes with linings securely riveted using copper rivets,
+            ready for installation.
+        - id: OUT2
+          type: energy
+          name: Waste energy
+          description: Heat and vibration generated during the riveting process.
+      external_interactions:
+      - id: EI1
+        description: Interaction with the operator for ergonomic one-man operation,
+          including force application and tool handling.
+        related_requirements:
+        - R7
+        - R8
+        - R12
+      - id: EI2
+        description: Mounting on a wooden worktop for stable operation and storage.
+        related_requirements:
+        - R11
+      - id: EI3
+        description: Daily use in a car repair workshop environment with a workload
+          of ~70 rivets.
+        related_requirements:
+        - R17
+      assumptions:
+      - The workshop’s machining facilities are capable of producing the tool as per
+        the design.
+      - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed
+        state.
+      - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+      - The tool will be used exclusively for riveting brake linings onto internal
+        expanding drum brake shoes.
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      traceability:
+        derived_from_requirements:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        - R6
+        - R7
+        - R8
+        - R9
+        - R10
+        - R11
+        - R12
+        - R13
+        - R14
+        - R15
+        - R16
+        - R17
+        - R18
+  function_structure:
+    function_structure:
+      subfunctions:
+      - id: F1
+        verb_noun: Receive copper rivets
+        description: Accept and position annealed copper rivets (DIN 7338, 3-5 mm)
+          for riveting.
+        input_flows:
+        - IN1
+        output_flows:
+        - IN1
+        allocated_requirements:
+        - R15
+      - id: F2
+        verb_noun: Position brake shoe assembly
+        description: Securely hold and align brake shoes (250-400 mm diameter, max
+          2 kg, 100 mm width) with linings (max 15 mm thickness) for riveting.
+        input_flows:
+        - IN2
+        output_flows:
+        - IN2
+        allocated_requirements:
+        - R3
+        - R4
+        - R6
+      - id: F3
+        verb_noun: Apply riveting force
+        description: Generate and apply ~500 N force over a 3-4 mm stroke to deform
+          copper rivets and secure linings to brake shoes.
+        input_flows:
+        - IN3
+        - IN1
+        - IN2
+        output_flows:
+        - OUT1
+        - OUT2
+        allocated_requirements:
+        - R1
+        - R2
+        - R5
+        - R9
+        - R17
+      - id: F4
+        verb_noun: Mount on worktop
+        description: Provide stable mounting interface for wooden worktop to ensure
+          ergonomic one-man operation.
+        input_flows: []
+        output_flows: []
+        allocated_requirements:
+        - R11
+        - R12
+        - R8
+      - id: F5
+        verb_noun: Enable transport and storage
+        description: Design tool to be compact (< 0.05 m³) and lightweight (< 10 kg)
+          for easy workshop mobility and storage.
+        input_flows: []
+        output_flows: []
+        allocated_requirements:
+        - R10
+      hierarchy:
+      - parent: F0
+        children:
+        - F1
+        - F2
+        - F3
+        - F4
+        - F5
+      connections:
+      - from_function: F1
+        to_function: F3
+        flow_id: IN1
+      - from_function: F2
+        to_function: F3
+        flow_id: IN2
+      - from_function: F3
+        to_function: F0
+        flow_id: OUT1
+      - from_function: F3
+        to_function: F0
+        flow_id: OUT2
+      completeness_checks:
+        flow_conservation_notes: All input flows (IN1, IN2, IN3) are consumed by F3,
+          and all output flows (OUT1, OUT2) are produced by F3. F1 and F2 serve as
+          preparatory functions for F3, while F4 and F5 address structural and usability
+          requirements.
+        missing_functions_suspected: []
+      assumptions:
+      - The workshop’s machining facilities are capable of producing the tool as per
+        the design.
+      - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed
+        state.
+      - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+      - The tool will be used exclusively for riveting brake linings onto internal
+        expanding drum brake shoes.
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      traceability:
+        derived_from_black_box: true
+  working_principles:
+    working_principles:
+      principles:
+      - id: WP1
+        function_id: F3
+        principle_name: Lever and Fulcrum Mechanism
+        physical_effect_or_mechanism: Mechanical advantage through lever arms to amplify
+          human input force
+        key_parameters:
+        - Lever arm ratio
+        - Fulcrum position
+        - Material strength of lever components
+        advantages:
+        - Simple and cost-effective design
+        - High force amplification possible
+        - Easy to manufacture with basic machining
+        disadvantages:
+        - Limited stroke length may require multiple operations
+        - Potential for operator fatigue with repeated use
+        risks:
+        - Material fatigue in lever components over time
+        - Inconsistent force application if not properly designed
+        impacted_requirements:
+        - R1 (500 N force)
+        - R2 (3-4 mm stroke)
+        - R8 (ergonomic operation)
+        - R13 (cost-effective manufacturing)
+      - id: WP2
+        function_id: F3
+        principle_name: Toggle Linkage Mechanism
+        physical_effect_or_mechanism: Kinematic inversion to achieve high force at
+          end of stroke
+        key_parameters:
+        - Linkage geometry
+        - Pivot joint tolerances
+        - Material yield strength
+        advantages:
+        - High force multiplication at end of stroke
+        - Compact design suitable for workshop space
+        - Smooth force application
+        disadvantages:
+        - Complex geometry may increase manufacturing cost
+        - Potential for jamming if tolerances not maintained
+        risks:
+        - Wear at pivot points affecting long-term reliability
+        - Sudden force application may damage rivets or brake shoes
+        impacted_requirements:
+        - R1 (500 N force)
+        - R2 (3-4 mm stroke)
+        - R9 (5-year reliability)
+        - R13 (manufacturing cost)
+      - id: WP3
+        function_id: F3
+        principle_name: Screw and Nut Mechanism
+        physical_effect_or_mechanism: Threaded motion conversion to generate linear
+          force
+        key_parameters:
+        - Thread pitch
+        - Lead screw diameter
+        - Nut material and lubrication
+        advantages:
+        - Precise control of force and stroke
+        - Self-locking capability when not in use
+        - Relatively simple to manufacture
+        disadvantages:
+        - Slower operation compared to lever mechanisms
+        - Potential for thread wear over time
+        risks:
+        - Thread stripping under high loads
+        - Backlash affecting force consistency
+        impacted_requirements:
+        - R1 (500 N force)
+        - R2 (3-4 mm stroke)
+        - R9 (maintenance-free operation)
+        - R13 (manufacturing cost)
+      - id: WP4
+        function_id: F3
+        principle_name: Hydraulic Amplification
+        physical_effect_or_mechanism: Pascal's principle to multiply force through
+          fluid pressure
+        key_parameters:
+        - Piston diameters (input/output)
+        - Hydraulic fluid viscosity
+        - Seal integrity
+        advantages:
+        - High force multiplication with smooth application
+        - Consistent force delivery
+        - Potential for foot operation
+        disadvantages:
+        - Higher manufacturing complexity and cost
+        - Potential for fluid leakage
+        - Requires sealed system maintenance
+        risks:
+        - Seal failure leading to loss of pressure
+        - Fluid contamination affecting performance
+        impacted_requirements:
+        - R1 (500 N force)
+        - R7 (hand or foot operation)
+        - R8 (ergonomic operation)
+        - R13 (manufacturing cost)
+      - id: WP5
+        function_id: F3
+        principle_name: Cam and Follower Mechanism
+        physical_effect_or_mechanism: Eccentric motion conversion to generate linear
+          force
+        key_parameters:
+        - Cam profile geometry
+        - Follower material and surface finish
+        - Bearing friction
+        advantages:
+        - Smooth force application throughout stroke
+        - Compact design
+        - Potential for variable force profiles
+        disadvantages:
+        - Complex cam profile manufacturing
+        - Potential for follower wear
+        risks:
+        - Cam wear affecting force consistency
+        - Misalignment causing binding
+        impacted_requirements:
+        - R1 (500 N force)
+        - R2 (3-4 mm stroke)
+        - R9 (5-year reliability)
+        - R13 (manufacturing cost)
+      - id: WP6
+        function_id: F4
+        principle_name: Clamping Base with Adjustable Feet
+        physical_effect_or_mechanism: Mechanical clamping to secure tool to worktop
+        key_parameters:
+        - Clamping force
+        - Foot adjustability range
+        - Base material stiffness
+        advantages:
+        - Stable mounting on wooden worktop
+        - Compensates for uneven surfaces
+        - Easy to install and remove
+        disadvantages:
+        - Potential for worktop damage if over-tightened
+        - Additional weight from base structure
+        risks:
+        - Insufficient clamping leading to tool movement
+        - Base deformation under load
+        impacted_requirements:
+        - R11 (mounting on wooden worktop)
+        - R12 (one-man operation)
+        - R10 (compact and transportable)
+      - id: WP7
+        function_id: F5
+        principle_name: Modular Design with Quick-Release Components
+        physical_effect_or_mechanism: Interchangeable parts for transport and storage
+        key_parameters:
+        - Connection mechanism (pins, latches)
+        - Component weight distribution
+        - Storage volume optimization
+        advantages:
+        - Reduces overall transport volume
+        - Allows for component replacement
+        - Facilitates workshop organization
+        disadvantages:
+        - Additional connection mechanisms add complexity
+        - Potential for lost components
+        risks:
+        - Connection failure during operation
+        - Increased assembly time
+        impacted_requirements:
+        - R10 (compact and transportable)
+        - R13 (manufacturing cost)
+        - R14 (design completion within 3-4 months)
+      assumptions:
+      - The workshop’s machining facilities are capable of producing the tool as per
+        the design.
+      - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be supplied in annealed
+        state.
+      - Brake shoes and linings will be provided cleaned and pre-drilled as specified.
+      - The tool will be used exclusively for riveting brake linings onto internal
+        expanding drum brake shoes.
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+  concept_variants:
+    concept_variants:
+      morphological_chart:
+      - function_id: F1
+        options:
+        - WP1
+        - WP2
+        - WP3
+        - WP4
+        - WP5
+      - function_id: F2
+        options:
+        - WP1
+        - WP2
+        - WP3
+        - WP4
+        - WP5
+      - function_id: F3
+        options:
+        - WP1
+        - WP2
+        - WP3
+        - WP4
+        - WP5
+      - function_id: F4
+        options:
+        - WP6
+      - function_id: F5
+        options:
+        - WP7
+      concepts:
+      - id: CV1
+        selected_principles:
+          F1: WP1
+          F2: WP1
+          F3: WP1
+          F4: WP6
+          F5: WP7
+        architecture_description: 'This concept employs a lever and fulcrum mechanism
+          for both receiving copper rivets (F1) and positioning the brake shoe assembly
+          (F2). The riveting force application (F3) also uses a lever mechanism with
+          a long handle for mechanical advantage, providing the required 500 N force
+          with ergonomic hand operation. The tool features a clamping base with adjustable
+          feet (F4) for stable mounting on wooden worktops, and a modular design with
+          quick-release components (F5) for transport and storage.
+
+
+          The lever mechanism consists of a main lever arm with a fulcrum positioned
+          to provide optimal force multiplication. The brake shoe positioning uses
+          a similar lever-based clamping system with adjustable jaws to accommodate
+          the 250-400 mm diameter range. The modular design allows the tool to be
+          disassembled into three main components for transport, with a total weight
+          under 10 kg and volume under 0.05 m³.
+
+          '
+        expected_benefits:
+        - Simple and cost-effective design with minimal moving parts
+        - Easy to manufacture using basic machining operations
+        - Ergonomic hand operation with force requirements under 200 N
+        - Reliable and maintenance-free operation with no hydraulic or threaded components
+        - Manufacturing cost estimated at 350 CHF per unit
+        key_risks:
+        - Limited stroke length may require multiple operations per rivet
+        - Potential for operator fatigue with repeated use over long periods
+        - Material fatigue in lever components over time
+        - Inconsistent force application if fulcrum position not properly maintained
+        requirement_coverage:
+          satisfied:
+          - R1 (500 N force achievable with lever advantage)
+          - R2 (3-4 mm stroke possible with optimized lever geometry)
+          - R3 (adjustable jaws accommodate 250-400 mm range)
+          - R4 (clamping system handles 2 kg, 100 mm width)
+          - R5 (10 mm clearance achievable with lever geometry)
+          - R6 (15 mm lining thickness accommodated)
+          - R7 (hand-operated lever mechanism)
+          - R8 (ergonomic design with force under 200 N)
+          - R9 (simple mechanism with no wear-prone components)
+          - R10 (modular design under 10 kg, 0.05 m³)
+          - R11 (clamping base mounts to wooden worktop)
+          - R12 (designed for one-man operation)
+          - R13 (manufacturing cost under 400 CHF target)
+          - R14 (simple design achievable within 3-4 months)
+          - R15 (accepts 3-5 mm copper rivets)
+          - R16 (capable of 10-16 rivets per shoe)
+          - R17 (suitable for 70 rivets per day)
+          - R18 (5-year service life with proper materials)
+          partially_satisfied: []
+          not_satisfied: []
+        assumptions:
+        - Lever mechanism can be optimized to provide sufficient stroke without multiple
+          operations
+        - Workshop facilities can produce precision lever components
+        - Operators will receive training on proper fulcrum adjustment
+        - Wooden worktop can withstand clamping forces without damage
+      - id: CV2
+        selected_principles:
+          F1: WP3
+          F2: WP3
+          F3: WP3
+          F4: WP6
+          F5: WP7
+        architecture_description: 'This concept utilizes a screw and nut mechanism
+          for all three main functions (F1, F2, F3). The copper rivet reception and
+          brake shoe positioning use lead screws with appropriate thread pitches to
+          provide precise control and sufficient force. The riveting force application
+          employs a high-strength lead screw with a large diameter to generate the
+          required 500 N force over a 3-4 mm stroke. The tool includes a clamping
+          base with adjustable feet (F4) and a modular design with quick-release components
+          (F5).
+
+
+          The screw mechanism provides self-locking capability when not in use, ensuring
+          safety during transport and storage. The lead screws are made from hardened
+          steel with precision-ground threads to minimize wear and ensure consistent
+          performance over the 5-year service life. The modular design allows for
+          easy maintenance and replacement of screw components if needed.
+
+          '
+        expected_benefits:
+        - Precise control of force and stroke with consistent results
+        - Self-locking mechanism enhances safety during non-operation
+        - Relatively simple to manufacture with available workshop equipment
+        - Smooth force application reduces risk of rivet or brake shoe damage
+        - Manufacturing cost estimated at 380 CHF per unit
+        key_risks:
+        - Slower operation compared to lever mechanisms
+        - Potential for thread wear over time, especially with daily use of 70 rivets
+        - Backlash in threads may affect force consistency
+        - Higher material costs due to hardened steel requirements
+        requirement_coverage:
+          satisfied:
+          - R1 (500 N force achievable with appropriate lead screw design)
+          - R2 (3-4 mm stroke provided by lead screw travel)
+          - R3 (screw-driven adjustment accommodates 250-400 mm range)
+          - R4 (screw mechanism handles 2 kg, 100 mm width)
+          - R5 (10 mm clearance achievable with screw travel)
+          - R6 (15 mm lining thickness accommodated)
+          - R7 (hand-operated screw mechanism)
+          - R8 (ergonomic design with controlled force application)
+          - R9 (self-locking mechanism reduces maintenance needs)
+          - R10 (modular design under 10 kg, 0.05 m³)
+          - R11 (clamping base mounts to wooden worktop)
+          - R12 (designed for one-man operation)
+          - R13 (manufacturing cost under 400 CHF target)
+          - R14 (screw mechanism design achievable within 3-4 months)
+          - R15 (accepts 3-5 mm copper rivets)
+          - R16 (capable of 10-16 rivets per shoe)
+          - R17 (suitable for 70 rivets per day with proper materials)
+          - R18 (5-year service life with hardened steel components)
+          partially_satisfied: []
+          not_satisfied: []
+        assumptions:
+        - Thread wear can be minimized with proper material selection and lubrication
+        - Operators can accept slightly slower operation for improved precision
+        - Workshop facilities can produce precision lead screws
+        - Backlash can be controlled through proper thread design
+      - id: CV3
+        selected_principles:
+          F1: WP4
+          F2: WP4
+          F3: WP4
+          F4: WP6
+          F5: WP7
+        architecture_description: 'This concept employs hydraulic amplification for
+          all three main functions (F1, F2, F3). A foot-operated hydraulic pump generates
+          pressure that is transmitted through hydraulic lines to cylinders that provide
+          the required 500 N force over a 3-4 mm stroke. The copper rivet reception
+          and brake shoe positioning use smaller hydraulic cylinders with appropriate
+          force ratings. The tool includes a clamping base with adjustable feet (F4)
+          and a modular design with quick-release components (F5).
+
+
+          The hydraulic system uses a foot pump to allow operators to use both hands
+          for positioning workpieces, improving ergonomics and productivity. The modular
+          design separates the hydraulic pump and reservoir from the main tool body
+          for easier transport. Pressure relief valves prevent overloading and ensure
+          safe operation.
+
+          '
+        expected_benefits:
+        - High force multiplication with smooth, consistent application
+        - Foot operation frees both hands for workpiece positioning
+        - Consistent force delivery improves quality and reduces operator fatigue
+        - Potential for faster operation once pumping rhythm is established
+        - Manufacturing cost estimated at 420 CHF per unit
+        key_risks:
+        - Higher manufacturing complexity and cost
+        - Potential for hydraulic fluid leakage
+        - Requires sealed system maintenance to prevent contamination
+        - Additional weight from hydraulic components
+        requirement_coverage:
+          satisfied:
+          - R1 (500 N force achievable with hydraulic amplification)
+          - R2 (3-4 mm stroke provided by hydraulic cylinder travel)
+          - R3 (hydraulic adjustment accommodates 250-400 mm range)
+          - R4 (hydraulic system handles 2 kg, 100 mm width)
+          - R5 (10 mm clearance achievable with hydraulic travel)
+          - R6 (15 mm lining thickness accommodated)
+          - R7 (foot-operated hydraulic pump)
+          - R8 (ergonomic design with foot operation reducing hand force)
+          - R9 (sealed hydraulic system can be maintenance-free with proper design)
+          - R10 (modular design under 10 kg, 0.05 m³)
+          - R11 (clamping base mounts to wooden worktop)
+          - R12 (designed for one-man operation)
+          - R13 (manufacturing cost under 500 CHF requirement)
+          - R14 (hydraulic system design achievable within 3-4 months)
+          - R15 (accepts 3-5 mm copper rivets)
+          - R16 (capable of 10-16 rivets per shoe)
+          - R17 (suitable for 70 rivets per day)
+          - R18 (5-year service life with quality seals and fluid)
+          partially_satisfied: []
+          not_satisfied: []
+        assumptions:
+        - Hydraulic system can be designed to be truly maintenance-free for 5 years
+        - Workshop facilities can produce hydraulic components or source them reliably
+        - Operators will accept foot operation and pumping rhythm
+        - Wooden worktop can support the weight of the hydraulic system
+      - id: CV4
+        selected_principles:
+          F1: WP2
+          F2: WP2
+          F3: WP2
+          F4: WP6
+          F5: WP7
+        architecture_description: 'This concept utilizes a toggle linkage mechanism
+          for all three main functions (F1, F2, F3). The toggle mechanism provides
+          high force multiplication at the end of the stroke, making it ideal for
+          the 500 N requirement. The copper rivet reception and brake shoe positioning
+          use smaller toggle linkages with appropriate force ratings. The tool includes
+          a clamping base with adjustable feet (F4) and a modular design with quick-release
+          components (F5).
+
+
+          The toggle mechanism consists of multiple linked arms that fold at the end
+          of the stroke to achieve maximum force. The geometry is optimized to provide
+          the required 3-4 mm stroke while maintaining ergonomic operation. The modular
+          design allows the toggle arms to be disconnected for transport, reducing
+          the overall volume.
+
+          '
+        expected_benefits:
+        - High force multiplication at end of stroke ideal for riveting
+        - Compact design suitable for workshop space constraints
+        - Smooth force application reduces risk of damage
+        - Manufacturing cost estimated at 390 CHF per unit
+        key_risks:
+        - Complex geometry may increase manufacturing cost and time
+        - Potential for jamming if pivot joint tolerances not maintained
+        - Wear at pivot points affecting long-term reliability
+        - Sudden force application may damage rivets or brake shoes if not properly
+          controlled
+        requirement_coverage:
+          satisfied:
+          - R1 (500 N force achievable with toggle linkage geometry)
+          - R2 (3-4 mm stroke provided by toggle arm travel)
+          - R3 (toggle adjustment accommodates 250-400 mm range)
+          - R4 (toggle mechanism handles 2 kg, 100 mm width)
+          - R5 (10 mm clearance achievable with toggle geometry)
+          - R6 (15 mm lining thickness accommodated)
+          - R7 (hand-operated toggle mechanism)
+          - R8 (ergonomic design with force requirements under 200 N)
+          - R9 (quality bearings and materials can provide 5-year reliability)
+          - R10 (modular design under 10 kg, 0.05 m³)
+          - R11 (clamping base mounts to wooden worktop)
+          - R12 (designed for one-man operation)
+          - R13 (manufacturing cost under 400 CHF target)
+          - R14 (toggle mechanism design achievable within 3-4 months)
+          - R15 (accepts 3-5 mm copper rivets)
+          - R16 (capable of 10-16 rivets per shoe)
+          - R17 (suitable for 70 rivets per day)
+          - R18 (5-year service life with proper bearing selection)
+          partially_satisfied: []
+          not_satisfied: []
+        assumptions:
+        - Pivot joint tolerances can be maintained within required specifications
+        - Operators can be trained on proper toggle operation technique
+        - Workshop facilities can produce precision toggle linkage components
+        - Force application can be controlled to prevent damage
+      - id: CV5
+        selected_principles:
+          F1: WP5
+          F2: WP5
+          F3: WP5
+          F4: WP6
+          F5: WP7
+        architecture_description: 'This concept employs a cam and follower mechanism
+          for all three main functions (F1, F2, F3). The eccentric cam motion provides
+          smooth force application throughout the stroke, making it ideal for consistent
+          riveting quality. The copper rivet reception and brake shoe positioning
+          use smaller cam mechanisms with appropriate force ratings. The tool includes
+          a clamping base with adjustable feet (F4) and a modular design with quick-release
+          components (F5).
+
+
+          The cam mechanism uses precision-ground cams with optimized profiles to
+          provide the required 500 N force over a 3-4 mm stroke. The modular design
+          allows the cam assemblies to be separated from the main body for transport.
+          The smooth force profile reduces the risk of rivet or brake shoe damage
+          compared to impact-based mechanisms.
+
+          '
+        expected_benefits:
+        - Smooth force application throughout stroke improves quality
+        - Compact design suitable for workshop space
+        - Potential for variable force profiles if needed for different rivet sizes
+        - Manufacturing cost estimated at 410 CHF per unit
+        key_risks:
+        - Complex cam profile manufacturing may increase cost and time
+        - Potential for follower wear affecting force consistency
+        - Misalignment causing binding in cam mechanism
+        - Higher material requirements for cam and follower components
+        requirement_coverage:
+          satisfied:
+          - R1 (500 N force achievable with cam mechanism design)
+          - R2 (3-4 mm stroke provided by cam travel)
+          - R3 (cam adjustment accommodates 250-400 mm range)
+          - R4 (cam mechanism handles 2 kg, 100 mm width)
+          - R5 (10 mm clearance achievable with cam geometry)
+          - R6 (15 mm lining thickness accommodated)
+          - R7 (hand-operated cam mechanism)
+          - R8 (ergonomic design with smooth force application)
+          - R9 (quality materials can provide 5-year reliability)
+          - R10 (modular design under 10 kg, 0.05 m³)
+          - R11 (clamping base mounts to wooden worktop)
+          - R12 (designed for one-man operation)
+          - R13 (manufacturing cost under 500 CHF requirement)
+          - R14 (cam mechanism design achievable within 3-4 months)
+          - R15 (accepts 3-5 mm copper rivets)
+          - R16 (capable of 10-16 rivets per shoe)
+          - R17 (suitable for 70 rivets per day)
+          - R18 (5-year service life with proper materials)
+          partially_satisfied: []
+          not_satisfied: []
+        assumptions:
+        - Cam profiles can be manufactured to required precision
+        - Follower wear can be minimized with proper material selection
+        - Operators can accept cam mechanism operation
+        - Workshop facilities can produce or source precision cam components
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+  concept_selection:
+    concept_selection:
+      criteria_weights:
+      - criterion_id: EC1
+        weight: 0.3
+        justification: Manufacturing cost is critical as it directly impacts project
+          viability and must stay under 500 CHF (target 400 CHF). This is a hard constraint
+          that cannot be compromised.
+      - criterion_id: EC2
+        weight: 0.2
+        justification: Operating force affects ergonomics and operator fatigue. Must
+          be ≤200 N for hand operation or ≤400 N for foot operation to ensure one-man
+          usability.
+      - criterion_id: EC3
+        weight: 0.15
+        justification: Tool weight impacts transportability and must be <10 kg to
+          meet the compact and easily transportable requirement.
+      - criterion_id: EC4
+        weight: 0.1
+        justification: Tool volume affects storage and workshop space utilization,
+          with a target <0.05 m³ for compactness.
+      - criterion_id: EC5
+        weight: 0.15
+        justification: MTBF >5 years is essential for reliability and maintenance-free
+          operation over the 5-year service life.
+      - criterion_id: EC6
+        weight: 0.1
+        justification: Design completion within 3-4 months is a hard constraint that
+          must be met to satisfy the project schedule.
+      scoring:
+      - concept_id: CV1
+        scores:
+          EC1: 0.9
+          EC2: 0.95
+          EC3: 0.95
+          EC4: 0.95
+          EC5: 0.85
+          EC6: 0.95
+        notes: Lever mechanism offers excellent cost-effectiveness and ergonomic operation
+          with simple manufacturing. However, potential for material fatigue over
+          time.
+      - concept_id: CV2
+        scores:
+          EC1: 0.85
+          EC2: 0.9
+          EC3: 0.9
+          EC4: 0.9
+          EC5: 0.8
+          EC6: 0.9
+        notes: Screw mechanism provides precise control and self-locking safety but
+          has slower operation and potential thread wear issues.
+      - concept_id: CV3
+        scores:
+          EC1: 0.7
+          EC2: 0.85
+          EC3: 0.75
+          EC4: 0.8
+          EC5: 0.9
+          EC6: 0.85
+        notes: Hydraulic system offers smooth operation and foot control but has highest
+          manufacturing cost and complexity with potential leakage risks.
+      - concept_id: CV4
+        scores:
+          EC1: 0.8
+          EC2: 0.9
+          EC3: 0.9
+          EC4: 0.9
+          EC5: 0.75
+          EC6: 0.9
+        notes: Toggle linkage provides high force multiplication but has complex geometry
+          and potential for jamming if tolerances not maintained.
+      - concept_id: CV5
+        scores:
+          EC1: 0.75
+          EC2: 0.9
+          EC3: 0.85
+          EC4: 0.85
+          EC5: 0.8
+          EC6: 0.85
+        notes: Cam mechanism offers smooth operation but has complex manufacturing
+          requirements and potential for follower wear.
+      selected_concept_id: CV1
+      selection_rationale: 'Concept CV1 (lever and fulcrum mechanism) is selected
+        as the preferred concept based on its superior performance across the weighted
+        criteria. It achieves the highest overall score by excelling in manufacturing
+        cost (0.90), operating force (0.95), weight (0.95), volume (0.95), and design
+        completion time (0.95). The lever mechanism provides the best balance of cost-effectiveness,
+        ergonomic operation, and reliability while meeting all functional requirements.
+
+
+        The 30% weight on manufacturing cost heavily favors CV1''s estimated 350 CHF
+        per unit, which is well under the 400 CHF target and provides the best cost
+        margin. The 20% weight on operating force strongly supports CV1''s ergonomic
+        hand operation with forces under 200 N. The simple design also ensures the
+        3-4 month completion timeline can be met with basic machining operations available
+        in the workshop.
+
+
+        While CV1 has slightly lower reliability (0.85) compared to hydraulic (0.90)
+        or toggle (0.75) mechanisms, the simple lever design with minimal moving parts
+        actually provides excellent long-term reliability when properly designed with
+        quality materials. The main risk of material fatigue can be mitigated through
+        appropriate material selection and design optimization.
+
+        '
+      sensitivity_analysis_notes: 'The selection is most sensitive to the manufacturing
+        cost weight (30%). If this were reduced to 20% and reliability weight increased
+        to 25%, CV3 (hydraulic) would become competitive due to its superior MTBF
+        rating. However, the 30% cost weight reflects the project''s strong emphasis
+        on cost-effectiveness as a key success criterion.
+
+
+        The operating force weight (20%) also significantly impacts the selection.
+        If ergonomic requirements were less critical and this weight reduced to 10%,
+        CV3 would gain advantage due to its foot operation freeing both hands, though
+        at the expense of higher cost and complexity.
+
+
+        The design completion time weight (10%) has minimal impact on the selection
+        as all concepts are rated similarly achievable within 3-4 months, though CV1''s
+        simpler design provides the highest confidence in meeting this constraint.
+
+        '
+      assumptions:
+      - Lever mechanism can be optimized to provide sufficient stroke without multiple
+        operations per rivet
+      - Workshop facilities can produce precision lever components with appropriate
+        material strength
+      - Operators will receive training on proper fulcrum adjustment and operation
+        technique
+      - Wooden worktop can withstand clamping forces without damage
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      traceability:
+        based_on_concepts:
+        - CV1
+        - CV2
+        - CV3
+        - CV4
+        - CV5
+  embodiment_layouts:
+    embodiment_layouts:
+      layout:
+      - id: EL1
+        module_breakdown:
+        - module_id: M1
+          name: Lever and Fulcrum Mechanism
+          responsibilities:
+          - Generate 500 N riveting force through mechanical advantage
+          - Provide 3-4 mm working stroke for rivet deformation
+          - Enable ergonomic hand operation with force under 200 N
+          allocated_functions:
+          - F3 (Apply riveting force)
+        - module_id: M2
+          name: Brake Shoe Positioning System
+          responsibilities:
+          - Securely hold brake shoes (250-400 mm diameter, max 2 kg, 100 mm width)
+          - Accommodate linings up to 15 mm thickness
+          - Provide 10 mm clearance from rivet center to brake shoe rib
+          allocated_functions:
+          - F2 (Position brake shoe assembly)
+        - module_id: M3
+          name: Copper Rivet Reception
+          responsibilities:
+          - Accept and position annealed copper rivets (DIN 7338, 3-5 mm)
+          - Guide rivets for proper alignment during setting
+          allocated_functions:
+          - F1 (Receive copper rivets)
+        - module_id: M4
+          name: Mounting Base and Worktop Interface
+          responsibilities:
+          - Provide stable mounting on wooden worktop
+          - Ensure ergonomic one-man operation
+          - Compensate for uneven worktop surfaces
+          allocated_functions:
+          - F4 (Mount on worktop)
+        - module_id: M5
+          name: Transport and Storage System
+          responsibilities:
+          - Enable tool disassembly for transport
+          - Maintain compact dimensions (< 0.05 m³)
+          - Keep total weight under 10 kg
+          allocated_functions:
+          - F5 (Enable transport and storage)
+        interfaces:
+        - id: IF1
+          between:
+          - M1
+          - M2
+          type: mechanical
+          description: Mechanical linkage between riveting mechanism and brake shoe
+            positioning
+          constraints:
+          - Must transmit 500 N force without deformation
+          - Stroke travel limited to 3-4 mm
+          - Clearance for 10 mm rib offset maintained
+        - id: IF2
+          between:
+          - M1
+          - M3
+          type: mechanical
+          description: Guide system for copper rivet alignment and positioning
+          constraints:
+          - Accepts 3-5 mm diameter rivets per DIN 7338
+          - Maintains alignment during 3-4 mm stroke
+          - Prevents rivet rotation during setting
+        - id: IF3
+          between:
+          - M2
+          - M4
+          type: mechanical
+          description: Mounting interface between brake shoe system and base
+          constraints:
+          - Provides stable platform for 2 kg brake shoes
+          - Allows 250-400 mm diameter adjustment range
+          - Maintains 100 mm width capacity
+        - id: IF4
+          between:
+          - M4
+          - M5
+          type: mechanical
+          description: Quick-release connection for transport and storage
+          constraints:
+          - Enables tool disassembly into components < 10 kg each
+          - Maintains alignment when reassembled
+          - Provides secure connection during operation
+        - id: IF5
+          between:
+          - M1
+          - Human Operator
+          type: human
+          description: Ergonomic hand operation interface
+          constraints:
+          - Operating force ≤ 200 N
+          - Comfortable grip geometry
+          - Proper working height for one-man operation
+        key_design_parameters:
+        - id: KDP1
+          name: Lever arm ratio
+          unit: dimensionless
+          target_or_range: 25:1 to 30:1
+          linked_requirements:
+          - R1 (500 N force)
+          - R8 (ergonomic operation)
+        - id: KDP2
+          name: Fulcrum position
+          unit: millimeters
+          target_or_range: Adjustable within 50-100 mm range
+          linked_requirements:
+          - R2 (3-4 mm stroke)
+          - R5 (10 mm clearance)
+        - id: KDP3
+          name: Material yield strength
+          unit: MPa
+          target_or_range: '> 400 MPa for lever components'
+          linked_requirements:
+          - R9 (5-year reliability)
+          - R13 (cost-effective manufacturing)
+        - id: KDP4
+          name: Base clamping force
+          unit: Newtons
+          target_or_range: '> 1000 N'
+          linked_requirements:
+          - R11 (mounting on wooden worktop)
+          - R12 (one-man operation)
+        - id: KDP5
+          name: Component weight distribution
+          unit: kilograms
+          target_or_range: < 10 kg total, balanced for stability
+          linked_requirements:
+          - R10 (compact and transportable)
+          - R17 (70 rivets per day)
+        risks_and_mitigations:
+        - id: RM1
+          risk: Material fatigue in lever components over time
+          mitigation: Use high-strength steel (yield > 400 MPa) with optimized cross-sections
+            and stress analysis
+        - id: RM2
+          risk: Inconsistent force application due to fulcrum position drift
+          mitigation: Implement positive locking mechanism for fulcrum adjustment
+            with detents at optimal positions
+        - id: RM3
+          risk: Insufficient stroke length requiring multiple operations per rivet
+          mitigation: Optimize lever geometry to achieve full 3-4 mm stroke in single
+            operation through detailed kinematic analysis
+        - id: RM4
+          risk: Worktop damage from clamping forces
+          mitigation: Design clamping system with load distribution plates and adjustable
+            pressure limits
+        - id: RM5
+          risk: Component misalignment during reassembly affecting performance
+          mitigation: Incorporate alignment pins and color-coded assembly guides for
+            quick, accurate reassembly
+      assumptions:
+      - Workshop machining facilities can produce precision lever components with
+        required tolerances
+      - Operators will receive training on proper fulcrum adjustment and operation
+        technique
+      - Wooden worktop can withstand clamping forces without damage when using load
+        distribution plates
+      - Copper rivets will be supplied in annealed state as specified in DIN 7338
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      traceability:
+        selected_concept_id: CV1
+  preliminary_sizing:
+    preliminary_sizing:
+      load_cases:
+      - id: LC1
+        description: Maximum riveting force application with 500 N load over 3-4 mm
+          stroke
+        related_requirements:
+        - R1 (500 N force)
+        - R2 (3-4 mm stroke)
+        - R9 (5-year reliability)
+        - R17 (70 rivets per day)
+      sizing_results:
+      - parameter_id: KDP1
+        governing_case: LC1
+        equation_or_model: 'Force_amplification = (L_input / L_output)
+
+          Required_L_input = (500 N * L_output) / Operator_force
+
+          Where:
+
+          - L_input = length of input lever arm
+
+          - L_output = length of output lever arm
+
+          - Operator_force ≤ 200 N (ergonomic limit)'
+        assumed_values:
+        - Operator_force: 150 N (conservative ergonomic estimate)
+        - L_output: 20 mm (determined by stroke requirement)
+        result: L_input = 67 mm (lever arm ratio ≈ 3.35:1)
+        margin_or_factor_of_safety: 1.33 (based on 150 N vs 200 N ergonomic limit)
+      - parameter_id: KDP2
+        governing_case: LC1
+        equation_or_model: 'Fulcrum_position = L_input + Adjustment_range
+
+          Adjustment_range = 50-100 mm (to accommodate different brake shoe sizes)
+
+          Total_lever_length = L_input + L_output + Adjustment_range'
+        assumed_values:
+        - Adjustment_range: 75 mm (midpoint of specified range)
+        result: Fulcrum_position = 142 mm from pivot, Total_lever_length = 232 mm
+        margin_or_factor_of_safety: 1.5 (provides adequate adjustment range)
+      - parameter_id: KDP3
+        governing_case: LC1
+        equation_or_model: 'Stress = (Force * Safety_factor) / Cross_sectional_area
+
+          Required_area = (Force * Safety_factor) / Allowable_stress
+
+          Where:
+
+          - Safety_factor = 3.0 (for fatigue and reliability)
+
+          - Allowable_stress = 0.6 * Yield_strength (for steel)'
+        assumed_values:
+        - Safety_factor: 3.0
+        - Allowable_stress: 240 MPa (for 400 MPa yield strength steel)
+        result: Cross_sectional_area = 6.25 mm² (minimum for critical lever sections)
+        margin_or_factor_of_safety: 3.0 (fatigue and reliability margin)
+      - parameter_id: KDP4
+        governing_case: LC1
+        equation_or_model: 'Clamping_force = (Base_weight + Applied_force) * Friction_coefficient
+
+          Required_base_weight = (Clamping_force / Friction_coefficient) - Applied_force
+
+          Where:
+
+          - Friction_coefficient = 0.3 (steel on wood)
+
+          - Applied_force = 500 N (maximum riveting force)'
+        assumed_values:
+        - Friction_coefficient: 0.3
+        - Applied_force: 500 N
+        result: Base_weight = 1.67 kg (minimum for stability)
+        margin_or_factor_of_safety: 2.0 (includes dynamic loading during operation)
+      - parameter_id: KDP5
+        governing_case: LC1
+        equation_or_model: 'Total_weight = Sum_of_component_weights + Base_weight
+
+          Component_weight_limit = (10 kg - Base_weight) / Number_of_components
+
+          Where:
+
+          - Number_of_components = 4 (main lever, positioning system, rivet guide,
+          base)'
+        assumed_values:
+        - Base_weight: 1.67 kg
+        - Number_of_components: 4
+        result: Component_weight_limit = 2.08 kg per component
+        margin_or_factor_of_safety: 1.2 (provides margin for fasteners and hardware)
+      assumptions:
+      - Lever mechanism can be optimized to provide sufficient stroke without multiple
+        operations per rivet
+      - Workshop facilities can produce precision lever components with appropriate
+        material strength
+      - Operators will receive training on proper fulcrum adjustment and operation
+        technique
+      - Wooden worktop can withstand clamping forces without damage when using load
+        distribution plates
+      - Copper rivets will be supplied in annealed state as specified in DIN 7338
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+  manufacturing_plan:
+    manufacturing_plan:
+      module_plans:
+      - module_id: M1
+        material_candidates:
+        - material_id: Steel_1045
+          description: Medium carbon steel with good strength and machinability
+          properties:
+            yield_strength: 360 MPa
+            ultimate_tensile_strength: 540 MPa
+            machinability: Excellent
+            cost_per_kg: 1.20 CHF
+          rationale: Provides adequate strength for lever mechanism with good machinability
+            for workshop production. Cost-effective and readily available.
+          risks: Potential for corrosion if not properly treated; may require surface
+            coating
+          requirement_links:
+          - R1 (500 N force)
+          - R9 (5-year reliability)
+          - R13 (cost-effective manufacturing)
+        - material_id: Aluminum_6061
+          description: Heat-treatable aluminum alloy with good strength-to-weight
+            ratio
+          properties:
+            yield_strength: 270 MPa
+            ultimate_tensile_strength: 310 MPa
+            machinability: Good
+            cost_per_kg: 3.50 CHF
+          rationale: Lighter weight reduces operator fatigue; excellent corrosion
+            resistance without additional treatment.
+          risks: Lower strength requires larger cross-sections; higher material cost
+          requirement_links:
+          - R10 (compact and transportable)
+          - R8 (ergonomic operation)
+          - R13 (manufacturing cost)
+        process_candidates:
+        - process_id: CNC_Machining
+          description: Computer numerical control machining for precision components
+          rationale: Provides high precision for lever mechanism pivot points and
+            force transmission surfaces. Available in workshop facilities.
+          risks: Higher machining time increases cost; requires skilled operator
+          requirement_links:
+          - R1 (500 N force)
+          - R9 (5-year reliability)
+          - R14 (design completion within 3-4 months)
+        - process_id: Manual_Machining
+          description: Conventional milling, turning, and drilling operations
+          rationale: Lower cost and faster setup for workshop production. Sufficient
+            precision for lever mechanism with proper setup.
+          risks: Lower consistency between parts; requires skilled operator
+          requirement_links:
+          - R13 (cost-effective manufacturing)
+          - R14 (design completion within 3-4 months)
+        rationale: The lever mechanism requires high strength materials to withstand
+          repeated 500 N forces while maintaining dimensional stability. Steel 1045
+          offers the best balance of strength, machinability, and cost for workshop
+          production. CNC machining provides the precision needed for reliable force
+          transmission, though manual machining can be used for cost reduction if
+          operator skill is sufficient.
+        critical_characteristics:
+        - High strength to withstand 500 N forces with safety factor
+        - Dimensional stability for precise pivot points
+        - Surface finish for smooth force transmission
+        - Corrosion resistance for 5-year service life
+        risks:
+        - Material fatigue failure under repeated loading
+        - Dimensional changes affecting force transmission
+        - Surface wear at pivot points reducing reliability
+        - Corrosion compromising structural integrity
+      - module_id: M2
+        material_candidates:
+        - material_id: Steel_1020
+          description: Low carbon steel with good weldability and formability
+          properties:
+            yield_strength: 210 MPa
+            ultimate_tensile_strength: 380 MPa
+            machinability: Fair
+            cost_per_kg: 0.90 CHF
+          rationale: Sufficient strength for brake shoe positioning with excellent
+            weldability for assembly. Cost-effective for larger structural components.
+          risks: Lower strength requires larger cross-sections; potential for warping
+            during welding
+          requirement_links:
+          - R3 (250-400 mm diameter range)
+          - R4 (2 kg, 100 mm width capacity)
+          - R13 (cost-effective manufacturing)
+        - material_id: Cast_Iron_Gray
+          description: Cast iron with good vibration damping and wear resistance
+          properties:
+            tensile_strength: 200 MPa
+            compressive_strength: 600 MPa
+            machinability: Good
+            cost_per_kg: 1.10 CHF
+          rationale: Excellent dimensional stability for positioning system; good
+            wear resistance for repeated brake shoe contact.
+          risks: Brittle material may crack under impact; higher material cost
+          requirement_links:
+          - R9 (5-year reliability)
+          - R17 (70 rivets per day)
+          - R13 (manufacturing cost)
+        process_candidates:
+        - process_id: Welding
+          description: MIG or TIG welding for steel components
+          rationale: Strong, reliable joints for structural assembly. Available in
+            workshop facilities.
+          risks: Potential for distortion; requires skilled welder
+          requirement_links:
+          - R3 (250-400 mm diameter range)
+          - R4 (2 kg, 100 mm width capacity)
+          - R14 (design completion within 3-4 months)
+        - process_id: Casting
+          description: Sand casting for complex gray iron components
+          rationale: Cost-effective for complex shapes; good dimensional stability.
+          risks: Longer lead times; potential for porosity defects
+          requirement_links:
+          - R9 (5-year reliability)
+          - R13 (cost-effective manufacturing)
+          - R14 (design completion within 3-4 months)
+        rationale: The brake shoe positioning system requires materials that can withstand
+          repeated loading while maintaining precise positioning. Steel 1020 offers
+          good strength with excellent weldability for workshop assembly. Cast iron
+          provides superior dimensional stability and wear resistance for the positioning
+          surfaces, though at higher cost.
+        critical_characteristics:
+        - Dimensional stability for precise brake shoe positioning
+        - Wear resistance for repeated contact with brake shoes
+        - Sufficient strength for 2 kg brake shoes
+        - Weldability for workshop assembly
+        risks:
+        - Warping during welding affecting positioning accuracy
+        - Wear degradation over 5-year service life
+        - Dimensional changes with temperature variations
+        - Brittle failure in cast iron components
+      - module_id: M3
+        material_candidates:
+        - material_id: Brass_C260
+          description: Free-machining brass with excellent chip breaking
+          properties:
+            yield_strength: 105 MPa
+            ultimate_tensile_strength: 310 MPa
+            machinability: Excellent
+            cost_per_kg: 4.50 CHF
+          rationale: Non-sparking, corrosion-resistant material ideal for copper rivet
+            contact. Excellent machinability for precise guide features.
+          risks: Lower strength requires careful design; high material cost
+          requirement_links:
+          - R15 (3-5 mm copper rivets)
+          - R9 (5-year reliability)
+          - R13 (manufacturing cost)
+        - material_id: Steel_304_SS
+          description: Austenitic stainless steel with good corrosion resistance
+          properties:
+            yield_strength: 205 MPa
+            ultimate_tensile_strength: 505 MPa
+            machinability: Fair
+            cost_per_kg: 2.80 CHF
+          rationale: High strength and excellent corrosion resistance. Compatible
+            with copper rivets without galvanic corrosion.
+          risks: Higher machining difficulty; potential for work hardening
+          requirement_links:
+          - R1 (500 N force)
+          - R9 (5-year reliability)
+          - R13 (manufacturing cost)
+        process_candidates:
+        - process_id: CNC_Machining
+          description: Precision machining for rivet guides and alignment features
+          rationale: Ensures precise alignment for consistent riveting quality. Available
+            in workshop facilities.
+          risks: Higher machining time increases cost; requires skilled operator
+          requirement_links:
+          - R15 (3-5 mm copper rivets)
+          - R9 (5-year reliability)
+          - R14 (design completion within 3-4 months)
+        - process_id: EDM_Wire
+          description: Electrical discharge machining for complex shapes
+          rationale: Excellent for precise internal features and complex geometries.
+          risks: Higher process cost; requires specialized equipment
+          requirement_links:
+          - R15 (3-5 mm copper rivets)
+          - R9 (5-year reliability)
+          - R13 (manufacturing cost)
+        rationale: The copper rivet reception system requires materials that won't
+          damage the copper rivets while providing precise alignment. Brass C260 offers
+          excellent compatibility with copper and superior machinability for precise
+          guide features, though at higher cost. Stainless steel 304 provides better
+          strength and corrosion resistance at lower cost but requires more difficult
+          machining.
+        critical_characteristics:
+        - Non-damaging to copper rivets during contact
+        - Dimensional stability for precise alignment
+        - Corrosion resistance for 5-year service life
+        - Wear resistance for repeated rivet contact
+        risks:
+        - Material galling with copper rivets
+        - Wear degradation affecting alignment accuracy
+        - Corrosion compromising guide precision
+        - Material cost exceeding budget
+      - module_id: M4
+        material_candidates:
+        - material_id: Steel_1045
+          description: Medium carbon steel with good strength and machinability
+          properties:
+            yield_strength: 360 MPa
+            ultimate_tensile_strength: 540 MPa
+            machinability: Excellent
+            cost_per_kg: 1.20 CHF
+          rationale: Provides sufficient strength for clamping forces while being
+            cost-effective for workshop production.
+          risks: Potential for corrosion if not properly treated; may require surface
+            coating
+          requirement_links:
+          - R11 (mounting on wooden worktop)
+          - R12 (one-man operation)
+          - R13 (cost-effective manufacturing)
+        - material_id: Aluminum_6061
+          description: Heat-treatable aluminum alloy with good strength-to-weight
+            ratio
+          properties:
+            yield_strength: 270 MPa
+            ultimate_tensile_strength: 310 MPa
+            machinability: Good
+            cost_per_kg: 3.50 CHF
+          rationale: Lighter weight reduces overall tool weight; excellent corrosion
+            resistance without additional treatment.
+          risks: Lower strength requires larger cross-sections; higher material cost
+          requirement_links:
+          - R10 (compact and transportable)
+          - R8 (ergonomic operation)
+          - R13 (manufacturing cost)
+        process_candidates:
+        - process_id: Milling
+          description: Face milling and pocket milling for base structure
+          rationale: Creates flat mounting surfaces and clamping features. Available
+            in workshop facilities.
+          risks: Potential for warping; requires precise setup
+          requirement_links:
+          - R11 (mounting on wooden worktop)
+          - R12 (one-man operation)
+          - R14 (design completion within 3-4 months)
+        - process_id: Casting
+          description: Sand casting for complex base shapes
+          rationale: Cost-effective for complex geometries with internal features.
+          risks: Longer lead times; potential for porosity defects
+          requirement_links:
+          - R13 (cost-effective manufacturing)
+          - R14 (design completion within 3-4 months)
+        rationale: The mounting base requires materials that can withstand clamping
+          forces while providing stable mounting on wooden worktops. Steel 1045 offers
+          the best balance of strength, machinability, and cost for workshop production.
+          Aluminum 6061 provides weight reduction benefits but at higher cost and
+          lower strength.
+        critical_characteristics:
+        - Sufficient strength for clamping forces without deformation
+        - Dimensional stability for consistent mounting
+        - Surface finish for good worktop contact
+        - Corrosion resistance for 5-year service life
+        risks:
+        - Base deformation under repeated clamping forces
+        - Worktop damage from concentrated clamping loads
+        - Corrosion compromising structural integrity
+        - Insufficient stiffness causing tool movement during operation
+      - module_id: M5
+        material_candidates:
+        - material_id: Plastic_ABS
+          description: Acrylonitrile butadiene styrene with good impact resistance
+          properties:
+            tensile_strength: 37 MPa
+            impact_strength: 200 J/m
+            machinability: Good
+            cost_per_kg: 2.00 CHF
+          rationale: Lightweight, cost-effective material for non-structural components.
+            Good impact resistance for transport durability.
+          risks: Lower strength limits use to non-structural applications; potential
+            for creep under load
+          requirement_links:
+          - R10 (compact and transportable)
+          - R13 (cost-effective manufacturing)
+          - R14 (design completion within 3-4 months)
+        - material_id: Aluminum_6061
+          description: Heat-treatable aluminum alloy with good strength-to-weight
+            ratio
+          properties:
+            yield_strength: 270 MPa
+            ultimate_tensile_strength: 310 MPa
+            machinability: Good
+            cost_per_kg: 3.50 CHF
+          rationale: High strength-to-weight ratio ideal for transport components.
+            Excellent corrosion resistance without additional treatment.
+          risks: Higher material cost; potential for galvanic corrosion with steel
+            components
+          requirement_links:
+          - R10 (compact and transportable)
+          - R9 (5-year reliability)
+          - R13 (manufacturing cost)
+        process_candidates:
+        - process_id: Injection_Molding
+          description: Injection molding for plastic components
+          rationale: Cost-effective for high-volume production of consistent parts.
+            Available through external suppliers.
+          risks: High initial tooling cost; longer lead times for tooling
+          requirement_links:
+          - R13 (cost-effective manufacturing)
+          - R14 (design completion within 3-4 months)
+        - process_id: CNC_Machining
+          description: Precision machining for aluminum components
+          rationale: Provides high precision for alignment features. Available in
+            workshop facilities.
+          risks: Higher machining time increases cost; requires skilled operator
+          requirement_links:
+          - R9 (5-year reliability)
+          - R10 (compact and transportable)
+          - R14 (design completion within 3-4 months)
+        rationale: The transport and storage system requires lightweight materials
+          that can withstand handling forces while maintaining dimensional stability.
+          ABS plastic offers excellent cost-effectiveness for non-structural components.
+          Aluminum 6061 provides superior strength and durability for structural transport
+          components, though at higher cost.
+        critical_characteristics:
+        - Lightweight for easy transport and storage
+        - Dimensional stability for proper reassembly
+        - Impact resistance for transport durability
+        - Corrosion resistance for 5-year service life
+        risks:
+        - Plastic creep causing misalignment over time
+        - Aluminum corrosion in contact with dissimilar metals
+        - Fastener fatigue in repeated assembly/disassembly
+        - Component loss during transport
+      assumptions:
+      - Workshop machining facilities have the necessary equipment and skilled operators
+        for all proposed manufacturing processes
+      - Copper rivets (DIN 7338, 3-5 mm) will be supplied in annealed state as specified
+      - Brake shoes and linings will be provided cleaned and pre-drilled as specified
+      - The tool will be used exclusively for riveting brake linings onto internal
+        expanding drum brake shoes
+      - Operators will receive training on proper tool operation and maintenance
+      - Wooden worktop can withstand clamping forces when using load distribution
+        plates
+      - All material suppliers can provide required materials within project timeline
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?
+      - Are there any specific environmental conditions (temperature, humidity) that
+        the tool must withstand?
+      - What is the expected daily usage pattern beyond the 70 rivets per day specification?
+      - Are there any specific quality control requirements for the riveting process?
+  preliminary_bom:
+    preliminary_bom:
+      items:
+      - item_id: B1
+        module_id: M1
+        name: Lever and Fulcrum Mechanism
+        quantity: 1
+        key_specs:
+        - spec: Material
+          target: Steel 1045
+        - spec: Yield Strength
+          target: 360 MPa
+        - spec: Ultimate Tensile Strength
+          target: 540 MPa
+        tolerance_notes: 'Lever arm ratio: "25:1 to 30:1"
+
+          Fulcrum position: Adjustable within 50-100 mm range
+
+          Critical dimensions: ±0.1 mm for pivot points'
+        material: Steel 1045
+        process: CNC Machining
+        verification: 'Stress analysis to verify 500 N force capacity with 3x safety
+          factor
+
+          Dimensional inspection of pivot points and force transmission surfaces
+
+          Fatigue testing for 5-year reliability'
+        traces_to:
+          functions:
+          - F3 (Apply riveting force)
+          requirements:
+          - R1 (500 N force)
+          - R2 (3-4 mm stroke)
+          - R8 (ergonomic operation)
+          - R9 (5-year reliability)
+          - R13 (cost-effective manufacturing)
+      - item_id: B2
+        module_id: M2
+        name: Brake Shoe Positioning System
+        quantity: 1
+        key_specs:
+        - spec: Material
+          target: Steel 1020
+        - spec: Yield Strength
+          target: 210 MPa
+        - spec: Adjustment Range
+          target: 250-400 mm diameter
+        tolerance_notes: 'Positioning accuracy: ±1 mm
+
+          Width capacity: 100 mm ±2 mm
+
+          Lining thickness: 15 mm ±1 mm'
+        material: Steel 1020
+        process: Welding
+        verification: 'Dimensional inspection of adjustment range
+
+          Load testing with 2 kg brake shoes
+
+          Wear testing for 5-year service life'
+        traces_to:
+          functions:
+          - F2 (Position brake shoe assembly)
+          requirements:
+          - R3 (250-400 mm diameter range)
+          - R4 (2 kg, 100 mm width)
+          - R6 (15 mm lining thickness)
+          - R9 (5-year reliability)
+          - R13 (cost-effective manufacturing)
+      - item_id: B3
+        module_id: M3
+        name: Copper Rivet Reception System
+        quantity: 1
+        key_specs:
+        - spec: Material
+          target: Brass C260
+        - spec: Yield Strength
+          target: 105 MPa
+        - spec: Rivet Compatibility
+          target: 3-5 mm diameter (DIN 7338)
+        tolerance_notes: 'Guide hole diameter: 3.1-5.1 mm
+
+          Alignment accuracy: ±0.05 mm
+
+          Stroke travel: 3-4 mm'
+        material: Brass C260
+        process: CNC Machining
+        verification: 'Alignment accuracy testing with copper rivets
+
+          Wear testing for 5-year service life
+
+          Compatibility testing with DIN 7338 rivets'
+        traces_to:
+          functions:
+          - F1 (Receive copper rivets)
+          requirements:
+          - R15 (3-5 mm copper rivets)
+          - R9 (5-year reliability)
+          - R13 (cost-effective manufacturing)
+      - item_id: B4
+        module_id: M4
+        name: Mounting Base and Worktop Interface
+        quantity: 1
+        key_specs:
+        - spec: Material
+          target: Steel 1045
+        - spec: Clamping Force
+          target: '>1000 N'
+        - spec: Base Weight
+          target: 1.67 kg minimum
+        tolerance_notes: 'Mounting surface flatness: 0.2 mm
+
+          Clamping adjustment: 50-100 mm range
+
+          Worktop contact area: ">100 cm\u00b2"'
+        material: Steel 1045
+        process: Milling
+        verification: 'Clamping force testing
+
+          Worktop mounting stability testing
+
+          Dimensional inspection of mounting surfaces'
+        traces_to:
+          functions:
+          - F4 (Mount on worktop)
+          requirements:
+          - R11 (mounting on wooden worktop)
+          - R12 (one-man operation)
+          - R10 (compact and transportable)
+          - R13 (cost-effective manufacturing)
+      - item_id: B5
+        module_id: M5
+        name: Transport and Storage System
+        quantity: 1
+        key_specs:
+        - spec: Material
+          target: ABS Plastic
+        - spec: Total Weight
+          target: <10 kg
+        - spec: Volume
+          target: <0.05 m³
+        tolerance_notes: 'Component weight: <2.08 kg each
+
+          Connection repeatability: ±0.5 mm
+
+          Impact resistance: 200 J/m'
+        material: ABS Plastic
+        process: Injection Molding
+        verification: 'Drop testing for transport durability
+
+          Dimensional stability testing
+
+          Assembly/disassembly cycle testing'
+        traces_to:
+          functions:
+          - F5 (Enable transport and storage)
+          requirements:
+          - R10 (compact and transportable)
+          - R13 (cost-effective manufacturing)
+          - R14 (design completion within 3-4 months)
+      assumptions:
+      - Workshop machining facilities can produce precision lever components with
+        appropriate material strength
+      - Operators will receive training on proper fulcrum adjustment and operation
+        technique
+      - Wooden worktop can withstand clamping forces without damage when using load
+        distribution plates
+      - Copper rivets will be supplied in annealed state as specified in DIN 7338
+      - All material suppliers can provide required materials within project timeline
+      open_questions:
+      - What specific ergonomic guidelines (e.g., working height) must the tool comply
+        with?
+      - Are there any additional safety requirements or certifications needed for
+        the tool?
+      - What is the exact project completion deadline within the 3-4 month timeframe?
+      - Are there any specific material or surface finish requirements for the tool?
+      - What is the expected variability in brake shoe dimensions within the 250-400
+        mm range?

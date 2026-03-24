@@ -1,0 +1,105 @@
+concept_variants:
+  morphological_chart:
+  - function_id: F1
+    options:
+    - WP1_1
+  - function_id: F5
+    options:
+    - WP5_1
+    - WP5_2
+  - function_id: F6
+    options:
+    - WP6_1
+    - WP6_2
+  - function_id: F7
+    options:
+    - WP7_1
+  concepts:
+  - id: CV1
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_1
+      F6: WP6_1
+      F7: WP7_1
+    architecture_description: "A manual lever-actuated riveting tool designed for\
+      \ workshop vice mounting. \nThe tool uses a simple lever arm (WP5_1) to provide\
+      \ the necessary mechanical advantage \nfor forming the rivet head. A fixed hard\
+      \ stop (WP6_1) ensures the rivet closure \ndistance is consistent across operations.\
+      \ The entire assembly is held in a \nstandard workshop vice using a dedicated\
+      \ fixture (WP1_1).\n"
+    expected_benefits:
+    - Low manufacturing cost (R20) due to simple lever construction.
+    - High productivity/speed (EC1) because of the quick lever stroke.
+    - Minimal maintenance (R16) as there are few moving parts.
+    key_risks:
+    - Pinch hazards (R18) at the lever pivot and linkage points.
+    - Limited flexibility for different brake shoe thicknesses (R2-R5) due to the
+      fixed hard stop.
+    - Operator fatigue if high force is required repeatedly (R17).
+    requirement_coverage:
+      satisfied:
+      - R1
+      - R8
+      - R11
+      - R12
+      - R15
+      - R17
+      - R20
+      partially_satisfied:
+      - R9
+      - R10
+      not_satisfied:
+      - R2
+      - R3
+      - R4
+      - R5
+    assumptions:
+    - The workshop vice is of sufficient size to provide a stable base.
+    - The lever ratio is optimized for the 200N hand force limit.
+  - id: CV2
+    selected_principles:
+      F1: WP1_1
+      F5: WP5_2
+      F6: WP6_2
+      F7: WP7_1
+    architecture_description: "A precision screw-driven riveting press. Instead of\
+      \ a lever, it utilizes a \nscrew or rack-and-pinion mechanism (WP5_2) to generate\
+      \ high riveting forces \nwith fine control. It features an adjustable screw-stop\
+      \ (WP6_2) to allow the \noperator to calibrate the tool for various brake shoe\
+      \ and lining thicknesses \n(R2-R5). Like CV1, it is designed to be vice-mounted\
+      \ (WP1_1).\n"
+    expected_benefits:
+    - High force capability (R8) with very low operator effort.
+    - Excellent adaptability to different workpiece geometries (R2-R5).
+    - Precise control over the rivet head closure (R9).
+    key_risks:
+    - Slower operation (EC1) compared to a lever press.
+    - Higher manufacturing cost (R20) due to precision threaded or geared components.
+    - Risk of operator error in setting the adjustable stop (WP6_2).
+    requirement_coverage:
+      satisfied:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      - R8
+      - R9
+      - R11
+      - R12
+      - R15
+      - R17
+      partially_satisfied:
+      - R20
+      not_satisfied:
+      - R10
+    assumptions:
+    - The screw mechanism is self-locking or has a locknut to maintain settings.
+    - Materials used for the screw/rack are hardened to meet the 5-year service life
+      (R13).
+  open_questions:
+  - Does the vice-mounted requirement (WP1_1) conflict with the "portable" wish (R14)
+    if the tool is heavy?
+  - Is a foot-actuated version (R17) feasible with the vice-mounted architecture?
+  - Are there specific rivet head geometries required by DIN 7338 that impact the
+    forming head (WP7_1) design?

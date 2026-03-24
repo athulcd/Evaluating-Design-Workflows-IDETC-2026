@@ -1,0 +1,8 @@
+{
+  "cur_key": "preliminary_sizing",
+  "next_key": "manufacturing_plan",
+  "errors": [
+    "Hallucinated/unknown IDs referenced in 'manufacturing_plan': ['C45']. These IDs are not present in input packet and were not created in the produced artifact."
+  ],
+  "warnings": []
+}

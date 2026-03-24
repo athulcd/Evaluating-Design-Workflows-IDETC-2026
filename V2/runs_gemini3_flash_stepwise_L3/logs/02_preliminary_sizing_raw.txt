@@ -1,0 +1,84 @@
+manufacturing_plan:
+  module_plans:
+    - module_id: M1
+      material_candidates:
+        - Structural Steel (S235JR)
+        - Cast Iron (EN-GJL-200)
+      process_candidates:
+        - Welded plate construction
+        - Sand casting
+        - Laser cutting (for plate components)
+      rationale: |
+        The frame must resist a 500 N riveting force (R8) with minimal deflection (RM1) to ensure consistent rivet closure (R9). 
+        Welded steel plate is preferred for low-to-medium volumes to meet the cost target (R20) and delivery deadline (R19) without 
+        expensive casting patterns. S235JR provides sufficient yield strength for the required section modulus (B1).
+      critical_characteristics:
+        - Structural rigidity (Section modulus >= 425 mm^3)
+        - Flatness of the mounting base for bench stability (R12)
+      risks:
+        - Frame deflection leading to inconsistent head closure (RM1)
+        - Weld fatigue over the 87,500 cycle service life (LC3)
+    - module_id: M2
+      material_candidates:
+        - Carbon Steel (C45)
+        - Alloy Steel (16MnCr5) for pins
+        - Bronze or PTFE-lined bushings
+      process_candidates:
+        - Laser cutting (lever arms)
+        - CNC Turning (pivot pins)
+        - Press-fitting (bushings)
+      rationale: |
+        The lever mechanism requires high mechanical advantage (KDP1: 3.5:1) to keep hand forces below 200 N (R17). 
+        C45 steel offers a good balance of strength and cost. Hardened pins (16MnCr5) and bushings are essential 
+        to meet the 5-year service life (R13) by minimizing wear at the high-load pivot interface (IF1).
+      critical_characteristics:
+        - Pivot pin shear strength (B2)
+        - Lever arm length accuracy for MA ratio (KDP1)
+        - Ergonomic handle finish (IF4)
+      risks:
+        - Pivot wear increasing friction and operator effort (R17)
+        - Pinch hazards at the linkage (RM2)
+    - module_id: M3
+      material_candidates:
+        - Cold-Work Tool Steel (1.2379 / D2)
+        - Hardened Steel (42CrMo4) for the ram
+      process_candidates:
+        - CNC Turning and Milling
+        - Heat Treatment (Quenching and Tempering)
+        - Cylindrical Grinding (for ram guide)
+      rationale: |
+        The forming heads must be significantly harder than the DIN 7338 rivets (R7) to prevent deformation of the tool itself. 
+        Tool steel (1.2379) hardened to 58-60 HRC is standard for riveting. The adjustable stop (KDP3) requires fine 
+        machining to achieve the ~4 mm closure target (R9).
+      critical_characteristics:
+        - Surface hardness of forming heads
+        - Linear guidance tolerance (IF2) to ensure head alignment
+        - Thread precision for the adjustable stop (KDP3)
+      risks:
+        - Brittle failure of tool steel if over-hardened
+        - Adjustment drift during operation (RM3)
+    - module_id: M4
+      material_candidates:
+        - Structural Steel (S235JR)
+        - Aluminum Alloy (6061-T6) for weight reduction
+      process_candidates:
+        - Milling
+        - Assembly (Bolted)
+      rationale: |
+        The fixture must accommodate a wide range of brake shoe diameters (250-400 mm) and widths (80-400 mm) per R2 and R3. 
+        A modular or adjustable bolted design allows for the necessary flexibility while keeping manufacturing simple. 
+        Aluminum could be used for non-load-bearing support elements to improve transportability (R14).
+      critical_characteristics:
+        - Adjustability range for shoe diameter (R2)
+        - Throat depth clearance (> 200 mm per KDP2)
+      risks:
+        - Workpiece slippage during riveting (WP1_1)
+        - Interference with large shoe geometries (LC2)
+  assumptions:
+    - Welded construction is acceptable for a workshop environment and meets the SwFr 400 cost target.
+    - Standard fasteners and bushings are used to reduce custom machining.
+    - The 500 N force is the peak requirement for the largest rivet (5 mm).
+  open_questions:
+    - Is there a specific surface coating requirement (e.g., galvanizing or painting) for corrosion resistance in the workshop?
+    - Are the forming heads intended to be user-replaceable for different rivet sizes (3-5 mm)?
+    - Does the "wood worktop" mounting require a specific load-spreader plate in the M1 design?

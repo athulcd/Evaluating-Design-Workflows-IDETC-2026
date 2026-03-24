@@ -1,0 +1,194 @@
+requirements_list:
+  requirements:
+    - id: R1
+      statement: The tool must generate a riveting force of at least 500 N.
+      type: performance
+      priority: MUST
+      metric: Newtons (N)
+      target: ≥ 500
+      verification: test
+      source: C3
+    - id: R2
+      statement: The tool must provide a working stroke of 3-4 mm.
+      type: performance
+      priority: MUST
+      metric: Millimeters (mm)
+      target: 3-4
+      verification: test
+      source: C3
+    - id: R3
+      statement: The tool must be compatible with copper rivets (DIN 7338) with shank diameters of 3-5 mm.
+      type: interface
+      priority: MUST
+      metric: Diameter range (mm)
+      target: 3-5
+      verification: inspection
+      source: C4
+    - id: R4
+      statement: The tool must accommodate brake shoes up to 100 mm in width and 2 kg in weight.
+      type: physical
+      priority: MUST
+      metric: Width (mm), weight (kg)
+      target: ≥ 100 mm, ≥ 2 kg
+      verification: inspection
+      source: C5
+    - id: R5
+      statement: The tool must accommodate brake linings up to 200 g in weight.
+      type: physical
+      priority: MUST
+      metric: Weight (g)
+      target: ≥ 200
+      verification: inspection
+      source: C5
+    - id: R6
+      statement: The tool must handle a maximum assembled thickness of 15 mm (brake shoe + lining).
+      type: physical
+      priority: MUST
+      metric: Thickness (mm)
+      target: ≥ 15
+      verification: inspection
+      source: C8
+    - id: R7
+      statement: The tool must provide a minimum clearance diameter of 400 mm to work on brake drums with inside diameters of 250-400 mm.
+      type: physical
+      priority: MUST
+      metric: Diameter (mm)
+      target: ≥ 400
+      verification: inspection
+      source: C6
+    - id: R8
+      statement: The tool must provide at least 10 mm clearance from the rivet center to the brake shoe rib.
+      type: physical
+      priority: MUST
+      metric: Clearance (mm)
+      target: ≥ 10
+      verification: inspection
+      source: C7
+    - id: R9
+      statement: The tool must be hand-operated with a maximum operating force of 200 N.
+      type: ergonomics
+      priority: MUST
+      metric: Force (N)
+      target: ≤ 200
+      verification: test
+      source: O3
+    - id: R10
+      statement: The tool must be foot-operated with a maximum operating force of 400 N.
+      type: ergonomics
+      priority: MUST
+      metric: Force (N)
+      target: ≤ 400
+      verification: test
+      source: O3
+    - id: R11
+      statement: The tool must have a volume less than 0.05 m³.
+      type: physical
+      priority: MUST
+      metric: Volume (m³)
+      target: < 0.05
+      verification: inspection
+      source: O2
+    - id: R12
+      statement: The tool must weigh less than 10 kg.
+      type: physical
+      priority: MUST
+      metric: Weight (kg)
+      target: < 10
+      verification: inspection
+      source: O2
+    - id: R13
+      statement: The tool must be manufacturable in-house using the workshop's machining facilities.
+      type: manufacturing
+      priority: MUST
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: C10
+    - id: R14
+      statement: The manufacturing cost per unit must be under 500 CHF (target 400 CHF).
+      type: cost
+      priority: MUST
+      metric: CHF
+      target: ≤ 500 (target 400)
+      verification: analysis
+      source: C1
+    - id: R15
+      statement: The design must be delivered within 3 months (maximum 4 months).
+      type: schedule
+      priority: MUST
+      metric: Months
+      target: ≤ 4 (target 3)
+      verification: demonstration
+      source: C2
+    - id: R16
+      statement: The tool must be reliable and maintenance-free with a mean time between failures (MTBF) greater than 5 years.
+      type: reliability
+      priority: WISH
+      metric: Years
+      target: '> 5'
+      verification: analysis
+      source: O1
+    - id: R17
+      statement: The tool must be ergonomic and adjustable for working height compliance.
+      type: ergonomics
+      priority: WISH
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: O3
+    - id: R18
+      statement: The tool must be compact and easily transportable.
+      type: physical
+      priority: WISH
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: O2
+    - id: R19
+      statement: The tool must be designed for one-man operation by a car mechanic.
+      type: ergonomics
+      priority: WISH
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: operating_conditions
+    - id: R20
+      statement: The tool must be suitable for indoor workshop environment.
+      type: environmental
+      priority: WISH
+      metric: N/A
+      target: N/A
+      verification: inspection
+      source: operating_conditions
+  assumptions:
+    - The workshop's machining facilities are capable of producing the required tool components.
+    - Copper rivets (DIN 7338, 3-5 mm shank diameter) will be provided by the user.
+    - Brake shoes and linings will be provided pre-cleaned and pre-drilled.
+    - The wooden worktop is sturdy enough to support the tool during operation.
+    - The workshop environment is suitable for the tool's intended use (indoor, controlled conditions).
+  open_questions:
+    - What specific machining equipment and capabilities are available in the workshop?
+    - Are there any existing tools or fixtures that could be leveraged or adapted?
+    - What are the exact dimensions and tolerances required for the brake shoe and lining assembly?
+    - Is there a preference for hand-operated or foot-operated tool design?
+    - What materials are preferred or available for manufacturing the tool?
+    - Are there any specific safety standards or certifications required for the tool?
+    - What is the expected variability in rivet placement or brake shoe dimensions?
+    - Are there any specific storage or transportation requirements beyond compactness?
+  traceability:
+    derived_from_objectives:
+      - O1
+      - O2
+      - O3
+      - O4
+    derived_from_constraints:
+      - C1
+      - C2
+      - C3
+      - C4
+      - C5
+      - C6
+      - C7
+      - C8
+      - C9
+      - C10

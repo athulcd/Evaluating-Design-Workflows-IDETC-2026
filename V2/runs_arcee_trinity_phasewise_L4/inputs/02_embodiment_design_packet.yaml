@@ -1,0 +1,598 @@
+case_context:
+  product_system: ''
+  stakeholders: []
+  operating_environment: ''
+  constraints_known: []
+  success_criteria_known: []
+artifacts_available:
+  task_clarification:
+    objectives:
+    - Develop a simple rivet setting tool for a large car repair workshop
+    - Produce 5 initial units with potential future sales
+    - Design for in-house production using the repair workshop's machining facilities
+    constraints:
+    - Manufacturing cost per unit must be under 500 CHF, with a target maximum of
+      400 CHF
+    - Delivery timeframe: 3 months (maximum allowable 4 months)
+    - Tool must handle internal drum brakes with inside diameter 250-400 mm
+    - Tool must accommodate brake shoes up to 2 kg, 100 mm width, and 15 mm total
+      thickness
+    - Tool must handle 10-16 rivets per shoe with 3-5 mm shank diameter copper rivets
+      (DIN 7338)
+    - Tool must generate riveting force of approximately 500 N with 3-4 mm working
+      stroke
+    - Ergonomic requirements: operating force ≤200 N (hand) or ≤400 N (foot), standard
+        working height
+    - Tool must be reliable, maintenance-free, easy to transport, and compact for
+      storage
+    - Expected service life: 5 years
+    - Minimum clearance: 10 mm from rivet center to brake shoe rib
+    evaluation_criteria:
+    - Cost effectiveness (manufacturing cost per unit)
+    - Delivery time compliance
+    - Functional performance (riveting force, working stroke)
+    - Ergonomic compliance
+    - Durability and reliability
+    - Portability and storage efficiency
+    assumptions:
+    - The repair workshop's machining facilities are capable of producing the tool
+    - The designer has access to all necessary technical specifications and drawings
+    - The tool will be used in a typical car repair workshop environment
+    open_questions:
+    - Are there any specific safety standards or certifications required for the tool?
+    - What is the preferred power source for the tool (manual, pneumatic, electric)?
+    - Are there any specific mounting requirements for the wooden worktop?
+    - What is the expected frequency of tool usage beyond the 70 rivets per day?
+  requirements_list:
+  - id: R1
+    type: functional
+    description: The tool must be capable of setting copper rivets with 3-5 mm shank
+      diameter according to DIN 7338 standard
+    rationale: Technical requirement for rivet compatibility
+    origin: raw_task_statement
+    dependencies: []
+    verification: Test with sample rivets to ensure proper setting
+  - id: R2
+    type: functional
+    description: The tool must generate a riveting force of approximately 500 N
+    rationale: Required to successfully execute the technical process of riveting
+    origin: raw_task_statement
+    dependencies: []
+    verification: Force measurement during operation
+  - id: R3
+    type: functional
+    description: The tool must have a working stroke of approximately 3-4 mm
+    rationale: Required to achieve proper closure of the rivet
+    origin: raw_task_statement
+    dependencies: []
+    verification: Measurement of working stroke during operation
+  - id: R4
+    type: functional
+    description: The tool must handle internal drum brakes with inside diameter ranging
+      from 250 to 400 mm
+    rationale: To accommodate the specified range of brake sizes
+    origin: raw_task_statement
+    dependencies: []
+    verification: Test with brakes of various sizes within the specified range
+  - id: R5
+    type: functional
+    description: The tool must accommodate brake shoes up to 2 kg in weight and 100
+      mm in width
+    rationale: To handle the specified maximum dimensions of brake shoes
+    origin: raw_task_statement
+    dependencies: []
+    verification: Test with brake shoes of maximum specified dimensions
+  - id: R6
+    type: functional
+    description: The tool must handle brake shoes with a maximum total thickness of
+      15 mm when assembled with linings
+    rationale: To accommodate the specified maximum thickness of assembled parts
+    origin: raw_task_statement
+    dependencies: []
+    verification: Test with assembled brake shoes of maximum specified thickness
+  - id: R7
+    type: functional
+    description: The tool must accommodate 10-16 rivets per brake shoe
+    rationale: To handle the specified number of rivets required per shoe
+    origin: raw_task_statement
+    dependencies: []
+    verification: Test with brake shoes requiring different numbers of rivets within
+      the specified range
+  - id: R8
+    type: functional
+    description: The tool must maintain a minimum clearance of 10 mm from the center
+      of the rivet to the rib of the brake shoe
+    rationale: To ensure proper rivet placement and avoid interference with brake
+      shoe structure
+    origin: raw_task_statement
+    dependencies: []
+    verification: Measurement of clearance during operation
+  - id: R9
+    type: non-functional
+    description: The tool must be designed for one-man operation by a car mechanic
+    rationale: To ensure usability in the intended workshop environment
+    origin: raw_task_statement
+    dependencies: []
+    verification: User testing by car mechanics
+  - id: R10
+    type: non-functional
+    description: The tool must be mountable or usable on a wooden worktop
+    rationale: To provide a stable working surface in the workshop
+    origin: raw_task_statement
+    dependencies: []
+    verification: Mounting and usage tests on wooden worktop
+  - id: R11
+    type: non-functional
+    description: The tool must be designed for an anticipated workload of approximately
+      70 rivets per day
+    rationale: To ensure durability and performance under expected usage conditions
+    origin: raw_task_statement
+    dependencies: []
+    verification: Durability testing under simulated daily usage
+  - id: R12
+    type: non-functional
+    description: The tool must have an ergonomic design with operating force not exceeding
+      200 N for hand-operated or 400 N for foot-operated tools
+    rationale: To ensure user comfort and prevent fatigue during operation
+    origin: raw_task_statement
+    dependencies: []
+    verification: Force measurement during operation and ergonomic assessment
+  - id: R13
+    type: non-functional
+    description: The tool must comply with standard ergonomic guidelines for working
+      height
+    rationale: To ensure user comfort and prevent strain during operation
+    origin: raw_task_statement
+    dependencies: []
+    verification: Ergonomic assessment and user testing
+  - id: R14
+    type: non-functional
+    description: The tool must have an expected service life of five years
+    rationale: To ensure long-term value and reliability for the user
+    origin: raw_task_statement
+    dependencies: []
+    verification: Accelerated life testing and durability assessment
+  - id: R15
+    type: non-functional
+    description: The tool must be reliable and maintenance-free
+    rationale: To minimize downtime and reduce long-term costs for the user
+    origin: raw_task_statement
+    dependencies: []
+    verification: Reliability testing and user feedback
+  - id: R16
+    type: non-functional
+    description: The tool must be easy to transport and compact enough for good storage
+    rationale: To facilitate movement within the workshop and efficient use of storage
+      space
+    origin: raw_task_statement
+    dependencies: []
+    verification: Measurement of dimensions and weight, user feedback on portability
+  - id: R17
+    type: non-functional
+    description: The manufacturing cost per unit must be under 500 CHF, with a target
+      maximum of 400 CHF
+    rationale: To ensure cost-effectiveness and meet budget constraints
+    origin: raw_task_statement
+    dependencies: []
+    verification: Cost analysis of production
+  - id: R18
+    type: non-functional
+    description: The design must be delivered within 3 months, with a maximum allowable
+      timeframe of 4 months
+    rationale: To meet project timeline requirements
+    origin: raw_task_statement
+    dependencies: []
+    verification: Project timeline tracking and milestone achievement
+  - id: R19
+    type: constraint
+    description: The tool must be designed for in-house production using the repair
+      workshop's well-equipped machining facilities
+    rationale: To leverage existing resources and capabilities
+    origin: raw_task_statement
+    dependencies: []
+    verification: Design review and production planning
+  - id: R20
+    type: constraint
+    description: The tool must be designed with potential future sales to other users
+      in mind
+    rationale: To ensure scalability and broader market applicability
+    origin: raw_task_statement
+    dependencies: []
+    verification: Design review for scalability and market potential
+  black_box:
+    id: BB_RivetTool
+    description: A rivet setting tool for internal drum brakes
+    flows:
+    - id: F1
+      description: Copper rivets (3-5 mm shank diameter, DIN 7338)
+      type: input
+      connections:
+      - target: BB_RivetTool
+        description: Copper rivets are fed into the tool
+    - id: F2
+      description: Brake shoes (up to 2 kg, 100 mm width, 15 mm thickness)
+      type: input
+      connections:
+      - target: BB_RivetTool
+        description: Brake shoes are positioned in the tool
+    - id: F3
+      description: Mechanical energy (from operator)
+      type: input
+      connections:
+      - target: BB_RivetTool
+        description: Operator applies force to activate the tool
+    - id: F4
+      description: Riveting force (approximately 500 N)
+      type: output
+      connections:
+      - source: BB_RivetTool
+        description: Tool generates force to set rivets
+    - id: F5
+      description: Set rivets
+      type: output
+      connections:
+      - source: BB_RivetTool
+        description: Rivets are properly set in brake shoes
+    - id: F6
+      description: Waste material (if any)
+      type: output
+      connections:
+      - source: BB_RivetTool
+        description: Any waste material is removed
+    - id: F7
+      description: Ergonomic feedback (force, comfort)
+      type: output
+      connections:
+      - source: BB_RivetTool
+        description: Operator experiences ergonomic feedback during use
+  function_structure:
+    id: FS_RivetTool
+    description: Functional structure of the rivet setting tool
+    functions:
+    - id: F1
+      description: Accept copper rivets
+      type: transform
+      inputs:
+      - F1
+      outputs:
+      - F8
+    - id: F2
+      description: Position brake shoes
+      type: transform
+      inputs:
+      - F2
+      outputs:
+      - F9
+    - id: F3
+      description: Generate mechanical force
+      type: transform
+      inputs:
+      - F3
+      outputs:
+      - F10
+    - id: F4
+      description: Apply riveting force
+      type: transform
+      inputs:
+      - F8
+      - F9
+      - F10
+      outputs:
+      - F4
+      - F11
+    - id: F5
+      description: Set rivets
+      type: transform
+      inputs:
+      - F4
+      outputs:
+      - F5
+      - F6
+    - id: F6
+      description: Provide ergonomic operation
+      type: transform
+      inputs:
+      - F3
+      outputs:
+      - F7
+    - id: F7
+      description: Mount on worktop
+      type: transform
+      inputs:
+      - F2
+      outputs:
+      - F12
+  working_principles:
+  - id: WP1
+    description: Manual lever mechanism
+    function: F3
+    principle: Mechanical advantage through lever system
+    advantages:
+    - Simple and reliable
+    - Low cost
+    - Easy to manufacture
+    disadvantages:
+    - Limited force amplification
+    - Requires physical effort
+  - id: WP2
+    description: Hydraulic system
+    function: F3
+    principle: Pascal's law for force multiplication
+    advantages:
+    - High force amplification
+    - Smooth operation
+    disadvantages:
+    - More complex
+    - Potential for leaks
+    - Higher cost
+  - id: WP3
+    description: Pneumatic system
+    function: F3
+    principle: Compressed air for force generation
+    advantages:
+    - Clean operation
+    - Good force control
+    disadvantages:
+    - Requires air supply
+    - Noise
+  - id: WP4
+    description: Toggle mechanism
+    function: F4
+    principle: Kinematic inversion for force amplification
+    advantages:
+    - High force at end of stroke
+    - Simple mechanism
+    disadvantages:
+    - Limited stroke length
+    - Can be jerky
+  - id: WP5
+    description: Direct compression
+    function: F4
+    principle: Direct application of force
+    advantages:
+    - Simple
+    - Reliable
+    disadvantages:
+    - Limited force
+    - No force amplification
+  - id: WP6
+    description: Clamping mechanism
+    function: F2
+    principle: Mechanical clamping for secure positioning
+    advantages:
+    - Secure holding
+    - Adjustable
+    disadvantages:
+    - Can be complex
+    - May require adjustment
+  - id: WP7
+    description: Vise-like grip
+    function: F2
+    principle: Parallel jaw clamping
+    advantages:
+    - Simple
+    - Reliable
+    disadvantages:
+    - Limited adjustability
+  - id: WP8
+    description: Gravity-fed magazine
+    function: F1
+    principle: Gravity for automatic feeding
+    advantages:
+    - Automatic feeding
+    - Simple
+    disadvantages:
+    - Limited to vertical orientation
+    - May jam
+  - id: WP9
+    description: Manual loading
+    function: F1
+    principle: Manual placement of rivets
+    advantages:
+    - Simple
+    - Reliable
+    disadvantages:
+    - Slower operation
+    - Requires attention
+  concept_variants:
+  - id: CV1
+    description: Manual lever with toggle mechanism
+    working_principles:
+    - WP1
+    - WP4
+    functions:
+    - F1: WP9
+    - F2: WP6
+    - F3: WP1
+    - F4: WP4
+    - F5: WP9
+    - F6: WP1
+    - F7: WP6
+    advantages:
+    - Simple and reliable
+    - Low cost
+    - Easy to manufacture
+    disadvantages:
+    - Requires physical effort
+    - Limited force amplification
+  - id: CV2
+    description: Hydraulic with direct compression
+    working_principles:
+    - WP2
+    - WP5
+    functions:
+    - F1: WP8
+    - F2: WP7
+    - F3: WP2
+    - F4: WP5
+    - F5: WP8
+    - F6: WP2
+    - F7: WP7
+    advantages:
+    - High force amplification
+    - Smooth operation
+    disadvantages:
+    - More complex
+    - Potential for leaks
+    - Higher cost
+  - id: CV3
+    description: Pneumatic with toggle mechanism
+    working_principles:
+    - WP3
+    - WP4
+    functions:
+    - F1: WP8
+    - F2: WP6
+    - F3: WP3
+    - F4: WP4
+    - F5: WP8
+    - F6: WP3
+    - F7: WP6
+    advantages:
+    - Clean operation
+    - Good force control
+    disadvantages:
+    - Requires air supply
+    - Noise
+  - id: CV4
+    description: Manual lever with direct compression
+    working_principles:
+    - WP1
+    - WP5
+    functions:
+    - F1: WP9
+    - F2: WP7
+    - F3: WP1
+    - F4: WP5
+    - F5: WP9
+    - F6: WP1
+    - F7: WP7
+    advantages:
+    - Simple and reliable
+    - Low cost
+    - Easy to manufacture
+    disadvantages:
+    - Limited force
+    - Requires physical effort
+  concept_selection:
+  - id: CS1
+    concept: CV1
+    evaluation:
+    - criterion: Cost effectiveness
+      weight: 0.3
+      score: 4
+      rationale: Low manufacturing cost due to simple design
+    - criterion: Delivery time compliance
+      weight: 0.2
+      score: 5
+      rationale: Simple design allows for quick manufacturing
+    - criterion: Functional performance
+      weight: 0.2
+      score: 3
+      rationale: Adequate force but limited by manual operation
+    - criterion: Ergonomic compliance
+      weight: 0.15
+      score: 3
+      rationale: Meets force requirements but requires physical effort
+    - criterion: Durability and reliability
+      weight: 0.1
+      score: 5
+      rationale: Simple mechanism is highly reliable
+    - criterion: Portability and storage efficiency
+      weight: 0.05
+      score: 4
+      rationale: Compact design but may be heavier due to manual mechanism
+    total_score: 3.8
+    selection: Recommended
+    rationale: Best balance of cost, reliability, and manufacturability for the given
+      constraints
+  - id: CS2
+    concept: CV2
+    evaluation:
+    - criterion: Cost effectiveness
+      weight: 0.3
+      score: 2
+      rationale: Higher manufacturing cost due to hydraulic system
+    - criterion: Delivery time compliance
+      weight: 0.2
+      score: 3
+      rationale: More complex assembly may extend delivery time
+    - criterion: Functional performance
+      weight: 0.2
+      score: 5
+      rationale: Excellent force amplification and smooth operation
+    - criterion: Ergonomic compliance
+      weight: 0.15
+      score: 4
+      rationale: Low operating force but requires hydraulic maintenance
+    - criterion: Durability and reliability
+      weight: 0.1
+      score: 3
+      rationale: Potential for hydraulic leaks reduces reliability
+    - criterion: Portability and storage efficiency
+      weight: 0.05
+      score: 3
+      rationale: Bulkier due to hydraulic components
+    total_score: 3.4
+    selection: Not recommended
+    rationale: Higher cost and complexity outweigh performance benefits
+  - id: CS3
+    concept: CV3
+    evaluation:
+    - criterion: Cost effectiveness
+      weight: 0.3
+      score: 3
+      rationale: Moderate cost due to pneumatic components
+    - criterion: Delivery time compliance
+      weight: 0.2
+      score: 3
+      rationale: Moderate complexity may extend delivery time
+    - criterion: Functional performance
+      weight: 0.2
+      score: 4
+      rationale: Good force control but requires air supply
+    - criterion: Ergonomic compliance
+      weight: 0.15
+      score: 4
+      rationale: Low operating force but noise may be an issue
+    - criterion: Durability and reliability
+      weight: 0.1
+      score: 4
+      rationale: Reliable but air supply dependency is a concern
+    - criterion: Portability and storage efficiency
+      weight: 0.05
+      score: 3
+      rationale: Moderate size but requires air connection
+    total_score: 3.5
+    selection: Not recommended
+    rationale: Air supply requirement limits practicality in workshop environment
+  - id: CS4
+    concept: CV4
+    evaluation:
+    - criterion: Cost effectiveness
+      weight: 0.3
+      score: 4
+      rationale: Low cost due to simple design
+    - criterion: Delivery time compliance
+      weight: 0.2
+      score: 5
+      rationale: Simple design allows for quick manufacturing
+    - criterion: Functional performance
+      weight: 0.2
+      score: 2
+      rationale: Limited force may not meet all requirements
+    - criterion: Ergonomic compliance
+      weight: 0.15
+      score: 2
+      rationale: High operating force may exceed ergonomic limits
+    - criterion: Durability and reliability
+      weight: 0.1
+      score: 5
+      rationale: Simple mechanism is highly reliable
+    - criterion: Portability and storage efficiency
+      weight: 0.05
+      score: 4
+      rationale: Compact design but may be heavier due to manual mechanism
+    total_score: 3.4
+    selection: Not recommended
+    rationale: Insufficient force output for reliable operation

@@ -1,0 +1,402 @@
+```yaml
+black_box:
+  id: BB_RivetTool
+  description: A rivet setting tool for internal drum brakes
+  flows:
+    - id: F1
+      description: Copper rivets (3-5 mm shank diameter, DIN 7338)
+      type: input
+      connections:
+        - target: BB_RivetTool
+          description: Copper rivets are fed into the tool
+    - id: F2
+      description: Brake shoes (up to 2 kg, 100 mm width, 15 mm thickness)
+      type: input
+      connections:
+        - target: BB_RivetTool
+          description: Brake shoes are positioned in the tool
+    - id: F3
+      description: Mechanical energy (from operator)
+      type: input
+      connections:
+        - target: BB_RivetTool
+          description: Operator applies force to activate the tool
+    - id: F4
+      description: Riveting force (approximately 500 N)
+      type: output
+      connections:
+        - source: BB_RivetTool
+          description: Tool generates force to set rivets
+    - id: F5
+      description: Set rivets
+      type: output
+      connections:
+        - source: BB_RivetTool
+          description: Rivets are properly set in brake shoes
+    - id: F6
+      description: Waste material (if any)
+      type: output
+      connections:
+        - source: BB_RivetTool
+          description: Any waste material is removed
+    - id: F7
+      description: Ergonomic feedback (force, comfort)
+      type: output
+      connections:
+        - source: BB_RivetTool
+          description: Operator experiences ergonomic feedback during use
+
+function_structure:
+  id: FS_RivetTool
+  description: Functional structure of the rivet setting tool
+  functions:
+    - id: F1
+      description: Accept copper rivets
+      type: transform
+      inputs:
+        - F1
+      outputs:
+        - F8
+    - id: F2
+      description: Position brake shoes
+      type: transform
+      inputs:
+        - F2
+      outputs:
+        - F9
+    - id: F3
+      description: Generate mechanical force
+      type: transform
+      inputs:
+        - F3
+      outputs:
+        - F10
+    - id: F4
+      description: Apply riveting force
+      type: transform
+      inputs:
+        - F8
+        - F9
+        - F10
+      outputs:
+        - F4
+        - F11
+    - id: F5
+      description: Set rivets
+      type: transform
+      inputs:
+        - F4
+      outputs:
+        - F5
+        - F6
+    - id: F6
+      description: Provide ergonomic operation
+      type: transform
+      inputs:
+        - F3
+      outputs:
+        - F7
+    - id: F7
+      description: Mount on worktop
+      type: transform
+      inputs:
+        - F2
+      outputs:
+        - F12
+
+working_principles:
+  - id: WP1
+    description: Manual lever mechanism
+    function: F3
+    principle: Mechanical advantage through lever system
+    advantages:
+      - Simple and reliable
+      - Low cost
+      - Easy to manufacture
+    disadvantages:
+      - Limited force amplification
+      - Requires physical effort
+  - id: WP2
+    description: Hydraulic system
+    function: F3
+    principle: Pascal's law for force multiplication
+    advantages:
+      - High force amplification
+      - Smooth operation
+    disadvantages:
+      - More complex
+      - Potential for leaks
+      - Higher cost
+  - id: WP3
+    description: Pneumatic system
+    function: F3
+    principle: Compressed air for force generation
+    advantages:
+      - Clean operation
+      - Good force control
+    disadvantages:
+      - Requires air supply
+      - Noise
+  - id: WP4
+    description: Toggle mechanism
+    function: F4
+    principle: Kinematic inversion for force amplification
+    advantages:
+      - High force at end of stroke
+      - Simple mechanism
+    disadvantages:
+      - Limited stroke length
+      - Can be jerky
+  - id: WP5
+    description: Direct compression
+    function: F4
+    principle: Direct application of force
+    advantages:
+      - Simple
+      - Reliable
+    disadvantages:
+      - Limited force
+      - No force amplification
+  - id: WP6
+    description: Clamping mechanism
+    function: F2
+    principle: Mechanical clamping for secure positioning
+    advantages:
+      - Secure holding
+      - Adjustable
+    disadvantages:
+      - Can be complex
+      - May require adjustment
+  - id: WP7
+    description: Vise-like grip
+    function: F2
+    principle: Parallel jaw clamping
+    advantages:
+      - Simple
+      - Reliable
+    disadvantages:
+      - Limited adjustability
+  - id: WP8
+    description: Gravity-fed magazine
+    function: F1
+    principle: Gravity for automatic feeding
+    advantages:
+      - Automatic feeding
+      - Simple
+    disadvantages:
+      - Limited to vertical orientation
+      - May jam
+  - id: WP9
+    description: Manual loading
+    function: F1
+    principle: Manual placement of rivets
+    advantages:
+      - Simple
+      - Reliable
+    disadvantages:
+      - Slower operation
+      - Requires attention
+
+concept_variants:
+  - id: CV1
+    description: Manual lever with toggle mechanism
+    working_principles:
+      - WP1
+      - WP4
+    functions:
+      - F1: WP9
+      - F2: WP6
+      - F3: WP1
+      - F4: WP4
+      - F5: WP9
+      - F6: WP1
+      - F7: WP6
+    advantages:
+      - Simple and reliable
+      - Low cost
+      - Easy to manufacture
+    disadvantages:
+      - Requires physical effort
+      - Limited force amplification
+  - id: CV2
+    description: Hydraulic with direct compression
+    working_principles:
+      - WP2
+      - WP5
+    functions:
+      - F1: WP8
+      - F2: WP7
+      - F3: WP2
+      - F4: WP5
+      - F5: WP8
+      - F6: WP2
+      - F7: WP7
+    advantages:
+      - High force amplification
+      - Smooth operation
+    disadvantages:
+      - More complex
+      - Potential for leaks
+      - Higher cost
+  - id: CV3
+    description: Pneumatic with toggle mechanism
+    working_principles:
+      - WP3
+      - WP4
+    functions:
+      - F1: WP8
+      - F2: WP6
+      - F3: WP3
+      - F4: WP4
+      - F5: WP8
+      - F6: WP3
+      - F7: WP6
+    advantages:
+      - Clean operation
+      - Good force control
+    disadvantages:
+      - Requires air supply
+      - Noise
+  - id: CV4
+    description: Manual lever with direct compression
+    working_principles:
+      - WP1
+      - WP5
+    functions:
+      - F1: WP9
+      - F2: WP7
+      - F3: WP1
+      - F4: WP5
+      - F5: WP9
+      - F6: WP1
+      - F7: WP7
+    advantages:
+      - Simple and reliable
+      - Low cost
+      - Easy to manufacture
+    disadvantages:
+      - Limited force
+      - Requires physical effort
+
+concept_selection:
+  - id: CS1
+    concept: CV1
+    evaluation:
+      - criterion: Cost effectiveness
+        weight: 0.3
+        score: 4
+        rationale: Low manufacturing cost due to simple design
+      - criterion: Delivery time compliance
+        weight: 0.2
+        score: 5
+        rationale: Simple design allows for quick manufacturing
+      - criterion: Functional performance
+        weight: 0.2
+        score: 3
+        rationale: Adequate force but limited by manual operation
+      - criterion: Ergonomic compliance
+        weight: 0.15
+        score: 3
+        rationale: Meets force requirements but requires physical effort
+      - criterion: Durability and reliability
+        weight: 0.1
+        score: 5
+        rationale: Simple mechanism is highly reliable
+      - criterion: Portability and storage efficiency
+        weight: 0.05
+        score: 4
+        rationale: Compact design but may be heavier due to manual mechanism
+    total_score: 3.8
+    selection: Recommended
+    rationale: Best balance of cost, reliability, and manufacturability for the given constraints
+  - id: CS2
+    concept: CV2
+    evaluation:
+      - criterion: Cost effectiveness
+        weight: 0.3
+        score: 2
+        rationale: Higher manufacturing cost due to hydraulic system
+      - criterion: Delivery time compliance
+        weight: 0.2
+        score: 3
+        rationale: More complex assembly may extend delivery time
+      - criterion: Functional performance
+        weight: 0.2
+        score: 5
+        rationale: Excellent force amplification and smooth operation
+      - criterion: Ergonomic compliance
+        weight: 0.15
+        score: 4
+        rationale: Low operating force but requires hydraulic maintenance
+      - criterion: Durability and reliability
+        weight: 0.1
+        score: 3
+        rationale: Potential for hydraulic leaks reduces reliability
+      - criterion: Portability and storage efficiency
+        weight: 0.05
+        score: 3
+        rationale: Bulkier due to hydraulic components
+    total_score: 3.4
+    selection: Not recommended
+    rationale: Higher cost and complexity outweigh performance benefits
+  - id: CS3
+    concept: CV3
+    evaluation:
+      - criterion: Cost effectiveness
+        weight: 0.3
+        score: 3
+        rationale: Moderate cost due to pneumatic components
+      - criterion: Delivery time compliance
+        weight: 0.2
+        score: 3
+        rationale: Moderate complexity may extend delivery time
+      - criterion: Functional performance
+        weight: 0.2
+        score: 4
+        rationale: Good force control but requires air supply
+      - criterion: Ergonomic compliance
+        weight: 0.15
+        score: 4
+        rationale: Low operating force but noise may be an issue
+      - criterion: Durability and reliability
+        weight: 0.1
+        score: 4
+        rationale: Reliable but air supply dependency is a concern
+      - criterion: Portability and storage efficiency
+        weight: 0.05
+        score: 3
+        rationale: Moderate size but requires air connection
+    total_score: 3.5
+    selection: Not recommended
+    rationale: Air supply requirement limits practicality in workshop environment
+  - id: CS4
+    concept: CV4
+    evaluation:
+      - criterion: Cost effectiveness
+        weight: 0.3
+        score: 4
+        rationale: Low cost due to simple design
+      - criterion: Delivery time compliance
+        weight: 0.2
+        score: 5
+        rationale: Simple design allows for quick manufacturing
+      - criterion: Functional performance
+        weight: 0.2
+        score: 2
+        rationale: Limited force may not meet all requirements
+      - criterion: Ergonomic compliance
+        weight: 0.15
+        score: 2
+        rationale: High operating force may exceed ergonomic limits
+      - criterion: Durability and reliability
+        weight: 0.1
+        score: 5
+        rationale: Simple mechanism is highly reliable
+      - criterion: Portability and storage efficiency
+        weight: 0.05
+        score: 4
+        rationale: Compact design but may be heavier due to manual mechanism
+    total_score: 3.4
+    selection: Not recommended
+    rationale: Insufficient force output for reliable operation
+```

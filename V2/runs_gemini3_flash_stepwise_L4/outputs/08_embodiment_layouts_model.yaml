@@ -1,0 +1,181 @@
+embodiment_layouts:
+  layout:
+  - id: EL1
+    module_breakdown:
+    - module_id: M1
+      name: Actuation and Force Amplification Module
+      responsibilities:
+      - Receive manual input force from the operator via a hand lever.
+      - Amplify the input force to the required 500 N riveting force using a toggle
+        linkage.
+      - Control the output stroke to the specified 3-4 mm range.
+      allocated_functions:
+      - F3 (Receive human actuation force)
+      - F4 (Amplify force and control stroke)
+    - module_id: M2
+      name: Tooling and Forming Module
+      responsibilities:
+      - Hold the rivet in a recessed die pocket for alignment.
+      - Plastically deform the copper rivet using a hardened punch and die set.
+      - Provide a physical hard stop to indicate process completion and ensure consistency.
+      allocated_functions:
+      - F2 (Align and hold rivet)
+      - F5 (Form rivet head)
+      - F6 (Indicate process completion)
+    - module_id: M3
+      name: Workpiece Support and Positioning Module
+      responsibilities:
+      - Support the brake shoe and lining assembly during the riveting process.
+      - Provide radial adjustment to accommodate brake shoe diameters from 250 mm
+        to 400 mm.
+      - Ensure a minimum 10 mm clearance from the rivet center to the shoe rib.
+      allocated_functions:
+      - F1 (Position and support brake shoe)
+    - module_id: M4
+      name: Structural Frame and Mounting Module
+      responsibilities:
+      - Provide a rigid backbone to resist the 500 N internal forces without significant
+        deflection.
+      - Anchor the tool securely to the wooden workshop bench.
+      allocated_functions:
+      - F7 (Anchor tool to workbench)
+    interfaces:
+    - id: IF1
+      between:
+      - M1
+      - M2
+      type:
+      - mechanical
+      description: 'Pivot pin connection between the toggle linkage output and the
+        sliding punch carrier.
+
+        '
+      constraints:
+      - Must withstand 500 N axial load.
+      - Minimal play to ensure stroke accuracy (3-4 mm).
+    - id: IF2
+      between:
+      - M2
+      - M3
+      type:
+      - mechanical
+      description: 'Spatial alignment interface between the lower die (M2) and the
+        sliding support block (M3).
+
+        '
+      constraints:
+      - Vertical clearance must accommodate up to 15 mm assembly thickness.
+      - Radial alignment must allow the rivet to center on the die.
+    - id: IF3
+      between:
+      - M1
+      - M4
+      type:
+      - mechanical
+      description: 'Fulcrum and pivot points where the lever and linkage are mounted
+        to the main frame.
+
+        '
+      constraints:
+      - High shear strength required for pivot pins.
+      - Low friction bushings to minimize operator effort.
+    - id: IF4
+      between:
+      - M3
+      - M4
+      type:
+      - mechanical
+      description: 'Sliding rail or T-slot interface between the support module and
+        the base frame.
+
+        '
+      constraints:
+      - 75 mm travel range (to cover 125 mm to 200 mm radius).
+      - Locking mechanism must prevent movement under 500 N vertical load.
+    - id: IF5
+      between:
+      - M4
+      - human
+      type:
+      - human
+      description: 'Hand grip area on the lever.
+
+        '
+      constraints:
+      - Ergonomic diameter (30-40 mm).
+      - Height must be within comfortable reach (approx. 900-1100 mm from floor).
+    key_design_parameters:
+    - id: KDP1
+      name: Toggle Linkage Mechanical Advantage
+      unit: ratio
+      target_or_range: 3:1 to 5:1 (at end of stroke)
+      linked_requirements:
+      - R1
+      - R7
+    - id: KDP2
+      name: Support Radial Adjustment Range
+      unit: mm
+      target_or_range: 125 - 200
+      linked_requirements:
+      - R3
+    - id: KDP3
+      name: Punch and Die Hardness
+      unit: HRC
+      target_or_range: 54 - 58
+      linked_requirements:
+      - R10
+    - id: KDP4
+      name: Base Plate Thickness
+      unit: mm
+      target_or_range: 12 - 15
+      linked_requirements:
+      - R14
+      - R1
+    - id: KDP5
+      name: Lever Length
+      unit: mm
+      target_or_range: 500 - 600
+      linked_requirements:
+      - R7
+    risks_and_mitigations:
+    - id: RM1
+      risk: 'Toggle linkage sensitivity to thickness variations (R6) may lead to incomplete
+        riveting or mechanical jamming if the assembly exceeds 15 mm.
+
+        '
+      mitigation: 'Incorporate a threaded adjustment on the punch or die height to
+        fine-tune the closed position for different shoe/lining combinations.
+
+        '
+    - id: RM2
+      risk: 'The sliding support (WP1) may shift during operation due to the 70-rivet/day
+        workload, leading to misaligned rivets.
+
+        '
+      mitigation: 'Use a serrated or notched rail for the sliding support to provide
+        positive mechanical locking rather than relying solely on friction.
+
+        '
+    - id: RM3
+      risk: 'Manufacturing cost exceeds 400 CHF due to complex machining of the toggle
+        linkage pivots.
+
+        '
+      mitigation: 'Use standard off-the-shelf (COTS) shoulder bolts for pivots and
+        simplify the frame to a welded C-channel construction.
+
+        '
+  assumptions:
+  - The workshop's wooden worktop is of sufficient thickness (min 30mm) and quality
+    to support M10/M12 mounting bolts.
+  - Standard tool steel (e.g., O1) is available in-house for the punch and die.
+  - The operator can manually return the lever (no return spring required for the
+    preliminary layout).
+  open_questions:
+  - Is a specific bolt pattern required for the base plate to match existing workshop
+    benches?
+  - Should the hard stop (WP9) be adjustable to accommodate different rivet head heights?
+  - Is there a preference for the lever orientation (vertical pull-down vs. horizontal
+    pull)?
+  traceability:
+    selected_concept_id: CV3

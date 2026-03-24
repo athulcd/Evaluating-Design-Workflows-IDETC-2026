@@ -1,0 +1,36 @@
+GLOBAL RULES (must follow):
+- Use ONLY the provided inputs. Do NOT invent missing data; list them under assumptions/open_questions.
+- Output MUST be valid YAML.
+- Output MUST contain EXACTLY these top-level keys in this order: ['embodiment_layouts', 'preliminary_sizing', 'manufacturing_plan'].
+- Keep cross-artifact references internally consistent across the same response.
+- All referenced IDs (e.g., R#, F#, IN_*, OUT_*, WP*, CV*, EC*, M*, IF*, KDP*, LC*, B*) MUST either already exist in the input packet or be created earlier in this same phase response.
+- When you create new IDs, keep them consistent and do not reference IDs that were neither provided nor created.
+- Do not use double quotes for fields that may span multiple lines. Use | or > block scalars instead.
+- If a value contains a newline, you MUST use | or > and not "…".
+
+You will complete the Embodiment Design phase in a single pass.
+
+ALLOWED INPUTS:
+- case_context
+- artifacts_available.task_clarification
+- artifacts_available.requirements_list
+- artifacts_available.black_box
+- artifacts_available.function_structure
+- artifacts_available.working_principles
+- artifacts_available.concept_variants
+- artifacts_available.concept_selection
+
+TASK:
+1) Create embodiment_layouts from the selected concept and prior functional context.
+2) Create preliminary_sizing using the generated embodiment layout and the provided requirements.
+3) Create manufacturing_plan using the generated embodiment layout and sizing results.
+4) Keep module IDs, interface IDs, load case IDs, and key design parameter IDs consistent across the response.
+5) Do not invent missing facts; put unresolved items under assumptions or open_questions.
+
+OUTPUT REQUIREMENTS:
+- Return one valid YAML document.
+- The YAML must contain exactly these top-level keys in this order:
+  1. embodiment_layouts
+  2. preliminary_sizing
+  3. manufacturing_plan
+- Later sections must reuse IDs created earlier in the same response whenever dependencies require it.

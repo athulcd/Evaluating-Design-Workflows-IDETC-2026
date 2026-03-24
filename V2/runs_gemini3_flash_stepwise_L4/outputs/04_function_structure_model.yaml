@@ -1,0 +1,126 @@
+function_structure:
+  subfunctions:
+  - id: F1
+    verb_noun: Position and support brake shoe
+    description: Adjusts for different diameters (250-400mm) and provides a stable
+      surface for the shoe and lining assembly.
+    input_flows:
+    - IN1
+    - IN4
+    output_flows:
+    - M_POSITIONED_COMPONENTS
+    allocated_requirements:
+    - R3
+    - R4
+    - R6
+  - id: F2
+    verb_noun: Align and hold rivet
+    description: Receives the DIN 7338 rivet and ensures it is centered relative to
+      the pre-drilled holes and the riveting punch.
+    input_flows:
+    - IN2
+    - IN4
+    output_flows:
+    - M_ALIGNED_RIVET
+    allocated_requirements:
+    - R5
+  - id: F3
+    verb_noun: Receive human actuation force
+    description: Interface (lever or pedal) that captures the operator's physical
+      input.
+    input_flows:
+    - IN3
+    output_flows:
+    - E_INPUT_MECH
+    allocated_requirements:
+    - R7
+    - R12
+  - id: F4
+    verb_noun: Amplify force and control stroke
+    description: Mechanical linkage or lever system that converts input force to 500N
+      and limits travel to 3-4mm.
+    input_flows:
+    - E_INPUT_MECH
+    output_flows:
+    - E_RIVETING_MECH
+    - S_STROKE_LIMIT
+    allocated_requirements:
+    - R1
+    - R2
+  - id: F5
+    verb_noun: Form rivet head
+    description: The punch and die set that plastically deforms the copper rivet to
+      join the lining to the shoe.
+    input_flows:
+    - M_POSITIONED_COMPONENTS
+    - M_ALIGNED_RIVET
+    - E_RIVETING_MECH
+    output_flows:
+    - OUT1
+    - OUT2
+    allocated_requirements:
+    - R1
+    - R2
+  - id: F6
+    verb_noun: Indicate process completion
+    description: Provides tactile or visual feedback to the operator once the required
+      stroke is achieved.
+    input_flows:
+    - S_STROKE_LIMIT
+    output_flows:
+    - OUT3
+    allocated_requirements: []
+  - id: F7
+    verb_noun: Anchor tool to workbench
+    description: Provides the reaction force interface to the wooden worktop to maintain
+      stability during operation.
+    input_flows: []
+    output_flows: []
+    allocated_requirements:
+    - R14
+  hierarchy:
+  - parent: F0
+    children:
+    - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+    - F7
+  connections:
+  - from_function: F1
+    to_function: F5
+    flow_id: M_POSITIONED_COMPONENTS
+  - from_function: F2
+    to_function: F5
+    flow_id: M_ALIGNED_RIVET
+  - from_function: F3
+    to_function: F4
+    flow_id: E_INPUT_MECH
+  - from_function: F4
+    to_function: F5
+    flow_id: E_RIVETING_MECH
+  - from_function: F4
+    to_function: F6
+    flow_id: S_STROKE_LIMIT
+  completeness_checks:
+    flow_conservation_notes: 'All material inputs (IN1, IN2) are processed through
+      positioning and alignment functions before being combined in the forming function
+      (F5) to produce the output assembly (OUT1). Energy input (IN3) is amplified
+      (F4) and then dissipated (OUT2) or used for deformation. Signals (IN4) guide
+      the initial setup, and internal signals (S_STROKE_LIMIT) trigger the final feedback
+      (OUT3).
+
+      '
+    missing_functions_suspected: []
+  assumptions:
+  - The tool is purely mechanical; no energy storage (like springs for power) is required
+    beyond the immediate stroke.
+  - The 'Position and support' function (F1) includes the necessary adjustments for
+    the 250-400mm diameter range.
+  open_questions:
+  - Does the 'Indicate process completion' function require a dedicated mechanism
+    (e.g., a bell or hard stop) or is tactile resistance sufficient?
+  traceability:
+    derived_from_black_box: true

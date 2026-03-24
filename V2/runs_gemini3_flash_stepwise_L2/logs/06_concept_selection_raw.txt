@@ -1,0 +1,91 @@
+concept_selection:
+  criteria_weights:
+    - criterion_id: EC1
+      weight: 0.15
+      justification: Speed of riveting is important for the productivity target (R10) of 70 rivets/day.
+    - criterion_id: EC2
+      weight: 0.25
+      justification: Quality of riveting is safety-critical for brake systems (O1, R1, R9).
+    - criterion_id: EC3
+      weight: 0.1
+      justification: Stability and setup time affect the overall efficiency in a workshop environment.
+    - criterion_id: EC4
+      weight: 0.05
+      justification: Ease of servicing is a wish (R16) but less critical than primary function.
+    - criterion_id: EC5
+      weight: 0.05
+      justification: Portability is a wish (R14) for workshop flexibility.
+    - criterion_id: EC6
+      weight: 0.1
+      justification: Reliability and service life (R13, R15) ensure the tool is a viable investment.
+    - criterion_id: EC7
+      weight: 0.15
+      justification: Safety (R18) is a must-requirement to prevent operator injury.
+    - criterion_id: EC8
+      weight: 0.15
+      justification: Manufacturing cost (R20) must stay within the SwFr 400 limit.
+  scoring:
+    - concept_id: CV1
+      scores:
+        EC1: 9.0
+        EC2: 6.0
+        EC3: 8.0
+        EC4: 9.0
+        EC5: 8.0
+        EC6: 9.0
+        EC7: 6.0
+        EC8: 9.0
+      notes: |
+        High speed and low cost due to simple lever mechanism. However, the fixed stop (WP6_1) 
+        limits quality if stack thicknesses vary, and the lever poses pinch hazards.
+    - concept_id: CV2
+      scores:
+        EC1: 4.0
+        EC2: 9.0
+        EC3: 6.0
+        EC4: 6.0
+        EC5: 6.0
+        EC6: 7.0
+        EC7: 8.0
+        EC8: 5.0
+      notes: |
+        Excellent quality control and safety due to the screw drive, but significantly 
+        slower cycle times and higher manufacturing complexity/cost.
+    - concept_id: CV3
+      scores:
+        EC1: 8.0
+        EC2: 8.0
+        EC3: 8.0
+        EC4: 8.0
+        EC5: 8.0
+        EC6: 8.0
+        EC7: 6.0
+        EC8: 8.0
+      notes: |
+        Balanced approach. The lever provides speed, while the adjustable stop (WP6_2) 
+        ensures high quality across different brake shoe sizes.
+  selected_concept_id: CV3
+  selection_rationale: |
+    Concept CV3 (Lever press with adjustable stop) is selected as the preferred variant. 
+    It achieves the best balance between the high productivity required for workshop use 
+    and the technical necessity of precise rivet closure for safety-critical brake 
+    components. While CV1 is cheaper, its lack of adjustability risks poor joint 
+    quality if components deviate from nominal thickness. CV2, while precise, is 
+    likely too slow and expensive for the target workshop market. CV3 meets the 
+    primary objectives (O1, O2, O4) most effectively.
+  sensitivity_analysis_notes: |
+    The selection is sensitive to the weighting of 'Quality' vs 'Cost'. If the 
+    manufacturing cost limit (R20) is extremely strict, CV1 might become more 
+    attractive. Conversely, if the variety of brake shoes (R2-R5) is very high, 
+    the precision of CV2 might be prioritized despite the speed penalty. CV3 
+    remains the most robust choice across likely workshop scenarios.
+  assumptions:
+    - The adjustable stop in CV3 can be secured (e.g., locknut) to prevent drift during operation.
+    - The lever mechanism in CV3 can be designed with basic guards to mitigate the pinch hazards noted.
+  open_questions:
+    - What is the specific variation in total stack thickness (R5) across the 250-400mm drum range?
+  traceability:
+    based_on_concepts:
+      - CV1
+      - CV2
+      - CV3

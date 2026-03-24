@@ -1,0 +1,11 @@
+{
+  "model": "gemini-3-flash-preview",
+  "finish_reason": "STOP",
+  "finish_message": null,
+  "prompt_feedback": null,
+  "usage": {
+    "prompt_tokens": 1275,
+    "completion_tokens": 1341
+  },
+  "attempt": 2
+}

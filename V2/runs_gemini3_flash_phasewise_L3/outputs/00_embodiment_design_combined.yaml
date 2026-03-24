@@ -1,0 +1,191 @@
+embodiment_layouts:
+  modules:
+    M1:
+      name: Base Frame Assembly
+      description: "A C-shaped structural frame designed to provide the necessary\
+        \ throat depth for brake shoes. \nIncludes a bottom flange or block for mounting\
+        \ in a standard workshop vice (WP1_1).\n"
+      allocated_functions:
+      - F1
+      - F9
+    M2:
+      name: Lever Actuation System
+      description: "A manual lever arm connected to the frame via a primary pivot.\
+        \ Uses a linkage or \ndirect cam action to convert rotational hand motion\
+        \ into linear riveting force (WP5_1).\n"
+      allocated_functions:
+      - F4
+      - F5
+    M3:
+      name: Riveting Tooling
+      description: "Consists of an upper forming die (closure head) and a lower anvil\
+        \ (preform head support). \nThe upper die is guided linearly within the frame\
+        \ (WP7_1).\n"
+      allocated_functions:
+      - F2
+      - F7
+    M4:
+      name: Stroke Control Module
+      description: "An adjustable threaded stop mechanism with a locknut to limit\
+        \ the downward travel \nof the lever or the tool holder, ensuring consistent\
+        \ rivet closure (WP6_2).\n"
+      allocated_functions:
+      - F6
+  interfaces:
+    IF1:
+      module_a: M1
+      module_b: Workshop Vice
+      interface_type: Mechanical clamping
+      description: Rectangular base section of the frame clamped by vice jaws.
+    IF2:
+      module_a: M1
+      module_b: M2
+      interface_type: Pivot joint
+      description: Pin and bushing connection allowing lever rotation relative to
+        the frame.
+    IF3:
+      module_a: M2
+      module_b: M3
+      interface_type: Mechanical linkage
+      description: Transfer of amplified force from the lever to the sliding tool
+        holder.
+    IF4:
+      module_a: M3
+      module_b: Workpiece (Shoe/Lining)
+      interface_type: Contact/Forming
+      description: Interface where the rivet is compressed between the die and anvil.
+  layout_description: "The tool is configured as a vertical C-frame press. The base\
+    \ (M1) is secured in a vice. \nThe lower anvil of M3 is fixed to the lower jaw\
+    \ of the C-frame. The lever (M2) is \npivoted at the top of the frame. The upper\
+    \ riveting die (M3) slides vertically in \na guide bore in the frame's upper arm.\
+    \ The adjustable stop (M4) is positioned \nto intercept the lever's travel at\
+    \ the precise point of rivet closure.\n"
+preliminary_sizing:
+  load_cases:
+    LC1:
+      id: LC1
+      description: Maximum riveting operation
+      loads:
+      - type: Input Force
+        value: 200 N
+        direction: Manual downward pull on lever handle
+      - type: Reaction Force
+        value: 1000 N
+        direction: Vertical compression at the rivet head
+      safety_factor: 2.0
+  key_design_parameters:
+    KDP1:
+      id: KDP1
+      name: Lever Mechanical Advantage
+      target_value: 5.0
+      unit: ratio
+      rationale: To achieve 1000 N riveting force (exceeding R8) with 200 N hand force
+        (R17).
+    KDP2:
+      id: KDP2
+      name: Frame Throat Depth
+      target_value: 150
+      unit: mm
+      rationale: Accommodates the curvature and width of brake shoes (R2, R3) while
+        maintaining stiffness.
+    KDP3:
+      id: KDP3
+      name: Tool Stroke
+      target_value: 50
+      unit: mm
+      rationale: Sufficient to clear the maximum stack thickness of 45 mm (R5) plus
+        rivet protrusion.
+    KDP4:
+      id: KDP4
+      name: Pivot Pin Diameter
+      target_value: 12
+      unit: mm
+      rationale: Sized for shear strength under the amplified riveting load.
+  sizing_results:
+  - parameter_id: KDP1
+    calculated_value: 5.0
+    status: OK
+  - parameter_id: KDP2
+    calculated_value: 150
+    status: OK
+  - parameter_id: KDP4
+    calculated_value: 12
+    status: OK
+  assumptions:
+  - Lever handle length is approximately 400-500 mm for ergonomic reach.
+  - Frame material is structural steel with yield strength >= 235 MPa.
+manufacturing_plan:
+  work_packages:
+    WP_MFG_1:
+      id: WP_MFG_1
+      name: Frame Fabrication
+      activities: '- Cut C-frame profile from 15-20mm thick steel plate (Flame/Plasma/Waterjet).
+
+        - Drill and ream pivot holes and tool guide bore.
+
+        - Weld base block for vice mounting.
+
+        '
+      resources:
+      - CNC Cutting
+      - Milling/Drilling machine
+      - Welding station
+    WP_MFG_2:
+      id: WP_MFG_2
+      name: Lever and Linkage Production
+      activities: '- Machine lever arm from steel bar stock.
+
+        - Turn pivot pins and bushings.
+
+        - Fabricate handle grip.
+
+        '
+      resources:
+      - Lathe
+      - Manual Mill
+    WP_MFG_3:
+      id: WP_MFG_3
+      name: Tooling and Stop Mechanism
+      activities: '- Turn upper die and lower anvil from tool steel.
+
+        - Heat treat (harden and temper) dies to 55-60 HRC.
+
+        - Threading for the adjustable stop screw.
+
+        '
+      resources:
+      - Lathe
+      - Heat treatment furnace
+    WP_ASSY_1:
+      id: WP_ASSY_1
+      name: Final Assembly and Calibration
+      activities: '- Press-fit bushings into frame.
+
+        - Assemble lever and linkage with pivot pins.
+
+        - Install riveting dies and adjustable stop.
+
+        - Functional test with sample rivets to calibrate the stop.
+
+        '
+      resources:
+      - Assembly bench
+      - Lubricants
+      - Test rivets/shoes
+  critical_components:
+  - component_id: M3_DIE
+    name: Riveting Die
+    criticality: High
+    reason: Subject to high cyclic contact stress; requires precise geometry and hardness
+      for R9.
+  - component_id: M1_FRAME
+    name: C-Frame
+    criticality: Medium
+    reason: Must resist deflection to ensure rivet alignment and closure accuracy.
+  assembly_strategy: "Sequential bottom-up assembly. The frame is the primary datum.\
+    \ The lower anvil is \ninstalled first, followed by the upper tool guide and lever\
+    \ mechanism. The \nadjustable stop is the final component installed before calibration.\n"
+  open_questions:
+  - Is a specific surface finish required for the anvil to prevent marking the brake
+    shoe?
+  - Should the lever handle be removable for easier transport (R14)?

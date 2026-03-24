@@ -1,0 +1,29 @@
+GLOBAL RULES (must follow):
+- Use ONLY the provided inputs. Do NOT invent missing data; list them under assumptions/open_questions.
+- Output MUST be valid YAML.
+- Output MUST contain EXACTLY these top-level keys in this order: ['task_clarification', 'requirements_list'].
+- Keep cross-artifact references internally consistent across the same response.
+- All referenced IDs (e.g., R#, F#, IN_*, OUT_*, WP*, CV*, EC*, M*, IF*, KDP*, LC*, B*) MUST either already exist in the input packet or be created earlier in this same phase response.
+- When you create new IDs, keep them consistent and do not reference IDs that were neither provided nor created.
+- Do not use double quotes for fields that may span multiple lines. Use | or > block scalars instead.
+- If a value contains a newline, you MUST use | or > and not "…".
+
+You will complete the Planning phase in a single pass.
+
+ALLOWED INPUTS:
+- case_context
+- raw_task_statement
+
+TASK:
+1) Perform Task Clarification from the raw task statement.
+2) Then derive the Requirements List from the task clarification you just created.
+3) Keep IDs internally consistent across both generated artifacts.
+4) Do not invent missing facts; put unresolved items under assumptions or open_questions.
+
+OUTPUT REQUIREMENTS:
+- Return one valid YAML document.
+- The YAML must contain exactly these top-level keys in this order:
+  1. task_clarification
+  2. requirements_list
+- The requirements_list must trace to the task_clarification created in the same response.
+- Reuse evaluation criteria, objectives, and constraints consistently across both sections.

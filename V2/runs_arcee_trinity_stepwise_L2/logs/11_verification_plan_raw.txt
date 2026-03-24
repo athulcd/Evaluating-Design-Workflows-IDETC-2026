@@ -1,0 +1,199 @@
+verification_plan:
+  requirement_verification:
+    - requirement_id: R1
+      method: demonstration
+      procedure_summary: |-
+        Set up the tool with a brake shoe, lining, and rivet in the workholding fixture.
+        Actuate the tool to form the rivet head.
+        Inspect the formed rivet for closure dimension and joint integrity.
+      conditions: Tool mounted on bench; brake shoe/lining/rivet per spec; operator applies hand force.
+      metric: Successful rivet set without damage to components.
+      acceptance_criteria: All rivets set to target closure (~4 mm) with no cracks or damage; joint holds under light pull test.
+      linked_components: [B1, B2, B3, B5]
+    - requirement_id: R2
+      method: inspection
+      procedure_summary: |-
+        Measure the maximum brake shoe diameter the tool can accommodate.
+        Verify the throat depth and fixture geometry allow D = 250-400 mm.
+      conditions: Tool set up on bench; use gauge blocks or sample shoes.
+      metric: Supported brake shoe sizes.
+      acceptance_criteria: Tool accommodates D = 250-400 mm without interference.
+      linked_components: [B1, B5]
+    - requirement_id: R3
+      method: inspection
+      procedure_summary: |-
+        Measure the maximum brake shoe width the fixture can hold.
+        Verify B = 80-400 mm is supported.
+      conditions: Tool set up; use gauge blocks or sample shoes.
+      metric: Supported width.
+      acceptance_criteria: Tool accommodates B = 80-400 mm.
+      linked_components: [B1, B5]
+    - requirement_id: R4
+      method: inspection
+      procedure_summary: |-
+        Measure the maximum brake shoe thickness the fixture can hold.
+        Verify 6-8 mm is supported.
+      conditions: Tool set up; use gauge blocks or sample shoes.
+      metric: Supported shoe thickness.
+      acceptance_criteria: Tool accommodates 6-8 mm thickness.
+      linked_components: [B5]
+    - requirement_id: R5
+      method: inspection
+      procedure_summary: |-
+        Measure the maximum stack thickness (shoe + lining + rivet) the tool can accommodate.
+        Verify <= 45 mm is supported.
+      conditions: Tool set up; use gauge blocks or sample assemblies.
+      metric: Stack thickness capacity.
+      acceptance_criteria: Tool accommodates <= 45 mm total thickness.
+      linked_components: [B5]
+    - requirement_id: R6
+      method: inspection
+      procedure_summary: |-
+        Measure the minimum distance from rivet to edge the fixture allows.
+        Verify >= 4 mm is maintained.
+      conditions: Tool set up; use gauge blocks or sample shoes.
+      metric: Edge distance.
+      acceptance_criteria: Fixture geometry ensures >= 4 mm edge distance.
+      linked_components: [B5]
+    - requirement_id: R7
+      method: inspection
+      procedure_summary: |-
+        Measure the maximum rivet shank diameter the head set can accommodate.
+        Verify d = 3-5 mm is supported.
+      conditions: Tool set up; use gauge blocks or sample rivets.
+      metric: Rivet compatibility.
+      acceptance_criteria: Head set accommodates d = 3-5 mm.
+      linked_components: [B3]
+    - requirement_id: R8
+      method: test
+      procedure_summary: |-
+        Use a load cell or force gauge to measure the maximum forming force the tool can apply.
+        Verify >= 500 N is achieved.
+      conditions: Tool mounted; force gauge in line with actuation; measure peak force.
+      metric: Max forming force.
+      acceptance_criteria: Peak force >= 500 N.
+      linked_components: [B1, B2, B3, B4]
+    - requirement_id: R9
+      method: test
+      procedure_summary: |-
+        Set the adjustable stop to target closure (~4 mm).
+        Form a rivet and measure the closure dimension.
+        Verify ~4 mm is achieved.
+      conditions: Tool set up; use sample rivets; measure closure with calipers or gauge.
+      metric: Head closure dimension.
+      acceptance_criteria: Closure dimension within tolerance band of 4 mm (e.g., 3.8-4.2 mm).
+      linked_components: [B3, B4]
+    - requirement_id: R10
+      method: demonstration
+      procedure_summary: |-
+        Time a complete riveting cycle (setup, rivet insertion, actuation, verification).
+        Calculate maximum rivets/day based on cycle time.
+      conditions: Tool set up; operator performs multiple cycles; measure time.
+      metric: Rivets/day.
+      acceptance_criteria: Capable of up to 70 rivets/day (cycle time ~7 min or less).
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R11
+      method: demonstration
+      procedure_summary: |-
+        Have a single operator use the tool to set multiple rivets.
+        Verify one-person operation is possible.
+      conditions: Tool set up; operator performs riveting tasks.
+      metric: Single operator usability.
+      acceptance_criteria: One operator can complete all steps without assistance.
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R12
+      method: demonstration
+      procedure_summary: |-
+        Mount the tool on a wood worktop.
+        Verify stability during operation.
+      conditions: Tool mounted on wood bench; operator actuates tool.
+      metric: Bench operation compatibility.
+      acceptance_criteria: Tool remains stable without rocking or slipping.
+      linked_components: [B1]
+    - requirement_id: R13
+      method: analysis
+      procedure_summary: |-
+        Review design for wear-prone components and maintenance intervals.
+        Estimate service life based on material selection and usage.
+      conditions: Design review with BOM and material specs.
+      metric: Service life.
+      acceptance_criteria: Design supports ~5 year service life with minimal maintenance.
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R14
+      method: demonstration
+      procedure_summary: |-
+        Measure the tool's mass and volume.
+        Verify it is portable.
+      conditions: Tool assembled; measure dimensions and weight.
+      metric: Mass/volume; portability.
+      acceptance_criteria: Tool is easily carried by one person (e.g., < 20 kg, compact).
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R15
+      method: test
+      procedure_summary: |-
+        Perform multiple riveting cycles under nominal use.
+        Verify no critical failures occur.
+      conditions: Tool set up; operator performs repeated cycles.
+      metric: Failure-free riveting under nominal use.
+      acceptance_criteria: No critical failures during verification (e.g., frame breakage, head set failure).
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R16
+      method: analysis
+      procedure_summary: |-
+        Review design for maintenance needs.
+        Verify minimal maintenance is required.
+      conditions: Design review with BOM and material specs.
+      metric: Maintenance interval.
+      acceptance_criteria: Design minimizes maintenance (e.g., no lubrication, few wear parts).
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R17
+      method: test
+      procedure_summary: |-
+        Use a force gauge to measure the actuation force required.
+        Verify hand <= 200 N or foot <= 400 N.
+      conditions: Tool mounted; force gauge on handle/foot pedal; measure peak force.
+      metric: Actuation force.
+      acceptance_criteria: Hand force <= 200 N or foot force <= 400 N.
+      linked_components: [B2]
+    - requirement_id: R18
+      method: inspection
+      procedure_summary: |-
+        Review tool design for pinch/crush hazards.
+        Verify safe clearances and guards are in place.
+      conditions: Tool assembled; visual and physical inspection.
+      metric: Hazard assessment.
+      acceptance_criteria: No pinch/crush hazards in intended use; safe operation.
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R19
+      method: analysis
+      procedure_summary: |-
+        Review design for manufacturability and assembly time.
+        Estimate lead time to delivery.
+      conditions: Design review with BOM and process plans.
+      metric: Lead time.
+      acceptance_criteria: Delivery within 3 months (<= 4 months).
+      linked_components: [B1, B2, B3, B4, B5]
+    - requirement_id: R20
+      method: analysis
+      procedure_summary: |-
+        Estimate manufacturing cost based on BOM and process plans.
+        Verify <= SwFr 400.
+      conditions: Design review with BOM and process plans.
+      metric: Manufacturing cost.
+      acceptance_criteria: Estimated cost <= SwFr 400.
+      linked_components: [B1, B2, B3, B4, B5]
+  coverage_gaps:
+    - Some requirements (R13, R14, R16, R19, R20) are verified by analysis rather than test/demonstration, which may not fully validate performance.
+    - No explicit verification of rivet head shape/diameter beyond closure dimension.
+    - No verification of tool operation in actual workshop environment (dust, oil, temperature).
+    - No verification of long-term reliability or service life (R13) beyond analysis.
+  assumptions:
+    - The embodiment layout (EL1) corresponds to the final selected concept (CV3).
+    - The preliminary BOM (B1-B5) represents the actual components to be built and tested.
+    - Workshop conditions are assumed typical; no extreme environmental testing is planned.
+    - Rivet material and hardness are as assumed in the design; no variation testing is planned.
+  open_questions:
+    - Confirm the exact tolerance band for rivet closure dimension (R9).
+    - Confirm whether the tool will be tested with actual brake shoes/lining or only gauge blocks/samples.
+    - Confirm if any additional safety features (e.g., two-hand controls) are required beyond safe clearances.
+    - Confirm if the cost target (R20) includes assembly labor or only material and manufacturing.

@@ -1,0 +1,238 @@
+working_principles:
+  principles:
+    - id: WP1
+      function_id: F1
+      principle_name: Manual Screw Clamp
+      physical_effect_or_mechanism: Friction and Wedge (Screw Thread)
+      key_parameters:
+        - Thread pitch
+        - Handle diameter
+        - Clamping surface area
+      advantages:
+        - High clamping force capability
+        - Infinitely adjustable for different shoe thicknesses (R4)
+        - Simple and robust construction
+      disadvantages:
+        - Slow operation (low productivity R10)
+        - Requires manual effort for every rivet cycle
+      risks:
+        - Over-tightening could damage Al-alloy brake shoes
+      impacted_requirements:
+        - R3
+        - R4
+        - R10
+
+    - id: WP2
+      function_id: F1
+      principle_name: Over-Center Toggle Clamp
+      physical_effect_or_mechanism: Linkage Kinematics (Singularity)
+      key_parameters:
+        - Link lengths
+        - Pivot friction
+      advantages:
+        - Very fast clamping/unclamping (supports R10)
+        - Repeatable clamping force
+      disadvantages:
+        - Limited adjustment range for varying thicknesses
+        - More complex assembly than a screw
+      risks:
+        - Sudden release could cause minor injury
+      impacted_requirements:
+        - R4
+        - R10
+        - R18
+
+    - id: WP3
+      function_id: F2
+      principle_name: Manual Rivet Insertion
+      physical_effect_or_mechanism: Human Manipulation
+      key_parameters:
+        - Operator dexterity
+      advantages:
+        - Zero additional tool cost (R20)
+        - No mechanical complexity
+      disadvantages:
+        - Slowest method
+        - Risk of dropping rivets in workshop environment
+      risks:
+        - Misalignment if not seated properly
+      impacted_requirements:
+        - R7
+        - R10
+        - R20
+
+    - id: WP4
+      function_id: F2
+      principle_name: Magnetic Rivet Holder
+      physical_effect_or_mechanism: Magnetism
+      key_parameters:
+        - Magnetic flux density
+        - Rivet material (must be ferromagnetic)
+      advantages:
+        - Holds rivet in place during positioning
+        - Prevents rivets from falling out
+      disadvantages:
+        - Only works with steel rivets (DIN 7338 often steel, but check)
+        - Can attract workshop metal dust/debris
+      risks:
+        - Magnet degradation over time (R13)
+      impacted_requirements:
+        - R7
+        - R15
+
+    - id: WP5
+      function_id: F3
+      principle_name: Mechanical Indexing Pin
+      physical_effect_or_mechanism: Physical Interference
+      key_parameters:
+        - Pin diameter
+        - Hole tolerance
+      advantages:
+        - High precision alignment (R15)
+        - Repeatable results across multiple rivets
+      disadvantages:
+        - Requires pin to match rivet hole size
+        - Adds a step to the process
+      risks:
+        - Pin wear affecting accuracy
+      impacted_requirements:
+        - R6
+        - R15
+
+    - id: WP6
+      function_id: F4
+      principle_name: Long-Arm Hand Lever
+      physical_effect_or_mechanism: Leverage (Torque Balance)
+      key_parameters:
+        - Lever length
+        - Pivot point location
+      advantages:
+        - Simple to manufacture (R20)
+        - Direct feedback to operator
+      disadvantages:
+        - Requires significant space for swing
+        - Force limited by operator arm strength (R17)
+      risks:
+        - Operator fatigue over 70 rivets/day
+      impacted_requirements:
+        - R11
+        - R17
+        - R20
+
+    - id: WP7
+      function_id: F4
+      principle_name: Foot Pedal Actuation
+      physical_effect_or_mechanism: Leverage and Cable/Rod Transmission
+      key_parameters:
+        - Pedal travel
+        - Transmission ratio
+      advantages:
+        - Leaves both hands free for workpiece positioning (R11)
+        - Higher force capability (400N vs 200N hand force)
+      disadvantages:
+        - More complex mechanical linkage
+        - Less portable (R14)
+      risks:
+        - Stability issues if not bolted down
+      impacted_requirements:
+        - R11
+        - R14
+        - R17
+
+    - id: WP8
+      function_id: F5
+      principle_name: Toggle Linkage (Knee Joint)
+      physical_effect_or_mechanism: Geometric Force Amplification
+      key_parameters:
+        - Angle of links near closure
+        - Pivot stiffness
+      advantages:
+        - Extremely high force at the end of the stroke (ideal for R8)
+        - Compact design for high amplification
+      disadvantages:
+        - Non-linear force profile
+        - Sensitive to setup height
+      risks:
+        - High stress on pivot pins
+      impacted_requirements:
+        - R8
+        - R17
+
+    - id: WP9
+      function_id: F6
+      principle_name: Adjustable Threaded Hard Stop
+      physical_effect_or_mechanism: Physical Displacement Limit
+      key_parameters:
+        - Thread pitch (fine thread preferred)
+      advantages:
+        - Precise control of rivet head closure (R9)
+        - Easy to adjust for different material stacks
+      disadvantages:
+        - Can be accidentally moved if not locked
+      risks:
+        - Inconsistent closure if stop is not reached by operator
+      impacted_requirements:
+        - R9
+        - R15
+
+    - id: WP10
+      function_id: F7
+      principle_name: Cold Pressing (Steady Pressure)
+      physical_effect_or_mechanism: Plastic Deformation
+      key_parameters:
+        - Die geometry
+        - Applied force
+      advantages:
+        - Quiet operation
+        - High quality, consistent head shape (R1)
+      disadvantages:
+        - Requires high peak force (R8)
+      risks:
+        - Material work-hardening
+      impacted_requirements:
+        - R1
+        - R8
+        - R9
+
+    - id: WP11
+      function_id: F9
+      principle_name: Vice-Mounting Flange
+      physical_effect_or_mechanism: Friction (Clamping)
+      key_parameters:
+        - Flange thickness
+        - Surface finish
+      advantages:
+        - Extremely portable (R14)
+        - Uses existing workshop equipment (vice)
+      disadvantages:
+        - Stability depends on the quality of the vice
+      risks:
+        - Tool slipping if vice is oily
+      impacted_requirements:
+        - R12
+        - R14
+
+    - id: WP12
+      function_id: F10
+      principle_name: Safety Clearance Design
+      physical_effect_or_mechanism: Geometric Separation
+      key_parameters:
+        - Minimum gap distance
+      advantages:
+        - No moving parts to fail
+        - Zero cost
+      disadvantages:
+        - Does not protect against all finger positions
+      risks:
+        - Operator bypass
+      impacted_requirements:
+        - R18
+
+  assumptions:
+    - Rivets used are standard DIN 7338 as per the case context.
+    - The workshop vice is a standard resource available to the mechanic.
+    - The brake shoe material (Al-alloy) requires controlled pressure to avoid cracking.
+
+  open_questions:
+    - Is the foot pedal option preferred by mechanics for high-volume (70 rivets/day) work?
+    - Are the rivets typically steel, copper, or aluminum (affects magnetic principle WP4)?

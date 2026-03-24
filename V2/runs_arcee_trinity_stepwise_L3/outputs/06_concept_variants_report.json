@@ -1,0 +1,8 @@
+{
+  "cur_key": "working_principles",
+  "next_key": "concept_variants",
+  "errors": [
+    "Hallucinated/unknown IDs referenced in 'concept_variants': ['WP10', 'WP11', 'WP12', 'WP7', 'WP8', 'WP9']. These IDs are not present in input packet and were not created in the produced artifact."
+  ],
+  "warnings": []
+}

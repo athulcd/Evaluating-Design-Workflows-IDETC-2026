@@ -1,0 +1,15 @@
+{
+  "phase_key": "conceptual_design",
+  "expected_top_level_keys": [
+    "black_box",
+    "function_structure",
+    "working_principles",
+    "concept_variants",
+    "concept_selection"
+  ],
+  "errors": [],
+  "warnings": [],
+  "cross_artifact_checks": [
+    "Validated function, principle, concept, and selected concept references across conceptual outputs."
+  ]
+}

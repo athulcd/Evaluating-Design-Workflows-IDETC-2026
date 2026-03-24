@@ -1,0 +1,146 @@
+requirements_list:
+  requirements:
+  - id: R1
+    statement: The tool must form a rivet closure head on the brake lining side with
+      a height within the specified acceptance criteria.
+    type: performance
+    priority: MUST
+    metric: Rivet closure head height
+    target: Within acceptance criteria (e.g., ±0.5mm of nominal)
+    verification: inspection
+    source: O1
+  - id: R2
+    statement: The tool must produce a rivet joint with adequate integrity to withstand
+      brake forces without failure.
+    type: performance
+    priority: MUST
+    metric: Joint integrity (pull-out strength, shear strength)
+    target: Meets brake system safety requirements
+    verification: test
+    source: O1
+  - id: R3
+    statement: The tool must be operable by a single person without assistance.
+    type: functional
+    priority: MUST
+    metric: Number of operators required
+    target: One person
+    verification: demonstration
+    source: O2
+  - id: R4
+    statement: The actuation force must not exceed the maximum force a typical mechanic
+      can apply manually.
+    type: performance
+    priority: MUST
+    metric: Maximum actuation force
+    target: Within stated maxima (e.g., < 500N)
+    verification: test
+    source: O2
+  - id: R5
+    statement: The tool must be portable and suitable for workshop use.
+    type: performance
+    priority: MUST
+    metric: Mass and volume
+    target: Lightweight and compact enough for bench mounting and transport
+    verification: inspection
+    source: O3
+  - id: R6
+    statement: The tool must be robust enough to withstand typical workshop contaminants
+      (dust, oil).
+    type: performance
+    priority: MUST
+    metric: Resistance to contaminants
+    target: No degradation in performance after exposure
+    verification: test
+    source: O3
+  - id: R7
+    statement: The tool must require minimal maintenance during its service life.
+    type: performance
+    priority: MUST
+    metric: Maintenance frequency
+    target: Low maintenance (e.g., annual or less)
+    verification: analysis
+    source: O3
+  - id: R8
+    statement: The manufacturing cost must not exceed the target cost for a workshop
+      tool.
+    type: cost
+    priority: MUST
+    metric: Manufacturing cost
+    target: <= target cost (e.g., < $500)
+    verification: analysis
+    source: O4
+  - id: R9
+    statement: The tool must be delivered within the specified schedule.
+    type: schedule
+    priority: MUST
+    metric: Delivery time
+    target: On or before target date
+    verification: inspection
+    source: O4
+  - id: R10
+    statement: The tool must have a service life of at least the specified number
+      of cycles.
+    type: performance
+    priority: WISH
+    metric: Service life (number of cycles)
+    target: '> specified cycles (e.g., > 10,000 cycles)'
+    verification: test
+    source: O3
+  - id: R11
+    statement: The tool must be stable on a workbench during operation.
+    type: performance
+    priority: WISH
+    metric: Stability (no movement during use)
+    target: Stable under normal operating forces
+    verification: test
+    source: EC3
+  - id: R12
+    statement: The tool must have a setup time of less than X minutes.
+    type: performance
+    priority: WISH
+    metric: Setup time
+    target: < X minutes (e.g., < 5 minutes)
+    verification: test
+    source: EC3
+  - id: R13
+    statement: The tool must be easy to service, with accessible components for replacement.
+    type: performance
+    priority: WISH
+    metric: Serviceability (access, replaceability)
+    target: Easy access to key components
+    verification: inspection
+    source: EC4
+  - id: R14
+    statement: The tool must be safe to operate, with no pinch or crush hazards.
+    type: safety
+    priority: WISH
+    metric: Safety hazards
+    target: No pinch/crush hazards; compliant operation
+    verification: inspection
+    source: EC7
+  - id: R15
+    statement: The tool must have a low part count to reduce assembly effort and cost.
+    type: manufacturing
+    priority: WISH
+    metric: Number of parts
+    target: Minimal part count (e.g., < 20 parts)
+    verification: inspection
+    source: EC8
+  assumptions:
+  - The tool is intended for internal drum brake applications as shown in the document.
+  - The tool will be bench-mounted and manually actuated.
+  - The workshop environment includes typical contaminants like dust and oil.
+  open_questions:
+  - What are the specific acceptance criteria for rivet closure head height?
+  - What is the maximum actuation force a typical mechanic can apply?
+  - What is the target manufacturing cost for the tool?
+  - What is the specified service life in terms of number of cycles?
+  - What is the target setup time for the tool?
+  traceability:
+    derived_from_objectives:
+    - O1
+    - O2
+    - O3
+    - O4
+    derived_from_constraints:
+    - None specified in the input

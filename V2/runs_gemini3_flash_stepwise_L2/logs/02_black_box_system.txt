@@ -1,0 +1,43 @@
+GLOBAL RULES (must follow):
+- Use ONLY the provided inputs. Do NOT invent missing data; list them under assumptions/open_questions.
+- Output MUST be valid YAML.
+- Output MUST contain EXACTLY ONE top-level key: 'black_box'.
+- All IDs you reference (e.g., R#, F#, IN_*, OUT_*, WP*, CV*, EC*, M*, IF*, KDP*, LC*, B*) MUST already exist in the input packet,
+  OR (only if you are defining new items for this artifact) must follow the schema's ID fields for newly created entities.
+- When you create new IDs (e.g., WP#, CV#, M#, IF#, KDP#, LC#, B#), keep them consistent and do not reference IDs you did not create.
+- Do not use double quotes for fields that may span multiple lines. Use | or > block scalars instead.
+- If a value contains a newline, you MUST use | or > and not "…". This is to ensure readability and prevent YAML parsing issues.
+
+Create a Pahl & Beitz Black Box model.
+
+INPUT:
+- artifacts_available.requirements_list
+- case_context
+
+TASK:
+1) Define the overall function as transformation of flows.
+2) List external inputs and outputs (Material/Energy/Signal).
+3) Include disturbances and interactions with environment if relevant.
+
+OUTPUT YAML schema:
+black_box:
+  overall_function: ""
+  flows:
+    inputs:
+      - id: IN1
+        type: [material|energy|signal]
+        name: ""
+        description: ""
+    outputs:
+      - id: OUT1
+        type: [material|energy|signal]
+        name: ""
+        description: ""
+  external_interactions:
+    - id: EI1
+      description: ""
+      related_requirements: []
+  assumptions: []
+  open_questions: []
+  traceability:
+    derived_from_requirements: []

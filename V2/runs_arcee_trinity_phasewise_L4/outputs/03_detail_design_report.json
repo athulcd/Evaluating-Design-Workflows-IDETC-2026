@@ -1,0 +1,13 @@
+{
+  "phase_key": "detail_design",
+  "expected_top_level_keys": [
+    "preliminary_bom",
+    "verification_plan",
+    "detail_design"
+  ],
+  "errors": [],
+  "warnings": [],
+  "cross_artifact_checks": [
+    "Validated preliminary BOM item IDs against verification plan linked components."
+  ]
+}

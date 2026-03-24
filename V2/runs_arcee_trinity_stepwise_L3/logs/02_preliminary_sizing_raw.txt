@@ -1,0 +1,228 @@
+manufacturing_plan:
+  module_plans:
+    - module_id: M1
+      material_candidates:
+        - material_id: Steel_1018
+          description: Low-carbon steel for base and fixture plates
+          properties:
+            yield_strength: 250 MPa
+            tensile_strength: 400 MPa
+            hardness: 126 HB
+            corrosion_resistance: Low
+            machinability: Excellent
+            weldability: Good
+          rationale: Provides adequate strength for clamping forces while being cost-effective
+            and easy to machine. Suitable for workshop environment with basic corrosion
+            protection.
+        - material_id: Aluminum_6061
+          description: Heat-treated aluminum alloy for weight reduction
+          properties:
+            yield_strength: 276 MPa
+            tensile_strength: 310 MPa
+            hardness: 95 HB
+            corrosion_resistance: Good
+            machinability: Good
+            weldability: Fair
+          rationale: Reduces overall tool weight for better portability while maintaining
+            adequate strength. Anodized finish provides corrosion resistance for workshop
+            conditions.
+      process_candidates:
+        - process_id: CNC_machining
+          description: Computer numerical control machining for precision components
+          rationale: Ensures accurate dimensions for fixture adjustability and alignment
+            requirements. Critical for maintaining tolerances across 80-400 mm width
+            range.
+        - process_id: Welding
+          description: MIG or TIG welding for structural joints
+          rationale: Provides strong, reliable joints for base assembly. Critical
+            for maintaining structural integrity under 1000 N clamping forces.
+        - process_id: Anodizing
+          description: Surface treatment for aluminum components
+          rationale: Provides corrosion resistance and wear resistance for workshop
+            environment. Improves durability for 5-year service life target.
+      rationale: Base and fixture module requires high strength-to-weight ratio and
+        dimensional stability. Steel provides maximum strength at lowest cost, while
+        aluminum offers weight reduction for portability. CNC machining ensures precision
+        for adjustability range (320 mm) and alignment requirements.
+      critical_characteristics:
+        - dimensional_accuracy: ±0.1 mm for fixture plates
+        - surface_finish: Ra 1.6 μm for smooth operation
+        - corrosion_resistance: Basic protection for workshop environment
+      risks:
+        - RM5: Cost exceeds SwFr 400 target if premium materials selected
+        - RM6: Tool instability if base material too light for worktop mounting
+        - RM7: Adjustment mechanism failure due to material wear
+
+    - module_id: M2
+      material_candidates:
+        - material_id: Steel_1045
+          description: Medium-carbon steel for lever and linkage components
+          properties:
+            yield_strength: 310 MPa
+            tensile_strength: 565 MPa
+            hardness: 163 HB
+            corrosion_resistance: Low
+            machinability: Good
+            weldability: Fair
+          rationale: Provides high strength for force amplification while being machinable
+            for precision pivot points. Suitable for 2.5:1 lever ratio with 500 N
+            force transmission.
+        - material_id: Stainless_304
+          description: Austenitic stainless steel for corrosion resistance
+          properties:
+            yield_strength: 205 MPa
+            tensile_strength: 505 MPa
+            hardness: 70 HB
+            corrosion_resistance: Excellent
+            machinability: Poor
+            weldability: Good
+          rationale: Eliminates corrosion concerns in workshop environment. Higher
+            cost but reduces maintenance requirements for 5-year service life.
+      process_candidates:
+        - process_id: Forging
+          description: Hot forging for lever components
+          rationale: Provides superior strength-to-weight ratio and eliminates internal
+            defects. Critical for safety-critical force transmission.
+        - process_id: Heat_treatment
+          description: Quenching and tempering for strength enhancement
+          rationale: Increases yield strength by 30-40% for safety-critical components.
+            Essential for 500 N force transmission with 2.5:1 amplification.
+        - process_id: Surface_hardening
+          description: Case hardening for wear resistance
+          rationale: Improves durability of pivot points and contact surfaces. Critical
+            for maintaining performance over 5-year service life.
+      rationale: Actuation module requires high strength and fatigue resistance for
+        repeated force amplification. Steel provides necessary strength at reasonable
+        cost, while stainless steel eliminates corrosion concerns. Forging and heat
+        treatment ensure structural integrity for safety-critical operation.
+      critical_characteristics:
+        - fatigue_strength: >= 200 MPa for 100,000 cycles
+        - surface_hardness: 45-50 HRC for pivot points
+        - dimensional_stability: ±0.05 mm for force transmission accuracy
+      risks:
+        - RM2: Excessive operator force if lever ratio not optimized
+        - RM4: Safety hazards from material failure under load
+        - RM7: Adjustment mechanism failure due to material fatigue
+
+    - module_id: M3
+      material_candidates:
+        - material_id: Tool_steel_D2
+          description: High-carbon, high-chromium tool steel for forming head
+          properties:
+            yield_strength: 1500 MPa
+            tensile_strength: 1900 MPa
+            hardness: 60-62 HRC
+            corrosion_resistance: Good
+            machinability: Poor
+            weldability: Poor
+          rationale: Provides exceptional wear resistance and dimensional stability
+            for forming operations. Critical for maintaining 4.5 mm closure dimension
+            accuracy over tool life.
+        - material_id: Brass_C360
+          description: Free-machining brass for adjustable components
+          properties:
+            yield_strength: 105 MPa
+            tensile_strength: 310 MPa
+            hardness: 60 HB
+            corrosion_resistance: Excellent
+            machinability: Excellent
+            weldability: Poor
+          rationale: Provides excellent machinability for adjustment mechanisms. Self-lubricating
+            properties reduce wear in threaded components.
+      process_candidates:
+        - process_id: EDM_machining
+          description: Electrical discharge machining for complex geometries
+          rationale: Enables precise forming head shapes with tight tolerances. Critical
+            for consistent rivet closure across different sizes.
+        - process_id: Thread_rolling
+          description: Cold forming for adjustment threads
+          rationale: Creates stronger threads than cutting, improving durability. Essential
+            for reliable adjustment mechanism over tool life.
+        - process_id: Surface_coating
+          description: Titanium nitride or similar wear-resistant coating
+          rationale: Extends tool life by reducing wear on forming surfaces. Critical
+            for maintaining closure quality over 5-year service life.
+      rationale: Forming module requires exceptional wear resistance and dimensional
+        stability for consistent closure quality. Tool steel provides maximum durability
+        for forming operations, while brass offers excellent machinability for adjustment
+        mechanisms. Surface treatments extend service life and maintain quality.
+      critical_characteristics:
+        - wear_resistance: <0.01 mm wear over 100,000 cycles
+        - dimensional_accuracy: ±0.02 mm for closure control
+        - surface_finish: Ra 0.4 μm for smooth forming
+      risks:
+        - RM3: Inconsistent closure due to stop drift or wear
+        - RM7: Adjustment mechanism failure from thread wear
+        - RM5: Cost increase from premium tool steel and coatings
+
+    - module_id: M4
+      material_candidates:
+        - material_id: Polycarbonate_PC
+          description: Engineering thermoplastic for guards
+          properties:
+            yield_strength: 62 MPa
+            tensile_strength: 70 MPa
+            hardness: 70 Shore D
+            impact_resistance: Excellent
+            machinability: Good
+            weldability: Poor
+          rationale: Provides impact resistance and transparency for visibility. Critical
+            for preventing operator injury from moving parts.
+        - material_id: Rubber_NBR
+          description: Nitrile rubber for ergonomic grips
+          properties:
+            hardness: 60 Shore A
+            tensile_strength: 17 MPa
+            elongation: 400%
+            oil_resistance: Excellent
+            machinability: Poor
+            weldability: Poor
+          rationale: Provides oil resistance and comfortable grip for workshop conditions.
+            Essential for meeting ergonomic force limits and preventing slippage.
+      process_candidates:
+        - process_id: Injection_molding
+          description: High-volume plastic component manufacturing
+          rationale: Enables complex guard shapes with consistent quality. Cost-effective
+            for safety-critical components.
+        - process_id: Overmolding
+          description: Combining hard and soft materials
+          rationale: Creates ergonomic grips with integrated safety features. Improves
+            user comfort and safety compliance.
+        - process_id: Assembly_with_fasteners
+          description: Mechanical fastening for modular safety components
+          rationale: Allows easy maintenance and replacement of safety components.
+            Critical for long-term reliability and compliance.
+      rationale: Safety module requires impact resistance, ergonomic properties, and
+        reliable attachment. Polycarbonate provides excellent impact resistance for
+        guards, while rubber compounds offer ergonomic benefits. Modular assembly enables
+        maintenance and replacement.
+      critical_characteristics:
+        - impact_strength: >= 10 ft-lb/in for guard components
+        - ergonomic_force: <= 200 N actuation force with grips
+        - attachment_security: Vibration-resistant fastening for safety components
+      risks:
+        - RM4: Operator injury from inadequate guard coverage
+        - RM2: Ergonomic failure leading to excessive force requirements
+        - RM7: Safety component detachment during operation
+
+  assumptions:
+    - Workshop environment includes typical contaminants (dust, oil) that may affect
+      operation
+    - Tool will be used primarily on wood worktops as specified
+    - Rivet holes are pre-drilled in brake shoe and lining per specifications
+    - Operator will be trained in proper setup and adjustment procedures
+    - Maximum riveting force of 500 N is sufficient for all specified rivet sizes
+      (3-5 mm diameter)
+    - 5-year service life target includes normal workshop usage patterns
+
+  open_questions:
+    - What specific safety standards apply to workshop riveting tools in the target
+      market?
+    - Are there any specific requirements for rivet head shape beyond closure distance
+      (e.g., diameter, flushness)?
+    - What is the expected maintenance interval and procedure for the tool?
+    - Are there any specific environmental requirements (e.g., corrosion resistance)
+      for workshop conditions?
+    - What are the specific workshop conditions regarding temperature, humidity, and
+      chemical exposure?
+    - Are there any specific requirements for tool storage or transportation protection?

@@ -1,0 +1,171 @@
+concept_variants:
+  morphological_chart:
+  - function_id: F1
+    options:
+    - WP1
+    - WP2
+  - function_id: F2
+    options:
+    - WP3
+    - WP4
+  - function_id: F3
+    options:
+    - WP5
+  - function_id: F4
+    options:
+    - WP6
+    - WP7
+  - function_id: F5
+    options:
+    - WP8
+  - function_id: F6
+    options:
+    - WP9
+  - function_id: F7
+    options:
+    - WP10
+  concepts:
+  - id: CV1
+    selected_principles:
+      F1: WP1
+      F2: WP3
+      F3: WP5
+      F4: WP6
+      F5: WP8
+      F6: WP9
+      F7: WP10
+    architecture_description: "This variant, the \"Precision Toggle Press,\" utilizes\
+      \ a hand-lever (WP5) to actuate a toggle linkage (WP6). \nThe toggle linkage\
+      \ provides a high mechanical advantage at the end of the stroke to ensure the\
+      \ 500N \nriveting force is met with minimal operator effort. For positioning,\
+      \ it uses a sliding radius support (WP1) \nto accommodate the full range of\
+      \ brake shoe diameters. A spring-loaded centering pilot (WP3) ensures \nthe\
+      \ DIN 7338 rivets are perfectly aligned before the compression punch (WP8) forms\
+      \ the head. \nThe entire assembly is mounted on a heavy steel base plate (WP10)\
+      \ and features a hard stop (WP9) \nfor consistent results.\n"
+    expected_benefits:
+    - High mechanical advantage at the point of deformation (R1, R7).
+    - Continuous adjustment for any brake shoe diameter between 250-400mm (R3).
+    - High precision alignment for rivets (R5).
+    key_risks:
+    - The centering pilot (WP3) is a small, high-wear component that may require replacement
+      (R10).
+    - Toggle linkages are sensitive to variations in material thickness (R6).
+    requirement_coverage:
+      satisfied:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      - R6
+      - R7
+      - R8
+      - R10
+      - R11
+      - R12
+      - R14
+      partially_satisfied:
+      - R9
+      - R13
+      not_satisfied: []
+    assumptions:
+    - The workshop can manufacture the internal bore required for the spring-loaded
+      pilot.
+    - The toggle linkage can be adjusted to account for the 15mm assembly thickness.
+  - id: CV2
+    selected_principles:
+      F1: WP2
+      F2: WP4
+      F3: WP5
+      F4: WP7
+      F5: WP8
+      F6: WP9
+      F7: WP10
+    architecture_description: "The \"Compact Cam Press\" variant focuses on a small\
+      \ footprint and simplicity. It uses an eccentric \ncam actuator (WP7) driven\
+      \ by a hand lever (WP5) to provide a precise 4mm stroke. Instead of a \nsliding\
+      \ rail, it uses interchangeable radius mandrels (WP2) for the most common brake\
+      \ shoe sizes, \nproviding maximum stability. The rivet is held in a simple recessed\
+      \ die pocket (WP4). This design \nminimizes moving parts and machining complexity,\
+      \ favoring durability and compactness.\n"
+    expected_benefits:
+    - Very compact and easy to store (R13).
+    - Precise control over the riveting stroke (R2).
+    - Robust design with fewer pivot points than a toggle (R10).
+    key_risks:
+    - High surface stress on the cam (WP7) requires hardening and frequent lubrication.
+    - Fixed mandrels (WP2) may not cover all intermediate brake shoe sizes (R3).
+    requirement_coverage:
+      satisfied:
+      - R1
+      - R2
+      - R5
+      - R6
+      - R7
+      - R8
+      - R10
+      - R11
+      - R12
+      - R13
+      - R14
+      partially_satisfied:
+      - R3
+      - R9
+      not_satisfied: []
+    assumptions:
+    - Hardening facilities are available for the cam surface.
+    - A set of 3-4 mandrels is sufficient for the workshop's typical workload.
+  - id: CV3
+    selected_principles:
+      F1: WP1
+      F2: WP4
+      F3: WP5
+      F4: WP6
+      F5: WP8
+      F6: WP9
+      F7: WP10
+    architecture_description: "The \"Value Versatile Press\" is designed to meet the\
+      \ 400 CHF target (R9) by combining the most \ncost-effective principles. It\
+      \ uses the sliding radius support (WP1) for universal diameter \ncompatibility\
+      \ and a standard toggle linkage (WP6) for force amplification. To save on machining\
+      \ \ncosts, it employs a simple recessed die pocket (WP4) for rivet alignment\
+      \ instead of a spring-loaded \npilot. The frame is a simple welded or bolted\
+      \ construction anchored by a steel plate (WP10).\n"
+    expected_benefits:
+    - Lowest manufacturing cost (R9).
+    - Full compatibility with all specified brake shoe sizes (R3).
+    - Reliable force delivery for copper rivets (R1).
+    key_risks:
+    - Rivet may tilt or shift in the recessed pocket (WP4) during the positioning
+      of large shoes.
+    - Sliding support (WP1) requires careful locking to prevent movement during the
+      stroke.
+    requirement_coverage:
+      satisfied:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      - R6
+      - R7
+      - R8
+      - R9
+      - R10
+      - R11
+      - R12
+      - R14
+      partially_satisfied:
+      - R13
+      not_satisfied: []
+    assumptions:
+    - The operator can visually verify rivet alignment before applying full force.
+    - Standard steel stock is used to keep material costs low.
+  open_questions:
+  - Is the 500N force sufficient for the largest 5mm DIN 7338 rivets, or should the
+    linkage be designed for a higher safety factor?
+  - Would a foot-pedal conversion kit be a valuable add-on for any of these concepts
+    to improve ergonomics (R12)?
+  - For CV2, what are the most common brake shoe diameters to prioritize for the mandrel
+    set?

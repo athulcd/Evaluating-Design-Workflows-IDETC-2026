@@ -1,0 +1,203 @@
+```yaml
+embodiment_layouts:
+  layout:
+    - id: EL1
+      module_breakdown:
+        - module_id: M1
+          name: Base and Workpiece Fixture
+          responsibilities:
+            - Provide stable mounting on worktop or in vice
+            - Support and clamp brake shoe + lining assembly
+            - Ensure repeatable positioning for multiple rivets
+          allocated_functions:
+            - F1: Prepare and CLAMP workpiece
+            - F9: ENSURE stability on table
+            - F3: ALIGN work zone
+          key_design_parameters:
+            - KDP1: Fixture adjustability range
+              unit: mm
+              target_or_range: 80-400 mm width, 250-400 mm diameter
+              linked_requirements:
+                - R2
+                - R3
+                - R4
+                - R5
+            - KDP2: Clamping force
+              unit: N
+              target_or_range: >= 200 N
+              linked_requirements:
+                - R15
+          risks_and_mitigations:
+            - id: RM1
+              risk: Workpiece slippage during riveting
+              mitigation: Keyed fixture plates; non-slip surfaces; redundant clamping
+
+        - module_id: M2
+          name: Actuation and Force Amplification
+          responsibilities:
+            - Convert hand/foot input to required riveting force
+            - Provide ergonomic actuation with force limits
+            - Enable smooth stroke control
+          allocated_functions:
+            - F4: ACCEPT actuating force
+            - F5: AMPLIFY force
+          key_design_parameters:
+            - KDP3: Lever ratio
+              unit: ratio
+              target_or_range: 4:1 to 6:1
+              linked_requirements:
+                - R8
+                - R17
+            - KDP4: Actuation force limit
+              unit: N
+              target_or_range: Hand <= 200 N, Foot <= 400 N
+              linked_requirements:
+                - R17
+          risks_and_mitigations:
+            - id: RM2
+              risk: Excessive operator force required
+              mitigation: Optimize lever ratio; consider foot pedal option
+
+        - module_id: M3
+          name: Rivet Forming and Closure Control
+          responsibilities:
+            - Form rivet closure head to target dimension
+            - Control stroke and force to ensure consistent closure
+            - Provide means to verify closure quality
+          allocated_functions:
+            - F6: CONTROL stroke and force
+            - F7: FORM rivet head
+            - F11: VERIFY closed rivets
+          key_design_parameters:
+            - KDP5: Closure head dimension
+              unit: mm
+              target_or_range: ~4 mm
+              linked_requirements:
+                - R9
+            - KDP6: Adjustable stop range
+              unit: mm
+              target_or_range: 2-6 mm
+              linked_requirements:
+                - R9
+                - R2
+                - R3
+                - R4
+                - R5
+          risks_and_mitigations:
+            - id: RM3
+              risk: Inconsistent closure due to stop drift
+              mitigation: Locknut on adjustment screw; hardened stop surfaces
+
+        - module_id: M4
+          name: Safety and Ergonomics
+          responsibilities:
+            - Prevent pinch/crush hazards during operation
+            - Ensure safe clearances and guards
+            - Provide ergonomic operation
+          allocated_functions:
+            - F10: ENSURE safety
+          key_design_parameters:
+            - KDP7: Guard coverage
+              unit: coverage area
+              target_or_range: All moving parts covered
+              linked_requirements:
+                - R18
+            - KDP8: Ergonomic clearance
+              unit: mm
+              target_or_range: >= 50 mm from pinch points
+              linked_requirements:
+                - R18
+          risks_and_mitigations:
+            - id: RM4
+              risk: Operator injury from moving parts
+              mitigation: Fixed guards; safety interlocks; clear operating zones
+
+      interfaces:
+        - id: IF1
+          between: [M1, M2]
+          type: mechanical
+          description: Lever pivot connection to base fixture
+          constraints:
+            - Must withstand amplified riveting forces
+            - Low friction pivot bearing required
+            - Accessible for maintenance
+
+        - id: IF2
+          between: [M2, M3]
+          type: mechanical
+          description: Force transmission from lever to forming head
+          constraints:
+            - Must transmit up to 500 N reliably
+            - Minimal deflection under load
+            - Alignment critical for consistent closure
+
+        - id: IF3
+          between: [M3, M1]
+          type: mechanical
+          description: Forming head mounting to base
+          constraints:
+            - Must maintain alignment during operation
+            - Allow for adjustable stop mechanism
+            - Provide clearance for workpiece
+
+        - id: IF4
+          between: [M4, M1/M2/M3]
+          type: safety
+          description: Safety guards and ergonomic features
+          constraints:
+            - No interference with normal operation
+            - Easy to remove for maintenance
+            - Must not create new hazards
+
+      key_design_parameters:
+        - id: KDP9
+          name: Overall tool dimensions
+          unit: mm
+          target_or_range: Base footprint <= 300x200 mm
+          linked_requirements:
+            - R14
+            - R12
+
+        - id: KDP10
+          name: Tool mass
+          unit: kg
+          target_or_range: <= 5 kg
+          linked_requirements:
+            - R14
+
+        - id: KDP11
+          name: Material selection
+          unit: N/A
+          target_or_range: Steel/aluminum for strength, cost target
+          linked_requirements:
+            - R20
+
+      risks_and_mitigations:
+        - id: RM5
+          risk: Cost exceeds SwFr 400 target
+          mitigation: Value engineering; standard parts; minimal custom components
+
+        - id: RM6
+          risk: Tool not stable on worktop
+          mitigation: Non-slip base; optional mounting holes; weight distribution
+
+        - id: RM7
+          risk: Adjustment mechanism failure
+          mitigation: Robust thread design; locknut; field replaceable parts
+
+  assumptions:
+    - The selected concept CV3 (lever press with adjustable stop) is implemented as described
+    - Workshop environment includes typical contaminants (dust, oil) that may affect operation
+    - Tool will be used primarily on wood worktops as specified
+    - Rivet holes are pre-drilled in brake shoe and lining per specifications
+    - Operator will be trained in proper setup and adjustment procedures
+
+  open_questions:
+    - What specific safety standards apply to workshop riveting tools in the target market?
+    - Are there any specific requirements for rivet head shape beyond closure distance (e.g., diameter, flushness)?
+    - What is the expected maintenance interval and procedure for the tool?
+    - Are there any specific environmental requirements (e.g., corrosion resistance) for workshop conditions?
+
+  traceability:
+    selected_concept_id: CV3
+```

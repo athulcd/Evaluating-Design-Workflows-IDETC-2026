@@ -1,0 +1,427 @@
+case_context:
+  product_system: ''
+  stakeholders: []
+  operating_environment: ''
+  constraints_known: []
+  success_criteria_known: []
+artifacts_available:
+  task_clarification:
+    task_clarification:
+      problem_statement: 'Design a simple, reliable, and ergonomic rivet setting tool
+        for a car repair workshop to attach friction linings to internal expanding
+        drum brake shoes. The tool must be manufacturable in-house using existing
+        machining facilities for under 400 CHF per unit, support a one-man operation
+        for a workload of 70 rivets per day, and accommodate a range of brake shoe
+        sizes (250-400 mm diameter) using DIN 7338 copper rivets. The design must
+        be completed within 3 to 4 months and provide a service life of five years.
+
+        '
+      system_boundary:
+        included:
+        - Rivet setting mechanism (punch and die)
+        - Workpiece support and positioning system
+        - Actuation interface (hand lever or foot pedal)
+        - Mounting base for wooden worktop attachment
+        excluded:
+        - Manufacturing of rivets
+        - Pre-drilling of brake shoes and linings
+        - Cleaning of workpieces
+        - The wooden worktop itself
+      objectives:
+      - id: O1
+        description: 'Minimize manufacturing cost per unit.
+
+          '
+        rationale: 'The target cost is 400 CHF, with a hard limit of 500 CHF, to ensure
+          economic viability for in-house production.
+
+          '
+        measurable_proxy: 'Total cost of materials and machining hours per unit in
+          Swiss Francs (CHF).
+
+          '
+      - id: O2
+        description: 'Ensure ergonomic and safe one-man operation.
+
+          '
+        rationale: 'The tool is operated by a single mechanic and must prevent fatigue
+          or injury over a 70-rivet daily workload.
+
+          '
+        measurable_proxy: 'Operating force (N) and compliance with standard ergonomic
+          working heights.
+
+          '
+      - id: O3
+        description: 'Maximize tool reliability and service life.
+
+          '
+        rationale: 'The tool is expected to function for five years without significant
+          maintenance in a workshop environment.
+
+          '
+        measurable_proxy: 'Years of maintenance-free service or number of cycles before
+          failure.
+
+          '
+      - id: O4
+        description: 'Ensure compactness and ease of transport.
+
+          '
+        rationale: 'The tool needs to be stored when not in use and potentially moved
+          within the workshop.
+
+          '
+        measurable_proxy: 'Total volume (cm^3) and weight (kg) of the tool.
+
+          '
+      constraints:
+      - id: C1
+        description: 'Maximum manufacturing cost of 500 CHF per unit.
+
+          '
+        type: cost
+        measurable_proxy: 'CHF per unit.
+
+          '
+      - id: C2
+        description: 'Design delivery timeframe of 3 to 4 months.
+
+          '
+        type: schedule
+        measurable_proxy: 'Months from project start.
+
+          '
+      - id: C3
+        description: 'Required riveting force of approximately 500 N.
+
+          '
+        type: physical
+        measurable_proxy: 'Force in Newtons (N) at the rivet head.
+
+          '
+      - id: C4
+        description: 'Working stroke of 3 to 4 mm for rivet closure.
+
+          '
+        type: physical
+        measurable_proxy: 'Millimeters (mm).
+
+          '
+      - id: C5
+        description: 'Maximum operating force: 200 N for hand-operated or 400 N for
+          foot-operated.
+
+          '
+        type: safety
+        measurable_proxy: 'Force in Newtons (N) applied by the operator.
+
+          '
+      - id: C6
+        description: 'Compatibility with internal drum brakes (250-400 mm diameter,
+          100 mm width).
+
+          '
+        type: interface
+        measurable_proxy: 'Diameter range (mm) and width (mm).
+
+          '
+      - id: C7
+        description: 'Minimum clearance of 10 mm from rivet center to the shoe rib.
+
+          '
+        type: physical
+        measurable_proxy: 'Millimeters (mm).
+
+          '
+      - id: C8
+        description: 'Must use DIN 7338 copper rivets (3-5 mm shank diameter).
+
+          '
+        type: regulatory
+        measurable_proxy: 'Compliance with DIN 7338.
+
+          '
+      - id: C9
+        description: 'Maximum assembly thickness (shoe + lining) of 15 mm.
+
+          '
+        type: physical
+        measurable_proxy: 'Millimeters (mm).
+
+          '
+      stakeholders:
+      - Car repair workshop management
+      - Car mechanic (operator)
+      - Consulting agency designer
+      - Workshop machining department
+      operating_conditions:
+      - Indoor car repair workshop environment
+      - Mounted on a wooden worktop
+      - Workload of approximately 70 rivets per day
+      - One-man operation
+      evaluation_criteria:
+      - id: EC1
+        description: 'Unit manufacturing cost.
+
+          '
+        metric: 'Swiss Francs (CHF)
+
+          '
+        target_or_direction: 'Target 400 CHF, minimize towards this value.
+
+          '
+      - id: EC2
+        description: 'Operator actuation force.
+
+          '
+        metric: 'Newtons (N)
+
+          '
+        target_or_direction: 'Minimize (must stay below 200N hand / 400N foot).
+
+          '
+      - id: EC3
+        description: 'Tool footprint and weight.
+
+          '
+        metric: 'Dimensions (mm) and Mass (kg)
+
+          '
+        target_or_direction: 'Minimize for compactness and transportability.
+
+          '
+      - id: EC4
+        description: 'Ease of adjustment for different brake diameters.
+
+          '
+        metric: 'Time (seconds)
+
+          '
+        target_or_direction: 'Minimize setup time between different shoe sizes.
+
+          '
+      assumptions:
+      - 'The "well-equipped machining facilities" include standard tools such as lathes,
+        milling machines, and drills.
+
+        '
+      - '"Standard ergonomic guidelines" refer to typical workbench heights (approx.
+        850-950 mm) and comfortable reach zones.
+
+        '
+      - 'Materials for the tool construction are readily available or can be sourced
+        within the budget.
+
+        '
+      - 'The tool is purely mechanical (manual) as no external power sources (pneumatic/hydraulic)
+        were specified.
+
+        '
+      open_questions:
+      - 'What is the specific mounting interface required for the wooden worktop (e.g.,
+        bolt hole pattern or G-clamps)?
+
+        '
+      - 'Is there a specific preference between hand-operated or foot-operated actuation?
+
+        '
+      - 'What is the maximum allowable weight to qualify as "easy to transport"?
+
+        '
+      - 'Are there specific storage dimensions or a designated storage area the tool
+        must fit into?
+
+        '
+      traceability:
+        derived_from:
+        - raw_task_statement
+  requirements_list:
+    requirements_list:
+      requirements:
+      - id: R1
+        statement: 'The tool shall provide a riveting force of approximately 500 N
+          at the rivet head to ensure proper closure of the friction lining.
+
+          '
+        type: performance
+        priority: MUST
+        metric: Riveting force (N)
+        target: '500'
+        verification: test
+        source: C3
+      - id: R2
+        statement: 'The tool shall provide a working stroke of 3 to 4 mm for the rivet
+          closure process.
+
+          '
+        type: functional
+        priority: MUST
+        metric: Stroke length (mm)
+        target: 3-4
+        verification: analysis
+        source: C4
+      - id: R3
+        statement: 'The tool shall accommodate internal drum brake shoes with diameters
+          ranging from 250 mm to 400 mm and a maximum width of 100 mm.
+
+          '
+        type: interface
+        priority: MUST
+        metric: Diameter (mm), Width (mm)
+        target: 250-400 (dia), 100 (width)
+        verification: demonstration
+        source: C6
+      - id: R4
+        statement: 'The tool design shall allow for a minimum clearance of 10 mm from
+          the rivet center to the shoe rib.
+
+          '
+        type: functional
+        priority: MUST
+        metric: Clearance distance (mm)
+        target: '10'
+        verification: analysis
+        source: C7
+      - id: R5
+        statement: 'The tool shall be compatible with DIN 7338 copper rivets with
+          shank diameters between 3 mm and 5 mm.
+
+          '
+        type: regulatory
+        priority: MUST
+        metric: Rivet standard and diameter (mm)
+        target: DIN 7338, 3-5 mm
+        verification: inspection
+        source: C8
+      - id: R6
+        statement: 'The tool shall accommodate a maximum assembly thickness (brake
+          shoe plus friction lining) of 15 mm.
+
+          '
+        type: functional
+        priority: MUST
+        metric: Assembly thickness (mm)
+        target: '15'
+        verification: analysis
+        source: C9
+      - id: R7
+        statement: 'The operator actuation force shall not exceed 200 N for hand-operated
+          mechanisms or 400 N for foot-operated mechanisms.
+
+          '
+        type: ergonomics
+        priority: MUST
+        metric: Actuation force (N)
+        target: <200 (hand) / <400 (foot)
+        verification: test
+        source: C5, O2
+      - id: R8
+        statement: 'The total manufacturing cost per unit, including materials and
+          machining, shall not exceed 500 CHF.
+
+          '
+        type: cost
+        priority: MUST
+        metric: Manufacturing cost (CHF)
+        target: <500
+        verification: analysis
+        source: C1, O1
+      - id: R9
+        statement: 'The manufacturing cost per unit should be minimized towards a
+          target of 400 CHF.
+
+          '
+        type: cost
+        priority: WISH
+        metric: Manufacturing cost (CHF)
+        target: '400'
+        verification: analysis
+        source: O1
+      - id: R10
+        statement: 'The tool shall be designed for a service life of five years in
+          a workshop environment with a workload of 70 rivets per day.
+
+          '
+        type: performance
+        priority: MUST
+        metric: Service life (years)
+        target: '5'
+        verification: analysis
+        source: O3
+      - id: R11
+        statement: 'The design of the tool must be completed and delivered within
+          a timeframe of 3 to 4 months.
+
+          '
+        type: schedule
+        priority: MUST
+        metric: Time (months)
+        target: 3-4
+        verification: inspection
+        source: C2
+      - id: R12
+        statement: 'The tool shall support safe one-man operation without requiring
+          additional assistance for positioning or riveting.
+
+          '
+        type: ergonomics
+        priority: MUST
+        metric: Number of operators
+        target: '1'
+        verification: demonstration
+        source: O2
+      - id: R13
+        statement: 'The tool should be compact and lightweight to facilitate transport
+          and storage within the workshop.
+
+          '
+        type: ergonomics
+        priority: WISH
+        metric: Mass (kg) and Volume (cm^3)
+        target: Minimize
+        verification: inspection
+        source: O4
+      - id: R14
+        statement: 'The tool shall include a mounting base suitable for attachment
+          to a wooden worktop.
+
+          '
+        type: interface
+        priority: MUST
+        metric: Presence of mounting interface
+        target: Functional base
+        verification: inspection
+        source: task_clarification.system_boundary
+      assumptions:
+      - The well-equipped machining facilities include standard tools such as lathes,
+        milling machines, and drills.
+      - Standard ergonomic guidelines refer to typical workbench heights (approx.
+        850-950 mm) and comfortable reach zones.
+      - Materials for the tool construction are readily available or can be sourced
+        within the budget.
+      - The tool is purely mechanical (manual) as no external power sources (pneumatic/hydraulic)
+        were specified.
+      open_questions:
+      - What is the specific mounting interface required for the wooden worktop (e.g.,
+        bolt hole pattern or G-clamps)?
+      - Is there a specific preference between hand-operated or foot-operated actuation?
+      - What is the maximum allowable weight to qualify as "easy to transport"?
+      - Are there specific storage dimensions or a designated storage area the tool
+        must fit into?
+      traceability:
+        derived_from_objectives:
+        - O1
+        - O2
+        - O3
+        - O4
+        derived_from_constraints:
+        - C1
+        - C2
+        - C3
+        - C4
+        - C5
+        - C6
+        - C7
+        - C8
+        - C9

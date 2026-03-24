@@ -1,0 +1,118 @@
+function_structure:
+  subfunctions:
+    - id: F1
+      verb_noun: Position Workpiece
+      description: |
+        Position and hold the brake shoe and lining in the correct orientation for riveting, accommodating the specified diameter (250-400 mm) and width (80-400 mm) ranges.
+      input_flows:
+        - IN_MAT_1
+        - IN_MAT_2
+        - IN_SIG_1
+      output_flows:
+        - FLOW_M_ALIGNED_WORKPIECE
+      allocated_requirements:
+        - R2
+        - R3
+        - R4
+        - R5
+    - id: F2
+      verb_noun: Guide Rivet
+      description: |
+        Guide the rivet into the pre-drilled holes and maintain its position relative to the workpiece and the forming tool during the stroke.
+      input_flows:
+        - IN_MAT_3
+        - IN_SIG_1
+      output_flows:
+        - FLOW_M_ALIGNED_RIVET
+      allocated_requirements:
+        - R7
+    - id: F3
+      verb_noun: Amplify Force
+      description: |
+        Convert the operator's manual input (hand force <= 200 N or foot force <= 400 N) into the higher force required for rivet deformation (>= 500 N) using mechanical advantage.
+      input_flows:
+        - IN_ENE_1
+        - FLOW_E_REACTION
+      output_flows:
+        - FLOW_E_AMPLIFIED
+      allocated_requirements:
+        - R8
+        - R11
+        - R17
+    - id: F4
+      verb_noun: Form Rivet
+      description: |
+        Apply the amplified force to the rivet shank to form the closure head (approx. 4 mm), joining the brake lining securely to the shoe without damaging components.
+      input_flows:
+        - FLOW_M_ALIGNED_WORKPIECE
+        - FLOW_M_ALIGNED_RIVET
+        - FLOW_E_AMPLIFIED
+        - FLOW_E_REACTION
+      output_flows:
+        - OUT_MAT_1
+        - OUT_ENE_1
+        - FLOW_S_STROKE_END
+      allocated_requirements:
+        - R1
+        - R8
+        - R9
+        - R18
+    - id: F5
+      verb_noun: Signal Completion
+      description: |
+        Provide the operator with tactile or visual feedback that the riveting stroke has reached its required depth or that the rivet is fully set.
+      input_flows:
+        - FLOW_S_STROKE_END
+      output_flows:
+        - OUT_SIG_1
+      allocated_requirements:
+        - R11
+    - id: F6
+      verb_noun: Support Tool
+      description: |
+        Provide a stable base and interface with the workshop bench (wood worktop) to resist operating forces and ensure tool stability and portability.
+      input_flows: []
+      output_flows:
+        - FLOW_E_REACTION
+      allocated_requirements:
+        - R12
+        - R14
+  hierarchy:
+    - parent: F0
+      children:
+        - F1
+        - F2
+        - F3
+        - F4
+        - F5
+        - F6
+  connections:
+    - from_function: F1
+      to_function: F4
+      flow_id: FLOW_M_ALIGNED_WORKPIECE
+    - from_function: F2
+      to_function: F4
+      flow_id: FLOW_M_ALIGNED_RIVET
+    - from_function: F3
+      to_function: F4
+      flow_id: FLOW_E_AMPLIFIED
+    - from_function: F4
+      to_function: F5
+      flow_id: FLOW_S_STROKE_END
+    - from_function: F6
+      to_function: F3
+      flow_id: FLOW_E_REACTION
+    - from_function: F6
+      to_function: F4
+      flow_id: FLOW_E_REACTION
+  completeness_checks:
+    flow_conservation_notes: |
+      The function structure maintains flow conservation by ensuring all external inputs (material, energy, signal) from the black box are processed through subfunctions to generate the required outputs. Internal flows (e.g., amplified force, aligned components, reaction forces) bridge the subfunctions to achieve the overall transformation.
+    missing_functions_suspected: []
+  assumptions:
+    - Manual rivet insertion by the operator is guided by the tool's positioning features (F2).
+    - The tool remains stationary and securely mounted on the workbench during the riveting process (F6).
+  open_questions:
+    - Is a specific mechanical stop or visual indicator required to signal the completion of the rivet head formation, or is it purely operator-sensed?
+  traceability:
+    derived_from_black_box: true

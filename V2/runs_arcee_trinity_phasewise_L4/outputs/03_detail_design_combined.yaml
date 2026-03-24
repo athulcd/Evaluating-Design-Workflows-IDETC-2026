@@ -1,0 +1,348 @@
+preliminary_bom:
+- id: B_Base
+  description: Main base structure
+  quantity: 1
+  material: Steel
+  manufacturing: Casting or welding
+  cost: 80 CHF
+  weight: 8 kg
+  dimensions: 600 x 200 x 50 mm
+- id: B_Lever
+  description: Manual operating lever
+  quantity: 1
+  material: Steel
+  manufacturing: Machining
+  cost: 40 CHF
+  weight: 1.2 kg
+  dimensions: 400 x 50 x 10 mm
+- id: B_Toggle
+  description: Toggle mechanism for force amplification
+  quantity: 1
+  material: Steel
+  manufacturing: Machining
+  cost: 35 CHF
+  weight: 0.8 kg
+  dimensions: 150 x 50 x 10 mm
+- id: B_Plunger
+  description: Riveting plunger
+  quantity: 1
+  material: Hardened steel
+  manufacturing: Machining and heat treatment
+  cost: 40 CHF
+  weight: 0.5 kg
+  dimensions: 100 x 20 mm diameter
+- id: B_BrakeShoeClamp
+  description: Brake shoe positioning and clamping mechanism
+  quantity: 1
+  material: Steel
+  manufacturing: Machining and welding
+  cost: 65 CHF
+  weight: 2.5 kg
+  dimensions: 150 x 100 x 80 mm
+- id: B_RivetGuide
+  description: Rivet positioning guide
+  quantity: 1
+  material: Steel
+  manufacturing: Machining
+  cost: 15 CHF
+  weight: 0.2 kg
+  dimensions: 50 x 50 x 30 mm
+- id: B_Worktop
+  description: Wooden worktop mounting surface
+  quantity: 1
+  material: Hardwood
+  manufacturing: Cutting and finishing
+  cost: 35 CHF
+  weight: 4.5 kg
+  dimensions: 400 x 300 x 30 mm
+- id: B_Fasteners
+  description: Bolts, nuts, and washers for assembly
+  quantity: 1 set
+  material: Steel
+  manufacturing: Standard hardware
+  cost: 15 CHF
+  weight: 0.3 kg
+  dimensions: various
+verification_plan:
+- id: VP_ForceVerification
+  description: Force verification test
+  requirement: R2
+  method: Force measurement using load cell during operation
+  success_criteria: 500 N ±50 N
+  test_procedure:
+  - Install load cell at plunger tip
+  - Apply maximum lever force
+  - Measure output force
+  - Verify against requirements
+  equipment: Load cell, data acquisition system
+  pass_fail_criteria: Force within 450-550 N
+- id: VP_StrokeVerification
+  description: Working stroke verification
+  requirement: R3
+  method: Linear displacement measurement
+  success_criteria: 3-4 mm stroke
+  test_procedure:
+  - Mark starting position
+  - Operate lever through full range
+  - Measure displacement
+  - Verify against requirements
+  equipment: Dial indicator, mounting fixture
+  pass_fail_criteria: Stroke within 2.5-4.5 mm
+- id: VP_ErgonomicVerification
+  description: Ergonomic verification
+  requirement: R12
+  method: Force measurement and ergonomic assessment
+  success_criteria: ≤200 N operating force
+  test_procedure:
+  - Measure force required to operate lever
+  - Assess user comfort and fatigue
+  - Verify against ergonomic standards
+  equipment: Force gauge, ergonomic assessment tools
+  pass_fail_criteria: Operating force ≤200 N
+- id: VP_DurabilityVerification
+  description: Durability verification
+  requirement: R14
+  method: Accelerated life testing
+  success_criteria: 1000 cycles without failure
+  test_procedure:
+  - Mount tool on test stand
+  - Cycle tool 1000 times at rated load
+  - Inspect for wear and damage
+  - Verify continued operation
+  equipment: Test stand, cycling mechanism
+  pass_fail_criteria: No structural failure after 1000 cycles
+- id: VP_ClampVerification
+  description: Brake shoe clamp verification
+  requirement: R5, R6
+  method: Dimensional and force testing
+  success_criteria: Secure clamping of specified brake shoes
+  test_procedure:
+  - Test with brake shoes of various sizes
+  - Verify minimum 10 mm clearance
+  - Measure clamp force
+  - Verify secure holding
+  equipment: Sample brake shoes, force gauge
+  pass_fail_criteria: Successful clamping of all test specimens
+- id: VP_AssemblyVerification
+  description: Assembly verification
+  requirement: R19
+  method: Dimensional and functional inspection
+  success_criteria: Proper assembly and function
+  test_procedure:
+  - Verify all dimensions
+  - Check alignment of moving parts
+  - Test complete functionality
+  - Verify mounting on worktop
+  equipment: Calipers, alignment tools
+  pass_fail_criteria: All critical dimensions within tolerance
+detail_design:
+- id: DD_RivetTool
+  description: Detailed design documentation for rivet setting tool
+  modules:
+  - id: M_Base
+    drawings:
+    - id: D_Base_Assembly
+      description: Base assembly drawing
+      views:
+      - top_view: 600 x 200 mm base plate with mounting holes
+      - side_view: 50 mm height with reinforcement ribs
+      - section_view: Internal structure and mounting interfaces
+      tolerances:
+      - overall_dimensions: ±2 mm
+      - mounting_holes: ±0.1 mm
+      - surface_finish: 3.2 μm Ra
+    - id: D_Base_Casting
+      description: Base casting pattern
+      material: Steel
+      manufacturing_notes: Sand casting with machining allowance
+      quality_requirements: No porosity, dimensional accuracy ±3 mm
+    specifications:
+    - material: ASTM A36 steel
+    - heat_treatment: Stress relief at 600°C for 2 hours
+    - surface_treatment: Primed and painted
+    - load_capacity: 2000 N uniformly distributed
+  - id: M_Lever
+    drawings:
+    - id: D_Lever_Detail
+      description: Lever component detail drawing
+      views:
+      - front_view: 400 mm length with pivot hole
+      - side_view: 10 mm thickness with reinforcing ribs
+      - section_view: Cross-section showing material distribution
+      tolerances:
+      - length: ±1 mm
+      - pivot_hole: ±0.05 mm
+      - surface_finish: 1.6 μm Ra
+    specifications:
+    - material: AISI 1020 steel
+    - heat_treatment: None required
+    - surface_treatment: Deburred and cleaned
+    - critical_dimensions: Pivot hole location ±0.5 mm
+  - id: M_Toggle
+    drawings:
+    - id: D_Toggle_Assembly
+      description: Toggle mechanism assembly drawing
+      views:
+      - exploded_view: All components and fasteners
+      - assembled_view: Operating configuration
+      - kinematic_diagram: Motion analysis
+      tolerances:
+      - pivot_holes: ±0.05 mm
+      - overall_dimensions: ±1 mm
+      - angular_alignment: ±1 degree
+    specifications:
+    - material: AISI 1045 steel
+    - heat_treatment: None required
+    - pivot_type: Press-fit bronze bushings
+    - force_capacity: 1000 N at toggle joint
+  - id: M_Plunger
+    drawings:
+    - id: D_Plunger_Detail
+      description: Plunger component detail drawing
+      views:
+      - front_view: 100 mm length with working tip
+      - section_view: Cross-section showing hardening depth
+      - isometric_view: Complete geometry
+      tolerances:
+      - length: ±0.5 mm
+      - diameter: ±0.02 mm
+      - tip_radius: 0.5-1.0 mm
+    specifications:
+    - material: AISI 4140 steel, hardened to 45-50 HRC
+    - heat_treatment: Quench and temper
+    - surface_finish: 0.4 μm Ra on working surfaces
+    - tip_geometry: Spherical with 0.8 mm radius
+  - id: M_BrakeShoeClamp
+    drawings:
+    - id: D_Clamp_Assembly
+      description: Brake shoe clamp assembly drawing
+      views:
+      - exploded_view: All components and fasteners
+      - assembled_view: Operating configuration
+      - section_view: Internal mechanism
+      tolerances:
+      - jaw_opening: ±1 mm
+      - clamping_force: ±10%
+      - overall_dimensions: ±2 mm
+    specifications:
+    - material: ASTM A572 steel
+    - clamping_force: 1000 N minimum
+    - adjustment_range: 100-300 mm
+    - safety_factor: 3.0 against slippage
+  - id: M_RivetGuide
+    drawings:
+    - id: D_Guide_Detail
+      description: Rivet guide component detail drawing
+      views:
+      - front_view: 50 x 50 mm mounting plate
+      - section_view: Guide channel geometry
+      - isometric_view: Complete component
+      tolerances:
+      - guide_channel: ±0.05 mm
+      - mounting_holes: ±0.1 mm
+      - overall_dimensions: ±0.5 mm
+    specifications:
+    - material: AISI 304 stainless steel
+    - surface_finish: 0.8 μm Ra in guide channel
+    - guide_accuracy: ±0.1 mm positioning
+    - corrosion_resistance: Marine grade
+  - id: M_Worktop
+    drawings:
+    - id: D_Worktop_Detail
+      description: Wooden worktop detail drawing
+      views:
+      - top_view: 400 x 300 mm with mounting pattern
+      - section_view: 30 mm thickness with reinforcement
+      - isometric_view: Complete geometry
+      tolerances:
+      - overall_dimensions: ±3 mm
+      - thickness: ±1 mm
+      - surface_flatness: 2 mm over 300 mm
+    specifications:
+    - material: Hard maple, kiln-dried
+    - moisture_content: 8-12%
+    - surface_finish: Sanded to 180 grit
+    - mounting_pattern: 4 x M8 holes on 300 x 200 mm grid
+  interfaces:
+  - id: IF_BaseMount
+    description: Base mounting interface
+    type: mechanical
+    connections:
+    - M_Base
+    - M_Worktop
+    specifications:
+    - bolt_size: M8 x 25 mm
+    - torque_spec: 25 Nm
+    - preload_force: 8000 N
+    - safety_factor: 2.5
+  - id: IF_LeverPivot
+    description: Lever pivot interface
+    type: mechanical
+    connections:
+    - M_Lever
+    - M_Base
+    specifications:
+    - bearing_type: Oil-impregnated bronze bushing
+    - bore_diameter: 20 mm
+    - shaft_diameter: 19.95 mm
+    - clearance: 0.05 mm radial
+  - id: IF_TogglePivot
+    description: Toggle pivot interfaces
+    type: mechanical
+    connections:
+    - M_Toggle
+    - M_Base
+    - M_Plunger
+    specifications:
+    - bearing_type: Press-fit steel pins
+    - pin_diameter: 10 mm
+    - fit_class: H7
+    - lubrication: Dry PTFE coating
+  assembly_instructions:
+  - id: AI_MainAssembly
+    description: Main tool assembly procedure
+    steps:
+    - Mount base to worktop using M8 bolts, torque to 25 Nm
+    - Install lever pivot bushing in base, press-fit to 0.05 mm interference
+    - Mount lever on pivot, verify smooth rotation
+    - Install toggle pivot pins in base, press-fit to 0.02 mm interference
+    - Assemble toggle mechanism, verify kinematic operation
+    - Connect lever to toggle using M6 bolts, torque to 15 Nm
+    - Install plunger pivot pin in toggle, press-fit to 0.02 mm interference
+    - Mount plunger on pivot, verify smooth operation
+    - Install brake shoe clamp on base using M6 bolts, torque to 12 Nm
+    - Mount rivet guide on clamp using M4 screws, torque to 5 Nm
+    - Verify all moving parts operate smoothly
+    - Check overall dimensions and alignment
+    - Perform function test with sample rivets and brake shoes
+    quality_control_checks:
+    - Pivot smoothness: No binding or play
+    - Alignment: All critical dimensions within tolerance
+    - Function: Full stroke operation without interference
+    - Safety: No sharp edges or pinch points
+  bill_of_materials:
+  - id: BOM_Components
+    description: Detailed component list
+    items:
+    - B_Base: 1 @ 80 CHF
+    - B_Lever: 1 @ 40 CHF
+    - B_Toggle: 1 @ 35 CHF
+    - B_Plunger: 1 @ 40 CHF
+    - B_BrakeShoeClamp: 1 @ 65 CHF
+    - B_RivetGuide: 1 @ 15 CHF
+    - B_Worktop: 1 @ 35 CHF
+    - B_Fasteners: 1 set @ 15 CHF
+    subtotal: 325 CHF
+    manufacturing_overhead: 160 CHF
+    total: 485 CHF
+  manufacturing_notes:
+  - All steel components to be deburred and cleaned before assembly
+  - Critical dimensions to be verified with calibrated measuring equipment
+  - Heat-treated components to be checked for proper hardness
+  - Final assembly to be performed in clean environment
+  - Function testing to be conducted before packaging
+  open_questions:
+  - Are there any specific marking or labeling requirements for the completed tools?
+  - What documentation format is preferred for the detailed design package?
+  - Are there any specific packaging requirements to prevent damage during shipping?
+  - What is the preferred method for providing assembly and operation manuals?

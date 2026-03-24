@@ -1,0 +1,156 @@
+preliminary_bom:
+  B1:
+    item_name: Base Plate
+    module_id: M1
+    material: MAT1 (S355J2 Structural Steel)
+    quantity: 1
+    manufacturing_process: WP1 (Flame/Waterjet cutting, Milling, Drilling)
+    description: 20mm thick steel plate with four M10 mounting holes.
+  B2:
+    item_name: C-Frame
+    module_id: M2
+    material: MAT1 (S355J2 Structural Steel)
+    quantity: 1
+    manufacturing_process: WP1 (Flame/Waterjet cutting, Milling, Drilling)
+    description: Main structural frame providing 150mm throat depth.
+  B3:
+    item_name: Toggle Linkage Set
+    module_id: M3
+    material: MAT1 (S355J2 Structural Steel)
+    quantity: 1
+    manufacturing_process: WP2 (Milling, Reaming)
+    description: Set of links connecting the lever to the ram for force amplification.
+  B4:
+    item_name: Hand Lever
+    module_id: M4
+    material: MAT1 (S355J2 Structural Steel)
+    quantity: 1
+    manufacturing_process: WP2 (Turning, Milling)
+    description: 250mm long lever with ergonomic grip.
+  B5:
+    item_name: Ram
+    module_id: M5
+    material: MAT1 (S355J2 Structural Steel)
+    quantity: 1
+    manufacturing_process: WP2 (Turning, Reaming)
+    description: 20mm diameter precision-guided plunger.
+  B6:
+    item_name: Riveting Punch
+    module_id: M6
+    material: MAT2 (1.2379 Tool Steel)
+    quantity: 1
+    manufacturing_process: WP3 (Machining, Hardening, Grinding)
+    description: Interchangeable upper tool with 18mm tip diameter.
+  B7:
+    item_name: Riveting Anvil
+    module_id: M6
+    material: MAT2 (1.2379 Tool Steel)
+    quantity: 1
+    manufacturing_process: WP3 (Machining, Hardening, Grinding)
+    description: Threaded lower tool with 18mm tip diameter.
+  B8:
+    item_name: Pivot Pins
+    module_id: M3
+    material: Hardened Steel (Standard)
+    quantity: 3
+    manufacturing_process: WP4 (Assembly)
+    description: Precision ground pins for linkage joints.
+  B9:
+    item_name: Bronze Bushings
+    module_id: M3
+    material: MAT3 (CuSn8 Phosphor Bronze)
+    quantity: 6
+    manufacturing_process: WP4 (Press-fitting)
+    description: Maintenance-free bushings for all pivot points.
+  B10:
+    item_name: Fastener Kit
+    module_id: M1
+    material: Standard Steel
+    quantity: 1
+    manufacturing_process: WP4 (Assembly)
+    description: Includes M10 lag bolts, set screws, and circlips.
+verification_plan:
+  VP1:
+    requirement_id: R5
+    verification_method: Test
+    procedure: "Apply force to the hand lever (B4) using a calibrated load cell. \n\
+      Verify that the force required to complete the riveting stroke does not exceed\
+      \ 200 N.\n"
+    acceptance_criteria: Input force <= 200 N.
+  VP2:
+    requirement_id: R6
+    verification_method: Analysis/Test
+    procedure: 'Measure the output force at the punch (B6) using a load cell during
+      the final 1mm of the stroke.
+
+      Compare against the input force to verify the mechanical advantage of the toggle
+      linkage (B3).
+
+      '
+    acceptance_criteria: Output force >= 500 N.
+  VP3:
+    requirement_id: R7
+    verification_method: Inspection
+    procedure: "Measure the total vertical travel of the ram (B5) from the fully open\
+      \ to the fully closed position \nusing a dial indicator.\n"
+    acceptance_criteria: Stroke between 3 mm and 4 mm.
+  VP4:
+    requirement_id: R8
+    verification_method: Demonstration
+    procedure: "Position brake shoes with diameters of 250 mm and 400 mm within the\
+      \ C-frame (B2). \nVerify that the curvature does not interfere with the frame\
+      \ or tooling.\n"
+    acceptance_criteria: Full range of shoes fits without interference.
+  VP5:
+    requirement_id: R10
+    verification_method: Inspection
+    procedure: "Measure the distance from the center of the punch (B6) to the nearest\
+      \ structural part of the \nC-frame (B2) and the tooling tip diameter (B6/B7).\n"
+    acceptance_criteria: Clearance >= 10 mm from rivet center to shoe rib.
+  VP6:
+    requirement_id: R3
+    verification_method: Analysis
+    procedure: 'Compile all material procurement receipts and internal labor logs
+      for the production of 5 units.
+
+      '
+    acceptance_criteria: Total cost per unit <= 500 CHF (Target 400 CHF).
+detail_design:
+  design_summary: "The final design is a bench-mounted manual toggle press optimized\
+    \ for the riveting of brake linings. \nThe structure utilizes a 20mm thick S355J2\
+    \ steel C-frame (B2) welded to a stable base plate (B1). \nThe force amplification\
+    \ is achieved through a hand-operated toggle linkage (B3, B4) that provides \n\
+    maximum mechanical advantage at the end of the 4mm stroke, ensuring the 500N riveting\
+    \ force is \nmet with minimal operator effort. The tooling (B6, B7) is made from\
+    \ hardened D2 tool steel to \nensure a 5-year service life under daily use.\n"
+  final_specifications:
+  - Overall Height: 350 mm
+  - Throat Depth: 150 mm
+  - Ram Diameter: 20 mm (H7 fit)
+  - Tooling Tip: 18 mm diameter
+  - Mounting: 4x M10 lag bolts on a 120x120 mm pattern
+  - Finish: Powder-coated (Safety Orange) for corrosion resistance
+  assembly_instructions: '1. Weld the C-frame (B2) to the Base Plate (B1) using the
+    alignment jig.
+
+    2. Press the bronze bushings (B9) into the reamed holes of the Toggle Linkage
+    (B3) and Lever (B4).
+
+    3. Install the Ram (B5) into the C-frame guide.
+
+    4. Assemble the linkage using hardened pins (B8) and secure with circlips.
+
+    5. Install the Punch (B6) into the Ram socket and secure with the set screw.
+
+    6. Thread the Anvil (B7) into the lower frame arm and lock with the jam nut.
+
+    '
+  assumptions:
+  - AS_DD1: The wooden worktop is at least 40mm thick to support the M10 lag bolts.
+  - AS_DD2: Standard workshop air temperature (15-30°C) is maintained for consistent
+      lubricant performance.
+  open_questions:
+  - OQ_DD1: Should the tool include a storage rack for different punch sizes if DIN
+      7338 rivets vary?
+  - OQ_DD2: Is a specific color coding required for the 5 units to match workshop
+      branding?

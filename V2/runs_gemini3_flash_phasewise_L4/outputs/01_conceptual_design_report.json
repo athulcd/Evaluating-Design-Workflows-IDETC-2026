@@ -1,0 +1,19 @@
+{
+  "phase_key": "conceptual_design",
+  "expected_top_level_keys": [
+    "black_box",
+    "function_structure",
+    "working_principles",
+    "concept_variants",
+    "concept_selection"
+  ],
+  "errors": [],
+  "warnings": [
+    "Hallucinated/unknown IDs referenced in 'black_box' during phase 'conceptual_design': ['IN_E1', 'IN_M1', 'IN_M2', 'IN_S1', 'OUT_E1', 'OUT_M1', 'OUT_S1'].",
+    "Hallucinated/unknown IDs referenced in 'function_structure' during phase 'conceptual_design': ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'IN_E1', 'IN_M1', 'IN_M2', 'IN_S1', 'OUT_E1', 'OUT_M1', 'OUT_S1'].",
+    "Hallucinated/unknown IDs referenced in 'concept_selection' during phase 'conceptual_design': ['WP2.1']."
+  ],
+  "cross_artifact_checks": [
+    "Validated function, principle, concept, and selected concept references across conceptual outputs."
+  ]
+}

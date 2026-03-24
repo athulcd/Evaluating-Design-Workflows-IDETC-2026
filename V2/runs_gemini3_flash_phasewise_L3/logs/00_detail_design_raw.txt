@@ -1,0 +1,175 @@
+preliminary_bom:
+  items:
+  - id: B1
+    name: Main Frame Weldment
+    module_id: M1
+    description: C-frame structure providing the primary stiffness for the riveting operation.
+    material: Mild Steel (e.g., S235JR)
+    quantity: 1
+    manufacturing_source: In-house fabrication (Laser cut + Weld)
+  - id: B2
+    name: Bench Mounting Plate
+    module_id: M1
+    description: Base plate with holes for bolting to a wooden worktop or clamping in a vice.
+    material: Mild Steel (e.g., S235JR)
+    quantity: 1
+    manufacturing_source: In-house fabrication
+  - id: B3
+    name: Actuation Lever
+    module_id: M4
+    description: Long handle for operator input, includes ergonomic grip.
+    material: Steel Tube/Bar
+    quantity: 1
+    manufacturing_source: Purchased (Grip) + In-house (Lever)
+  - id: B4
+    name: Linkage Assembly
+    module_id: M5
+    description: Set of links and pins to amplify input force to the riveting head.
+    material: High-strength Steel (e.g., 42CrMo4)
+    quantity: 1
+    manufacturing_source: Machined
+  - id: B5
+    name: Upper Riveting Head (Forming)
+    module_id: M6
+    description: Hardened tool to form the rivet closure head.
+    material: Tool Steel (e.g., 1.2379), Hardened
+    quantity: 1
+    manufacturing_source: Precision Machining + Heat Treatment
+  - id: B6
+    name: Lower Riveting Head (Support)
+    module_id: M6
+    description: Hardened anvil to support the rivet preform head.
+    material: Tool Steel (e.g., 1.2379), Hardened
+    quantity: 1
+    manufacturing_source: Precision Machining + Heat Treatment
+  - id: B7
+    name: Workholding Fixture Body
+    module_id: M2
+    description: Adjustable support for various brake shoe diameters and widths.
+    material: Mild Steel
+    quantity: 1
+    manufacturing_source: Machined
+  - id: B8
+    name: Adjustable Stroke Stop
+    module_id: M7
+    description: Threaded rod and locknut assembly to limit the lever travel.
+    material: Steel (Standard Threaded Rod)
+    quantity: 1
+    manufacturing_source: Purchased + Modified
+  - id: B9
+    name: Pivot Pins
+    module_id: M5
+    description: Hardened pins for linkage joints.
+    material: Hardened Steel
+    quantity: 3
+    manufacturing_source: Purchased (Standard Parts)
+  - id: B10
+    name: Safety Guard
+    module_id: M8
+    description: Transparent shield to prevent finger access to the pinch zone.
+    material: Polycarbonate
+    quantity: 1
+    manufacturing_source: In-house (Cut/Bend)
+  - id: B11
+    name: Closure Verification Gauge
+    module_id: M9
+    description: Simple Go/No-Go gauge for checking the 4mm closure target.
+    material: Steel Sheet
+    quantity: 1
+    manufacturing_source: Laser cut
+verification_plan:
+  verification_activities:
+  - id: CV1
+    name: Dimensional Capacity Inspection
+    description: Verify the tool accommodates the specified range of brake shoes and linings.
+    target_requirements:
+    - R2
+    - R3
+    - R4
+    - R5
+    - R7
+    method: inspection
+    acceptance_criteria: Tool throat depth and fixture adjustment range cover D=250-400mm, B=80-400mm, and stack <=45mm.
+  - id: CV2
+    name: Force and Ergonomics Test
+    description: Measure the output riveting force and the required operator input force.
+    target_requirements:
+    - R8
+    - R17
+    method: test
+    acceptance_criteria: Output force >= 500 N with hand input <= 200 N (lever mechanical advantage >= 2.5).
+  - id: CV3
+    name: Riveting Quality and Performance Test
+    description: Perform riveting on sample shoes/linings and measure closure.
+    target_requirements:
+    - R1
+    - R9
+    - R10
+    - R15
+    method: test
+    acceptance_criteria: Rivet head closure ~4mm; no damage to lining; cycle time supports 70 rivets/day.
+  - id: CV4
+    name: Safety and Stability Assessment
+    description: Evaluate pinch hazards and stability on the workbench.
+    target_requirements:
+    - R12
+    - R18
+    method: inspection
+    acceptance_criteria: No accessible pinch points during operation; tool remains stable under max load.
+  - id: CV5
+    name: Cost and Maintenance Analysis
+    description: Review the final BOM and assembly time against targets.
+    target_requirements:
+    - R13
+    - R16
+    - R20
+    method: analysis
+    acceptance_criteria: Total manufacturing cost <= SwFr 400; maintenance intervals defined for 5-year life.
+detail_design:
+  design_summary: |
+    The final design is a manual lever-actuated press (CV3) optimized for workshop use. 
+    The Main Frame (B1) is a stiff C-frame weldment that mounts to a workbench via the 
+    Base Plate (B2). Force amplification is achieved through a multi-linkage system (B4) 
+    providing a mechanical advantage of approximately 4:1, ensuring the 500 N riveting 
+    force (R8) is met with only 125 N of hand force (R17). 
+
+    The riveting process uses interchangeable hardened tool steel heads (B5, B6) to 
+    accommodate different rivet sizes (R7). The closure distance is precisely controlled 
+    by an Adjustable Stroke Stop (B8), which allows the operator to fine-tune the 
+    4mm closure target (R9) for different stack thicknesses (R5). 
+
+    The Workholding Fixture (B7) features sliding datums to support the wide range of 
+    brake shoe diameters (250-400mm) and widths (80-400mm) required by R2 and R3. 
+    Safety is addressed by a transparent Polycarbonate Guard (B10) and ergonomic 
+    clearances to prevent pinch hazards (R18).
+  key_specifications:
+  - parameter: Mechanical Advantage
+    value: 4.0
+    unit: ratio
+  - parameter: Max Throat Depth
+    value: 450
+    unit: mm
+  - parameter: Adjustment Resolution (Stop)
+    value: 0.5
+    unit: mm/turn
+  - parameter: Total Mass (Estimated)
+    value: 12.5
+    unit: kg
+  assembly_instructions: |
+    1. Weld the Main Frame (B1) to the Bench Mounting Plate (B2), ensuring perpendicularity of the head axis.
+    2. Install the Linkage Assembly (B4) using Pivot Pins (B9); lubricate all joints with workshop grease.
+    3. Press-fit the Lower Riveting Head (B6) into the frame base.
+    4. Attach the Actuation Lever (B3) to the linkage.
+    5. Install the Adjustable Stroke Stop (B8) and verify the range of motion.
+    6. Mount the Workholding Fixture (B7) and align with the riveting axis.
+    7. Attach the Safety Guard (B10) using M5 fasteners.
+  maintenance_requirements: |
+    - Monthly: Lubricate pivot pins (B9) and linkage joints (B4).
+    - Quarterly: Inspect riveting heads (B5, B6) for wear or chipping; replace if closure quality degrades.
+    - Annual: Check frame weldment (B1) for fatigue cracks and verify mounting bolt tightness.
+  assumptions:
+  - Standard workshop tools (welder, lathe, mill) are available for fabrication.
+  - Rivets used are DIN 7338 as per the functional requirements.
+  open_questions:
+  - Is a foot-pedal conversion kit required for high-volume users?
+  - Should the fixture include a magnetic holder for the rivets?

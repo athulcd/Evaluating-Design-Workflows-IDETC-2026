@@ -1,0 +1,37 @@
+GLOBAL RULES (must follow):
+- Use ONLY the provided inputs. Do NOT invent missing data; list them under assumptions/open_questions.
+- Output MUST be valid YAML.
+- Output MUST contain EXACTLY ONE top-level key: 'requirements_list'.
+- All IDs you reference (e.g., R#, F#, IN_*, OUT_*, WP*, CV*, EC*, M*, IF*, KDP*, LC*, B*) MUST already exist in the input packet,
+  OR (only if you are defining new items for this artifact) must follow the schema's ID fields for newly created entities.
+- When you create new IDs (e.g., WP#, CV#, M#, IF#, KDP#, LC#, B#), keep them consistent and do not reference IDs you did not create.
+- Do not use double quotes for fields that may span multiple lines. Use | or > block scalars instead.
+- If a value contains a newline, you MUST use | or > and not "…". This is to ensure readability and prevent YAML parsing issues.
+
+You will generate a Pahl & Beitz Requirements List (Anforderungsliste).
+
+INPUT:
+- artifacts_available.task_clarification
+
+TASK:
+1) Convert objectives and constraints into a structured requirements list.
+2) Classify each requirement as MUST or WISH.
+3) Provide verification method (analysis/test/inspection/demonstration).
+4) Ensure each requirement is atomic and testable.
+
+OUTPUT YAML schema:
+requirements_list:
+  requirements:
+    - id: R1
+      statement: ""
+      type: [functional|performance|interface|safety|regulatory|manufacturing|cost|schedule|environmental|ergonomics|other]
+      priority: [MUST|WISH]
+      metric: ""
+      target: ""
+      verification: [analysis|test|inspection|demonstration]
+      source: ""
+  assumptions: []
+  open_questions: []
+  traceability:
+    derived_from_objectives: []
+    derived_from_constraints: []

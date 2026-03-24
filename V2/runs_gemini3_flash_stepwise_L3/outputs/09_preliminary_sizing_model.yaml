@@ -1,0 +1,100 @@
+preliminary_sizing:
+  load_cases:
+  - id: LC1
+    description: "Maximum Riveting Force (Static): The tool must apply the required\
+      \ forming force \nto the rivet while the operator applies the maximum allowable\
+      \ manual force.\n"
+    related_requirements:
+    - R8
+    - R17
+  - id: LC2
+    description: "Geometric Capacity (Clearance): The tool frame must accommodate\
+      \ the largest \nspecified brake shoe dimensions and stack thicknesses without\
+      \ interference.\n"
+    related_requirements:
+    - R3
+    - R5
+  - id: LC3
+    description: "Cyclic Loading (Durability): The mechanism must withstand repeated\
+      \ operation \nover the intended service life without excessive wear or fatigue\
+      \ failure.\n"
+    related_requirements:
+    - R10
+    - R13
+  sizing_results:
+  - parameter_id: KDP1
+    governing_case: LC1
+    equation_or_model: 'Mechanical Advantage (MA) = F_rivet / (F_hand * eta)
+
+      where eta is the mechanical efficiency of the linkage.
+
+      '
+    assumed_values:
+      F_rivet: 500 N
+      F_hand_max: 200 N
+      eta: 0.85
+    result: MA >= 2.94
+    margin_or_factor_of_safety: Target ratio 3.5:1 provides a safety margin of ~1.19
+      against operator fatigue.
+  - parameter_id: KDP2
+    governing_case: LC2
+    equation_or_model: 'Throat Depth >= Shoe_Width_Max / 2 (assuming central riveting)
+
+      '
+    assumed_values:
+      Shoe_Width_Max: 400 mm
+    result: Throat Depth >= 200 mm
+    margin_or_factor_of_safety: 1.0 (Minimum clearance)
+  - parameter_id: KDP4
+    governing_case: LC2
+    equation_or_model: 'Vertical Opening = Max_Stack_Thickness + Tooling_Clearance
+
+      '
+    assumed_values:
+      Max_Stack_Thickness: 45 mm
+      Tooling_Clearance: 10 mm
+    result: Vertical Opening >= 55 mm
+    margin_or_factor_of_safety: 1.1 (to allow for easy insertion/removal)
+  - parameter_id: B1
+    governing_case: LC1
+    equation_or_model: 'Frame Bending Stress (sigma) = (F_rivet * Throat_Depth * c)
+      / I
+
+      Must be < Yield Strength / SF
+
+      '
+    assumed_values:
+      Material: Structural Steel (S235)
+      Yield_Strength: 235 MPa
+      SF: 2.0
+    result: Required Section Modulus (I/c) >= 425 mm^3
+    margin_or_factor_of_safety: 2.0 (Design Factor)
+  - parameter_id: B2
+    governing_case: LC1
+    equation_or_model: 'Pivot Pin Shear Stress (tau) = (F_rivet + F_hand) / (2 * Area_pin)
+
+      For double shear.
+
+      '
+    assumed_values:
+      F_total: 700 N
+      Pin_Material: Steel (tau_allowable = 100 MPa)
+    result: Pin Diameter >= 3 mm
+    margin_or_factor_of_safety: '> 3.0 (Standard pin sizes like 8mm or 10mm will be
+      used for bearing area)'
+  assumptions:
+  - Mechanical efficiency (eta) of 0.85 accounts for friction in the lever pivot and
+    ram guide.
+  - The 500 N riveting force (R8) is the peak force required at the end of the stroke.
+  - The "400 mm width" (R3) implies the tool must reach the center of the shoe, requiring
+    a 200 mm throat depth.
+  - Service life (LC3) calculation: 70 rivets/day * 250 days/year * 5 years = 87,500
+      cycles. This is well within the infinite life regime for steel if stresses are
+      kept low.
+  open_questions:
+  - Does the 500 N force requirement (R8) apply to the largest rivet diameter (5 mm)
+    or is it a general minimum?
+  - Is the "wood worktop" (R12) capable of resisting the 500 N reaction force without
+    local crushing, or is a spreader plate required?
+  - What is the specific material of the DIN 7338 rivets? (Harder materials may require
+    higher forces than 500 N).

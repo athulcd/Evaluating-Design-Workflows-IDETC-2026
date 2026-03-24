@@ -1,0 +1,85 @@
+preliminary_sizing:
+  load_cases:
+  - id: LC1
+    description: "Nominal Riveting Operation: The operator applies the maximum allowable\
+      \ hand force (200 N) or foot force (400 N) \nto generate the required riveting\
+      \ force (500 N) to form the rivet head.\n"
+    related_requirements:
+    - R8
+    - R17
+    - R9
+  - id: LC2
+    description: "Structural Overload: Accidental application of excessive force by\
+      \ the operator (e.g., leaning on the lever) \nor attempting to rivet a stack\
+      \ thicker than the tool's capacity, potentially causing frame deflection or\
+      \ linkage failure.\n"
+    related_requirements:
+    - R15
+    - R18
+  - id: LC3
+    description: "Geometric Envelope Constraint: Positioning the largest specified\
+      \ brake shoe (400 mm width, 400 mm diameter) \nwithin the tool's throat without\
+      \ interference.\n"
+    related_requirements:
+    - R2
+    - R3
+  sizing_results:
+  - parameter_id: KDP1
+    governing_case: LC1
+    equation_or_model: "Mechanical Advantage (MA) = F_rivet / F_input. \nFor hand\
+      \ operation: MA_min = 500 N / 200 N.\n"
+    assumed_values:
+      F_rivet_required: 500 N
+      F_hand_max: 200 N
+    result: '2.5'
+    margin_or_factor_of_safety: Target MA >= 3.0 to account for friction and operator
+      comfort.
+  - parameter_id: KDP3
+    governing_case: LC3
+    equation_or_model: 'Throat Depth (T_d) >= (Brake Shoe Width / 2) + Clearance.
+
+      Throat Height (T_h) >= Max Stack Thickness + Tooling Clearance.
+
+      '
+    assumed_values:
+      Max_Width_B: 400 mm
+      Max_Stack_S: 45 mm
+      Clearance: 20 mm
+    result: T_d >= 220 mm; T_h >= 65 mm
+    margin_or_factor_of_safety: N/A (Geometric constraint)
+  - parameter_id: KDP4
+    governing_case: LC1
+    equation_or_model: 'Lever Arm Length (L_lever) = MA * L_pivot_to_plunger.
+
+      '
+    assumed_values:
+      MA: 3.0
+      L_pivot_to_plunger: 60 mm
+    result: 180 mm
+    margin_or_factor_of_safety: Adjustable handle length recommended for ergonomics.
+  - parameter_id: KDP5
+    governing_case: LC2
+    equation_or_model: 'Pivot Pin Shear Stress (tau) = (F_rivet + F_input) / (2 *
+      Area_pin).
+
+      Check against yield strength in shear (0.577 * Sy).
+
+      '
+    assumed_values:
+      F_rivet_overload: 1000 N
+      Material: Steel (Sy = 250 MPa)
+      Pin_Diameter: 10 mm
+    result: tau approx 7.6 MPa
+    margin_or_factor_of_safety: FS > 10 (High safety for wear and durability)
+  assumptions:
+  - The riveting force of 500 N is sufficient for the 3-5 mm DIN 7338 rivets specified.
+  - Friction losses in the lever pivot and plunger guide are approximately 10-15%.
+  - The frame is treated as a C-frame for stiffness calculations to ensure the 4 mm
+    closure (R9) is repeatable.
+  open_questions:
+  - What is the specific material of the rivets (Al, Cu, Steel)? This significantly
+    impacts the required F_rivet.
+  - Is the tool intended to be used with a foot pedal linkage (R17 mentions foot force),
+    and if so, does the frame need to be floor-standing or bench-edge mounted?
+  - What is the allowable deflection of the frame under the 500 N load to maintain
+    the head closure tolerance?
